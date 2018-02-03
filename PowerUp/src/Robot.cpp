@@ -32,7 +32,63 @@ static void VisionThread()
         cv::Mat output;
         while(true) {
             cvSink.GrabFrame(source);
-            cvtColor(source, output, cv::COLOR_BGR2GRAY);
+            output = source;
+//            cv::cvtColor(output, output, CV_BGR2GRAY);
+//            cv::circle(output, cv::Point(25, 25), 5, cv::Scalar(255, 0, 0), 5);
+
+            //cv::cvtColor(source, output, CV_BGR2GRAY);
+//            std::vector<cv::Mat> channels;
+            cv::Mat channels[3];
+            cv::split(source, channels);
+//            output = (channels[0]+channels[1]+channels[2])/3;
+
+//            printf("%i\n", channels[1].type());
+            output = channels[1];
+
+			cv::threshold(output, output, 250, 255, 0);
+
+			std::vector<std::vector<cv::Point> > contours;
+			cv::findContours(output, contours, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_SIMPLE);
+
+			output = source;
+
+			std::vector<cv::Moments> moments(contours.size());
+			for (unsigned int i = 0; i < contours.size(); i++) {
+				moments[i] = cv::moments(contours[i]);
+
+//				if (moments[i].m00 < source.cols*10) {
+				if (moments[i].m00 < source.cols*(source.rows/72)) {
+					contours.erase(contours.begin() + i);
+					moments.erase(moments.begin() + i);
+					i--;
+				}
+				else {
+					cv::drawContours(output, contours, i, cv::Scalar(0, 0, 255), 1);
+
+					cv::Point center = cv::Point(moments[i].m10/moments[i].m00, moments[i].m01/moments[i].m00);
+					cv::circle(output, center, 2, cv::Scalar(255, 0, 0), 1);
+
+					cv::Rect rect = cv::boundingRect(contours[i]);
+					cv::rectangle(output, cv::Point(rect.x, rect.y), cv::Point(rect.x+rect.width, rect.y+rect.height), cv::Scalar(0, 255, 0), 1);
+
+					if (center.x < source.cols/2)
+						printf("contour: %i   x: turn left (%ipx)    ", i, center.x-source.cols/2);
+					else if (center.x > source.cols/2)
+						printf("contour: %i   x: turn right (%ipx)   ", i, center.x-source.cols/2);
+					else
+						printf("contour: %i   x: your centered       ", i);
+
+					if (center.y < source.rows/2)
+						printf("y: look up (%ipx)\n", center.y-source.rows/2);
+					else if (center.y > source.rows/2)
+						printf("y: look down (%ipx)\n", center.y-source.rows/2);
+					else
+						printf("y: your just right (centered)");
+
+					fflush(stdout);
+				}
+			}
+
             outputStreamStd.PutFrame(output);
         }
     }
