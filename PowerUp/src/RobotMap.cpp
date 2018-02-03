@@ -48,6 +48,7 @@ void RobotMap::init() {
     
     
     driveTrainTalonSRX5.reset(new WPI_TalonSRX(5));
+    driveTrainTalonSRX5->SetInverted(true);
     
     
     driveTrainSpeedControllerGroupLeft = std::make_shared<frc::SpeedControllerGroup>(*driveTrainTalonSRX1, *driveTrainTalonSRX3 , *driveTrainTalonSRX5 );
@@ -60,6 +61,7 @@ void RobotMap::init() {
     
     
     driveTrainTalonSRX6.reset(new WPI_TalonSRX(6));
+    driveTrainTalonSRX6->SetInverted(true);
     
     
     driveTrainSpeedControllerGroupRight = std::make_shared<frc::SpeedControllerGroup>(*driveTrainTalonSRX2, *driveTrainTalonSRX4 , *driveTrainTalonSRX6 );
