@@ -32,6 +32,7 @@ static void VisionThread()
         cv::Mat output;
         while(true) {
             cvSink.GrabFrame(source);
+            output = source;
 
             cv::Mat channels[3];
             cv::split(source, channels);
