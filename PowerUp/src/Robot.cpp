@@ -32,17 +32,10 @@ static void VisionThread()
         cv::Mat output;
         while(true) {
             cvSink.GrabFrame(source);
-            output = source;
-//            cv::cvtColor(output, output, CV_BGR2GRAY);
-//            cv::circle(output, cv::Point(25, 25), 5, cv::Scalar(255, 0, 0), 5);
 
-            //cv::cvtColor(source, output, CV_BGR2GRAY);
-//            std::vector<cv::Mat> channels;
             cv::Mat channels[3];
             cv::split(source, channels);
-//            output = (channels[0]+channels[1]+channels[2])/3;
 
-//            printf("%i\n", channels[1].type());
             output = channels[1];
 
 			cv::threshold(output, output, 250, 255, 0);
