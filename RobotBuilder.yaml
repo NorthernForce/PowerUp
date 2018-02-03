@@ -155,6 +155,188 @@ Children:
         value: []
     Base: Subsystem
     Name: DriveTrain
+  - Children: []
+    Properties:
+      Send to SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Send to SmartDashboard, validators: null, value: false}
+      Default command parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Default command parameters
+        validators: null
+        value: []
+      Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Default Command, type: Command, validators: null, value: None}
+      Constants: !!robotbuilder.data.properties.ConstantsProperty
+        default: []
+        name: Constants
+        validators: null
+        value: []
+    Base: Subsystem
+    Name: FieldPositioningSystem
+  - Children:
+    - Children:
+      - Children: []
+        Properties:
+          CAN ID: !!robotbuilder.data.properties.ChoicesProperty
+            choices: *id001
+            default: '2'
+            name: CAN ID
+            validators: *id002
+            value: '7'
+        Base: Talon SRX
+        Name: Talon SRX 7
+      - Children: []
+        Properties:
+          CAN ID: !!robotbuilder.data.properties.ChoicesProperty
+            choices: *id001
+            default: '2'
+            name: CAN ID
+            validators: *id002
+            value: '8'
+        Base: Talon SRX
+        Name: Talon SRX 8
+      Properties:
+        SpeedController4: !!robotbuilder.data.properties.ChildSelectionProperty {
+          default: null, name: SpeedController4, type: PIDOutput, validators: null,
+          value: null}
+        SpeedController3: !!robotbuilder.data.properties.ChildSelectionProperty {
+          default: null, name: SpeedController3, type: PIDOutput, validators: null,
+          value: null}
+        SpeedController2: !!robotbuilder.data.properties.ChildSelectionProperty
+          default: 1
+          name: SpeedController2
+          type: PIDOutput
+          validators: *id003
+          value: Elevator Talon SRX 8
+        SpeedController1: !!robotbuilder.data.properties.ChildSelectionProperty
+          default: 0
+          name: SpeedController1
+          type: PIDOutput
+          validators: *id004
+          value: Elevator Talon SRX 7
+      Base: Speed Controller Group
+      Name: Elevator Speed Controller Group
+    Properties:
+      Send to SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Send to SmartDashboard, validators: null, value: false}
+      Default command parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Default command parameters
+        validators: null
+        value: []
+      Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Default Command, type: Command, validators: null, value: None}
+      Constants: !!robotbuilder.data.properties.ConstantsProperty
+        default: []
+        name: Constants
+        validators: null
+        value: &id005 []
+    Base: Subsystem
+    Name: Elevator
+  - Children:
+    - Children: []
+      Properties:
+        CAN ID: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id001
+          default: '2'
+          name: CAN ID
+          validators: *id002
+          value: '9'
+      Base: Talon SRX
+      Name: Talon SRX 9
+    Properties:
+      Send to SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Send to SmartDashboard, validators: null, value: false}
+      Default command parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Default command parameters
+        validators: null
+        value: []
+      Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Default Command, type: Command, validators: null, value: None}
+      Constants: !!robotbuilder.data.properties.ConstantsProperty
+        default: []
+        name: Constants
+        validators: null
+        value: *id005
+    Base: Subsystem
+    Name: Arm
+  - Children:
+    - Children: []
+      Properties:
+        Forward PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+          choices: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11',
+            '12', '13', '14', '15', '16', '17', '18', '19', '20']
+          default: '0'
+          name: Forward PCM (Solenoid)
+          validators: [Solenoid]
+          value: '0'
+        Reverse PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+          choices: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11',
+            '12', '13', '14', '15', '16', '17', '18', '19', '20']
+          default: '0'
+          name: Reverse PCM (Solenoid)
+          validators: [Solenoid]
+          value: '0'
+        Reverse Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+          choices: ['0', '1', '2', '3', '4', '5', '6', '7']
+          default: '0'
+          name: Reverse Channel (Solenoid)
+          validators: [Solenoid]
+          value: '1'
+        Forward Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+          choices: ['0', '1', '2', '3', '4', '5', '6', '7']
+          default: '0'
+          name: Forward Channel (Solenoid)
+          validators: [Solenoid]
+          value: '0'
+      Base: Double Solenoid
+      Name: gripper
+    Properties:
+      Send to SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Send to SmartDashboard, validators: null, value: false}
+      Default command parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Default command parameters
+        validators: null
+        value: []
+      Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Default Command, type: Command, validators: null, value: None}
+      Constants: !!robotbuilder.data.properties.ConstantsProperty
+        default: []
+        name: Constants
+        validators: null
+        value: *id005
+    Base: Subsystem
+    Name: Gripper
+  - Children:
+    - Children: []
+      Properties:
+        CAN ID: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id001
+          default: '2'
+          name: CAN ID
+          validators: *id002
+          value: '10'
+      Base: Talon SRX
+      Name: Talon SRX 10
+    Properties:
+      Send to SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Send to SmartDashboard, validators: null, value: false}
+      Default command parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Default command parameters
+        validators: null
+        value: []
+      Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Default Command, type: Command, validators: null, value: None}
+      Constants: !!robotbuilder.data.properties.ConstantsProperty
+        default: []
+        name: Constants
+        validators: null
+        value: []
+    Base: Subsystem
+    Name: GripperIntake
   Properties: {}
   Base: Subsystems
   Name: Subsystems
@@ -187,14 +369,1044 @@ Children:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: None}
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: &id005 []
+        default: []
         name: Parameter presets
         validators: null
-        value: *id005
+        value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
     Name: DriveWithJoystick
+  - Children: []
+    Properties:
+      Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Autonomous Selection, validators: null, value: true}
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value: []
+      Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Run When Disabled, validators: null, value: false}
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: []
+        name: Parameter presets
+        validators: null
+        value: []
+      Commands: !!robotbuilder.data.properties.ListProperty
+        default: []
+        name: Commands
+        validators: &id008 [List]
+        value:
+        - !!robotbuilder.data.CommandGroupEntry
+          command:
+            base:
+              help: A Command that chooses between two Commands
+              name: Conditional Command
+              properties:
+              - !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+                name: On True Command, type: Command, validators: null, value: None}
+              - !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+                name: On False Command, type: Command, validators: null, value: None}
+              - !!robotbuilder.data.properties.ParametersProperty
+                default: []
+                name: Parameters
+                validators: null
+                value: []
+              - !!robotbuilder.data.properties.ParameterSetProperty
+                default: &id006 []
+                name: Parameter presets
+                validators: null
+                value: *id006
+              - !!robotbuilder.data.properties.BooleanProperty {default: true, name: Button on SmartDashboard,
+                validators: null, value: true}
+              - !!robotbuilder.data.properties.BooleanProperty {default: false, name: Run When Disabled,
+                validators: null, value: false}
+              - !!robotbuilder.data.properties.BooleanProperty {default: false, name: Autonomous Selection,
+                validators: null, value: false}
+              supports: {}
+              type: Command
+            name: ScoreTwice
+            properties:
+              Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {
+                default: false, name: Autonomous Selection, validators: null, value: false}
+              On True Command: !!robotbuilder.data.properties.TypeSelectionProperty {
+                default: None, name: On True Command, type: Command, validators: null,
+                value: ScoreOnSwitchThenScale}
+              Parameters: !!robotbuilder.data.properties.ParametersProperty
+                default: []
+                name: Parameters
+                validators: null
+                value: []
+              Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {
+                default: false, name: Run When Disabled, validators: null, value: false}
+              Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+                default: []
+                name: Parameter presets
+                validators: null
+                value: []
+              On False Command: !!robotbuilder.data.properties.TypeSelectionProperty {
+                default: None, name: On False Command, type: Command, validators: null,
+                value: ScoreOnScaleThenSwitch}
+              Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {
+                default: true, name: Button on SmartDashboard, validators: null, value: false}
+          hasMatch: true
+          order: Parallel
+          parameters:
+            default: []
+            name: ParametersProperty
+            validators: null
+            value: []
+          previous: null
+        - !!robotbuilder.data.CommandGroupEntry
+          command:
+            base:
+              help: A command specifies an action that the robot can perform.
+              name: Command
+              properties:
+              - !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+                name: Requires, type: Subsystem, validators: null, value: None}
+              - !!robotbuilder.data.properties.BooleanProperty {default: true, name: Button on SmartDashboard,
+                validators: null, value: true}
+              - !!robotbuilder.data.properties.ParametersProperty
+                default: []
+                name: Parameters
+                validators: null
+                value: []
+              - !!robotbuilder.data.properties.ParameterSetProperty
+                default: &id007 []
+                name: Parameter presets
+                validators: null
+                value: *id007
+              - !!robotbuilder.data.properties.BooleanProperty {default: false, name: Run When Disabled,
+                validators: null, value: false}
+              - !!robotbuilder.data.properties.BooleanProperty {default: false, name: Autonomous Selection,
+                validators: null, value: false}
+              supports: {}
+              type: Command
+            name: StartFieldPositioningSystem
+            properties:
+              Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {
+                default: false, name: Autonomous Selection, validators: null, value: false}
+              Parameters: !!robotbuilder.data.properties.ParametersProperty
+                default: []
+                name: Parameters
+                validators: null
+                value:
+                - !!robotbuilder.data.properties.ParameterDescriptor {name: xStart,
+                  type: double}
+              Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {
+                default: false, name: Run When Disabled, validators: null, value: false}
+              Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+                name: Requires, type: Subsystem, validators: null, value: None}
+              Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+                default: []
+                name: Parameter presets
+                validators: null
+                value: []
+              Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {
+                default: true, name: Button on SmartDashboard, validators: null, value: false}
+          hasMatch: true
+          order: Parallel
+          parameters:
+            default: []
+            name: ParametersProperty
+            validators: null
+            value:
+            - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: xStart,
+              type: double, value: '1'}
+          previous: null
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command Group
+    Name: AutonomousLeft
+  - Children: []
+    Properties:
+      Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Autonomous Selection, validators: null, value: true}
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value: []
+      Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Run When Disabled, validators: null, value: false}
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: []
+        name: Parameter presets
+        validators: null
+        value: []
+      Commands: !!robotbuilder.data.properties.ListProperty
+        default: []
+        name: Commands
+        validators: *id008
+        value: []
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command Group
+    Name: AutonomousCenter
+  - Children: []
+    Properties:
+      Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Autonomous Selection, validators: null, value: true}
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value: []
+      Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Run When Disabled, validators: null, value: false}
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: []
+        name: Parameter presets
+        validators: null
+        value: []
+      Commands: !!robotbuilder.data.properties.ListProperty
+        default: []
+        name: Commands
+        validators: *id008
+        value:
+        - !!robotbuilder.data.CommandGroupEntry
+          command:
+            base:
+              help: A Command that chooses between two Commands
+              name: Conditional Command
+              properties:
+              - !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+                name: On True Command, type: Command, validators: null, value: None}
+              - !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+                name: On False Command, type: Command, validators: null, value: None}
+              - !!robotbuilder.data.properties.ParametersProperty
+                default: []
+                name: Parameters
+                validators: null
+                value: []
+              - !!robotbuilder.data.properties.ParameterSetProperty
+                default: &id009 []
+                name: Parameter presets
+                validators: null
+                value: *id009
+              - !!robotbuilder.data.properties.BooleanProperty {default: true, name: Button on SmartDashboard,
+                validators: null, value: true}
+              - !!robotbuilder.data.properties.BooleanProperty {default: false, name: Run When Disabled,
+                validators: null, value: false}
+              - !!robotbuilder.data.properties.BooleanProperty {default: false, name: Autonomous Selection,
+                validators: null, value: false}
+              supports: {}
+              type: Command
+            name: ScoreTwice
+            properties: &id011
+              Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {
+                default: false, name: Autonomous Selection, validators: null, value: false}
+              On True Command: !!robotbuilder.data.properties.TypeSelectionProperty {
+                default: None, name: On True Command, type: Command, validators: null,
+                value: ScoreOnSwitchThenScale}
+              Parameters: !!robotbuilder.data.properties.ParametersProperty
+                default: []
+                name: Parameters
+                validators: null
+                value: []
+              Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {
+                default: false, name: Run When Disabled, validators: null, value: false}
+              Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+                default: []
+                name: Parameter presets
+                validators: null
+                value: []
+              On False Command: !!robotbuilder.data.properties.TypeSelectionProperty {
+                default: None, name: On False Command, type: Command, validators: null,
+                value: ScoreOnScaleThenSwitch}
+              Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {
+                default: true, name: Button on SmartDashboard, validators: null, value: false}
+          hasMatch: true
+          order: Parallel
+          parameters:
+            default: []
+            name: ParametersProperty
+            validators: null
+            value: []
+          previous: null
+        - !!robotbuilder.data.CommandGroupEntry
+          command:
+            base: &id016
+              help: A command specifies an action that the robot can perform.
+              name: Command
+              properties:
+              - !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+                name: Requires, type: Subsystem, validators: null, value: None}
+              - !!robotbuilder.data.properties.BooleanProperty {default: true, name: Button on SmartDashboard,
+                validators: null, value: true}
+              - !!robotbuilder.data.properties.ParametersProperty
+                default: []
+                name: Parameters
+                validators: null
+                value: []
+              - !!robotbuilder.data.properties.ParameterSetProperty
+                default: &id010 []
+                name: Parameter presets
+                validators: null
+                value: *id010
+              - !!robotbuilder.data.properties.BooleanProperty {default: false, name: Run When Disabled,
+                validators: null, value: false}
+              - !!robotbuilder.data.properties.BooleanProperty {default: false, name: Autonomous Selection,
+                validators: null, value: false}
+              supports: {}
+              type: Command
+            name: StartFieldPositioningSystem
+            properties: &id012
+              Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {
+                default: false, name: Autonomous Selection, validators: null, value: false}
+              Parameters: !!robotbuilder.data.properties.ParametersProperty
+                default: []
+                name: Parameters
+                validators: null
+                value:
+                - !!robotbuilder.data.properties.ParameterDescriptor {name: xStart,
+                  type: double}
+              Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {
+                default: false, name: Run When Disabled, validators: null, value: false}
+              Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+                name: Requires, type: Subsystem, validators: null, value: None}
+              Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+                default: []
+                name: Parameter presets
+                validators: null
+                value: []
+              Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {
+                default: true, name: Button on SmartDashboard, validators: null, value: false}
+          hasMatch: true
+          order: Parallel
+          parameters:
+            default: []
+            name: ParametersProperty
+            validators: null
+            value:
+            - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: xStart,
+              type: double, value: '4'}
+          previous: null
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command Group
+    Name: AutonomousRight
+  - Children: []
+    Properties: *id011
+    Base: Conditional Command
+    Name: ScoreTwice
+  - Children: []
+    Properties: *id012
+    Base: Command
+    Name: StartFieldPositioningSystem
+  - Children: []
+    Properties: &id019
+      Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Autonomous Selection, validators: null, value: false}
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value: []
+      Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Run When Disabled, validators: null, value: false}
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: []
+        name: Parameter presets
+        validators: null
+        value: []
+      Commands: !!robotbuilder.data.properties.ListProperty
+        default: []
+        name: Commands
+        validators: *id008
+        value:
+        - &id015 !!robotbuilder.data.CommandGroupEntry
+          command:
+            base:
+              help: A command specifies an action that the robot can perform.
+              name: Command
+              properties:
+              - !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+                name: Requires, type: Subsystem, validators: null, value: None}
+              - !!robotbuilder.data.properties.BooleanProperty {default: true, name: Button on SmartDashboard,
+                validators: null, value: true}
+              - !!robotbuilder.data.properties.ParametersProperty
+                default: []
+                name: Parameters
+                validators: null
+                value: []
+              - !!robotbuilder.data.properties.ParameterSetProperty
+                default: &id013 []
+                name: Parameter presets
+                validators: null
+                value: *id013
+              - !!robotbuilder.data.properties.BooleanProperty {default: false, name: Run When Disabled,
+                validators: null, value: false}
+              - !!robotbuilder.data.properties.BooleanProperty {default: false, name: Autonomous Selection,
+                validators: null, value: false}
+              supports: {}
+              type: Command
+            name: DriveToSwitch
+            properties: &id039
+              Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {
+                default: false, name: Autonomous Selection, validators: null, value: false}
+              Parameters: !!robotbuilder.data.properties.ParametersProperty
+                default: []
+                name: Parameters
+                validators: null
+                value: []
+              Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {
+                default: false, name: Run When Disabled, validators: null, value: false}
+              Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+                name: Requires, type: Subsystem, validators: null, value: DriveTrain}
+              Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+                default: []
+                name: Parameter presets
+                validators: null
+                value: []
+              Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {
+                default: true, name: Button on SmartDashboard, validators: null, value: true}
+          hasMatch: true
+          order: Sequential
+          parameters:
+            default: []
+            name: ParametersProperty
+            validators: null
+            value: []
+          previous: null
+        - !!robotbuilder.data.CommandGroupEntry
+          command:
+            base:
+              help: A command specifies an action that the robot can perform and finishes after a timeout.
+              name: Timed Command
+              properties:
+              - !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+                name: Requires, type: Subsystem, validators: null, value: None}
+              - !!robotbuilder.data.properties.BooleanProperty {default: true, name: Button on SmartDashboard,
+                validators: null, value: true}
+              - !!robotbuilder.data.properties.ParametersProperty
+                default: null
+                name: Parameters
+                validators: null
+                value:
+                - !!robotbuilder.data.properties.ParameterDescriptor {name: timeout,
+                  type: double}
+              - !!robotbuilder.data.properties.ParameterSetProperty
+                default: &id014 []
+                name: Parameter presets
+                validators: null
+                value: *id014
+              - !!robotbuilder.data.properties.BooleanProperty {default: false, name: Run When Disabled,
+                validators: null, value: false}
+              - !!robotbuilder.data.properties.BooleanProperty {default: false, name: Autonomous Selection,
+                validators: null, value: false}
+              supports: {}
+              type: Command
+            name: OpenGripper
+            properties: &id024
+              Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {
+                default: false, name: Autonomous Selection, validators: null, value: false}
+              Parameters: !!robotbuilder.data.properties.ParametersProperty
+                default:
+                - &id025 !!robotbuilder.data.properties.ParameterDescriptor {name: timeout,
+                  type: double}
+                name: Parameters
+                validators: null
+                value:
+                - &id027 !!robotbuilder.data.properties.ParameterDescriptor {name: timeout,
+                  type: double}
+              Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {
+                default: false, name: Run When Disabled, validators: null, value: false}
+              Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+                name: Requires, type: Subsystem, validators: null, value: Gripper}
+              Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+                default: []
+                name: Parameter presets
+                validators: null
+                value:
+                - !!robotbuilder.data.properties.ParameterSet
+                  name: timeToOpen
+                  parameters:
+                  - {name: timeout, type: double, value: '0.5'}
+              Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {
+                default: true, name: Button on SmartDashboard, validators: null, value: true}
+          hasMatch: true
+          order: Sequential
+          parameters:
+            default: []
+            name: ParametersProperty
+            validators: null
+            value:
+            - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: timeout,
+              type: double, value: '0'}
+          previous: *id015
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command Group
+    Name: ScoreOnSwitch
+  - Children: []
+    Properties: &id030
+      Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Autonomous Selection, validators: null, value: false}
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value: []
+      Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Run When Disabled, validators: null, value: false}
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: []
+        name: Parameter presets
+        validators: null
+        value: []
+      Commands: !!robotbuilder.data.properties.ListProperty
+        default: []
+        name: Commands
+        validators: *id008
+        value:
+        - !!robotbuilder.data.CommandGroupEntry
+          command:
+            base: *id016
+            name: DriveToScale
+            properties: &id038
+              Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {
+                default: false, name: Autonomous Selection, validators: null, value: false}
+              Parameters: !!robotbuilder.data.properties.ParametersProperty
+                default: []
+                name: Parameters
+                validators: null
+                value: []
+              Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {
+                default: false, name: Run When Disabled, validators: null, value: false}
+              Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+                name: Requires, type: Subsystem, validators: null, value: DriveTrain}
+              Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+                default: []
+                name: Parameter presets
+                validators: null
+                value: []
+              Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {
+                default: true, name: Button on SmartDashboard, validators: null, value: true}
+          hasMatch: true
+          order: Sequential
+          parameters:
+            default: []
+            name: ParametersProperty
+            validators: null
+            value: []
+          previous: null
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command Group
+    Name: ScoreOnScale
+  - Children: []
+    Properties:
+      Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Autonomous Selection, validators: null, value: false}
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value: []
+      Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Run When Disabled, validators: null, value: false}
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: []
+        name: Parameter presets
+        validators: null
+        value: []
+      Commands: !!robotbuilder.data.properties.ListProperty
+        default: []
+        name: Commands
+        validators: *id008
+        value:
+        - &id029 !!robotbuilder.data.CommandGroupEntry
+          command: &id035
+            base: &id020
+              help: A group of commands set to run together in a prescribed way.
+              name: Command Group
+              properties:
+              - !!robotbuilder.data.properties.BooleanProperty {default: true, name: Button on SmartDashboard,
+                validators: null, value: true}
+              - !!robotbuilder.data.properties.ListProperty
+                default: &id017 []
+                name: Commands
+                validators: [List]
+                value: *id017
+              - !!robotbuilder.data.properties.ParametersProperty
+                default: []
+                name: Parameters
+                validators: null
+                value: []
+              - !!robotbuilder.data.properties.ParameterSetProperty
+                default: &id018 []
+                name: Parameter presets
+                validators: null
+                value: *id018
+              - !!robotbuilder.data.properties.BooleanProperty {default: false, name: Run When Disabled,
+                validators: null, value: false}
+              - !!robotbuilder.data.properties.BooleanProperty {default: false, name: Autonomous Selection,
+                validators: null, value: false}
+              supports: {}
+              type: Command
+            name: ScoreOnSwitch
+            properties: *id019
+          hasMatch: true
+          order: Sequential
+          parameters:
+            default: []
+            name: ParametersProperty
+            validators: null
+            value: []
+          previous: null
+        - &id031 !!robotbuilder.data.CommandGroupEntry
+          command: &id033
+            base: *id020
+            name: PickupCube
+            properties:
+              Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {
+                default: false, name: Autonomous Selection, validators: null, value: false}
+              Parameters: !!robotbuilder.data.properties.ParametersProperty
+                default: []
+                name: Parameters
+                validators: null
+                value: []
+              Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {
+                default: false, name: Run When Disabled, validators: null, value: false}
+              Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+                default: []
+                name: Parameter presets
+                validators: null
+                value: []
+              Commands: !!robotbuilder.data.properties.ListProperty
+                default: []
+                name: Commands
+                validators: *id008
+                value:
+                - &id028 !!robotbuilder.data.CommandGroupEntry
+                  command:
+                    base:
+                      help: A group of commands set to run together in a prescribed way.
+                      name: Command Group
+                      properties:
+                      - !!robotbuilder.data.properties.BooleanProperty {default: true,
+                        name: Button on SmartDashboard, validators: null, value: true}
+                      - !!robotbuilder.data.properties.ListProperty
+                        default: &id021 []
+                        name: Commands
+                        validators: *id008
+                        value: *id021
+                      - !!robotbuilder.data.properties.ParametersProperty
+                        default: []
+                        name: Parameters
+                        validators: null
+                        value: []
+                      - !!robotbuilder.data.properties.ParameterSetProperty
+                        default: &id022 []
+                        name: Parameter presets
+                        validators: null
+                        value: *id022
+                      - !!robotbuilder.data.properties.BooleanProperty {default: false,
+                        name: Run When Disabled, validators: null, value: false}
+                      - !!robotbuilder.data.properties.BooleanProperty {default: false,
+                        name: Autonomous Selection, validators: null, value: false}
+                      supports: {}
+                      type: Command
+                    name: PrepRobotForCubePickup
+                    properties:
+                      Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {
+                        default: false, name: Autonomous Selection, validators: null,
+                        value: false}
+                      Parameters: !!robotbuilder.data.properties.ParametersProperty
+                        default: []
+                        name: Parameters
+                        validators: null
+                        value: []
+                      Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {
+                        default: false, name: Run When Disabled, validators: null,
+                        value: false}
+                      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+                        default: []
+                        name: Parameter presets
+                        validators: null
+                        value: []
+                      Commands: !!robotbuilder.data.properties.ListProperty
+                        default: []
+                        name: Commands
+                        validators: *id008
+                        value:
+                        - !!robotbuilder.data.CommandGroupEntry
+                          command:
+                            base: *id016
+                            name: DriveToCube
+                            properties: &id037
+                              Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {
+                                default: false, name: Autonomous Selection, validators: null,
+                                value: false}
+                              Parameters: !!robotbuilder.data.properties.ParametersProperty
+                                default: []
+                                name: Parameters
+                                validators: null
+                                value: []
+                              Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {
+                                default: false, name: Run When Disabled, validators: null,
+                                value: false}
+                              Requires: !!robotbuilder.data.properties.TypeSelectionProperty {
+                                default: None, name: Requires, type: Subsystem, validators: null,
+                                value: DriveTrain}
+                              Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+                                default: []
+                                name: Parameter presets
+                                validators: null
+                                value: []
+                              Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {
+                                default: true, name: Button on SmartDashboard, validators: null,
+                                value: true}
+                          hasMatch: true
+                          order: Parallel
+                          parameters:
+                            default: []
+                            name: ParametersProperty
+                            validators: null
+                            value: []
+                          previous: null
+                        - !!robotbuilder.data.CommandGroupEntry
+                          command:
+                            base: *id020
+                            name: PrepArmForCubePickup
+                            properties:
+                              Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {
+                                default: false, name: Autonomous Selection, validators: null,
+                                value: false}
+                              Parameters: !!robotbuilder.data.properties.ParametersProperty
+                                default: []
+                                name: Parameters
+                                validators: null
+                                value: []
+                              Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {
+                                default: false, name: Run When Disabled, validators: null,
+                                value: false}
+                              Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+                                default: []
+                                name: Parameter presets
+                                validators: null
+                                value: []
+                              Commands: !!robotbuilder.data.properties.ListProperty
+                                default: []
+                                name: Commands
+                                validators: *id008
+                                value:
+                                - !!robotbuilder.data.CommandGroupEntry
+                                  command:
+                                    base:
+                                      help: A command specifies an action that the robot can perform and finishes after a timeout.
+                                      name: Timed Command
+                                      properties:
+                                      - !!robotbuilder.data.properties.TypeSelectionProperty {
+                                        default: None, name: Requires, type: Subsystem,
+                                        validators: null, value: None}
+                                      - !!robotbuilder.data.properties.BooleanProperty {
+                                        default: true, name: Button on SmartDashboard,
+                                        validators: null, value: true}
+                                      - !!robotbuilder.data.properties.ParametersProperty
+                                        default: null
+                                        name: Parameters
+                                        validators: null
+                                        value:
+                                        - !!robotbuilder.data.properties.ParameterDescriptor {
+                                          name: timeout, type: double}
+                                      - !!robotbuilder.data.properties.ParameterSetProperty
+                                        default: &id023 []
+                                        name: Parameter presets
+                                        validators: null
+                                        value: *id023
+                                      - !!robotbuilder.data.properties.BooleanProperty {
+                                        default: false, name: Run When Disabled, validators: null,
+                                        value: false}
+                                      - !!robotbuilder.data.properties.BooleanProperty {
+                                        default: false, name: Autonomous Selection,
+                                        validators: null, value: false}
+                                      supports: {}
+                                      type: Command
+                                    name: OpenGripper
+                                    properties: *id024
+                                  hasMatch: false
+                                  order: Parallel
+                                  parameters:
+                                    default: []
+                                    name: ParametersProperty
+                                    validators: null
+                                    value:
+                                    - !!robotbuilder.data.properties.ValuedParameterDescriptor {
+                                      name: timeout, type: double, value: '0.5'}
+                                  previous: null
+                                - !!robotbuilder.data.CommandGroupEntry
+                                  command:
+                                    base: *id016
+                                    name: PositionArm
+                                    properties: &id040
+                                      Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {
+                                        default: false, name: Autonomous Selection,
+                                        validators: null, value: false}
+                                      Parameters: !!robotbuilder.data.properties.ParametersProperty
+                                        default: []
+                                        name: Parameters
+                                        validators: null
+                                        value:
+                                        - !!robotbuilder.data.properties.ParameterDescriptor {
+                                          name: setpoint, type: int}
+                                      Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {
+                                        default: false, name: Run When Disabled, validators: null,
+                                        value: false}
+                                      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {
+                                        default: None, name: Requires, type: Subsystem,
+                                        validators: null, value: Arm}
+                                      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+                                        default: []
+                                        name: Parameter presets
+                                        validators: null
+                                        value: []
+                                      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {
+                                        default: true, name: Button on SmartDashboard,
+                                        validators: null, value: false}
+                                  hasMatch: true
+                                  order: Parallel
+                                  parameters:
+                                    default: []
+                                    name: ParametersProperty
+                                    validators: null
+                                    value:
+                                    - !!robotbuilder.data.properties.ValuedParameterDescriptor {
+                                      name: setpoint, type: int, value: '0'}
+                                  previous: null
+                                - !!robotbuilder.data.CommandGroupEntry
+                                  command:
+                                    base: *id016
+                                    name: PositionElevator
+                                    properties: &id041
+                                      Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {
+                                        default: false, name: Autonomous Selection,
+                                        validators: null, value: false}
+                                      Parameters: !!robotbuilder.data.properties.ParametersProperty
+                                        default: []
+                                        name: Parameters
+                                        validators: null
+                                        value:
+                                        - !!robotbuilder.data.properties.ParameterDescriptor {
+                                          name: setpoint, type: int}
+                                      Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {
+                                        default: false, name: Run When Disabled, validators: null,
+                                        value: false}
+                                      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {
+                                        default: None, name: Requires, type: Subsystem,
+                                        validators: null, value: Elevator}
+                                      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+                                        default: []
+                                        name: Parameter presets
+                                        validators: null
+                                        value: []
+                                      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {
+                                        default: true, name: Button on SmartDashboard,
+                                        validators: null, value: false}
+                                  hasMatch: true
+                                  order: Parallel
+                                  parameters:
+                                    default: []
+                                    name: ParametersProperty
+                                    validators: null
+                                    value:
+                                    - !!robotbuilder.data.properties.ValuedParameterDescriptor {
+                                      name: setpoint, type: int, value: '0'}
+                                  previous: null
+                              Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {
+                                default: true, name: Button on SmartDashboard, validators: null,
+                                value: true}
+                          hasMatch: false
+                          order: Parallel
+                          parameters:
+                            default: []
+                            name: ParametersProperty
+                            validators: null
+                            value: []
+                          previous: null
+                      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {
+                        default: true, name: Button on SmartDashboard, validators: null,
+                        value: true}
+                  hasMatch: true
+                  order: Sequential
+                  parameters:
+                    default: []
+                    name: ParametersProperty
+                    validators: null
+                    value: []
+                  previous: null
+                - !!robotbuilder.data.CommandGroupEntry
+                  command:
+                    base:
+                      help: A command specifies an action that the robot can perform and finishes after a timeout.
+                      name: Timed Command
+                      properties:
+                      - !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+                        name: Requires, type: Subsystem, validators: null, value: None}
+                      - !!robotbuilder.data.properties.BooleanProperty {default: true,
+                        name: Button on SmartDashboard, validators: null, value: true}
+                      - !!robotbuilder.data.properties.ParametersProperty
+                        default: null
+                        name: Parameters
+                        validators: null
+                        value:
+                        - *id025
+                      - !!robotbuilder.data.properties.ParameterSetProperty
+                        default: &id026 []
+                        name: Parameter presets
+                        validators: null
+                        value: *id026
+                      - !!robotbuilder.data.properties.BooleanProperty {default: false,
+                        name: Run When Disabled, validators: null, value: false}
+                      - !!robotbuilder.data.properties.BooleanProperty {default: false,
+                        name: Autonomous Selection, validators: null, value: false}
+                      supports: {}
+                      type: Command
+                    name: CloseGripper
+                    properties:
+                      Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {
+                        default: false, name: Autonomous Selection, validators: null,
+                        value: false}
+                      Parameters: !!robotbuilder.data.properties.ParametersProperty
+                        default:
+                        - *id025
+                        name: Parameters
+                        validators: null
+                        value:
+                        - *id027
+                      Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {
+                        default: false, name: Run When Disabled, validators: null,
+                        value: false}
+                      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {
+                        default: None, name: Requires, type: Subsystem, validators: null,
+                        value: Gripper}
+                      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+                        default: []
+                        name: Parameter presets
+                        validators: null
+                        value:
+                        - !!robotbuilder.data.properties.ParameterSet
+                          name: timeToClose
+                          parameters:
+                          - {name: timeout, type: double, value: '0.5'}
+                      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {
+                        default: true, name: Button on SmartDashboard, validators: null,
+                        value: true}
+                  hasMatch: false
+                  order: Sequential
+                  parameters:
+                    default: []
+                    name: ParametersProperty
+                    validators: null
+                    value:
+                    - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: timeout,
+                      type: double, value: '0.5'}
+                  previous: *id028
+              Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {
+                default: true, name: Button on SmartDashboard, validators: null, value: true}
+          hasMatch: true
+          order: Sequential
+          parameters:
+            default: []
+            name: ParametersProperty
+            validators: null
+            value: []
+          previous: *id029
+        - !!robotbuilder.data.CommandGroupEntry
+          command: &id032
+            base: *id020
+            name: ScoreOnScale
+            properties: *id030
+          hasMatch: true
+          order: Sequential
+          parameters:
+            default: []
+            name: ParametersProperty
+            validators: null
+            value: []
+          previous: *id031
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command Group
+    Name: ScoreOnSwitchThenScale
+  - Children: []
+    Properties:
+      Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Autonomous Selection, validators: null, value: false}
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value: []
+      Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Run When Disabled, validators: null, value: false}
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: []
+        name: Parameter presets
+        validators: null
+        value: []
+      Commands: !!robotbuilder.data.properties.ListProperty
+        default: []
+        name: Commands
+        validators: *id008
+        value:
+        - &id034 !!robotbuilder.data.CommandGroupEntry
+          command: *id032
+          hasMatch: true
+          order: Sequential
+          parameters:
+            default: []
+            name: ParametersProperty
+            validators: null
+            value: []
+          previous: null
+        - &id036 !!robotbuilder.data.CommandGroupEntry
+          command: *id033
+          hasMatch: true
+          order: Sequential
+          parameters:
+            default: []
+            name: ParametersProperty
+            validators: null
+            value: []
+          previous: *id034
+        - !!robotbuilder.data.CommandGroupEntry
+          command: *id035
+          hasMatch: true
+          order: Sequential
+          parameters:
+            default: []
+            name: ParametersProperty
+            validators: null
+            value: []
+          previous: *id036
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command Group
+    Name: ScoreOnScaleThenSwitch
+  - Children: []
+    Properties: *id037
+    Base: Command
+    Name: DriveToCube
+  - Children: []
+    Properties: *id038
+    Base: Command
+    Name: DriveToScale
+  - Children: []
+    Properties: *id039
+    Base: Command
+    Name: DriveToSwitch
+  - Children: []
+    Properties: *id040
+    Base: Command
+    Name: PositionArm
+  - Children: []
+    Properties: *id041
+    Base: Command
+    Name: PositionElevator
   - Children: []
     Properties:
       Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {default: false,
@@ -207,16 +1419,16 @@ Children:
       Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {default: false,
         name: Run When Disabled, validators: null, value: false}
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Requires, type: Subsystem, validators: null, value: None}
+        name: Requires, type: Subsystem, validators: null, value: GripperIntake}
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: []
+        default: &id042 []
         name: Parameter presets
         validators: null
-        value: []
+        value: *id042
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
-    Name: Autonomous Command
+    Name: RunIntake
   Properties: {}
   Base: Commands
   Name: Commands
