@@ -25,9 +25,10 @@ std::unique_ptr<OI> Robot::oi;
 static void VisionThread()
     {
         cs::UsbCamera camera = CameraServer::GetInstance()->StartAutomaticCapture();
-        camera.SetResolution(640, 480);
+        int c = 16;
+        camera.SetResolution(c*40, c*30);
         cs::CvSink cvSink = CameraServer::GetInstance()->GetVideo();
-        cs::CvSource outputStreamStd = CameraServer::GetInstance()->PutVideo("Gray", 640, 480);
+        cs::CvSource outputStreamStd = CameraServer::GetInstance()->PutVideo("Gray", c*40, c*30);
         cv::Mat source;
         cv::Mat output;
         while(true) {
@@ -51,7 +52,7 @@ static void VisionThread()
 				moments[i] = cv::moments(contours[i]);
 
 //				if (moments[i].m00 < source.cols*10) {
-				if (moments[i].m00 < source.cols*(source.rows/72)) {
+				if (moments[i].m00 < c*20) {
 					contours.erase(contours.begin() + i);
 					moments.erase(moments.begin() + i);
 					i--;
@@ -64,21 +65,33 @@ static void VisionThread()
 
 					cv::Rect rect = cv::boundingRect(contours[i]);
 					cv::rectangle(output, cv::Point(rect.x, rect.y), cv::Point(rect.x+rect.width, rect.y+rect.height), cv::Scalar(0, 255, 0), 1);
-
-					if (center.x < source.cols/2)
-						printf("contour: %i   x: turn left (%ipx)    ", i, center.x-source.cols/2);
-					else if (center.x > source.cols/2)
-						printf("contour: %i   x: turn right (%ipx)   ", i, center.x-source.cols/2);
+/*
+					/// printing
+					if (center.x < c*20)
+						printf("contour: %i   x: turn left (%ipx)    ", i, center.x-c*20);
+					else if (center.x > c*20)
+						printf("contour: %i   x: turn right (%ipx)   ", i, center.x-c*20);
 					else
 						printf("contour: %i   x: your centered       ", i);
 
-					if (center.y < source.rows/2)
-						printf("y: look up (%ipx)\n", center.y-source.rows/2);
-					else if (center.y > source.rows/2)
-						printf("y: look down (%ipx)\n", center.y-source.rows/2);
+					if (center.y < c*15)
+						printf("y: look up (%ipx)\n", center.y-c*15);
+					else if (center.y > c*15)
+						printf("y: look down (%ipx)\n", center.y-c*15);
 					else
 						printf("y: your just right (centered)");
 
+					fflush(stdout);
+*/
+					/// auto turning
+					// left
+					if (center.x < c*18) {
+						printf("center.x: %i    dec: %f\n", center.x, (float)(center.x-c*20)/(float)(c*20));
+						RobotMap::driveTrainRobotDrive->ArcadeDrive(0, (float)(center.x-c*20)/(float)(c*20), true);
+					}
+					// right
+//					if (center.x > c*22)
+//						RobotMap::driveTrainRobotDrive->ArcadeDrive(0, (float)(center.x-c*20)/(float)(c*10), true);
 					fflush(stdout);
 				}
 			}
