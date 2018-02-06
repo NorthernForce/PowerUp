@@ -85,14 +85,15 @@ static void VisionThread()
 */
 					/// auto turning
 					// left
-					if (center.x < c*18) {
-						printf("center.x: %i    dec: %f\n", center.x, (float)(center.x-c*20)/(float)(c*20));
-						RobotMap::driveTrainRobotDrive->ArcadeDrive(0, (float)(center.x-c*20)/(float)(c*20), true);
-					}
+//					if (center.x < c*18) {
+//						printf("center.x: %i    dec: %f\n", center.x, (float)(center.x-c*20)/(float)(c*20));
+//						RobotMap::driveTrainRobotDrive->ArcadeDrive(0, (float)(center.x-c*20)/(float)(c*20), true);
+//					}
 					// right
 //					if (center.x > c*22)
 //						RobotMap::driveTrainRobotDrive->ArcadeDrive(0, (float)(center.x-c*20)/(float)(c*10), true);
-					fflush(stdout);
+//					fflush(stdout);
+					RobotMap::driveTrainRobotDrive->ArcadeDrive(0, 0.7, true);
 				}
 			}
 
