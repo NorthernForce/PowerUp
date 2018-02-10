@@ -27,10 +27,20 @@ std::unique_ptr<OI> Robot::oi;
 static void VisionThread()
     {
         cs::UsbCamera camera = CameraServer::GetInstance()->StartAutomaticCapture();
-//        int c = 16;
-        camera.SetResolution(640, 480);
+
+        // go to this url: "http://172.22.11.2:1181/" to change camera settings :'-(
+        // (http://172.22.11.2:1181/?action=command&exposure_absolute=0)
+
+        // these do not work for some reason.
+//        camera.SetResolution(640, 480);
+//        camera.SetExposureManual(0);
+//        camera.SetBrightness(120);
+
+//        SAFE_IMAQ_CALL(IMAQdxSetAttribute);
+
         cs::CvSink cvSink = CameraServer::GetInstance()->GetVideo();
-        cs::CvSource outputStreamStd = CameraServer::GetInstance()->PutVideo("Gray", 640, 480);
+        cs::CvSource outputStreamStd = CameraServer::GetInstance()->PutVideo("Reflective Tape", 640, 480);
+
         cv::Mat source;
         cv::Mat output;
         while(true) {
@@ -72,25 +82,6 @@ static void VisionThread()
 					cv::Rect rect = cv::boundingRect(contours[i]);
 					cv::rectangle(output, cv::Point(rect.x, rect.y), cv::Point(rect.x+rect.width, rect.y+rect.height), cv::Scalar(0, 255, 0), 1);
 
-//					/// printing
-//					if (center.x < c*20)
-//						printf("contour: %i   x: turn left (%ipx)    ", i, center.x-c*20);
-//					else if (center.x > c*20)
-//						printf("contour: %i   x: turn right (%ipx)   ", i, center.x-c*20);
-//					else
-//						printf("contour: %i   x: your centered       ", i);
-//
-//					if (center.y < c*15)
-//						printf("y: look up (%ipx)\n", center.y-c*15);
-//					else if (center.y > c*15)
-//						printf("y: look down (%ipx)\n", center.y-c*15);
-//					else
-//						printf("y: your centered");
-//
-//					fflush(stdout);
-
-//					visionAngle = center.x;
-
 					if (center.x > source.cols*0.49 && center.x < source.cols*0.51) {
 						visionAngle = 0;
 					}
@@ -98,8 +89,8 @@ static void VisionThread()
 						visionAngle = (float)(center.x-source.cols/2)/(float)(source.cols*0.75);
 					}
 
-					printf("visionAngle: %f\n",  visionAngle);
-					fflush(stdout);
+//					printf("visionAngle: %f\n",  visionAngle);
+//					fflush(stdout);
 				}
 			}
 
