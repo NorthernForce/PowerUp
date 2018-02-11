@@ -19,7 +19,7 @@ public:
 	void Interrupted() override;
 
 private:
-	const double timeToOpen { 0.5 };
+	constexpr static double timeToOpen { 0.5 };
 };
 
 #endif

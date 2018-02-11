@@ -1,7 +1,6 @@
 
 #include "OpenGripper.h"
 
-
 OpenGripper::OpenGripper() : frc::TimedCommand(timeToOpen) {
 	Requires(Robot::gripper.get());
 }
