@@ -21,6 +21,7 @@ std::string GetTelemetryFileName()
 FieldPositioningSystem::FieldPositioningSystem() :
 	frc::Subsystem("Field positioning system"),
 	ahrs(RobotMap::ahrs),
+	running(false),
 	itemsToProcess(100)
 {
 }
@@ -37,6 +38,11 @@ void FieldPositioningSystem::InitDefaultCommand()
 
 void FieldPositioningSystem::Periodic()
 {
+	if(!running)
+	{
+		return;
+	}
+
 	const auto update_rate_hz = 50;
 	const bool is_moving = true;
 	auto& sensor = *ahrs;
@@ -77,11 +83,15 @@ void FieldPositioningSystem::Start(frc::Vector2d position, float heading)
 	ahrs->ResetDisplacement();
 	ahrs->SetAngleAdjustment(heading);
 	logWriter = std::thread([this]() { WriteLog(); });
+
+	bool isRealTime;
+	const int priority = std::min(GetCurrentThreadPriority(&isRealTime) + 10, 99);
+	SetThreadPriority(logWriter, isRealTime, priority);
 }
 
 void FieldPositioningSystem::Stop()
 {
-	running = true;
+	running = false;
 	if(logWriter.joinable())
 	{
 		logWriter.join();

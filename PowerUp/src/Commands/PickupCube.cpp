@@ -20,7 +20,7 @@
 PickupCube::PickupCube()
 {
 	auto prepArmForPickup = BuildSequential({
-			BuildParallel({ new PositionElevator(0), new PositionElevator(0) }),
+			BuildParallel({ new PositionElevator(0), new PositionArm(PositionArm::Position::Pickup) }),
 			BuildParallel({ new OpenGripper(), new RunIntake() })
 	});
 
