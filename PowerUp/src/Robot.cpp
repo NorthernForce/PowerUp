@@ -16,6 +16,7 @@
 #include <opencv2/core/core.hpp>
 
 volatile float visionAngle = 0;
+volatile float visionMovement = 0;
 
 #include "Subsystems/Ultrasonic.h"
 
@@ -83,20 +84,34 @@ static void VisionThread()
 					cv::Rect rect = cv::boundingRect(contours[i]);
 					cv::rectangle(output, cv::Point(rect.x, rect.y), cv::Point(rect.x+rect.width, rect.y+rect.height), cv::Scalar(0, 255, 0), 1);
 
-					if (center.x > source.cols*0.49 && center.x < source.cols*0.51) {
-						visionAngle = 0;
-					}
-					else {
+//					if (center.x > source.cols*0.49 && center.x < source.cols*0.51) {
+//						visionAngle = 0;
+//					}
+//					else {
 						visionAngle = (float)(center.x-source.cols/2)/(float)(source.cols*0.75);
-					}
+//					}
 				}
 			}
 
-			printf("distance: %f\n", ultra->GetRangeInInches());
-			fflush(stdout);
-
 			// this will be dark ... maybe increase brightness?
             outputStreamStd.PutFrame(output);
+
+            // movement
+			if (visionAngle > -0.15 && visionAngle < 0.15) {
+				double distance = ultra->GetRangeInInches();
+				if (distance < 1) {
+					visionMovement = 0;
+				}
+				else if (distance > 5) {
+					visionMovement = 0.5;
+				}
+				else {
+					visionMovement = distance*0.1;
+				}
+			}
+			else {
+				visionMovement = 0;
+			}
         }
     }
 
@@ -164,7 +179,7 @@ void Robot::TeleopPeriodic() {
 //	RobotMap::driveTrainRobotDrive->ArcadeDrive(joystick->GetX(), joystick->GetY(), true);
 
 //	if (joystick->GetRawButtonPressed(1)) {
-		RobotMap::driveTrainRobotDrive->ArcadeDrive(visionAngle, 0, true);
+		RobotMap::driveTrainRobotDrive->ArcadeDrive(visionAngle, visionMovement, true);
 //	}
 }
 
