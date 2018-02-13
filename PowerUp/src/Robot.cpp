@@ -64,54 +64,55 @@ static void VisionThread()
 
 			output = source;
 
-			std::vector<cv::Moments> moments(contours.size());
-			for (unsigned int i = 0; i < contours.size(); i++) {
-				moments[i] = cv::moments(contours[i]);
+			if (contours.size() > 0) {
+				std::vector<cv::Moments> moments(contours.size());
 
-				// gets rid of "small" contours (not sure if needed)
-				if (moments[i].m00 < source.cols*(source.rows/96)) {
-					contours.erase(contours.begin() + i);
-					moments.erase(moments.begin() + i);
-					i--;
+				// gets the largest contour
+				int j = 0;
+				for (unsigned int i = 0; i < contours.size(); i++) {
+					moments[i] = cv::moments(contours[i]);
+
+					if (moments[i].m00 > moments[j].m00) {
+						j = i;
+					}
+				}
+
+				cv::drawContours(output, contours, j, cv::Scalar(0, 0, 255), 1);
+
+				cv::Point center = cv::Point(moments[j].m10/moments[j].m00, moments[j].m01/moments[j].m00);
+				cv::circle(output, center, 2, cv::Scalar(255, 0, 0), 1);
+
+				// this may not be needed ... not used for anything
+				cv::Rect rect = cv::boundingRect(contours[j]);
+				cv::rectangle(output, cv::Point(rect.x, rect.y), cv::Point(rect.x+rect.width, rect.y+rect.height), cv::Scalar(0, 255, 0), 1);
+
+				// the magic angle
+				visionAngle = (float)(center.x-source.cols/2)/(float)(source.cols*0.75);
+
+	            // movement
+				if (visionAngle > -0.15 && visionAngle < 0.15) {
+					double distance = ultra->GetRangeInInches();
+					if (distance < 1) {
+						visionMovement = 0;
+					}
+					else {
+						visionMovement = distance*0.1;
+						if (visionMovement > 0.5) {
+							visionMovement = 0.5;
+						}
+					}
 				}
 				else {
-					cv::drawContours(output, contours, i, cv::Scalar(0, 0, 255), 1);
-
-					cv::Point center = cv::Point(moments[i].m10/moments[i].m00, moments[i].m01/moments[i].m00);
-					cv::circle(output, center, 2, cv::Scalar(255, 0, 0), 1);
-
-					// this may not be needed ... not used for anything
-					cv::Rect rect = cv::boundingRect(contours[i]);
-					cv::rectangle(output, cv::Point(rect.x, rect.y), cv::Point(rect.x+rect.width, rect.y+rect.height), cv::Scalar(0, 255, 0), 1);
-
-//					if (center.x > source.cols*0.49 && center.x < source.cols*0.51) {
-//						visionAngle = 0;
-//					}
-//					else {
-						visionAngle = (float)(center.x-source.cols/2)/(float)(source.cols*0.75);
-//					}
+					visionMovement = 0;
 				}
+			}
+			else {
+				visionAngle = 0;
+				visionMovement = 0;
 			}
 
 			// this will be dark ... maybe increase brightness?
             outputStreamStd.PutFrame(output);
-
-            // movement
-			if (visionAngle > -0.15 && visionAngle < 0.15) {
-				double distance = ultra->GetRangeInInches();
-				if (distance < 1) {
-					visionMovement = 0;
-				}
-				else if (distance > 5) {
-					visionMovement = 0.5;
-				}
-				else {
-					visionMovement = distance*0.1;
-				}
-			}
-			else {
-				visionMovement = 0;
-			}
         }
     }
 
