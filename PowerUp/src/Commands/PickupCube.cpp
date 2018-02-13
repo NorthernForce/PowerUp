@@ -14,13 +14,12 @@
 #include "Commands/OpenGripper.h"
 #include "Commands/CloseGripper.h"
 #include "Commands/RunIntake.h"
-#include "Commands/PositionElevator.h"
 #include "Commands/PositionArm.h"
 
 PickupCube::PickupCube()
 {
 	auto prepArmForPickup = BuildSequential({
-			BuildParallel({ new PositionElevator(0), new PositionArm(PositionArm::Position::Pickup) }),
+			new PositionArm(PositionArm::Position::Pickup),
 			BuildParallel({ new OpenGripper(), new RunIntake() })
 	});
 

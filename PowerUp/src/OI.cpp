@@ -33,7 +33,6 @@
 
 #include "Commands/PickupCube.h"
 #include "Commands/PositionArm.h"
-#include "Commands/PositionElevator.h"
 
 OI::OI() {
     // Process operator interface input here.
