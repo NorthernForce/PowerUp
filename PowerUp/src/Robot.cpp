@@ -77,39 +77,52 @@ static void VisionThread()
 					}
 				}
 
-				cv::drawContours(output, contours, j, cv::Scalar(0, 0, 255), 1);
-
-				cv::Point center = cv::Point(moments[j].m10/moments[j].m00, moments[j].m01/moments[j].m00);
-				cv::circle(output, center, 2, cv::Scalar(255, 0, 0), 1);
-
-				// this may not be needed ... not used for anything
-				cv::Rect rect = cv::boundingRect(contours[j]);
-				cv::rectangle(output, cv::Point(rect.x, rect.y), cv::Point(rect.x+rect.width, rect.y+rect.height), cv::Scalar(0, 255, 0), 1);
-
-				// the magic angle
-				visionAngle = (float)(center.x-source.cols/2)/(float)(source.cols*0.75);
-
-	            // movement
-				if (visionAngle > -0.1 && visionAngle < 0.1) {
-					double distance = ultra->GetRangeInFeet();
-					if (distance < 1) {
-						visionMovement = 0;
-					}
-					else {
-						visionMovement = distance*0.1;
-						if (visionMovement > 0.5) {
-							visionMovement = 0.5;
-						}
-					}
+				if (moments[j].m00 < source.cols*source.rows/72) {
+					visionAngle = 0;
+					visionMovement = 0;
 				}
 				else {
-					visionMovement = 0;
+					cv::drawContours(output, contours, j, cv::Scalar(0, 0, 255), 1);
+
+					cv::Point center = cv::Point(moments[j].m10/moments[j].m00, moments[j].m01/moments[j].m00);
+					cv::circle(output, center, 2, cv::Scalar(255, 0, 0), 1);
+
+					// this may not be needed ... not used for anything
+					cv::Rect rect = cv::boundingRect(contours[j]);
+					cv::rectangle(output, cv::Point(rect.x, rect.y), cv::Point(rect.x+rect.width, rect.y+rect.height), cv::Scalar(0, 255, 0), 1);
+
+					// the magic angle
+					visionAngle = (float)(center.x-source.cols/2)/(float)(source.cols*0.75);
+
+					// movement
+					if (visionAngle > -0.15 && visionAngle < 0.15) {
+						double distance = ultra->GetRangeInFeet();
+						if (distance < 4) {
+							visionMovement = 0;
+//							visionMovement = distance*0.1;
+//							if (visionMovement > 0.5) {
+//								visionMovement = 0.5;
+//							}
+						}
+						else {
+							visionMovement = distance*-0.1;
+							if (visionMovement > -0.5) {
+								visionMovement = -0.5;
+							}
+						}
+					}
+					else {
+						visionMovement = 0;
+					}
 				}
 			}
 			else {
 				visionAngle = 0;
 				visionMovement = 0;
 			}
+
+			printf("visionAngle: %f visionMovement: %f\n", visionAngle, visionMovement);
+			fflush(stdout);
 
 			// this will be dark ... maybe increase brightness?
             outputStreamStd.PutFrame(output);
@@ -179,7 +192,7 @@ void Robot::TeleopPeriodic() {
 	const auto& joystick = oi->getDriverJoystick();
 //	RobotMap::driveTrainRobotDrive->ArcadeDrive(joystick->GetX(), joystick->GetY(), true);
 
-//	if (joystick->GetRawButtonPressed(1)) {
+//	if (joystick->GetX() > 0.5) {
 		RobotMap::driveTrainRobotDrive->ArcadeDrive(visionAngle, visionMovement, true);
 //	}
 }
