@@ -16,7 +16,7 @@ UltrasonicSensor::UltrasonicSensor(int analogChannel,  int serialChannel, int on
 	m_sensorOn.Set(1);
 }
 
-double UltrasonicSensor::GetRangeInInches() const
+double UltrasonicSensor::GetRangeInFeet() const
 {
 	return m_distanceChannel.GetVoltage() / (0.0098*12);
 }

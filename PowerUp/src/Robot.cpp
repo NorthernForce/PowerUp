@@ -90,8 +90,8 @@ static void VisionThread()
 				visionAngle = (float)(center.x-source.cols/2)/(float)(source.cols*0.75);
 
 	            // movement
-				if (visionAngle > -0.15 && visionAngle < 0.15) {
-					double distance = ultra->GetRangeInInches();
+				if (visionAngle > -0.1 && visionAngle < 0.1) {
+					double distance = ultra->GetRangeInFeet();
 					if (distance < 1) {
 						visionMovement = 0;
 					}

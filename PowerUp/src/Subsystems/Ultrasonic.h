@@ -11,7 +11,7 @@ class UltrasonicSensor: public frc::Subsystem
 		UltrasonicSensor(int analogChannel, int serialChannel, int onChannel);
 ////       analogChannel = 1, serialChannel = 5, onChannel = 1
 
-		double GetRangeInInches() const;
+		double GetRangeInFeet() const;
 
 	private:
 
