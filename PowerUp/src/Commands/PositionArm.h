@@ -32,11 +32,8 @@ public:
 	void Interrupted() override;
 
 private:
-	struct PositionSetpoints;
-	static const std::map<Position, PositionSetpoints> m_setpoints;
-	const std::shared_ptr<Elevator> m_elevator;
-	const std::shared_ptr<Arm> m_arm;
-	Position m_position;
+	static const std::map<Position, int> m_setpoints;
+	Position m_setpoint;
 };
 
 #endif
