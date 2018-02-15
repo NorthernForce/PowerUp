@@ -32,11 +32,9 @@ public:
 	static std::shared_ptr<WPI_TalonSRX> driveTrainTalonSRX1;
 	static std::shared_ptr<WPI_TalonSRX> driveTrainTalonSRX3;
 	static std::shared_ptr<WPI_TalonSRX> driveTrainTalonSRX5;
-	static std::shared_ptr<frc::SpeedControllerGroup> driveTrainSpeedControllerGroupLeft;
 	static std::shared_ptr<WPI_TalonSRX> driveTrainTalonSRX2;
 	static std::shared_ptr<WPI_TalonSRX> driveTrainTalonSRX4;
 	static std::shared_ptr<WPI_TalonSRX> driveTrainTalonSRX6;
-	static std::shared_ptr<frc::SpeedControllerGroup> driveTrainSpeedControllerGroupRight;
 	static std::shared_ptr<frc::RobotDrive> driveTrainRobotDrive;
 	static std::shared_ptr<frc::DoubleSolenoid> grippergripper;
 	static std::shared_ptr<WPI_TalonSRX> gripperIntakeTalonSRX10;
