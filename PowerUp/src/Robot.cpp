@@ -36,7 +36,7 @@ static void VisionThread()
 
         // some notes on changing camera settings:
         //    - UsbCamera class methods (SetExposureManual()...) do not seem to work
-        //    - this url, http://172.22.11.2:1181/, has a great list of settings that work
+        //    - this url, http://172.22.11.2:1181/, has a great list of settings that work from that url
         //    - v4l-utils must be installed (opkg install v4l-utils)
         //    - run v4l2-ctl -L to check current values, ranges, defaults, etc
         //    - the lifecam exposure settings range from 5 to 20,000 but only allow some random numbers in between
@@ -65,7 +65,7 @@ static void VisionThread()
 			output = source;
 
 			if (contours.size() > 0) {
-				// gets the largest contour
+				// gets the largest contour (and the moments)
 				std::vector<cv::Moments> moments(contours.size());
 				int j = 0;
 				for (unsigned int i = 0; i < contours.size(); i++) {
@@ -84,12 +84,13 @@ static void VisionThread()
 					cv::circle(output, center, 2, cv::Scalar(255, 0, 0), 1);
 
 					// this may not be needed ... not used for anything
+					// NOTE: maybe use the aspect ratio of the sides to determine the angle.
 					cv::Rect rect = cv::boundingRect(contours[j]);
 					cv::rectangle(output, cv::Point(rect.x, rect.y), cv::Point(rect.x+rect.width, rect.y+rect.height), cv::Scalar(0, 255, 0), 1);
 
-					// the angle
-//					visionAngle = (float)(center.x-source.cols/2)/(float)(source.cols);
+					// calculating the angle
 					visionAngle = (float)(center.x-source.cols/2)/(float)(source.cols*1.25);
+					// creates a y-intercept (the robot doesn't really move at 0.2)
 					if (visionAngle > 0) {
 						visionAngle += 0.35;
 					}
@@ -97,10 +98,10 @@ static void VisionThread()
 						visionAngle -= 0.35;
 					}
 
-					// movement
+					// calculating the movement
 					if (visionAngle > -0.45 && visionAngle < 0.45) {
 						double distance = ultra->GetRangeInFeet();
-						if (distance > 3) {
+						if (distance > 4) {
 							visionMovement = distance*-0.1-0.2;
 							if (visionMovement < -0.55) {
 								visionMovement = -0.55;
@@ -113,7 +114,7 @@ static void VisionThread()
 							visionMovement = 0;
 						}
 					}
-					// this means we must turn first
+					// this means we must turn first, but there is a target spotted
 					else {
 						visionMovement = 0;
 					}
@@ -203,9 +204,9 @@ void Robot::TeleopPeriodic() {
 
 //	printf("joystick: %f\n", joystick->GetX());
 
-	if (joystick->GetY() > 0.5) {
+//	if (joystick->GetY() > 0.5) {
 		RobotMap::driveTrainRobotDrive->ArcadeDrive(visionAngle, visionMovement, true);
-	}
+//	}
 }
 
 START_ROBOT_CLASS(Robot);
