@@ -48,7 +48,7 @@ static void VisionThread()
 
         cv::Mat source;
         cv::Mat output;
-        while(true) {
+        while (true) {
             cvSink.GrabFrame(source);
             output = source;
 
@@ -57,7 +57,7 @@ static void VisionThread()
 
             output = channels[1];
 
-			cv::threshold(output, output, 250, 255, 0);
+			cv::threshold(output, output, 235, 255, 0);
 
 			std::vector<std::vector<cv::Point> > contours;
 			cv::findContours(output, contours, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_SIMPLE);
@@ -65,9 +65,8 @@ static void VisionThread()
 			output = source;
 
 			if (contours.size() > 0) {
-				std::vector<cv::Moments> moments(contours.size());
-
 				// gets the largest contour
+				std::vector<cv::Moments> moments(contours.size());
 				int j = 0;
 				for (unsigned int i = 0; i < contours.size(); i++) {
 					moments[i] = cv::moments(contours[i]);
@@ -77,11 +76,8 @@ static void VisionThread()
 					}
 				}
 
-				if (moments[j].m00 < source.cols*source.rows/72) {
-					visionAngle = 0;
-					visionMovement = 0;
-				}
-				else {
+				// only continue if the largest contour is large
+				if (moments[j].m00 > source.cols*source.rows/72) {
 					cv::drawContours(output, contours, j, cv::Scalar(0, 0, 255), 1);
 
 					cv::Point center = cv::Point(moments[j].m10/moments[j].m00, moments[j].m01/moments[j].m00);
@@ -91,31 +87,44 @@ static void VisionThread()
 					cv::Rect rect = cv::boundingRect(contours[j]);
 					cv::rectangle(output, cv::Point(rect.x, rect.y), cv::Point(rect.x+rect.width, rect.y+rect.height), cv::Scalar(0, 255, 0), 1);
 
-					// the magic angle
-					visionAngle = (float)(center.x-source.cols/2)/(float)(source.cols*0.75);
+					// the angle
+//					visionAngle = (float)(center.x-source.cols/2)/(float)(source.cols);
+					visionAngle = (float)(center.x-source.cols/2)/(float)(source.cols*1.25);
+					if (visionAngle > 0) {
+						visionAngle += 0.35;
+					}
+					else if (visionAngle < 0) {
+						visionAngle -= 0.35;
+					}
 
 					// movement
-					if (visionAngle > -0.15 && visionAngle < 0.15) {
+					if (visionAngle > -0.45 && visionAngle < 0.45) {
 						double distance = ultra->GetRangeInFeet();
-						if (distance < 4) {
-							visionMovement = 0;
-//							visionMovement = distance*0.1;
-//							if (visionMovement > 0.5) {
-//								visionMovement = 0.5;
-//							}
-						}
-						else {
-							visionMovement = distance*-0.1;
-							if (visionMovement > -0.5) {
-								visionMovement = -0.5;
+						if (distance > 3) {
+							visionMovement = distance*-0.1-0.2;
+							if (visionMovement < -0.55) {
+								visionMovement = -0.55;
 							}
 						}
+						else if (distance < 2) {
+							visionMovement = 0.5;
+						}
+						else {
+							visionMovement = 0;
+						}
 					}
+					// this means we must turn first
 					else {
 						visionMovement = 0;
 					}
 				}
+				// if there are no large contours
+				else {
+					visionAngle = 0;
+					visionMovement = 0;
+				}
 			}
+			// if no contours at all
 			else {
 				visionAngle = 0;
 				visionMovement = 0;
@@ -124,7 +133,7 @@ static void VisionThread()
 			printf("visionAngle: %f visionMovement: %f\n", visionAngle, visionMovement);
 			fflush(stdout);
 
-			// this will be dark ... maybe increase brightness?
+			// this will be dark(ish) ... maybe increase brightness?
             outputStreamStd.PutFrame(output);
         }
     }
@@ -192,9 +201,11 @@ void Robot::TeleopPeriodic() {
 	const auto& joystick = oi->getDriverJoystick();
 //	RobotMap::driveTrainRobotDrive->ArcadeDrive(joystick->GetX(), joystick->GetY(), true);
 
-//	if (joystick->GetX() > 0.5) {
+//	printf("joystick: %f\n", joystick->GetX());
+
+	if (joystick->GetY() > 0.5) {
 		RobotMap::driveTrainRobotDrive->ArcadeDrive(visionAngle, visionMovement, true);
-//	}
+	}
 }
 
 START_ROBOT_CLASS(Robot);
