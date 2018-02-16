@@ -186,6 +186,7 @@ void Robot::AutonomousInit() {
 
 void Robot::AutonomousPeriodic() {
 	frc::Scheduler::GetInstance()->Run();
+	RobotMap::driveTrainRobotDrive->ArcadeDrive(visionAngle, visionMovement, true);
 }
 
 void Robot::TeleopInit() {
@@ -200,12 +201,12 @@ void Robot::TeleopInit() {
 void Robot::TeleopPeriodic() {
 	frc::Scheduler::GetInstance()->Run();
 	const auto& joystick = oi->getDriverJoystick();
-//	RobotMap::driveTrainRobotDrive->ArcadeDrive(joystick->GetX(), joystick->GetY(), true);
+	RobotMap::driveTrainRobotDrive->ArcadeDrive(joystick->GetX(), joystick->GetY(), true);
 
 //	printf("joystick: %f\n", joystick->GetX());
 
 //	if (joystick->GetY() > 0.5) {
-		RobotMap::driveTrainRobotDrive->ArcadeDrive(visionAngle, visionMovement, true);
+//		RobotMap::driveTrainRobotDrive->ArcadeDrive(visionAngle, visionMovement, true);
 //	}
 }
 
