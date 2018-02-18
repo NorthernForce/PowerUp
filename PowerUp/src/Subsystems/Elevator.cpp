@@ -6,9 +6,9 @@
 Elevator::Elevator() :
 	frc::Subsystem("Elevator"),
 	talonSRX7(RobotMap::elevatorTalonSRX7),
-	talonSRX8(RobotMap::elevatorTalonSRX8)
+	talonSRX9(RobotMap::elevatorTalonSRX9)
 {
-	talonSRX8->Follow(*talonSRX7);
+	talonSRX9->Follow(*talonSRX7);
 }
 
 void Elevator::InitDefaultCommand()

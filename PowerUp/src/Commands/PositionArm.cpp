@@ -7,11 +7,11 @@ struct PositionArm::PositionSetpoints
 };
 
 const std::map<PositionArm::Position, PositionArm::PositionSetpoints> PositionArm::m_setpoints = {
-		{ PositionArm::Position::Retracted, { 0, 2000 } },
-		{ PositionArm::Position::Pickup, { 500, 0 } },
-		{ PositionArm::Position::Switch, { 1050, 2000 } },
-		{ PositionArm::Position::ScaleFront, { 1800, 4000 } },
-		{ PositionArm::Position::ScaleRear, { 2100, 4000 } },
+		{ PositionArm::Position::Retracted, { 0,    2000 } },
+		{ PositionArm::Position::Pickup,    { 310,  0 } },
+		{ PositionArm::Position::Switch,    { 310,  2000 } },
+		{ PositionArm::Position::ScaleFront,{ 1668, 4000 } },
+		{ PositionArm::Position::ScaleRear, { 2555, 4000 } },
 };
 
 PositionArm::PositionArm(Position pos) :
@@ -54,7 +54,7 @@ bool PositionArm::IsFinished()
 		m_elevator->ApplyBrake();
 	}
 
-	return armDone && elevatorDone;
+	return false && armDone && elevatorDone;
 }
 
 // Called once after isFinished returns true
@@ -68,4 +68,6 @@ void PositionArm::End()
 // subsystems is scheduled to run
 void PositionArm::Interrupted()
 {
+	m_arm->ApplyBrake();
+	m_elevator->ApplyBrake();
 }

@@ -155,9 +155,9 @@ ProfileGenerator CreateConstantVelocityProfile(const double duration, const doub
 
 ProfileGenerator CreateConstantJerkProfile(const double distance, const double jerk)
 {
-    const auto duration = RoundDuration(std::pow(16 * distance / jerk, 1 / 3.0), TrajectoryDuration_20ms);
+    const auto duration = RoundDuration(std::pow(4 * distance / jerk, 1 / 3.0), TrajectoryDuration_20ms);
     const auto adjustedJerk = 16 * distance / std::pow(duration, 3);
-    const auto targetVelocity = adjustedJerk * std::pow(duration, 2) / 4;
+    const auto targetVelocity = adjustedJerk * std::pow(duration, 2) / 16;
 
     return CombineProfiles({
         VariableVelocityProfile(duration, 0, targetVelocity),

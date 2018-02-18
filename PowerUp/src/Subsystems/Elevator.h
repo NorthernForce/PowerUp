@@ -12,7 +12,7 @@ class Elevator: public frc::Subsystem
 {
 private:
 	const std::shared_ptr<WPI_TalonSRX> talonSRX7;
-	const std::shared_ptr<WPI_TalonSRX> talonSRX8;
+	const std::shared_ptr<WPI_TalonSRX> talonSRX9;
 
 public:
 	Elevator();

@@ -4,25 +4,26 @@
 #include "../RobotMap.h"
 
 Arm::Arm() :
-	frc::Subsystem("Arm")
+	frc::Subsystem("Arm"),
+	m_talonSRX(RobotMap::armTalonSRX8),
+	m_telemetry(m_talonSRX, pidIdx, 5)
 {
-	talonSRX = RobotMap::armTalonSRX9;
-	talonSRX->ConfigMotionProfileTrajectoryPeriod(0, timeoutMs);
-	talonSRX->Config_kF(0, feedForwardGain, timeoutMs);
-	talonSRX->Config_kP(0, pGain, timeoutMs);
-	talonSRX->Config_kI(0, iGain, timeoutMs);
-	talonSRX->Config_kD(0, dGain, timeoutMs);
-	talonSRX->Set(ControlMode::Position, 1);
-	talonSRX->ConfigSelectedFeedbackSensor(QuadEncoder, 0, timeoutMs);
-	talonSRX->SetSelectedSensorPosition(0, 0, timeoutMs);
-
-	const auto feedTalon = [this]()
-	{
-		talonSRX->ProcessMotionProfileBuffer();
-	    std::this_thread::sleep_for(std::chrono::milliseconds(5));
-	};
-	std::thread t(feedTalon);
-	t.detach();
+	m_talonSRX->ConfigPeakOutputForward(+0.25, timeoutMs);
+	m_talonSRX->ConfigPeakOutputReverse(-0.25, timeoutMs);
+	m_talonSRX->ConfigNominalOutputForward(+0.0, timeoutMs);
+	m_talonSRX->ConfigNominalOutputReverse(-0.0, timeoutMs);
+	m_talonSRX->ConfigAllowableClosedloopError(slotIdx, sensorUnitsPerRev, timeoutMs);
+	m_talonSRX->SelectProfileSlot(slotIdx, pidIdx);
+	m_talonSRX->Config_kF(slotIdx, feedForwardGain, timeoutMs);
+	m_talonSRX->Config_kP(slotIdx, pGain, timeoutMs);
+	m_talonSRX->Config_kI(slotIdx, iGain, timeoutMs);
+	m_talonSRX->Config_kD(slotIdx, dGain, timeoutMs);
+	m_talonSRX->ConfigMotionCruiseVelocity(maxSensorUnitsPer100ms, timeoutMs);
+	m_talonSRX->ConfigMotionAcceleration(maxSensorUnitsPer100ms / timeToMaxSpeed, timeoutMs);
+	m_talonSRX->ConfigSelectedFeedbackSensor(QuadEncoder, pidIdx, timeoutMs);
+	SetHomePosition();
+	ApplyBrake();
+	m_telemetry.Start();
 }
 
 void Arm::InitDefaultCommand()
@@ -32,40 +33,31 @@ void Arm::InitDefaultCommand()
 
 void Arm::Periodic()
 {
-	PushProfilePoints(*talonSRX, m_currentProfile, 1, 0, 0, false);
+	m_talonSRX->Set(ControlMode::MotionMagic, m_setpoint);
+	m_telemetry.Periodic();
 }
 
 void Arm::SetPosition(int setpoint)
 {
-	ApplyBrake();
-	const auto distance = talonSRX->GetSelectedSensorPosition(0) - setpoint;
-	m_currentProfile = CreateConstantJerkProfile(distance, maxJerk);
-
-	talonSRX->ClearMotionProfileHasUnderrun(noTimeoutMs);
-	talonSRX->ClearMotionProfileTrajectories();
-	Periodic();
 	ReleaseBrake();
-	talonSRX->ProcessMotionProfileBuffer();
-	talonSRX->Set(ControlMode::MotionProfile, 1);
+	m_setpoint = setpoint;
 }
 
 bool Arm::AtSetpoint()
 {
-	return talonSRX->GetClosedLoopError(0) < 12;
+	return false;
 }
 
 void Arm::ApplyBrake()
 {
-//	auto setpoint = talonSRX->GetSensorCollection().GetQuadraturePosition();
-	auto setpoint = talonSRX->GetSelectedSensorPosition(0);
-	talonSRX->Set(ControlMode::Position, setpoint);
-
-	talonSRX->ConfigPeakOutputForward(+0.2, noTimeoutMs);
-	talonSRX->ConfigPeakOutputReverse(-0.2, noTimeoutMs);
 }
 
 void Arm::ReleaseBrake()
 {
-	talonSRX->ConfigPeakOutputForward(+0.2, noTimeoutMs);
-	talonSRX->ConfigPeakOutputReverse(-0.2, noTimeoutMs);
+}
+
+void Arm::SetHomePosition()
+{
+	m_setpoint = 0;
+	m_talonSRX->SetSelectedSensorPosition(m_setpoint, pidIdx, timeoutMs);
 }
