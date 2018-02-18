@@ -1,7 +1,6 @@
+#include <RobotMap.h>
 #include "FieldPositioningSystem.h"
 #include "DriverStation.h"
-#include "../RobotMap.h"
-
 #include <fstream>
 
 namespace

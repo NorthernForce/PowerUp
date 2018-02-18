@@ -1,7 +1,7 @@
+#include <RobotMap.h>
 #include "ctre/Phoenix.h"
 
 #include "Elevator.h"
-#include "../RobotMap.h"
 
 Elevator::Elevator() :
 	frc::Subsystem("Elevator"),
