@@ -12,7 +12,8 @@
 class TalonTelemetry
 {
 public:
-	TalonTelemetry(std::shared_ptr<WPI_TalonSRX> talon, const int pidIdx, const unsigned frequency = 1);
+	TalonTelemetry(std::shared_ptr<WPI_TalonSRX> talon, const int pidIdx, const unsigned frequency);
+	TalonTelemetry(std::shared_ptr<WPI_TalonSRX> talon, const unsigned frequency);
 	void Start();
 	void Periodic();
 	void Stop();

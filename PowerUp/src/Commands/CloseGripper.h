@@ -11,12 +11,15 @@
 class CloseGripper: public frc::TimedCommand {
 public:
 
-	CloseGripper();
+	CloseGripper() : frc::TimedCommand(timeToClose)
+	{
+		Requires(Robot::gripper.get());
+	}
 
-	void Initialize() override;
-	void Execute() override;
-	void End() override;
-	void Interrupted() override;
+	void Initialize() override
+	{
+		Robot::gripper->SetClosed();
+	}
 
 private:
 	constexpr static double timeToClose { 0.5 };

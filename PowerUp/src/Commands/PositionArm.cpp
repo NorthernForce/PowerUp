@@ -4,14 +4,15 @@ struct PositionArm::PositionSetpoints
 {
 	int m_armSetpoint;
 	int m_elevatorSetpoint;
+	unsigned m_armDelay;
 };
 
 const std::map<PositionArm::Position, PositionArm::PositionSetpoints> PositionArm::m_setpoints = {
-		{ PositionArm::Position::Retracted, { 0,    2000 } },
-		{ PositionArm::Position::Pickup,    { 310,  0 } },
-		{ PositionArm::Position::Switch,    { 310,  2000 } },
-		{ PositionArm::Position::ScaleFront,{ 1668, 4000 } },
-		{ PositionArm::Position::ScaleRear, { 2555, 4000 } },
+		{ PositionArm::Position::Retracted, { 0,    0,     75 } },
+		{ PositionArm::Position::Pickup,    { 420,  -2300, 0 } },
+		{ PositionArm::Position::Switch,    { 500,  +400,  0 } },
+		{ PositionArm::Position::ScaleFront,{ 1600, +1500, 0 } },
+		{ PositionArm::Position::ScaleRear, { 2600, +1500, 0 } },
 };
 
 PositionArm::PositionArm(Position pos) :
@@ -29,7 +30,7 @@ void PositionArm::Initialize()
 	const auto setpoints = m_setpoints.find(m_position);
 	if (setpoints != m_setpoints.end())
 	{
-		m_arm->SetPosition(setpoints->second.m_armSetpoint);
+		m_arm->SetPosition(setpoints->second.m_armSetpoint, setpoints->second.m_armDelay);
 		m_elevator->SetPosition(setpoints->second.m_elevatorSetpoint);
 	}
 }

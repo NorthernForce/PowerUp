@@ -22,6 +22,14 @@ TalonTelemetry::TalonTelemetry(std::shared_ptr<WPI_TalonSRX> talon, const int pi
 {
 }
 
+TalonTelemetry::TalonTelemetry(std::shared_ptr<WPI_TalonSRX> talon, const unsigned frequency) :
+	m_talon(std::move(talon)),
+	m_pidIdx(-1),
+	m_frequency(frequency),
+	m_count(0)
+{
+}
+
 void TalonTelemetry::Start()
 {
 	char path[100];
@@ -29,8 +37,10 @@ void TalonTelemetry::Start()
 	const auto& time = GetCurrentTime();
 	sprintf(path, "/tmp/%s %s Telemetry.csv", name.c_str(), time.c_str());
 	m_os.open(path);
-	m_os
-			<< "Time Sec,Output %,Position,Velocity,Target,Error,Derivative,Voltage (V),Current (A),Temperature (C)\n";
+	if(m_pidIdx != -1)
+		m_os << "Time Sec,Output %,Position,Velocity,Target,Error,Derivative,Voltage (V),Current (A),Temperature (C)\n";
+	else
+		m_os << "Time Sec,Output %,Voltage (V),Current (A),Temperature (C)\n";
 	Periodic();
 }
 
@@ -39,19 +49,24 @@ void TalonTelemetry::Periodic()
 	if((++m_count % m_frequency) == 0)
 	{
 		m_os << Timer::GetFPGATimestamp() << "," <<
-		m_talon->GetMotorOutputPercent() * 100 << "," <<
-		m_talon->GetSelectedSensorPosition(m_pidIdx) << "," <<
-		m_talon->GetSelectedSensorVelocity(m_pidIdx) << "," <<
-		m_talon->GetClosedLoopTarget(m_pidIdx) << "," <<
-		m_talon->GetClosedLoopError(m_pidIdx) << "," <<
-		m_talon->GetErrorDerivative(m_pidIdx) << "," <<
-		m_talon->GetMotorOutputVoltage() << "," <<
-		m_talon->GetOutputCurrent() << "," <<
-		m_talon->GetTemperature() << "\n";
+			m_talon->GetMotorOutputPercent() * 100 << ",";
+
+		if(m_pidIdx != -1)
+		{
+			m_os << m_talon->GetSelectedSensorPosition(m_pidIdx) << "," <<
+				m_talon->GetSelectedSensorVelocity(m_pidIdx) << "," <<
+				m_talon->GetClosedLoopTarget(m_pidIdx) << "," <<
+				m_talon->GetClosedLoopError(m_pidIdx) << "," <<
+				m_talon->GetErrorDerivative(m_pidIdx) << ",";
+		}
+
+		m_os << m_talon->GetMotorOutputVoltage() << "," <<
+			m_talon->GetOutputCurrent() << "," <<
+			m_talon->GetTemperature() << "\n";
 	}
 }
 
 void TalonTelemetry::Stop()
 {
-m_os.close();
+	m_os.close();
 }

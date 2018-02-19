@@ -11,12 +11,15 @@
 class OpenGripper: public frc::TimedCommand {
 public:
 
-	OpenGripper();
+	OpenGripper() : frc::TimedCommand(timeToOpen)
+	{
+		Requires(Robot::gripper.get());
+	}
 
-	void Initialize() override;
-	void Execute() override;
-	void End() override;
-	void Interrupted() override;
+	void Initialize() override
+	{
+		Robot::gripper->SetOpen();
+	}
 
 private:
 	constexpr static double timeToOpen { 0.5 };

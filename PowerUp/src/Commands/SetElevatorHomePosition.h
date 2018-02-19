@@ -1,20 +1,20 @@
-#ifndef SETARMHOMEPOSITION_H
-#define SETARMHOMEPOSITION_H
+#ifndef SETELEVATORHOMEPOSITION_H
+#define SETELEVATORHOMEPOSITION_H
 
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
 
-class SetArmHomePosition : public frc::Command
+class SetElevatorHomePosition : public frc::Command
 {
 public:
-	SetArmHomePosition()
+	SetElevatorHomePosition()
 	{
 		SetRunWhenDisabled(true);
 	}
 
 	void Initialize() override
 	{
-		Robot::arm->SetHomePosition();
+		Robot::elevator->SetHomePosition();
 	}
 
 	bool IsFinished() override { return true; }
