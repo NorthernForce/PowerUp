@@ -41,56 +41,99 @@ static void VisionThread()
         //    - run v4l2-ctl -L to check current values, ranges, defaults, etc
         //    - the lifecam exposure settings range from 5 to 20,000 but only allow some random numbers in between
         system("v4l2-ctl -c exposure_auto=1");
-        system("v4l2-ctl -c exposure_absolute=39");
+        system("v4l2-ctl -c exposure_absolute=0");
 
         cs::CvSink cvSink = CameraServer::GetInstance()->GetVideo();
         cs::CvSource outputStreamStd = CameraServer::GetInstance()->PutVideo("Reflective Tape", 640, 480);
 
-        cv::Mat source;
-        cv::Mat output;
+        cv::Mat source = cv::Mat(640, 480, CV_8UC3);
+        cv::Mat hls = cv::Mat(640, 480, CV_8UC3);
+        cv::Mat output = cv::Mat(640, 480, CV_8UC3);
         while (true) {
             cvSink.GrabFrame(source);
+
+            cv::blur(source, hls, cv::Size(5, 5));
+
+            // get the hue, lightness, and saturation channels
+            cv::cvtColor(hls, hls, CV_BGR2HLS);
+			cv::Mat channels[3];
+			cv::split(hls, channels);
+
+			// this is for drawing over the source image
             output = source;
 
-            cv::Mat channels[3];
-            cv::split(source, channels);
+			// take only the brightest pixels
+			cv::threshold(channels[1], channels[1], 225, 255, 0);
 
-            output = channels[1];
-
-			cv::threshold(output, output, 235, 255, 0);
-
+			// find the contours
 			std::vector<std::vector<cv::Point> > contours;
-			cv::findContours(output, contours, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_SIMPLE);
-
-			output = source;
+			cv::findContours(channels[1], contours, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_SIMPLE);
 
 			if (contours.size() > 0) {
-				// gets the largest contour (and the moments)
-				std::vector<cv::Moments> moments(contours.size());
-				int j = 0;
-				for (unsigned int i = 0; i < contours.size(); i++) {
-					moments[i] = cv::moments(contours[i]);
+				std::vector<int> redLights;
+				std::vector<int> blueLights;
+				std::vector<int> reflectiveTape;
 
-					if (moments[i].m00 > moments[j].m00) {
-						j = i;
+				double mass[contours.size()];
+				cv::Point centers[contours.size()];
+
+				// largest green piece (reflective tape)
+				int j = 0;
+
+				for (unsigned int i = 0; i < contours.size(); i++) {
+					cv::Moments moments = cv::moments(contours[i]);
+
+					// if it is small ignore it
+					if (moments.m00 > 15) {
+						mass[i] = moments.m00;
+						centers[i] = cv::Point(moments.m10/moments.m00, moments.m01/moments.m00);
+
+						int hue = channels[0].at<uchar>(contours[i][0].y, contours[i][0].x);
+						int sat = channels[2].at<uchar>(contours[i][0].y, contours[i][0].x);
+						if (contours[i][0].x == 0 && contours[i][0].y == 0) {
+							hue = channels[0].at<uchar>(contours[i][1].y, contours[i][1].x);
+							sat = channels[2].at<uchar>(contours[i][1].y, contours[i][1].x);
+						}
+
+						// check if green (thus = reflective tape)
+						if (hue > 40 && hue < 70 && sat > 150) {
+							reflectiveTape.push_back(i);
+
+							cv::drawContours(output, contours, i, cv::Scalar(0, 255, 0), 1);
+
+							// finds the largest green contour
+							if (mass[i] >= mass[reflectiveTape[j]]) {
+								if (mass[i] > source.cols*source.rows/72) {
+									j = reflectiveTape.size()-1;
+								}
+							}
+						}
+						// check if blue (thus = light)
+						else if (hue > 70 && hue < 130 && sat > 150) {
+							blueLights.push_back(i);
+
+							cv::drawContours(output, contours, i, cv::Scalar(255, 0, 0), 1);
+						}
+						// check if red (thus = light)
+						else if ((hue > 140 || hue < 10) && sat > 150) {
+							redLights.push_back(i);
+
+							cv::drawContours(output, contours, i, cv::Scalar(0, 0, 255), 1);
+						}
 					}
 				}
 
-				// only continue if the largest contour is large
-				if (moments[j].m00 > source.cols*source.rows/72) {
-					cv::drawContours(output, contours, j, cv::Scalar(0, 0, 255), 1);
+				if (reflectiveTape.size() > 0) {
+					cv::circle(output, centers[reflectiveTape[j]], 2, cv::Scalar(150, 150, 150), 1);
 
-					cv::Point center = cv::Point(moments[j].m10/moments[j].m00, moments[j].m01/moments[j].m00);
-					cv::circle(output, center, 2, cv::Scalar(255, 0, 0), 1);
-
-					// this may not be needed ... not used for anything
-					// NOTE: maybe use the aspect ratio of the sides to determine the angle.
-					cv::Rect rect = cv::boundingRect(contours[j]);
+//					// this may not be needed ... not used for anything
+//					// NOTE: maybe use the aspect ratio of the sides to determine the angle.
+					cv::Rect rect = cv::boundingRect(contours[reflectiveTape[j]]);
 					cv::rectangle(output, cv::Point(rect.x, rect.y), cv::Point(rect.x+rect.width, rect.y+rect.height), cv::Scalar(0, 255, 0), 1);
 
 					// calculating the angle
-					visionAngle = (float)(center.x-source.cols/2)/(float)(source.cols*1.25);
-					// creates a y-intercept (the robot doesn't really move at 0.2)
+					visionAngle = (float)(centers[reflectiveTape[j]].x-source.cols/2)/(float)(source.cols*1.25);
+					// creates an intercept (the robot doesn't really move at 0.2 speed)
 					if (visionAngle > 0) {
 						visionAngle += 0.35;
 					}
@@ -131,8 +174,8 @@ static void VisionThread()
 				visionMovement = 0;
 			}
 
-			printf("visionAngle: %f visionMovement: %f\n", visionAngle, visionMovement);
-			fflush(stdout);
+//			printf("visionAngle: %f visionMovement: %f\n", visionAngle, visionMovement);
+//			fflush(stdout);
 
 			// this will be dark(ish) ... maybe increase brightness?
             outputStreamStd.PutFrame(output);
