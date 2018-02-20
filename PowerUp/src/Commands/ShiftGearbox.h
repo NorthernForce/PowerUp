@@ -11,7 +11,7 @@ public:
 		Low,
 		High
 	};
-	ShiftGearbox(Gear setpoint)// : m_distance(distance)
+	ShiftGearbox(Gear setpoint) : m_setpoint(setpoint)
 	{
 		Requires(Robot::driveTrainShifter.get());
 	}
@@ -19,10 +19,10 @@ public:
 	void Execute() override
 	{
 
-//		if ( setpoint ==  Gear::High )
-//			Robot::driveTrainShifter->ShiftHigh();
-//		else if (setpoint == Gear::Low)
-//			Robot::driveTrainShifter->ShiftLow();
+		if ( m_setpoint ==  Gear::High )
+			Robot::driveTrainShifter->ShiftHigh();
+		else if (m_setpoint == Gear::Low)
+			Robot::driveTrainShifter->ShiftLow();
 	}
 
 	bool IsFinished() override
@@ -31,6 +31,7 @@ public:
 	}
 
 private:
+	Gear m_setpoint;
 };
 
 #endif
