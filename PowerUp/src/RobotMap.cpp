@@ -29,8 +29,7 @@ std::shared_ptr<WPI_TalonSRX> RobotMap::armTalonSRX8;
 std::shared_ptr<WPI_TalonSRX> RobotMap::gripperIntakeTalonSRX10;
 std::shared_ptr<frc::RobotDrive> RobotMap::driveTrainRobotDrive;
 std::shared_ptr<frc::Compressor> RobotMap::compressor;
-std::shared_ptr<frc::DoubleSolenoid> RobotMap::driveTrainShifterDSLeft;
-std::shared_ptr<frc::DoubleSolenoid> RobotMap::driveTrainShifterDSRight;
+std::shared_ptr<frc::DoubleSolenoid> RobotMap::driveTrainShifterDS;
 std::shared_ptr<frc::Solenoid> RobotMap::gripperSolenoid;
 std::shared_ptr<AHRS> RobotMap::ahrs;
 
@@ -59,8 +58,7 @@ void RobotMap::init() {
 
     compressor.reset(new Compressor(20));
 
-    driveTrainShifterDSLeft.reset(new DoubleSolenoid(4, 5));
-    driveTrainShifterDSRight.reset(new DoubleSolenoid(3, 2));
+    driveTrainShifterDS.reset(new DoubleSolenoid(3, 2));
 
     gripperSolenoid.reset(new frc::Solenoid(7));
 
