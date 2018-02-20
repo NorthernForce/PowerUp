@@ -28,7 +28,7 @@ std::shared_ptr<WPI_TalonSRX> RobotMap::elevatorTalonSRX9;
 std::shared_ptr<WPI_TalonSRX> RobotMap::armTalonSRX8;
 std::shared_ptr<WPI_TalonSRX> RobotMap::gripperIntakeTalonSRX10;
 std::shared_ptr<frc::RobotDrive> RobotMap::driveTrainRobotDrive;
-std::shared_ptr<frc::Compressor> RobotMap::pcm;
+std::shared_ptr<frc::Compressor> RobotMap::compressor;
 std::shared_ptr<frc::DoubleSolenoid> RobotMap::driveTrainShifterDSLeft;
 std::shared_ptr<frc::DoubleSolenoid> RobotMap::driveTrainShifterDSRight;
 std::shared_ptr<frc::Solenoid> RobotMap::gripperSolenoid;
@@ -57,7 +57,7 @@ void RobotMap::init() {
 
     gripperIntakeTalonSRX10.reset(new WPI_TalonSRX(10));
 
-    pcm.reset(new Compressor(20));
+    compressor.reset(new Compressor(20));
 
     driveTrainShifterDSLeft.reset(new DoubleSolenoid(0, 1));
     driveTrainShifterDSRight.reset(new DoubleSolenoid(2, 3));
@@ -82,7 +82,7 @@ void RobotMap::init() {
 
     armTalonSRX8 = std::make_unique<WPI_TalonSRX>(8);
 
-    pcm->SetClosedLoopControl(true);
+    compressor->SetClosedLoopControl(true);
 
     driveTrainShifterDSLeft->Set(frc::DoubleSolenoid::Value::kOff);
     driveTrainShifterDSRight->Set(frc::DoubleSolenoid::Value::kOff);
