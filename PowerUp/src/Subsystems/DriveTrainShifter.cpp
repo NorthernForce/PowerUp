@@ -41,8 +41,32 @@ void DriveTrainShifter::InitDefaultCommand() {
 void DriveTrainShifter::Periodic() {
     // Put code here to be run every loop
 
+
 }
 
+void DriveTrainShifter::ShiftHigh() {
+
+	shifterLeft->Set(frc::DoubleSolenoid::Value::kForward);
+	shifterRight->Set(frc::DoubleSolenoid::Value::kForward);
+
+}
+
+void DriveTrainShifter::ShiftLow() {
+
+	shifterLeft->Set(frc::DoubleSolenoid::Value::kReverse);
+	shifterRight->Set(frc::DoubleSolenoid::Value::kReverse);
+
+}
+
+/*frc::DoubleSolenoid::Value DriveTrainShifter::GetGear() {
+
+	if (shifterLeft->Get() == shifterRight->Get()) {
+		return shifterLeft->Get();
+	} else {
+		return frc::DoubleSolenoid::Value::kForward;
+	}
+
+}*/
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.

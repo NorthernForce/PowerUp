@@ -84,8 +84,5 @@ void RobotMap::init() {
 
     compressor->SetClosedLoopControl(true);
 
-    driveTrainShifterDSLeft->Set(frc::DoubleSolenoid::Value::kOff);
-    driveTrainShifterDSRight->Set(frc::DoubleSolenoid::Value::kOff);
-
     ahrs = std::make_unique<AHRS>(frc::SPI::Port::kMXP);
 }
