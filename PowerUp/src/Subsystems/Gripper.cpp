@@ -10,12 +10,12 @@ Gripper::Gripper() :
 
 void Gripper::SetOpen()
 {
-	m_gripperSolenoid->Set(false);
+	m_gripperSolenoid->Set(true);
 	m_gripperState = State::Open;
 }
 
 void Gripper::SetClosed()
 {
-	m_gripperSolenoid->Set(true);
+	m_gripperSolenoid->Set(false);
 	m_gripperState = State::Open;
 }
