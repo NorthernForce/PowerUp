@@ -60,7 +60,7 @@ void RobotMap::init() {
     compressor.reset(new Compressor(20));
 
     driveTrainShifterDSLeft.reset(new DoubleSolenoid(4, 5));
-    driveTrainShifterDSRight.reset(new DoubleSolenoid(2, 3));
+    driveTrainShifterDSRight.reset(new DoubleSolenoid(3, 2));
 
     gripperSolenoid.reset(new frc::Solenoid(7));
 
