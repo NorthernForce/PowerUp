@@ -12,9 +12,9 @@ Elevator::Elevator() :
 	m_telemetryMaster(m_masterTalon, pidIdx, 5),
 	m_telemetrySlave(m_slaveTalon, 5)
 {
-	m_masterTalon->ConfigPeakOutputForward(+0.50, timeoutMs);
+	m_masterTalon->ConfigPeakOutputForward(+0.72, timeoutMs);
 	m_masterTalon->ConfigPeakOutputReverse(-0.40, timeoutMs);
-	m_slaveTalon->ConfigPeakOutputForward(+0.50, timeoutMs);
+	m_slaveTalon->ConfigPeakOutputForward(+0.72, timeoutMs);
 	m_slaveTalon->ConfigPeakOutputReverse(-0.40, timeoutMs);
 	m_masterTalon->ConfigNominalOutputForward(+0.0, timeoutMs);
 	m_masterTalon->ConfigNominalOutputReverse(-0.0, timeoutMs);
@@ -31,13 +31,13 @@ Elevator::Elevator() :
 	m_masterTalon->SetNeutralMode(NeutralMode::Brake);
 	m_masterTalon->ConfigPeakCurrentLimit(10, timeoutMs);
     m_masterTalon->ConfigPeakCurrentDuration(100, timeoutMs);
-    m_masterTalon->ConfigContinuousCurrentLimit(4, timeoutMs);
+    m_masterTalon->ConfigContinuousCurrentLimit(8, timeoutMs);
     m_masterTalon->EnableCurrentLimit(true);
     m_slaveTalon->SetName("Elevator", "slave talon");
     m_slaveTalon->SetNeutralMode(NeutralMode::Brake);
     m_slaveTalon->ConfigPeakCurrentLimit(10, timeoutMs);
     m_slaveTalon->ConfigPeakCurrentDuration(100, timeoutMs);
-    m_slaveTalon->ConfigContinuousCurrentLimit(4, timeoutMs);
+    m_slaveTalon->ConfigContinuousCurrentLimit(8, timeoutMs);
     m_slaveTalon->EnableCurrentLimit(true);
     m_slaveTalon->Follow(*m_masterTalon);
 

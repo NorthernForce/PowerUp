@@ -31,6 +31,7 @@
 #include "Commands/NudgeElevator.h"
 #include "Commands/OpenGripper.h"
 #include "Commands/CloseGripper.h"
+#include "Commands/ElevatorBrake.h"
 
 namespace
 {
@@ -75,13 +76,17 @@ OI::OI() {
     frc::SmartDashboard::PutData("Move arm to switch", new PositionArm(PositionArm::Position::Switch));
     frc::SmartDashboard::PutData("Move arm to scale front", new PositionArm(PositionArm::Position::ScaleFront));
     frc::SmartDashboard::PutData("Move arm to scale rear", new PositionArm(PositionArm::Position::ScaleRear));
-    frc::SmartDashboard::PutData("Nudge elevator up", new NudgeElevator(+1));
-    frc::SmartDashboard::PutData("Nudge elevator down", new NudgeElevator(-1));
+    frc::SmartDashboard::PutData("Nudge elevator up", new NudgeElevator(+3));
+    frc::SmartDashboard::PutData("Nudge elevator down", new NudgeElevator(-3));
     frc::SmartDashboard::PutData("Shift High", new ShiftGearbox(ShiftGearbox::Gear::High));
     frc::SmartDashboard::PutData("Shift Low", new ShiftGearbox(ShiftGearbox::Gear::Low));
 	frc::SmartDashboard::PutData("Open gripper", new OpenGripper());
 	frc::SmartDashboard::PutData("Close gripper", new CloseGripper());
-    frc::SmartDashboard::PutData("**Reset arm home position**", new SetArmHomePosition());
+
+	frc::SmartDashboard::PutData("Break elevator", new ElevatorBreak(ElevatorBreak::State::BrakeOn));
+	frc::SmartDashboard::PutData("Release elevator", new ElevatorBreak(ElevatorBreak::State::BrakeOff));
+
+	frc::SmartDashboard::PutData("**Reset arm home position**", new SetArmHomePosition());
     frc::SmartDashboard::PutData("**Reset elevator home position**", new SetElevatorHomePosition());
 
     // https://www.chiefdelphi.com/forums/showpost.php?p=1003245&postcount=8 for button assignments
