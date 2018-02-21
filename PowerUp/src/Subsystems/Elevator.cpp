@@ -27,12 +27,21 @@ Elevator::Elevator() :
 	m_masterTalon->ConfigMotionAcceleration(maxSensorUnitsPer100ms / timeToMaxSpeed, timeoutMs);
 	m_masterTalon->ConfigSelectedFeedbackSensor(QuadEncoder, pidIdx, timeoutMs);
 
-	m_masterTalon->SetNeutralMode(NeutralMode::Brake);
 	m_masterTalon->SetName("Elevator", "master talon");
-//	m_slaveTalon->SetNeutralMode(NeutralMode::Brake);
-	m_slaveTalon->SetName("Elevator", "slave talon");
-	m_slaveTalon->Follow(*m_masterTalon);
-	SetHomePosition();
+	m_masterTalon->SetNeutralMode(NeutralMode::Brake);
+	m_masterTalon->ConfigPeakCurrentLimit(10, timeoutMs);
+    m_masterTalon->ConfigPeakCurrentDuration(100, timeoutMs);
+    m_masterTalon->ConfigContinuousCurrentLimit(4, timeoutMs);
+    m_masterTalon->EnableCurrentLimit(true);
+    m_slaveTalon->SetName("Elevator", "slave talon");
+    m_slaveTalon->SetNeutralMode(NeutralMode::Brake);
+    m_slaveTalon->ConfigPeakCurrentLimit(10, timeoutMs);
+    m_slaveTalon->ConfigPeakCurrentDuration(100, timeoutMs);
+    m_slaveTalon->ConfigContinuousCurrentLimit(4, timeoutMs);
+    m_slaveTalon->EnableCurrentLimit(true);
+    m_slaveTalon->Follow(*m_masterTalon);
+
+   	SetHomePosition();
 	ApplyBrake();
 	m_telemetryMaster.Start();
 	m_telemetrySlave.Start();
