@@ -23,14 +23,8 @@ public:
 	void Nudge(int distance);
 
 private:
-	enum class State {
-		Braked,
-		Moving
-	};
 	const std::shared_ptr<WPI_TalonSRX> m_masterTalon;
 	const std::shared_ptr<WPI_TalonSRX> m_slaveTalon;
-	const std::shared_ptr<frc::Solenoid>m_elevatorBrake;
-	State m_elevatorState;
 	TalonTelemetry m_telemetryMaster;
 	TalonTelemetry m_telemetrySlave;
 	int m_setpoint;
