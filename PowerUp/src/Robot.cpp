@@ -93,8 +93,8 @@ void Robot::TeleopInit() {
 
 void Robot::TeleopPeriodic() {
 	frc::Scheduler::GetInstance()->Run();
-	const auto& joystick = oi->getDriverJoystick();
-	RobotMap::driveTrainRobotDrive->ArcadeDrive(joystick->GetX(), joystick->GetY(), true);
+	const auto& driverJoystick = oi->getDriverJoystick();
+	RobotMap::driveTrainRobotDrive->ArcadeDrive(driverJoystick->GetX(), driverJoystick->GetY(), true);
 }
 
 START_ROBOT_CLASS(Robot);

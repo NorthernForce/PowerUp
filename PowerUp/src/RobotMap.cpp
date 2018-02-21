@@ -31,7 +31,6 @@ std::shared_ptr<frc::RobotDrive> RobotMap::driveTrainRobotDrive;
 std::shared_ptr<frc::Compressor> RobotMap::compressor;
 std::shared_ptr<frc::DoubleSolenoid> RobotMap::driveTrainShifterDS;
 std::shared_ptr<frc::Solenoid> RobotMap::gripperSolenoid;
-std::shared_ptr<frc::Solenoid> RobotMap::elevatorBrake;
 std::shared_ptr<AHRS> RobotMap::ahrs;
 
 void RobotMap::init() {
@@ -62,8 +61,6 @@ void RobotMap::init() {
     driveTrainShifterDS.reset(new DoubleSolenoid(3, 2));
 
     gripperSolenoid.reset(new frc::Solenoid(7));
-
-    elevatorBrake.reset(new frc::Solenoid(0));
 
     driveTrainTalonSRX1->ConfigOpenloopRamp(0.5, 10);
     driveTrainTalonSRX1->SetInverted(false);
