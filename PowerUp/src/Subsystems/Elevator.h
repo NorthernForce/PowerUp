@@ -29,7 +29,7 @@ private:
 	};
 
 	State m_elevatorState;
-	const std::shared_ptr<WPI_TalonSRX> m_elevatorBrake;
+	const std::shared_ptr<frc::Solenoid> m_elevatorBrake;
 	const std::shared_ptr<WPI_TalonSRX> m_masterTalon;
 	const std::shared_ptr<WPI_TalonSRX> m_slaveTalon;
 	TalonTelemetry m_telemetryMaster;
