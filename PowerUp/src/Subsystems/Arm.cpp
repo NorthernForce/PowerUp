@@ -60,10 +60,12 @@ bool Arm::AtSetpoint()
 
 void Arm::ApplyBrake()
 {
+
 }
 
 void Arm::ReleaseBrake()
 {
+
 }
 
 void Arm::SetHomePosition()

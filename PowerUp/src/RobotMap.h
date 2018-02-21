@@ -42,6 +42,7 @@ public:
 	static std::shared_ptr<frc::Compressor> compressor;
 	static std::shared_ptr<frc::DoubleSolenoid> driveTrainShifterDS;
 	static std::shared_ptr<frc::Solenoid> gripperSolenoid;
+	static std::shared_ptr<frc::Solenoid> elevatorBrake;
 	static std::shared_ptr<AHRS> ahrs;
 	static void init();
 };

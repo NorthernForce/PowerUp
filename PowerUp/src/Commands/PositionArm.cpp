@@ -13,6 +13,7 @@ const std::map<PositionArm::Position, PositionArm::PositionSetpoints> PositionAr
 		{ PositionArm::Position::Switch,    { 500,  +400,  0 } },
 		{ PositionArm::Position::ScaleFront,{ 1600, +1500, 0 } },
 		{ PositionArm::Position::ScaleRear, { 2600, +1500, 0 } },
+		//{ PositionArm::Position::Climb, { , , } },
 };
 
 PositionArm::PositionArm(Position pos) :

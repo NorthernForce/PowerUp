@@ -20,7 +20,8 @@ public:
 		Pickup,		// Positioned to pick up
 		Switch,		// Positioned to score on switch
 		ScaleFront,	// Positioned to score on scale in front of the robot
-		ScaleRear	// Positioned to score on scale behind robot
+		ScaleRear,	// Positioned to score on scale behind robot
+		Climb		// Positioned to climb
 	};
 
 	PositionArm(Position setpoint);
