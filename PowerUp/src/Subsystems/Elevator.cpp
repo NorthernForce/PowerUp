@@ -5,6 +5,8 @@
 
 Elevator::Elevator() :
 	frc::Subsystem("Elevator"),
+	m_elevatorState(State::Braked),
+	m_elevatorBrake(RobotMap::elevatorBrake),
 	m_masterTalon(RobotMap::elevatorTalonSRX9),
 	m_slaveTalon(RobotMap::elevatorTalonSRX7),
 	m_telemetryMaster(m_masterTalon, pidIdx, 5),
@@ -61,10 +63,14 @@ bool Elevator::AtSetpoint()
 
 void Elevator::ApplyBrake()
 {
+	m_elevatorBrake->Set(false);
+	m_elevatorState = State::Braked;
 }
 
 void Elevator::ReleaseBrake()
 {
+	m_elevatorBrake->Set(true);
+	m_elevatorState = State::Moving;
 }
 
 void Elevator::SetHomePosition()
