@@ -23,6 +23,10 @@ Arm::Arm() :
 	m_talonSRX->ConfigSelectedFeedbackSensor(QuadEncoder, pidIdx, timeoutMs);
 	m_talonSRX->SetNeutralMode(NeutralMode::Brake);
 	m_talonSRX->SetName("Arm");
+    m_talonSRX->ConfigPeakCurrentLimit(10, timeoutMs);
+    m_talonSRX->ConfigPeakCurrentDuration(100, timeoutMs);
+    m_talonSRX->ConfigContinuousCurrentLimit(4, timeoutMs);
+    m_talonSRX->EnableCurrentLimit(true);
 	SetHomePosition();
 	ApplyBrake();
 	m_telemetry.Start();

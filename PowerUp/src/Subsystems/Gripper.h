@@ -26,7 +26,9 @@ public:
 
 	void SetOpen();
 	void SetClosed();
-	bool IsClosed() const { return m_gripperState == State::Closed; }
+	bool IsClosed() const {
+		return m_gripperState == State::Closed;
+	}
 
 private:
 	enum class State {
