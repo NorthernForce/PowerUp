@@ -64,7 +64,7 @@ void Robot::RobotInit() {
  * This function is called when the disabled button is hit.
  * You can use it to reset subsystems before shutting down.
  */
-void Robot::DisabledInit(){
+void Robot::DisabledInit() {
 
 }
 
@@ -94,6 +94,7 @@ void Robot::TeleopInit() {
 void Robot::TeleopPeriodic() {
 	frc::Scheduler::GetInstance()->Run();
 	const auto& driverJoystick = oi->getDriverJoystick();
+	const auto& manipulatorJoystick = oi->getManipulatorJoystick();
 	RobotMap::driveTrainRobotDrive->ArcadeDrive(driverJoystick->GetX(), driverJoystick->GetY(), true);
 }
 
