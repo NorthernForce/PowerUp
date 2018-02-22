@@ -32,10 +32,10 @@ static void VisionThread()
     {
 		UltrasonicSensor* distanceSensor = new UltrasonicSensor(0, 0, 0);
 
-		frc::PWM* swivel = new frc::PWM(0);
+		frc::PWM* pan = new frc::PWM(0);
 		frc::PWM* tilt = new frc::PWM(1);
 
-		swivel->SetRaw(127);
+		pan->SetRaw(127);
 		tilt->SetRaw(127);
 
         cs::UsbCamera camera = CameraServer::GetInstance()->StartAutomaticCapture();
@@ -83,8 +83,8 @@ static void VisionThread()
 				double mass[contours.size()];
 				cv::Point centers[contours.size()];
 
-				// largest green piece (reflective tape)
-				int j = 0;
+//				// largest green piece (reflective tape)
+//				int j = 0;
 
 				for (unsigned int i = 0; i < contours.size(); i++) {
 					cv::Moments moments = cv::moments(contours[i]);
@@ -101,27 +101,27 @@ static void VisionThread()
 							sat = channels[2].at<uchar>(contours[i][1].y, contours[i][1].x);
 						}
 
-						// check if green (thus = reflective tape)
-						if (hue > 40 && hue < 70 && sat > 150) {
+						// check if green (thus = reflective tape) (also must be vivid)
+						if (hue > 40 && hue < 70 && sat > 100) {
 							reflectiveTape.push_back(i);
 
 							cv::drawContours(output, contours, i, cv::Scalar(0, 255, 0), 1);
 
-							// finds the largest green contour
-							if (mass[i] >= mass[reflectiveTape[j]]) {
-								if (mass[i] > source.cols*source.rows/72) {
-									j = reflectiveTape.size()-1;
-								}
-							}
+//							// finds the largest green contour
+//							if (mass[i] >= mass[reflectiveTape[j]]) {
+//								if (mass[i] > source.cols*source.rows/72) {
+//									j = reflectiveTape.size()-1;
+//								}
+//							}
 						}
-						// check if blue (thus = light)
-						else if (hue > 70 && hue < 130 && sat > 150) {
+						// check if blue (thus = blue goal light) (also must be vivid)
+						else if (hue > 70 && hue < 130 && sat > 100) {
 							blueLights.push_back(i);
 
 							cv::drawContours(output, contours, i, cv::Scalar(255, 0, 0), 1);
 						}
-						// check if red (thus = light)
-						else if ((hue > 140 || hue < 10) && sat > 150) {
+						// check if red (thus = red goal light) (also must be vivid)
+						else if ((hue > 140 || hue < 10) && sat > 100) {
 							redLights.push_back(i);
 
 							cv::drawContours(output, contours, i, cv::Scalar(0, 0, 255), 1);
@@ -129,59 +129,79 @@ static void VisionThread()
 					}
 				}
 
-				if (reflectiveTape.size() > 0) {
-					cv::circle(output, centers[reflectiveTape[j]], 2, cv::Scalar(150, 150, 150), 1);
+				if (redLights.size() > 0) {
+					int gimbalX = pan->GetRaw()+(int)((float)(centers[redLights[0]].x-source.cols*0.5)/(float)(source.cols)*40);
+					if (gimbalX > 255) {
+						gimbalX = 255;
+					}
+					else if (gimbalX < 0) {
+						gimbalX = 0;
+					}
+					pan->SetRaw(gimbalX);
 
-//					// this may not be needed ... not used for anything
-//					// NOTE: maybe use the aspect ratio of the sides to determine the angle.
-					cv::Rect rect = cv::boundingRect(contours[reflectiveTape[j]]);
-					cv::rectangle(output, cv::Point(rect.x, rect.y), cv::Point(rect.x+rect.width, rect.y+rect.height), cv::Scalar(0, 255, 0), 1);
-
-					// calculating the angle
-					visionAngle = (float)(centers[reflectiveTape[j]].x-source.cols/2)/(float)(source.cols*1.25);
-					// creates an intercept (the robot doesn't really move at 0.2 speed)
-					if (visionAngle > 0) {
-						visionAngle += 0.35;
+					int gimbalY = tilt->GetRaw()+(int)((float)(centers[redLights[0]].y-source.rows*0.5)/(float)(source.rows)*40);
+					if (gimbalY > 255) {
+						gimbalY = 255;
 					}
-					else if (visionAngle < 0) {
-						visionAngle -= 0.35;
+					else if (gimbalY < 0) {
+						gimbalY = 0;
 					}
-
-					// calculating the movement
-					if (visionAngle > -0.45 && visionAngle < 0.45) {
-						double distance = distanceSensor->GetRangeInFeet();
-						if (distance > 4) {
-							visionMovement = distance*-0.1-0.2;
-							if (visionMovement < -0.55) {
-								visionMovement = -0.55;
-							}
-						}
-						else if (distance < 2) {
-							visionMovement = 0.5;
-						}
-						else {
-							visionMovement = 0;
-						}
-					}
-					// this means we must turn first, but there is a target spotted
-					else {
-						visionMovement = 0;
-					}
+					tilt->SetRaw(gimbalY);
 				}
-				// if there are no large contours
-				else {
-					visionAngle = 0;
-					visionMovement = 0;
-				}
-			}
-			// if no contours at all
-			else {
-				visionAngle = 0;
-				visionMovement = 0;
-			}
 
-//			printf("visionAngle: %f visionMovement: %f\n", visionAngle, visionMovement);
-//			fflush(stdout);
+//				if (reflectiveTape.size() > 0) {
+//					cv::circle(output, centers[reflectiveTape[j]], 2, cv::Scalar(150, 150, 150), 1);
+//
+////					// this may not be needed ... not used for anything
+////					// NOTE: maybe use the aspect ratio of the sides to determine the angle.
+//					cv::Rect rect = cv::boundingRect(contours[reflectiveTape[j]]);
+//					cv::rectangle(output, cv::Point(rect.x, rect.y), cv::Point(rect.x+rect.width, rect.y+rect.height), cv::Scalar(0, 255, 0), 1);
+//
+////					// calculating the angle
+////					visionAngle = (float)(centers[reflectiveTape[j]].x-source.cols/2)/(float)(source.cols*1.25);
+////					// creates an intercept (the robot doesn't really move at 0.2 speed)
+////					if (visionAngle > 0) {
+////						visionAngle += 0.35;
+////					}
+////					else if (visionAngle < 0) {
+////						visionAngle -= 0.35;
+////					}
+////
+////					// calculating the movement
+////					if (visionAngle > -0.45 && visionAngle < 0.45) {
+////						double distance = distanceSensor->GetRangeInFeet();
+////						if (distance > 4) {
+////							visionMovement = distance*-0.1-0.2;
+////							if (visionMovement < -0.55) {
+////								visionMovement = -0.55;
+////							}
+////						}
+////						else if (distance < 2) {
+////							visionMovement = 0.5;
+////						}
+////						else {
+////							visionMovement = 0;
+////						}
+////					}
+////					// this means we must turn first, but there is a target spotted
+////					else {
+////						visionMovement = 0;
+////					}
+//				}
+////				// if there are no large contours
+////				else {
+////					visionAngle = 0;
+////					visionMovement = 0;
+////				}
+			}
+////			// if no contours at all
+////			else {
+////				visionAngle = 0;
+////				visionMovement = 0;
+////			}
+//
+////			printf("visionAngle: %f visionMovement: %f\n", visionAngle, visionMovement);
+////			fflush(stdout);
 
 			// this will be dark(ish) ... maybe increase brightness?
             outputStreamStd.PutFrame(output);
