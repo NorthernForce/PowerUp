@@ -9,8 +9,7 @@ Elevator::Elevator() :
 	m_elevatorBrake(RobotMap::elevatorBrake),
 	m_masterTalon(RobotMap::elevatorTalonSRX9),
 	m_slaveTalon(RobotMap::elevatorTalonSRX7),
-	m_telemetryMaster(m_masterTalon, pidIdx, 5),
-	m_telemetrySlave(m_slaveTalon, 5)
+	m_telemetry({ m_masterTalon, m_slaveTalon}, pidIdx, std::chrono::milliseconds(100))
 {
 	m_masterTalon->ConfigPeakOutputForward(+0.72, timeoutMs);
 	m_masterTalon->ConfigPeakOutputReverse(-0.40, timeoutMs);
@@ -28,13 +27,13 @@ Elevator::Elevator() :
 	m_masterTalon->ConfigSelectedFeedbackSensor(QuadEncoder, pidIdx, timeoutMs);
 	m_masterTalon->SetSensorPhase(true);
 
-	m_masterTalon->SetName("Elevator", "master talon");
+	m_masterTalon->SetName("Elevator", "Elevator");
 	m_masterTalon->SetNeutralMode(NeutralMode::Brake);
 	m_masterTalon->ConfigPeakCurrentLimit(10, timeoutMs);
     m_masterTalon->ConfigPeakCurrentDuration(100, timeoutMs);
     m_masterTalon->ConfigContinuousCurrentLimit(8, timeoutMs);
     m_masterTalon->EnableCurrentLimit(true);
-    m_slaveTalon->SetName("Elevator", "slave talon");
+    m_slaveTalon->SetName("Elevator", "Elevator slave");
     m_slaveTalon->SetNeutralMode(NeutralMode::Brake);
     m_slaveTalon->ConfigPeakCurrentLimit(10, timeoutMs);
     m_slaveTalon->ConfigPeakCurrentDuration(100, timeoutMs);
@@ -44,8 +43,7 @@ Elevator::Elevator() :
 
    	SetHomePosition();
 	ApplyBrake();
-	m_telemetryMaster.Start();
-	m_telemetrySlave.Start();
+	m_telemetry.Start();
 }
 
 void Elevator::InitDefaultCommand()
@@ -56,8 +54,6 @@ void Elevator::InitDefaultCommand()
 void Elevator::Periodic()
 {
 	m_masterTalon->Set(ControlMode::MotionMagic, m_setpoint);
-	m_telemetryMaster.Periodic();
-	m_telemetrySlave.Periodic();
 }
 
 void Elevator::SetPosition(int setpoint)

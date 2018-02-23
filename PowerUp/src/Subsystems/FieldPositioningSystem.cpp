@@ -116,10 +116,10 @@ void FieldPositioningSystem::WriteLog()
 	{
 		while(itemsToProcess.size())
 		{
-			const auto item = itemsToProcess.front();
+			const auto item = itemsToProcess.pop_front();
 			bufferMutex.unlock();
 			auto& os = *logFile.get();
-			os << item.time << item.heading << "," << "," << item.xDisplacement << "," << item.yDisplacement << "," << item.zDisplacement << ","
+			os << item.time << "," << item.heading << "," << item.xDisplacement << "," << item.yDisplacement << "," << item.zDisplacement << ","
 					<< item.pitch << "," << item.roll << "," << item.yaw << ","
 					<< item.xVelocity << "," << item.yVelocity << "," << item.zVelocity << ","
 					<< item.xAccel << "," << item.yAccel << "," << item.zAccel << ","

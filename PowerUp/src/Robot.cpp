@@ -23,6 +23,12 @@ std::unique_ptr<OI> Robot::oi;
 
 std::shared_ptr<Elevator> Robot::elevator;
 std::shared_ptr<Arm> Robot::arm;
+Robot* Robot::robot = nullptr;
+
+Robot::Robot()
+{
+	robot = this;
+}
 
 void Robot::RobotInit() {
 	RobotMap::init();
