@@ -88,6 +88,8 @@ OI::OI() {
 
 	frc::SmartDashboard::PutData("**Reset arm home position**", new SetArmHomePosition());
     frc::SmartDashboard::PutData("**Reset elevator home position**", new SetElevatorHomePosition());
+//    frc::SmartDashboard::PutNumber("elevation position from home", 0.0);
+
 
     // https://www.chiefdelphi.com/forums/showpost.php?p=1003245&postcount=8 for button assignments
     //Driver controls
@@ -102,8 +104,8 @@ OI::OI() {
     //switch
     WhileHeld(manipulatorJoystick, 1, new OpenGripper());
     WhenReleased(manipulatorJoystick, 1, new CloseGripper());
-    WhileHeld(manipulatorJoystick, 2, new NudgeElevator(-1));
-    WhileHeld(manipulatorJoystick, 3, new NudgeElevator(+1));
+    WhileHeld(manipulatorJoystick, 2, new NudgeElevator(-3));
+    WhileHeld(manipulatorJoystick, 3, new NudgeElevator(+3));
     //TODO: add climb/brake command
     //WhenPressed(manipulatorJoystick, 4, new RaiseElavator());
     //TODO: add climb pos
