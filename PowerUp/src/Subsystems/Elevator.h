@@ -43,7 +43,7 @@ private:
 	constexpr static double maxSensorUnitsPer100ms = sensorUnitsPerRev * maxSpeedRPM / 60 / 10;
 	constexpr static double feedForwardGain = 1023 / maxSensorUnitsPer100ms;
 	constexpr static double pGainPower = 0.1;
-	constexpr static double pGainError = 200;
+	constexpr static double pGainError = 400;
 	constexpr static double pGain = (1023 * pGainPower) / pGainError;
 	constexpr static double iGain = 0.01;
 	constexpr static double dGain = pGain / 10;

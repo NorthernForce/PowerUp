@@ -27,7 +27,6 @@ Arm::Arm() :
     m_talonSRX->ConfigPeakCurrentDuration(100, timeoutMs);
     m_talonSRX->ConfigContinuousCurrentLimit(4, timeoutMs);
     m_talonSRX->EnableCurrentLimit(true);
-    m_talonSRX->SetSensorPhase(true);
 	SetHomePosition();
 	ApplyBrake();
 	m_telemetry.Start();
