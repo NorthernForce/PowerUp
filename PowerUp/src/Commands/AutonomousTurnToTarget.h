@@ -9,16 +9,13 @@
 
 #include <Commands/Command.h>
 
-class AutonomousFindPosition : public frc::Command {
+class AutonomousTurnToTarget : public frc::Command {
 public:
-	AutonomousFindPosition();
+	AutonomousTurnToTarget(bool turnToSwitch, bool blueLights);
 	void Initialize() override;
 	void Execute() override;
 	bool IsFinished() override;
 	void End() override;
 	void Interrupted() override;
-
-	int position;
-	int GetPosition();
 };
 

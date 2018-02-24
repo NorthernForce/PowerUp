@@ -11,21 +11,26 @@
 #include "AutonomousCommand.h"
 #include "../Robot.h"
 
-AutonomousCommand::AutonomousCommand(int initial, int change1, int score1, int change2, int score2): frc::Command() {
-	findPosition = new AutonomousFindPosition();
+AutonomousCommand::AutonomousCommand(char initialPos, char initialMove, char change1, char score1, char change2, char score2): frc::Command() {
+//	findPosition = new AutonomousFindPosition(true);
+	initialTurntoSwitch = new AutonomousTurnToTarget(true);
+	position = initialPos;
+	switches = 'LRL';
 }
 
 void AutonomousCommand::Initialize() {
-//	autonomousScoreScale = new AutonomousScoreScale();
-//	autonomousScoreSwitch = new AutonomousScoreSwitch();
+//	findPosition->Start();
 
-	findPosition->Start();
+	// move forward ~1 meter
+	// turn to the switch
+	// point gimbal 45 degrees
+	// follow the switch around
 }
 
 void AutonomousCommand::Execute() {
-	if (findPosition->IsCompleted()) {
-		position = findPosition->GetPosition();
-	}
+//	if (findPosition->IsCompleted()) {
+//		position = findPosition->GetPosition();
+//	}
 }
 
 bool AutonomousCommand::IsFinished() {

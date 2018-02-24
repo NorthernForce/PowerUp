@@ -5,40 +5,36 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "AutonomousFindPosition.h"
+#include "AutonomousTurnToTarget.h"
+#include "../VisionThread.h"
 
-AutonomousFindPosition::AutonomousFindPosition() {
-	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(Robot::chassis.get());
-	position = 0;
+AutonomousTurnToTarget::AutonomousTurnToTarget(bool turnToLights, bool blueLights) {
+	vtLookForLights = turnToLights;
+	vtLookForBlue = blueLights;
 }
 
 // Called just before this Command runs the first time
-void AutonomousFindPosition::Initialize() {
+void AutonomousTurnToTarget::Initialize() {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void AutonomousFindPosition::Execute() {
+void AutonomousTurnToTarget::Execute() {
 
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool AutonomousFindPosition::IsFinished() {
+bool AutonomousTurnToTarget::IsFinished() {
 	return false;
 }
 
 // Called once after isFinished returns true
-void AutonomousFindPosition::End() {
+void AutonomousTurnToTarget::End() {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void AutonomousFindPosition::Interrupted() {
+void AutonomousTurnToTarget::Interrupted() {
 
-}
-
-int AutonomousFindPosition::GetPosition() {
-	return position;
 }

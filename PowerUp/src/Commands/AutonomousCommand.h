@@ -14,7 +14,7 @@
 
 #include "Commands/Subsystem.h"
 
-#include "AutonomousFindPosition.h"
+#include "AutonomousTurnToTarget.h"
 
 /**
  *
@@ -23,7 +23,7 @@
  */
 class AutonomousCommand: public frc::Command {
 public:
-	AutonomousCommand(int initial, int change1, int score1, int change2, int score2);
+	AutonomousCommand(char initialPos, char initialMove, char change1, char score1, char change2, char score2);
 
 	void Initialize() override;
 	void Execute() override;
@@ -31,10 +31,11 @@ public:
 	void End() override;
 	void Interrupted() override;
 
-	AutonomousFindPosition* findPosition;
-
 private:
-	int position = 0;
+//	AutonomousFindPosition* findPosition;
+	AutonomousTurnToTarget* initialTurntoSwitch;
+	char position;
+	char switches;
 };
 
 #endif

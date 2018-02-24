@@ -11,3 +11,4 @@ volatile bool vtLookForBlue = true;
 volatile bool vtFound = false;
 volatile double vtOffsetX = 0;
 volatile double vtOffsetY = 0;
+volatile bool vtMostIsBlue = false;
