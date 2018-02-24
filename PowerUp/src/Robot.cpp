@@ -105,8 +105,8 @@ void Robot::TeleopPeriodic() {
 	//const auto& driverJoystick = oi->getDriverJoystick();
 	const auto& manipulatorJoystick = oi->getManipulatorJoystick();
 	const auto& driverController = oi->getDriverController();
-	double joystick_magic_shift = 0.5;
-	double magic_shift_point = 0.5;
+	double joystick_magic_shift = 0.25;
+	double magic_shift_point = 0.15;
 	//RobotMap::driveTrainRobotDrive->ArcadeDrive(driverJoystick->GetX(), driverJoystick->GetY(), true);
 	if (driverController->GetBumperPressed(frc::XboxController::JoystickHand::kRightHand)) {
 		isDriveInverted = !isDriveInverted;
