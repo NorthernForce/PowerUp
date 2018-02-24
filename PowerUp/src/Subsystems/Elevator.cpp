@@ -21,6 +21,7 @@ Elevator::Elevator() :
 	m_masterTalon->Config_kF(slotIdx, feedForwardGain, timeoutMs);
 	m_masterTalon->Config_kP(slotIdx, pGain, timeoutMs);
 	m_masterTalon->Config_kI(slotIdx, iGain, timeoutMs);
+	m_masterTalon->ConfigMaxIntegralAccumulator(slotIdx, iLimit, timeoutMs);
 	m_masterTalon->Config_kD(slotIdx, dGain, timeoutMs);
 	m_masterTalon->ConfigMotionCruiseVelocity(maxSensorUnitsPer100ms, timeoutMs);
 	m_masterTalon->ConfigMotionAcceleration(maxSensorUnitsPer100ms / timeToMaxSpeed, timeoutMs);
