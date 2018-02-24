@@ -74,7 +74,7 @@ void TalonTelemetry::RecordTelemetry()
 			{
 				telemetry.m_closedLoopTarget = talon->GetClosedLoopTarget(m_pidIdx);
 				telemetry.m_closedLoopError = talon->GetClosedLoopError(m_pidIdx);
-				telemetry.m_errorDerivative = talon->GetErrorDerivative(m_pidIdx);
+				telemetry.m_integralAccumulator = talon->GetIntegralAccumulator(m_pidIdx);
 			}
 
 			for( size_t i = 0; i < m_talons.size(); ++i)
@@ -115,7 +115,7 @@ void TalonTelemetry::WriteTelemetry()
 
 			if(m_pidIdx != -1)
 			{
-				(*m_logfile) << "," << item.m_closedLoopTarget << "," << item.m_closedLoopError << "," << item.m_errorDerivative;
+				(*m_logfile) << "," << item.m_closedLoopTarget << "," << item.m_closedLoopError << "," << item.m_integralAccumulator;
 			}
 
 			for(size_t i = 0; i < m_talons.size(); ++i)
@@ -155,7 +155,7 @@ void TalonTelemetry::OpenLogFile()
 	talon->SetStatusFramePeriod(StatusFrameEnhanced::Status_3_Quadrature, m_period.count(), 0);
 	if(m_pidIdx != -1)
 	{
-		(*m_logfile) << ",Target,Error,Derivative";
+		(*m_logfile) << ",Target,Error,Integral Accumulator";
 		talon->SetStatusFramePeriod(StatusFrameEnhanced::Status_10_MotionMagic, m_period.count(), 0);
 	}
 
