@@ -1,4 +1,5 @@
 #include "DriveWithJoystick.h"
+#include "ShiftGearbox.h"
 #include "Robot.h"
 #include "OI.h"
 
@@ -24,16 +25,29 @@ void DriveWithJoystick::Execute()
 {
 	const auto& driverController = Robot::oi->getDriverController();
 	const auto& manipulatorJoystick = Robot::oi->getManipulatorJoystick();
-	static double XVal, YVal;
+	const auto& driveTrain = Robot::driveTrain;
+//	const auto& scheduler = frc::Scheduler;
+	double XVal, YVal;
 	double joystick_magic_shift = 0.3;
 	double magic_shift_point = 0.2;
 	//RobotMap::driveTrainRobotDrive->ArcadeDrive(driverJoystick->GetX(), driverJoystick->GetY(), true);
 	if (driverController->GetBumperPressed(frc::XboxController::JoystickHand::kRightHand)) {
 		isDriveInverted = !isDriveInverted;
 	}
-	XVal = ( isDriveInverted ? -1 : 1 ) * driverController->GetX(frc::XboxController::JoystickHand::kRightHand);
-	YVal = driverController->GetY(frc::XboxController::JoystickHand::kLeftHand);
+	YVal = ( isDriveInverted ? 1 : 1 ) * driverController->GetX(frc::XboxController::JoystickHand::kRightHand);
+	XVal = driverController->GetY(frc::XboxController::JoystickHand::kLeftHand);
 	RobotMap::driveTrainRobotDrive->ArcadeDrive(YVal, XVal, true);
+	if ( ( abs(YVal) > joystick_magic_shift ) && ( abs(driveTrain->GetSpeed()) > magic_shift_point * 0.8 ) )
+	{
+//		if (driveTrain->g)
+//		frc::Scheduler::GetInstance()->AddCommand(new ShiftGearbox(ShiftGearbox::Gear::High));
+//		new ShiftGearbox(ShiftGearbox::Gear::High));
+	}
+//	else if ( (abs(YVal)) < ( magic_shift_point * 0.8 )) || ( abs(YVal) > joystick_magic_shift  ) )
+//	{
+//		frc::Scheduler::GetInstance()->AddCommand(new ShiftGearbox(ShiftGearbox::Gear::Low));
+////		new ShiftGearbox(ShiftGearbox::Gear::Low));
+//	}
 
 }
 
