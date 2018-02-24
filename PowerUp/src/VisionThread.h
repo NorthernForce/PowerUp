@@ -5,10 +5,10 @@
  *      Author: ryan
  */
 
-volatile bool vtLookForLights = true;
-volatile bool vtLookForBlue = true;
+extern volatile bool vtLookForLights;
+extern volatile bool vtLookForBlue;
 
-volatile bool vtFound = false;
-volatile double vtOffsetX = 0;
-volatile double vtOffsetY = 0;
-volatile bool vtMostIsBlue = false;
+extern volatile bool vtFound;
+extern volatile double vtOffsetX;
+extern volatile double vtOffsetY;
+extern volatile bool vtMostIsBlue;
