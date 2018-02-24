@@ -36,6 +36,7 @@
 
 class Robot : public frc::TimedRobot {
 public:
+	static Robot* robot;
 	frc::Command* autonomousCommand = nullptr;
 	static std::unique_ptr<OI> oi;
 	frc::LiveWindow *lw = frc::LiveWindow::GetInstance();
@@ -52,6 +53,7 @@ public:
 	static std::shared_ptr<Elevator> elevator;
 	static std::shared_ptr<Arm> arm;
 
+	Robot();
 	void RobotInit() override;
 	void DisabledInit() override;
 	void DisabledPeriodic() override;

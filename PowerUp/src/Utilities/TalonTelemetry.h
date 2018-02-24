@@ -2,7 +2,10 @@
 #define TALONTELEMETRY_H
 
 #include "ctre/Phoenix.h"
+#include "circular_buffer.h"
 #include <fstream>
+#include <atomic>
+#include <mutex>
 
 /**
  *
@@ -12,18 +15,45 @@
 class TalonTelemetry
 {
 public:
-	TalonTelemetry(std::shared_ptr<WPI_TalonSRX> talon, const int pidIdx, const unsigned frequency);
-	TalonTelemetry(std::shared_ptr<WPI_TalonSRX> talon, const unsigned frequency);
+	TalonTelemetry(std::initializer_list<std::shared_ptr<WPI_TalonSRX>> talons, const int pidIdx, const std::chrono::milliseconds period);
+	TalonTelemetry(std::shared_ptr<WPI_TalonSRX> talon, const int pidIdx, const std::chrono::milliseconds period);
+	TalonTelemetry(std::shared_ptr<WPI_TalonSRX> talon, const std::chrono::milliseconds period);
 	void Start();
-	void Periodic();
 	void Stop();
 
 private:
-	const std::shared_ptr<WPI_TalonSRX> m_talon;
+	void RecordTelemetry();
+	void WriteTelemetry();
+	void OpenLogFile();
+	void CloseLogFile();
+
+	struct Telemetry
+	{
+		struct TalonInfo
+		{
+			double m_output;
+			double m_voltage;
+			double m_current;
+			int m_temperature;
+		};
+
+		inline Telemetry(int = 0) {}
+		double m_time;
+		int m_sensorPosition;
+		int m_sensorVelocity;
+		int m_closedLoopTarget;
+		int m_closedLoopError;
+		int m_errorDerivative;
+		std::array<TalonInfo, 4> m_talonDetails;
+	};
+
+	const std::vector<std::shared_ptr<WPI_TalonSRX> > m_talons;
 	const int m_pidIdx;
-	const unsigned m_frequency;
-	unsigned m_count;
-	std::ofstream m_os;
+	const std::chrono::milliseconds m_period;
+	std::unique_ptr<std::ofstream> m_logfile;
+	frc::circular_buffer<Telemetry> m_itemsToProcess;
+	std::atomic_bool m_running;
+	std::mutex m_bufferMutex;
 };
 
 #endif
