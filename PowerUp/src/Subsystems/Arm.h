@@ -39,6 +39,7 @@ private:
 	constexpr static double pGainError = 10;
 	constexpr static double pGain = (1023 * pGainPower) / pGainError;
 	constexpr static double iGain = 0.08;
+	constexpr static double iLimit = 500;
 	constexpr static double dGain = 0;//-1 * pGain / 10;
 	constexpr static double timeToMaxSpeed = 2.5;
 	constexpr static int slotIdx = 0;

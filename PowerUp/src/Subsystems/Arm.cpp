@@ -17,6 +17,7 @@ Arm::Arm() :
 	m_talonSRX->Config_kF(slotIdx, feedForwardGain, timeoutMs);
 	m_talonSRX->Config_kP(slotIdx, pGain, timeoutMs);
 	m_talonSRX->Config_kI(slotIdx, iGain, timeoutMs);
+	m_talonSRX->ConfigMaxIntegralAccumulator(slotIdx, iLimit, timeoutMs);
 	m_talonSRX->Config_kD(slotIdx, dGain, timeoutMs);
 	m_talonSRX->ConfigMotionCruiseVelocity(maxSensorUnitsPer100ms, timeoutMs);
 	m_talonSRX->ConfigMotionAcceleration(maxSensorUnitsPer100ms / timeToMaxSpeed, timeoutMs);
