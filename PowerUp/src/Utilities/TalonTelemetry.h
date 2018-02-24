@@ -6,6 +6,7 @@
 #include <fstream>
 #include <atomic>
 #include <mutex>
+#include <thread>
 
 /**
  *
@@ -54,6 +55,8 @@ private:
 	frc::circular_buffer<Telemetry> m_itemsToProcess;
 	std::atomic_bool m_running;
 	std::mutex m_bufferMutex;
+	std::thread m_record;
+	std::thread m_write;
 };
 
 #endif

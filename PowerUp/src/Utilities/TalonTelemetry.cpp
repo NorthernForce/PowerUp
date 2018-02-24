@@ -43,42 +43,51 @@ TalonTelemetry::TalonTelemetry(std::shared_ptr<WPI_TalonSRX> talon, const std::c
 
 void TalonTelemetry::Start()
 {
+	if(m_record.joinable())
+	{
+		m_record.join();
+	}
+	if(m_write.joinable())
+	{
+		m_write.join();
+	}
+
 	m_running = true;
-	std::thread([this](){ this->RecordTelemetry(); }).detach();
-	std::thread([this](){ this->WriteTelemetry(); }).detach();
+	m_record = std::thread([this](){ this->RecordTelemetry(); });
+	m_write = std::thread([this](){ this->WriteTelemetry(); });
 }
 
 void TalonTelemetry::RecordTelemetry()
 {
 	Telemetry telemetry;
-	while(true)
+	while(m_running)
 	{
 		std::this_thread::sleep_for(m_period);
 		if(!Robot::robot->IsDisabled())
 		{
 			telemetry.m_time = Timer::GetFPGATimestamp();
+			auto const talon = m_talons.front().get();
+			auto sensorCollection = talon->GetSensorCollection();
+			telemetry.m_sensorPosition = sensorCollection.GetQuadraturePosition();
+			telemetry.m_sensorVelocity = sensorCollection.GetQuadratureVelocity();
 			if(m_pidIdx != -1)
 			{
-				auto const talon = m_talons.front().get();
-				auto sensorCollection = talon->GetSensorCollection();
-				telemetry.m_sensorPosition = sensorCollection.GetQuadraturePosition();
-				telemetry.m_sensorVelocity = sensorCollection.GetQuadratureVelocity();
 				telemetry.m_closedLoopTarget = talon->GetClosedLoopTarget(m_pidIdx);
 				telemetry.m_closedLoopError = talon->GetClosedLoopError(m_pidIdx);
 				telemetry.m_errorDerivative = talon->GetErrorDerivative(m_pidIdx);
-
-				for( size_t i = 0; i < m_talons.size(); ++i)
-				{
-					auto const talon = m_talons[i].get();
-					telemetry.m_talonDetails[i].m_output = talon->GetMotorOutputVoltage();
-					telemetry.m_talonDetails[i].m_voltage = talon->GetMotorOutputVoltage();
-					telemetry.m_talonDetails[i].m_current = talon->GetOutputCurrent();
-					telemetry.m_talonDetails[i].m_temperature = talon->GetTemperature();
-				}
 			}
+
+			for( size_t i = 0; i < m_talons.size(); ++i)
+			{
+				auto const talon = m_talons[i].get();
+				telemetry.m_talonDetails[i].m_output = talon->GetMotorOutputVoltage();
+				telemetry.m_talonDetails[i].m_voltage = talon->GetMotorOutputVoltage();
+				telemetry.m_talonDetails[i].m_current = talon->GetOutputCurrent();
+				telemetry.m_talonDetails[i].m_temperature = talon->GetTemperature();
+			}
+			const std::lock_guard<std::mutex> lck (m_bufferMutex);
+			m_itemsToProcess.push_back(telemetry);
 		}
-		const std::lock_guard<std::mutex> lck (m_bufferMutex);
-		m_itemsToProcess.push_back(telemetry);
 	}
 }
 
@@ -86,47 +95,52 @@ void TalonTelemetry::WriteTelemetry()
 {
 	bool isRealTime;
 	const int priority = std::min(GetCurrentThreadPriority(&isRealTime) + 10, 99);
-	SetCurrentThreadPriority(isRealTime, priority);
+	SetCurrentThreadPriority(false, priority);
 
 	m_bufferMutex.lock();
 	while(m_running || m_itemsToProcess.size())
 	{
-		if(Robot::robot->IsDisabled())
-		{
-			m_bufferMutex.unlock();
-			if(m_logfile)
-			{
-				CloseLogFile();
-			}
-		}
-		else if(!m_logfile)
+		if(!m_logfile && m_itemsToProcess.size())
 		{
 			m_bufferMutex.unlock();
 			OpenLogFile();
+			m_bufferMutex.lock();
 		}
-		else
+
+		while(m_itemsToProcess.size())
 		{
-			while(m_itemsToProcess.size())
-			{
-				const auto item = m_itemsToProcess.pop_front();
-				m_bufferMutex.unlock();
-				(*m_logfile) << item.m_time << "," << item.m_sensorPosition << "," << item.m_sensorVelocity << "," <<
-						item.m_closedLoopTarget << "," << item.m_closedLoopError << "," << item.m_errorDerivative;
-
-				for(size_t i = 0; i < m_talons.size(); ++i)
-				{
-					(*m_logfile) << "," << item.m_talonDetails[i].m_output << "," << item.m_talonDetails[i].m_voltage << "," << item.m_talonDetails[i].m_current << "," << item.m_talonDetails[i].m_temperature;
-				}
-
-				(*m_logfile) << "\n";
-				m_bufferMutex.lock();
-			}
+			const auto item = m_itemsToProcess.pop_front();
 			m_bufferMutex.unlock();
+			(*m_logfile) << item.m_time << "," << item.m_sensorPosition << "," << item.m_sensorVelocity;
+
+			if(m_pidIdx != -1)
+			{
+				(*m_logfile) << "," << item.m_closedLoopTarget << "," << item.m_closedLoopError << "," << item.m_errorDerivative;
+			}
+
+			for(size_t i = 0; i < m_talons.size(); ++i)
+			{
+				(*m_logfile) << "," << item.m_talonDetails[i].m_output << "," << item.m_talonDetails[i].m_voltage << "," << item.m_talonDetails[i].m_current << "," << item.m_talonDetails[i].m_temperature;
+			}
+
+			(*m_logfile) << "\n";
+			m_bufferMutex.lock();
 		}
+		m_bufferMutex.unlock();
+
+		if(Robot::robot->IsDisabled() && m_logfile)
+		{
+			CloseLogFile();
+		}
+
 		std::this_thread::sleep_for(m_period);
 		m_bufferMutex.lock();
 	}
 	m_bufferMutex.unlock();
+	if(m_logfile)
+	{
+		CloseLogFile();
+	}
 }
 
 void TalonTelemetry::OpenLogFile()
@@ -136,12 +150,12 @@ void TalonTelemetry::OpenLogFile()
 	const auto& time = GetCurrentTime();
 	sprintf(path, "/tmp/%s %s Telemetry.csv", name.c_str(), time.c_str());
 	m_logfile = std::make_unique<std::ofstream>(path);
-	(*m_logfile) << "Time Sec";
+	(*m_logfile) << "Time Sec,Position,Velocity";
+	auto const talon = m_talons.front().get();
+	talon->SetStatusFramePeriod(StatusFrameEnhanced::Status_3_Quadrature, m_period.count(), 0);
 	if(m_pidIdx != -1)
 	{
-		(*m_logfile) << ",Position,Velocity,Target,Error,Derivative";
-		auto const talon = m_talons.front().get();
-		talon->SetStatusFramePeriod(StatusFrameEnhanced::Status_3_Quadrature, m_period.count(), 0);
+		(*m_logfile) << ",Target,Error,Derivative";
 		talon->SetStatusFramePeriod(StatusFrameEnhanced::Status_10_MotionMagic, m_period.count(), 0);
 	}
 

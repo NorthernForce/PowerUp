@@ -11,27 +11,37 @@ public:
 		Low,
 		High
 	};
-	ShiftGearbox(Gear setpoint) : m_setpoint(setpoint)
+
+	ShiftGearbox(Gear setpoint) :
+		m_gear(setpoint)
 	{
 		Requires(Robot::driveTrainShifter.get());
+		Requires(Robot::driveTrain.get());
+		strcpy(m_logMessage, setpoint == Gear::Low ? "Shift to low" : "Shift to high");
 	}
 
-	void Execute() override
+	void Initialize() override
 	{
-
-		if ( m_setpoint ==  Gear::High )
+		DriverStation::ReportWarning(m_logMessage);
+		if ( m_gear ==  Gear::High )
 			Robot::driveTrainShifter->ShiftHigh();
-		else if (m_setpoint == Gear::Low)
+		else if (m_gear == Gear::Low)
 			Robot::driveTrainShifter->ShiftLow();
 	}
 
 	bool IsFinished() override
 	{
-		return false;
+		return Robot::driveTrainShifter->IsShiftDone();
+	}
+
+	void End() override
+	{
+		Robot::driveTrainShifter->FinishShift();
 	}
 
 private:
-	Gear m_setpoint;
+	Gear m_gear;
+	char m_logMessage[32];
 };
 
 #endif
