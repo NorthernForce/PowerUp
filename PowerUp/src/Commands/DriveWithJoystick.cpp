@@ -39,15 +39,12 @@ void DriveWithJoystick::Execute()
 	RobotMap::driveTrainRobotDrive->ArcadeDrive(YVal, XVal, true);
 	if ( ( abs(YVal) > joystick_magic_shift ) && ( abs(driveTrain->GetSpeed()) > magic_shift_point * 0.8 ) )
 	{
-//		if (driveTrain->g)
-//		frc::Scheduler::GetInstance()->AddCommand(new ShiftGearbox(ShiftGearbox::Gear::High));
-//		new ShiftGearbox(ShiftGearbox::Gear::High));
+		frc::Scheduler::GetInstance()->AddCommand(new ShiftGearbox(ShiftGearbox::Gear::High));
 	}
-//	else if ( (abs(YVal)) < ( magic_shift_point * 0.8 )) || ( abs(YVal) > joystick_magic_shift  ) )
-//	{
-//		frc::Scheduler::GetInstance()->AddCommand(new ShiftGearbox(ShiftGearbox::Gear::Low));
-////		new ShiftGearbox(ShiftGearbox::Gear::Low));
-//	}
+	else if ( ( abs(YVal) < ( magic_shift_point * 0.8 ) ) || ( abs(YVal) > joystick_magic_shift ) )
+	{
+		frc::Scheduler::GetInstance()->AddCommand(new ShiftGearbox(ShiftGearbox::Gear::Low));
+	}
 
 }
 
