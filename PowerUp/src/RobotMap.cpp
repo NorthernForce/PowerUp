@@ -57,7 +57,7 @@ void RobotMap::init() {
 
     gripperIntakeTalonSRX10.reset(new WPI_TalonSRX(10));
 
-    compressor.reset(new Compressor(20));
+    compressor.reset(new frc::Compressor());
 
     driveTrainShifterDS.reset(new DoubleSolenoid(3, 2));
 
