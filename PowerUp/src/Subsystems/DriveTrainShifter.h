@@ -7,17 +7,27 @@
 class DriveTrainShifter: public frc::Subsystem
 {
 public:
+	enum class Gear
+	{
+		Low,
+		High
+	};
+
 	DriveTrainShifter();
-	void ShiftHigh();
-	void ShiftLow();
+	void Periodic() override;
+
+	void Shift(Gear gear);
 	bool IsShiftDone() const;
 	void FinishShift();
 
 private:
+	void BeginShift(const DoubleSolenoid::Value value);
+
 	std::shared_ptr<frc::DoubleSolenoid> shifter;
+	Gear m_currentGear;
 	TalonTelemetry m_left;
 	TalonTelemetry m_right;
-	mutable int m_count;
+	mutable int m_shiftCountdown;
 };
 
 #endif

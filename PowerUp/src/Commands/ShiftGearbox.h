@@ -7,26 +7,20 @@
 class ShiftGearbox : public frc::Command
 {
 public:
-	enum class Gear {
-		Low,
-		High
-	};
+	using Gear = DriveTrainShifter::Gear;
 
-	ShiftGearbox(Gear setpoint) :
-		m_gear(setpoint)
+	ShiftGearbox(Gear gear) :
+		m_gear(gear)
 	{
 		Requires(Robot::driveTrainShifter.get());
 		Requires(Robot::driveTrain.get());
-		strcpy(m_logMessage, setpoint == Gear::Low ? "Shift to low" : "Shift to high");
+		strcpy(m_logMessage, m_gear == Gear::Low ? "Shift to low" : "Shift to high");
 	}
 
 	void Initialize() override
 	{
 		DriverStation::ReportWarning(m_logMessage);
-		if ( m_gear ==  Gear::High )
-			Robot::driveTrainShifter->ShiftHigh();
-		else if (m_gear == Gear::Low)
-			Robot::driveTrainShifter->ShiftLow();
+		Robot::driveTrainShifter->Shift(m_gear);
 	}
 
 	bool IsFinished() override

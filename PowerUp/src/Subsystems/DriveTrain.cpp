@@ -17,7 +17,12 @@ DriveTrain::DriveTrain() : frc::Subsystem("DriveTrain")
 
 void DriveTrain::InitDefaultCommand()
 {
-    SetDefaultCommand(new DriveWithJoystick());
+	if(m_driveWithJoystick)
+	{
+		m_driveWithJoystick = new DriveWithJoystick();
+	}
+
+	SetDefaultCommand(m_driveWithJoystick);
 }
 
 double DriveTrain::GetSpeed()
