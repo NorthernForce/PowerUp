@@ -7,15 +7,20 @@
 
 #pragma once
 
-#include <Commands/Command.h>
+#include <Commands/Subsystem.h>
+#include <WPILib.h>
 
-class AutonomousScoreSwitch : public frc::Command {
+class Gimbal : public frc::Subsystem {
+private:
+	frc::PWM* pan;
+	frc::PWM* tilt;
+
 public:
-	AutonomousScoreSwitch();
-	void Initialize() override;
-	void Execute() override;
-	bool IsFinished() override;
-	void End() override;
-	void Interrupted() override;
+	Gimbal(int panChannel, int tiltChannel);
+
+	void SetPan(int i);
+	void SetTilt(int i);
+	int GetPan();
+	int GetTilt();
 };
 

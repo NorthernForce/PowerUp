@@ -5,17 +5,25 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#pragma once
+#include "Gimbal.h"
 
-#include <Commands/Command.h>
+Gimbal::Gimbal(int panChannel, int tiltChannel) : frc::Subsystem("GimbalSubsystem") {
+	pan = new frc::PWM(panChannel);
+	tilt = new frc::PWM(tiltChannel);
+}
 
-class AutonomousScoreScale : public frc::Command {
-public:
-	AutonomousScoreScale();
-	void Initialize() override;
-	void Execute() override;
-	bool IsFinished() override;
-	void End() override;
-	void Interrupted() override;
-};
+void Gimbal::SetPan(int i) {
+	pan->SetRaw(i);
+}
 
+void Gimbal::SetTilt(int i) {
+	tilt->SetRaw(i);
+}
+
+int Gimbal::GetPan() {
+	return pan->GetRaw();
+}
+
+int Gimbal::GetTilt() {
+	return tilt->GetRaw();
+}
