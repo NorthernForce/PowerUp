@@ -117,10 +117,10 @@ OI::OI() {
    return driverJoystick;
 }*/
 
-std::shared_ptr<frc::Joystick> OI::getManipulatorJoystick() {
+const std::shared_ptr<frc::Joystick>& OI::getManipulatorJoystick() {
 	return manipulatorJoystick;
 }
 
-std::shared_ptr<frc::XboxController> OI::getDriverController() {
+const std::shared_ptr<frc::XboxController>& OI::getDriverController() {
 	return driverController;
 }
