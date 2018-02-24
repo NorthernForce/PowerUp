@@ -96,8 +96,8 @@ OI::OI() {
 
     //Left stick: arcade drive
     //TODO: change to right trigger (using axes)
-    WhileHeld(driverJoystick, 1, new ShiftGearbox(ShiftGearbox::Gear::High));
-    WhenReleased(driverJoystick, 1, new ShiftGearbox(ShiftGearbox::Gear::Low));
+//    WhileHeld(driverJoystick, 1, new ShiftGearbox(ShiftGearbox::Gear::High));
+//    WhenReleased(driverJoystick, 1, new ShiftGearbox(ShiftGearbox::Gear::Low));
     //TODO: add vibrations
 
     //Manipulator controls
