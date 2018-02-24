@@ -25,6 +25,7 @@ Elevator::Elevator() :
 	m_masterTalon->ConfigMotionCruiseVelocity(maxSensorUnitsPer100ms, timeoutMs);
 	m_masterTalon->ConfigMotionAcceleration(maxSensorUnitsPer100ms / timeToMaxSpeed, timeoutMs);
 	m_masterTalon->ConfigSelectedFeedbackSensor(QuadEncoder, pidIdx, timeoutMs);
+	m_masterTalon->SetSensorPhase(true);
 
 	m_masterTalon->SetName("Elevator", "Elevator");
 	m_masterTalon->SetNeutralMode(NeutralMode::Brake);

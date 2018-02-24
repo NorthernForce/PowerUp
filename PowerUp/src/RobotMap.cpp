@@ -65,21 +65,19 @@ void RobotMap::init() {
 
     elevatorBrake.reset(new frc::Solenoid(0));
 
-    driveTrainTalonSRX1->ConfigOpenloopRamp(1, 10);
+    driveTrainTalonSRX1->ConfigOpenloopRamp(0.5, 10);
     driveTrainTalonSRX1->SetInverted(false);
     driveTrainTalonSRX3->Follow(*driveTrainTalonSRX1);
     driveTrainTalonSRX3->SetInverted(false);
     driveTrainTalonSRX5->Follow(*driveTrainTalonSRX1);
     driveTrainTalonSRX5->SetInverted(true);
 
-    driveTrainTalonSRX2->ConfigOpenloopRamp(1, 10);
+    driveTrainTalonSRX2->ConfigOpenloopRamp(0.5, 10);
     driveTrainTalonSRX2->SetInverted(true);
     driveTrainTalonSRX4->Follow(*driveTrainTalonSRX2);
     driveTrainTalonSRX4->SetInverted(true);
     driveTrainTalonSRX6->Follow(*driveTrainTalonSRX2);
     driveTrainTalonSRX6->SetInverted(false);
-
-    //elevatorTalonSRX7->Follow(*elevatorTalonSRX9);
 
     armTalonSRX8 = std::make_unique<WPI_TalonSRX>(8);
 
