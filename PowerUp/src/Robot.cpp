@@ -95,7 +95,17 @@ void Robot::TeleopPeriodic() {
 	frc::Scheduler::GetInstance()->Run();
 	const auto& driverJoystick = oi->getDriverJoystick();
 	const auto& manipulatorJoystick = oi->getManipulatorJoystick();
+	double joystick_magic_shift = 0.5;
+	double magic_shift_point = 0.5;
 	RobotMap::driveTrainRobotDrive->ArcadeDrive(driverJoystick->GetX(), driverJoystick->GetY(), true);
+	if ( ( driverJoystick->GetX() > joystick_magic_shift ) && ( driveTrain->GetSpeed() > magic_shift_point ) )
+	{
+		driveTrainShifter->ShiftHigh();
+	}
+	else
+	{
+		driveTrainShifter->ShiftLow();
+	}
 }
 
 START_ROBOT_CLASS(Robot);
