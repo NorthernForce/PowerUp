@@ -34,6 +34,9 @@
 #include "Subsystems/Elevator.h"
 #include "OI.h"
 
+#include "Subsystems/Gimbal.h"
+#include "Subsystems/UltrasonicSensor.h"
+
 class Robot : public frc::TimedRobot {
 public:
 	static Robot* robot;
@@ -52,6 +55,9 @@ public:
 
 	static std::shared_ptr<Elevator> elevator;
 	static std::shared_ptr<Arm> arm;
+
+	static std::shared_ptr<Gimbal> gimbal;
+	static std::shared_ptr<UltrasonicSensor> ultrasonicSensor;
 
 	Robot();
 	void RobotInit() override;
