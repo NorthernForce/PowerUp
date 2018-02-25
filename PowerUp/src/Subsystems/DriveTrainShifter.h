@@ -17,6 +17,7 @@ public:
 	void Periodic() override;
 
 	void Shift(Gear gear);
+	Gear GetGear();
 	bool IsShiftDone() const;
 	void FinishShift();
 

@@ -26,6 +26,7 @@ void DriveWithJoystick::Execute()
 	const auto& driverController = Robot::oi->getDriverController();
 	const auto& manipulatorJoystick = Robot::oi->getManipulatorJoystick();
 	const auto& driveTrain = Robot::driveTrain;
+	const auto& driveTrainShifter = Robot::driveTrainShifter;
 //	const auto& scheduler = frc::Scheduler;
 	double XVal, YVal;
 	double joystick_magic_shift = 0.3;
@@ -37,14 +38,18 @@ void DriveWithJoystick::Execute()
 	YVal = ( isDriveInverted ? 1 : 1 ) * driverController->GetX(frc::XboxController::JoystickHand::kRightHand);
 	XVal = driverController->GetY(frc::XboxController::JoystickHand::kLeftHand);
 	RobotMap::driveTrainRobotDrive->ArcadeDrive(YVal, XVal, true);
-	if ( ( abs(YVal) > joystick_magic_shift ) && ( abs(driveTrain->GetSpeed()) > magic_shift_point * 0.8 ) )
-	{
-		frc::Scheduler::GetInstance()->AddCommand(new ShiftGearbox(ShiftGearbox::Gear::High));
-	}
-	else if ( ( abs(YVal) < ( magic_shift_point * 0.8 ) ) || ( abs(YVal) > joystick_magic_shift ) )
-	{
-		frc::Scheduler::GetInstance()->AddCommand(new ShiftGearbox(ShiftGearbox::Gear::Low));
-	}
+
+//	if ( ( abs(YVal) > joystick_magic_shift ) && ( abs(driveTrain->GetSpeed()) > magic_shift_point * 0.8 ) )
+//	{
+//		if(driveTrainShifter->GetGear() == DriveTrainShifter::Gear::Low)
+//			frc::Scheduler::GetInstance()->AddCommand(new ShiftGearbox(ShiftGearbox::Gear::High));
+//	}
+//	else if ( ( abs(YVal) < ( magic_shift_point * 0.8 ) ) || ( abs(YVal) > joystick_magic_shift ) )
+//	{
+//		if(driveTrainShifter->GetGear() == DriveTrainShifter::Gear::High)
+
+//			frc::Scheduler::GetInstance()->AddCommand(new ShiftGearbox(ShiftGearbox::Gear::Low));
+//	}
 
 }
 

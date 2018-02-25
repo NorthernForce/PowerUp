@@ -10,6 +10,7 @@
 
 
 #include "Robot.h"
+#include "Commands/ShiftGearbox.h"
 
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/core/core.hpp>
@@ -263,6 +264,7 @@ void Robot::RobotInit() {
 	ultrasonicSensor.reset(new UltrasonicSensor(0, 0, 0));
 
 	CameraServer::GetInstance()->StartAutomaticCapture();
+	frc::Scheduler::GetInstance()->AddCommand(new ShiftGearbox(ShiftGearbox::Gear::Low));
 
 	std::thread visionThread(VisionThread);
 	visionThread.detach();

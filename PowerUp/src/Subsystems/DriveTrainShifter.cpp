@@ -1,6 +1,8 @@
 #include "DriveTrainShifter.h"
 #include "../RobotMap.h"
 
+using Gear = DriveTrainShifter::Gear;
+
 DriveTrainShifter::DriveTrainShifter() :
 	frc::Subsystem("DriveTrainShifter"),
 	m_left(RobotMap::driveTrainTalonSRX1, std::chrono::milliseconds(10)),
@@ -35,6 +37,10 @@ void DriveTrainShifter::Shift(Gear gear)
 		}
 	}
 }
+Gear DriveTrainShifter::GetGear()
+{
+	return m_currentGear;
+}
 
 void DriveTrainShifter::BeginShift(const DoubleSolenoid::Value value)
 {
@@ -46,7 +52,8 @@ void DriveTrainShifter::BeginShift(const DoubleSolenoid::Value value)
 
 bool DriveTrainShifter::IsShiftDone() const
 {
-	return --m_shiftCountdown < 0;
+	return true;
+//	return --m_shiftCountdown < 0;
 }
 
 void DriveTrainShifter::FinishShift()
