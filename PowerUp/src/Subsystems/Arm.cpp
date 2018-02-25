@@ -9,8 +9,8 @@ Arm::Arm() :
 	m_telemetry(m_talonSRX, pidIdx, std::chrono::milliseconds(200)),
 	m_delay(0)
 {
-	m_talonSRX->ConfigPeakOutputForward(+0.35, timeoutMs);
-	m_talonSRX->ConfigPeakOutputReverse(-0.20, timeoutMs);
+	m_talonSRX->ConfigPeakOutputForward(+0.40, timeoutMs);
+	m_talonSRX->ConfigPeakOutputReverse(-0.40, timeoutMs);
 	m_talonSRX->ConfigNominalOutputForward(+0.00, timeoutMs);
 	m_talonSRX->ConfigNominalOutputReverse(-0.00, timeoutMs);
 	m_talonSRX->SelectProfileSlot(slotIdx, pidIdx);

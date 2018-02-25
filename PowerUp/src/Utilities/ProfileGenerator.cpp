@@ -34,7 +34,7 @@ namespace
             m_position(distance - m_durationMilliSec * velocity / 1000),
             m_time(0)
         {
-            assert(m_durationMilliSec >= 0);
+            assert(m_durationMilliSec > 0);
         }
 
         double GetDuration() const
@@ -115,6 +115,8 @@ namespace
     class ProfileAggregator
     {
     public:
+        ProfileAggregator(ProfileAggregator&& other) = default;
+        ProfileAggregator(const ProfileAggregator& other) : m_items(other.m_items), m_current(m_items.begin()), m_positionOffset(other.m_positionOffset) {}
         ProfileAggregator(std::initializer_list<Profile> items, const double startingPosition) :
             m_items(std::move(items)),
             m_current(m_items.begin()),
@@ -193,19 +195,22 @@ Profile CreateSimpleProfile(const double distance, const double startVelocity, c
 Profile CreateComplexProfile(const double distance, const double startVelocity, const double finalVelocity, double peakVelocity, const double timeToMaxVelocity)
 {
     peakVelocity = std::abs(peakVelocity) * (distance > 0 ? 1 : -1);
-    auto d1 = (peakVelocity - startVelocity) * timeToMaxVelocity * (peakVelocity + startVelocity) / 2;
-    auto d2 = (peakVelocity - finalVelocity) * timeToMaxVelocity * (peakVelocity + finalVelocity) / 2;
-    if(d1 + d2 > distance)
+    auto d1 = (1 - startVelocity / peakVelocity) * timeToMaxVelocity * (peakVelocity + startVelocity) / 2;
+    auto d3 = (1 - finalVelocity / peakVelocity) * timeToMaxVelocity * (peakVelocity + finalVelocity) / 2;
+    auto d2 = distance - d1 - d3;
+    if(d2 * 100 < distance)
     {
-        peakVelocity = std::sqrt(distance / timeToMaxVelocity + (startVelocity * startVelocity + finalVelocity * finalVelocity) / 2);
-        d1 = (peakVelocity - startVelocity) * timeToMaxVelocity * (peakVelocity + startVelocity) / 2;
-        d2 = distance - d1;
+        peakVelocity = (distance + sqrt(2 * timeToMaxVelocity * timeToMaxVelocity * (finalVelocity * finalVelocity + startVelocity * startVelocity) + distance * distance)) / 2 / timeToMaxVelocity;
+//        peakVelocity = std::sqrt(distance / timeToMaxVelocity + (startVelocity * startVelocity + finalVelocity * finalVelocity) / 2);
+        d1 = (1 - startVelocity / peakVelocity) * timeToMaxVelocity * (peakVelocity + startVelocity) / 2;
+        d3 = distance - d1;
+        d2 = 0;
     }
 
     return CombineProfiles({
         CreateSimpleProfile(d1, startVelocity, peakVelocity),
-        CreateSimpleProfile(distance - d1 - d2, peakVelocity, peakVelocity),
-        CreateSimpleProfile(d2, peakVelocity, finalVelocity)
+        CreateSimpleProfile(d2, peakVelocity, peakVelocity),
+        CreateSimpleProfile(d3, peakVelocity, finalVelocity)
     });
  }
 

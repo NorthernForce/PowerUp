@@ -1,79 +1,55 @@
 #include "RobotNavigation.h"
-#include "ProfileGenerator.h"
 
-class RobotNavigation::StraightProfile
+namespace
 {
-public:
-	StraightProfile(const double startVelocity, const double finishVelocity, const double distance) :
-			m_generator(CreateGenerator(startVelocity, finishVelocity, distance))
-	{
-
-	}
-
-	RobotTrajectoryPoint operator()()
-	{
-		const auto pt = m_generator();
-		return { pt.m_position, pt.m_velocity, pt.m_position, pt.m_velocity, pt.m_duration, pt.m_last};
-	}
-
-private:
-	static double AccelerationTime(const double velocityChange, const double jerk)
-	{
-		return 2 * std::sqrt(velocityChange / jerk);
-	}
-
-	static double AccelerationDistance(const double startVelocity, const double finishVelocity, const double duration)
-	{
-		return (startVelocity + finishVelocity) * duration / 2;
-	}
-
-	static ProfileGenerator CreateGenerator(const double startVelocity, const double finishVelocity, const double distance)
-	{
-		const auto jerk = distance > 0 ? maxJerk : -maxJerk;
-		const auto targetVelocity = distance > 0 ? maxVelocity : -maxVelocity;
-		const auto tAccelerate = AccelerationTime(targetVelocity - startVelocity, jerk);
-		const auto tDecelerate = AccelerationTime(targetVelocity - finishVelocity, jerk);
-		const auto dAccelerate = AccelerationDistance(startVelocity, targetVelocity, tAccelerate);
-		const auto dDecelerate = AccelerationDistance(targetVelocity, finishVelocity, tDecelerate);
-		const unsigned tMaintain = (distance - dAccelerate - dDecelerate) / targetVelocity;
-		return CombineProfiles({
-			CreateVariableVelocityProfile(tAccelerate, startVelocity, targetVelocity),
-			CreateConstantVelocityProfile(tMaintain, targetVelocity),
-			CreateVariableVelocityProfile(tDecelerate, targetVelocity, finishVelocity)
-
-		});
-	}
-
-	static double DistanceToAchieveVelocity(const double currentVelocity, const double desiredVelocity)
-	{
-		const auto deltaVelocity = desiredVelocity - currentVelocity;
-		const auto peakAccelerationTime = std::sqrt(std::abs(deltaVelocity) / RobotNavigation::maxJerk);
-		return RobotNavigation::maxJerk * std::pow(peakAccelerationTime, 3) / 8;
-	}
-
-	ProfileGenerator m_generator;
-};
-
-class RobotNavigation::CurveProfile
+RobotNavigation::RobotTrajectory Combine()
 {
-public:
-	CurveProfile(const double startVelocity, const double finishVelocity,
-			const double distance, const double angle)
-	{
 
-	}
-
-private:
-};
+}
+}
 
 RobotNavigation::RobotNavigation(const FieldOrientation& orientation) :
 		m_fieldOrientation(orientation)
 {
 }
 
-RobotNavigation::DriveProfile RobotNavigation::CreateProfile(
-		const Position from, const Position to)
+RobotNavigation::RobotTrajectory RobotNavigation::CreateProfile(const Position from, const Position to)
 {
-	return StraightProfile(0, 0, 1);
+	return CreateProfile(2, 0, 0, 0);
 }
 
+RobotNavigation::RobotTrajectory RobotNavigation::CreateProfile(const double distance, const double startVelocity, const double finalVelocity, const double angleDegrees)
+{
+	if(angleDegrees == 0)
+	{
+		const auto profile = CreateComplexProfile(distance, startVelocity, finalVelocity, maxVelocity, timeToMaxSpeed);
+		return RobotTrajectory { profile, profile };
+	}
+
+    const auto outsideDistance = distance + std::abs(angleDegrees) / 360 * M_PI * wheelTrack;
+    const auto outsideProfile = CreateComplexProfile(outsideDistance, startVelocity, finalVelocity, maxVelocity, timeToMaxSpeed);
+
+    // There is probably a better way to calculate the target velocity for the inside wheels than this
+    const auto insideDistance = distance - std::abs(angleDegrees) / 360 * M_PI * wheelTrack;
+    auto vMax = maxVelocity;
+    auto vMin = 0.0;
+    while(true)
+    {
+        const auto insideProfile = CreateComplexProfile(insideDistance, startVelocity, finalVelocity, (vMax + vMin) / 2, timeToMaxSpeed);
+        if(std::abs(insideProfile.m_duration - outsideProfile.m_duration) < 0.01)
+        {
+            if(angleDegrees > 0)
+                return { outsideProfile, insideProfile };
+            else
+                return{ insideProfile, outsideProfile };
+        }
+        if(insideProfile.m_duration > outsideProfile.m_duration)
+        {
+            vMin = (vMax + vMin) / 2;
+        }
+        else
+        {
+            vMax = (vMax + vMin) / 2;
+        }
+    }
+}

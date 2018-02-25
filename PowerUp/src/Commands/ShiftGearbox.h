@@ -20,17 +20,18 @@ public:
 	void Initialize() override
 	{
 		DriverStation::ReportWarning(m_logMessage);
-		Robot::driveTrainShifter->Shift(m_gear);
+//		Robot::driveTrainShifter->Shift(m_gear);
 	}
 
 	bool IsFinished() override
 	{
-		return Robot::driveTrainShifter->IsShiftDone();
+		return true;
+//		return Robot::driveTrainShifter->IsShiftDone();
 	}
 
 	void End() override
 	{
-		Robot::driveTrainShifter->FinishShift();
+//		Robot::driveTrainShifter->FinishShift();
 	}
 
 private:
