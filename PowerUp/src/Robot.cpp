@@ -42,12 +42,12 @@ volatile double vtOffsetY = 0;
 volatile bool vtMostIsBlue = true;
 
 static void VisionThread() {
-	cs::UsbCamera camera = CameraServer::GetInstance()->StartAutomaticCapture();
+	cs::UsbCamera camera = CameraServer::GetInstance()->StartAutomaticCapture(1);
 
-	cs::CvSink cvSink = CameraServer::GetInstance()->GetVideo();
+	cs::CvSink cvSink = CameraServer::GetInstance()->GetVideo(camera);
 	cs::CvSource outputStreamStd = CameraServer::GetInstance()->PutVideo("Autonomous Cam", 640, 480);
 
-	system("v4l2-ctl -d 0 -c white_balance_temperature_auto=0");
+	system("v4l2-ctl -d 1 -c white_balance_temperature_auto=0");
 
 	cv::Mat source = cv::Mat(160, 120, CV_8UC3);
 	cv::Mat output = cv::Mat(160, 120, CV_8UC3);
@@ -55,7 +55,7 @@ static void VisionThread() {
 
 	while (true) {
 		if (vtLookForLights) {
-			system("v4l2-ctl -d 0 -c exposure_auto=1,exposure_absolute=0");
+			system("v4l2-ctl -d 1 -c exposure_auto=1,exposure_absolute=0");
 		}
 		while (vtLookForLights) {
 //			printf("ultrasonic: %f gimbal: %i\n", Robot::ultrasonicSensor->GetRangeInFeet(), Robot::gimbal->GetPan());
@@ -159,7 +159,7 @@ static void VisionThread() {
 
 
 		if (!vtLookForLights) {
-			system("v4l2-ctl -d 0 -c exposure_auto=3");
+			system("v4l2-ctl -d 1 -c exposure_auto=3");
 		}
 		while (!vtLookForLights) {
 			cvSink.GrabFrame(source);
@@ -263,7 +263,8 @@ void Robot::RobotInit() {
 	gimbal.reset(new Gimbal(0, 1));
 	ultrasonicSensor.reset(new UltrasonicSensor(0, 0, 0));
 
-	CameraServer::GetInstance()->StartAutomaticCapture();
+	CameraServer::GetInstance()->StartAutomaticCapture(0);
+
 	frc::Scheduler::GetInstance()->AddCommand(new ShiftGearbox(ShiftGearbox::Gear::Low));
 
 	std::thread visionThread(VisionThread);
