@@ -33,3 +33,13 @@ double DriveTrain::GetSpeed()
 void DriveTrain::Periodic()
 {
 }
+
+void DriveTrain::ArcadeDrive(double moveValue, double rotateValue, bool squaredInputsf)
+{
+	robotDrive->ArcadeDrive(moveValue, rotateValue, squaredInputsf);
+}
+
+void DriveTrain::SetSafetyEnabled(bool enabled)
+{
+	robotDrive->SetSafetyEnabled(enabled);
+}

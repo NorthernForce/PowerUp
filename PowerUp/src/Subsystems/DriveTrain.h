@@ -25,6 +25,8 @@ public:
 	double GetSpeed();
 	void InitDefaultCommand() override;
 	void Periodic() override;
+	void ArcadeDrive(double moveValue, double rotateValue, bool squaredInputsf);
+	void SetSafetyEnabled(bool enabled);
 
 private:
 	std::shared_ptr<WPI_TalonSRX> talonSRX1;

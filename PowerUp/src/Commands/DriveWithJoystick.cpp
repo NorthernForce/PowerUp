@@ -17,7 +17,8 @@ DriveWithJoystick::DriveWithJoystick(): frc::Command() {
 // Called just before this Command runs the first time
 void DriveWithJoystick::Initialize()
 {
-	DriverStation::ReportError("DriveWithJoystick init called");
+	DriverStation::ReportError("WithJoystick::Initialize");
+	Robot::driveTrain->SetSafetyEnabled(true);
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -25,32 +26,36 @@ void DriveWithJoystick::Execute()
 {
 	const auto& driverController = Robot::oi->getDriverController();
 	const auto& manipulatorJoystick = Robot::oi->getManipulatorJoystick();
-	const auto& driveTrain = Robot::driveTrain;
 	const auto& driveTrainShifter = Robot::driveTrainShifter;
-//	const auto& scheduler = frc::Scheduler;
 	double XVal, YVal;
 	double joystick_magic_shift = 0.3;
 	double magic_shift_point = 0.2;
-	//RobotMap::driveTrainRobotDrive->ArcadeDrive(driverJoystick->GetX(), driverJoystick->GetY(), true);
-	if (driverController->GetBumperPressed(frc::XboxController::JoystickHand::kRightHand)) {
+	if (driverController->GetBumperPressed(frc::XboxController::JoystickHand::kRightHand))
+	{
 		isDriveInverted = !isDriveInverted;
 	}
+
 	YVal = ( isDriveInverted ? 1 : 1 ) * driverController->GetX(frc::XboxController::JoystickHand::kRightHand);
 	XVal = driverController->GetY(frc::XboxController::JoystickHand::kLeftHand);
-	RobotMap::driveTrainRobotDrive->ArcadeDrive(YVal, XVal, true);
+	auto& driveTrain = Robot::driveTrain;
+	driveTrain->ArcadeDrive(YVal, XVal, true);
 
-//	if ( ( abs(YVal) > joystick_magic_shift ) && ( abs(driveTrain->GetSpeed()) > magic_shift_point * 0.8 ) )
-//	{
-//		if(driveTrainShifter->GetGear() == DriveTrainShifter::Gear::Low)
-//			frc::Scheduler::GetInstance()->AddCommand(new ShiftGearbox(ShiftGearbox::Gear::High));
-//	}
-//	else if ( ( abs(YVal) < ( magic_shift_point * 0.8 ) ) || ( abs(YVal) > joystick_magic_shift ) )
-//	{
-//		if(driveTrainShifter->GetGear() == DriveTrainShifter::Gear::High)
-
-//			frc::Scheduler::GetInstance()->AddCommand(new ShiftGearbox(ShiftGearbox::Gear::Low));
-//	}
-
+	if ( ( abs(YVal) > joystick_magic_shift ) && ( abs(driveTrain->GetSpeed()) > magic_shift_point * 0.8 ) )
+	{
+		if(driveTrainShifter->GetGear() == DriveTrainShifter::Gear::Low)
+		{
+			DriverStation::ReportError("Auto shift from low to high");
+			frc::Scheduler::GetInstance()->AddCommand(new ShiftGearbox(ShiftGearbox::Gear::High));
+		}
+	}
+	else if ( ( abs(YVal) < ( magic_shift_point * 0.8 ) ) || ( abs(YVal) > joystick_magic_shift ) )
+	{
+		if(driveTrainShifter->GetGear() == DriveTrainShifter::Gear::High)
+		{
+			DriverStation::ReportError("Auto shift from high to low");
+			frc::Scheduler::GetInstance()->AddCommand(new ShiftGearbox(ShiftGearbox::Gear::Low));
+		}
+	}
 }
 
 // Make this return true when this Command no longer needs to run execute()

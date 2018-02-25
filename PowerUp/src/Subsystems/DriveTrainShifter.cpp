@@ -1,5 +1,6 @@
 #include "DriveTrainShifter.h"
 #include "../RobotMap.h"
+#include "../Robot.h"
 
 using Gear = DriveTrainShifter::Gear;
 
@@ -14,6 +15,10 @@ DriveTrainShifter::DriveTrainShifter() :
 
 void DriveTrainShifter::Periodic()
 {
+	if(m_shiftCountdown > 0)
+	{
+		m_shiftCountdown -= 1;
+	}
 }
 
 void DriveTrainShifter::Shift(Gear gear)
@@ -38,6 +43,7 @@ void DriveTrainShifter::Shift(Gear gear)
 				RobotMap::driveTrainTalonSRX2->Set(speed2 > 0 ? 1 : -1);
 			}
 		}
+		Robot::driveTrain->SetSafetyEnabled(false);
 	}
 }
 Gear DriveTrainShifter::GetGear()
@@ -47,7 +53,6 @@ Gear DriveTrainShifter::GetGear()
 
 void DriveTrainShifter::BeginShift(const DoubleSolenoid::Value value)
 {
-	DriverStation::ReportError("Shift called");
 //	m_left.Start();
 //	m_right.Start();
 	shifter->Set(value);
@@ -56,7 +61,7 @@ void DriveTrainShifter::BeginShift(const DoubleSolenoid::Value value)
 
 bool DriveTrainShifter::IsShiftDone() const
 {
-	return --m_shiftCountdown < 0;
+	return m_shiftCountdown <= 0;;
 }
 
 void DriveTrainShifter::FinishShift()
