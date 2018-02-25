@@ -44,7 +44,7 @@ private:
 		int m_sensorVelocity;
 		int m_closedLoopTarget;
 		int m_closedLoopError;
-		int m_errorDerivative;
+		int m_integralAccumulator;
 		std::array<TalonInfo, 4> m_talonDetails;
 	};
 
