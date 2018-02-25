@@ -10,7 +10,7 @@ struct PositionArm::PositionSetpoints
 const std::map<PositionArm::Position, PositionArm::PositionSetpoints> PositionArm::m_setpoints = {
 		{ PositionArm::Position::Retracted, { 0,    0,     75 } },
 		{ PositionArm::Position::Pickup,    { 420,  -2500, 0 } },
-		{ PositionArm::Position::Switch,    { 500,  +400,  0 } },
+		{ PositionArm::Position::Switch,    { 500,  +700,  0 } },
 		{ PositionArm::Position::ScaleFront,{ 1600, +1500, 0 } },
 		{ PositionArm::Position::ScaleRear, { 2600, +1500, 0 } },
 };

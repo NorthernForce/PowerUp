@@ -3,6 +3,14 @@
 #include "Robot.h"
 #include "OI.h"
 
+double dabs(double in)
+{
+	if ( in < 0 )
+		return -1 * in;
+	else
+		return in;
+}
+
 DriveWithJoystick::DriveWithJoystick(): frc::Command() {
 	driveDirection = 1;
 	driveStick = 0;
@@ -29,7 +37,7 @@ void DriveWithJoystick::Execute()
 	const auto& driveTrainShifter = Robot::driveTrainShifter;
 	double XVal, YVal;
 	double joystick_magic_shift = 0.3;
-	double magic_shift_point = 0.2;
+	double magic_shift_point = 0.6;
 	if (driverController->GetBumperPressed(frc::XboxController::JoystickHand::kRightHand))
 	{
 		isDriveInverted = !isDriveInverted;
@@ -40,7 +48,7 @@ void DriveWithJoystick::Execute()
 	auto& driveTrain = Robot::driveTrain;
 	driveTrain->ArcadeDrive(YVal, XVal, true);
 
-	if ( ( abs(YVal) > joystick_magic_shift ) && ( abs(driveTrain->GetSpeed()) > magic_shift_point * 0.8 ) )
+	if ( ( dabs(XVal) > joystick_magic_shift ) && ( dabs(driveTrain->GetSpeed()) > magic_shift_point ) )
 	{
 		if(driveTrainShifter->GetGear() == DriveTrainShifter::Gear::Low)
 		{
@@ -48,11 +56,13 @@ void DriveWithJoystick::Execute()
 			frc::Scheduler::GetInstance()->AddCommand(new ShiftGearbox(ShiftGearbox::Gear::High));
 		}
 	}
-	else if ( ( abs(YVal) < ( magic_shift_point * 0.8 ) ) || ( abs(YVal) > joystick_magic_shift ) )
+	else if ( ( dabs(XVal) < joystick_magic_shift * 0.8 ) || ( dabs(driveTrain->GetSpeed()) < ( magic_shift_point * 0.8 ) ) )
 	{
 		if(driveTrainShifter->GetGear() == DriveTrainShifter::Gear::High)
 		{
 			DriverStation::ReportError("Auto shift from high to low");
+//			if ( dabs(YVal) < (joystick_magic_shift * 0.8 ) )
+//				DriverStation::ReportError("less than joystick hysteresis");
 			frc::Scheduler::GetInstance()->AddCommand(new ShiftGearbox(ShiftGearbox::Gear::Low));
 		}
 	}
