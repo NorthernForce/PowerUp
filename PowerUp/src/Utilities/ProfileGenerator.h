@@ -28,6 +28,6 @@ Profile CreateSimpleProfile(const double distance, const double startVelocity, c
 Profile CreateComplexProfile(const double distance, const double startVelocity, const double finalVelocity, const double peakVelocity, const double timeToMaxVelocity);
 Profile CombineProfiles(std::vector<Profile>&& items, const double startingPosition = 0);
 
-bool PushProfilePoints(WPI_TalonSRX& talon, ProfileGenerator& generator, const double scale, const uint32_t profileSlotSelect0, const uint32_t profileSlotSelect1, const bool zeroPos);
+bool PushProfilePoints(WPI_TalonSRX& talon, const MotionProfileStatus& status, ProfileGenerator& generator, const double scale, const uint32_t profileSlotSelect0, const uint32_t profileSlotSelect1, const bool zeroPos);
 
 #endif

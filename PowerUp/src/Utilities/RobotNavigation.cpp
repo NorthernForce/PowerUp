@@ -24,7 +24,7 @@ RobotNavigation::RobotNavigation(const FieldOrientation& orientation) : m_fieldO
 {
 }
 
-RobotNavigation::RobotTrajectory RobotNavigation::CreatePath(const Position from, const Position to)
+RobotNavigation::RobotTrajectory RobotNavigation::CreatePath(const Position from, const Position to) const
 {
 	if(from == Position::StartingPos && to == Position::ScoreOnSwitch)
 	{
@@ -36,7 +36,7 @@ RobotNavigation::RobotTrajectory RobotNavigation::CreatePath(const Position from
 	});
 }
 
-RobotNavigation::RobotTrajectory RobotNavigation::CreatePathFromStartToSwitch()
+RobotNavigation::RobotTrajectory RobotNavigation::CreatePathFromStartToSwitch() const
 {
 	const auto vector = m_fieldOrientation.GetSwitchCoordinate() - m_fieldOrientation.GetStartingRobotCoordinate();
 

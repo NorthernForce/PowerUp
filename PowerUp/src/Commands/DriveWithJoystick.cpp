@@ -33,7 +33,6 @@ void DriveWithJoystick::Initialize()
 void DriveWithJoystick::Execute()
 {
 	const auto& driverController = Robot::oi->getDriverController();
-	const auto& manipulatorJoystick = Robot::oi->getManipulatorJoystick();
 	const auto& driveTrainShifter = Robot::driveTrainShifter;
 	double XVal, YVal;
 	double joystick_magic_shift = 0.3;

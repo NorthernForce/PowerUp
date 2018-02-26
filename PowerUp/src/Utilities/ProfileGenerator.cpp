@@ -240,9 +240,9 @@ Profile CombineProfiles(std::vector<Profile>&& items, const double startingPosit
     return { std::move(aggregator), distance, duration };
 }
 
-bool PushProfilePoints(WPI_TalonSRX& talon, ProfileGenerator& generator, const double scale, const uint32_t profileSlotSelect0, const uint32_t profileSlotSelect1, const bool zeroPos)
+bool PushProfilePoints(WPI_TalonSRX& talon, const MotionProfileStatus& status, ProfileGenerator& generator, const double scale, const uint32_t profileSlotSelect0, const uint32_t profileSlotSelect1, const bool zeroPos)
 {
-	if(!generator)
+	if(status.isLast)
 	{
 		return true;
 	}
@@ -252,22 +252,21 @@ bool PushProfilePoints(WPI_TalonSRX& talon, ProfileGenerator& generator, const d
 	trajPt.zeroPos = zeroPos;
 	trajPt.profileSlotSelect0 = profileSlotSelect0;
 	trajPt.profileSlotSelect1 = profileSlotSelect1;
+	int topBufferRem = status.topBufferRem;
 
-	while(!trajPt.isLastPoint && time < 100)
+	while(!trajPt.isLastPoint && time < 100 && --topBufferRem > 0)
 	{
 		const auto pt = generator();
 		trajPt.position = pt.m_position * scale;
 		trajPt.velocity = pt.m_velocity * scale;
 		trajPt.timeDur = pt.m_duration;
 		trajPt.isLastPoint = pt.m_last;
-		trajPt.zeroPos = false;
 		talon.PushMotionProfileTrajectory(trajPt);
+
+		// Set zeroPos for all subsequent points
+		trajPt.zeroPos = false;
 		time = time + pt.m_duration;
 	}
 
-	if(trajPt.isLastPoint)
-	{
-		generator = nullptr;
-	}
 	return trajPt.isLastPoint;
 }

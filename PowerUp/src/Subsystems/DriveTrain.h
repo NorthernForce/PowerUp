@@ -12,6 +12,7 @@
 #ifndef DRIVETRAIN_H
 #define DRIVETRAIN_H
 #include "Commands/Subsystem.h"
+#include "Utilities/ProfileGenerator.h"
 #include "WPILib.h"
 
 /**
@@ -27,11 +28,35 @@ public:
 	void Periodic() override;
 	void ArcadeDrive(double moveValue, double rotateValue, bool squaredInputsf);
 	void SetSafetyEnabled(bool enabled);
+	void InitializeMotionProfile(const ProfileGenerator& left, const ProfileGenerator& right);
+	void TerminateMotionProfile();
+	bool IsMotionProfileRunning() const;
+
+	constexpr static double wheelCircumference = 4 * 0.0254 * M_PI; // Meters
+	constexpr static double lowGgearRatio = 15.0 / 1.0;
+	constexpr static double lowGgearEncoderRatio = lowGgearRatio * (12.0 / 30.0);
+	constexpr static double sensorUnitsPerRev = 256 * 4; // The TalonSRX counts 4 edges per encoder count, the quadrature encoder has 256 counts per revolution
+	constexpr static double nativeUnitsPerMeterLowGear = 1 / wheelCircumference * lowGgearEncoderRatio * sensorUnitsPerRev; // Approx. 19249
+
+	constexpr static double maxRPS = 5330 / 60; // Max speed of the CIM
+	constexpr static double maxEfficency = 0.8;
+	constexpr static double maxVelocityLowGear = maxRPS / lowGgearRatio * wheelCircumference * maxEfficency; // Approx. 1.512 Meters per second
+	constexpr static double maxNativeUnitsPer100ms = maxVelocityLowGear * nativeUnitsPerMeterLowGear / 10;
+	constexpr static double feedForwardGain = 1023 / maxNativeUnitsPer100ms;
 
 private:
-	std::shared_ptr<WPI_TalonSRX> talonSRX1;
-	std::shared_ptr<WPI_TalonSRX> talonSRX2;
-	std::shared_ptr<frc::RobotDrive> robotDrive;
+	void FeedMotionProfile(const bool zeroPos);
+	void ConfigureTalon(WPI_TalonSRX& talon);
+
+	constexpr static int slotIdx = 0;
+	constexpr static int pidIdx = 0;
+	constexpr static int timeoutMs = 10;
+
+	const std::shared_ptr<WPI_TalonSRX> m_talonSRX1;
+	const std::shared_ptr<WPI_TalonSRX> m_talonSRX2;
+	const std::shared_ptr<frc::RobotDrive> m_robotDrive;
+	ProfileGenerator m_leftProfile;
+	ProfileGenerator m_rightProfile;
 	Command* m_driveWithJoystick;
 };
 

@@ -1,20 +1,8 @@
 #include "TalonTelemetry.h"
 #include "Robot.h"
+#include "LogFileName.h"
 #include <Timer.h>
-#include <ctime>
 #include <thread>
-
-namespace
-{
-std::string GetCurrentTime()
-{
-	constexpr int bufferSize = 32;
-	char buffer[bufferSize];
-	const auto t = std::time(nullptr);
-	std::strftime(buffer, bufferSize, "%F %T", std::localtime(&t));
-	return buffer;
-}
-}
 
 TalonTelemetry::TalonTelemetry(std::initializer_list<std::shared_ptr<WPI_TalonSRX>> talons, const int pidIdx, const std::chrono::milliseconds period) :
 	m_talons(talons),
@@ -145,10 +133,8 @@ void TalonTelemetry::WriteTelemetry()
 
 void TalonTelemetry::OpenLogFile()
 {
-	char path[100];
 	const auto& name = m_talons.front()->GetName();
-	const auto& time = GetCurrentTime();
-	sprintf(path, "/tmp/%s %s Telemetry.csv", name.c_str(), time.c_str());
+	const auto path = GetLogFileName(name.c_str(), "Telemetry.csv");
 	m_logfile = std::make_unique<std::ofstream>(path);
 	(*m_logfile) << "Time Sec,Position,Velocity";
 	auto const talon = m_talons.front().get();

@@ -1,44 +1,62 @@
 #include <Commands/AutonomousDrive.h>
+#include "Utilities/LogFileName.h"
 
 AutonomousDrive::AutonomousDrive(const RobotNavigation& navigation,
 		const RobotNavigation::Position start,
 		const RobotNavigation::Position finish) :
-		frc::Command(""), m_navigation(navigation), m_start(start), m_finish(
-				finish)
+		frc::Command("Autonomous Drive"),
+		m_navigation(navigation),
+		m_start(start),
+		m_finish(finish),
+		m_path(m_navigation.CreatePath(m_start, m_finish))
 {
 	Requires(Robot::driveTrain.get());
 }
 
-// Called just before this Command runs the first time
 void AutonomousDrive::Initialize()
 {
-	// ->clearMotionProfileHasUnderrun(0);
-	// ->clearMotionProfileTrajectories();
+	Robot::driveTrain->InitializeMotionProfile(m_path.m_left.m_generator, m_path.m_right.m_generator);
 }
 
-// Called repeatedly when this Command is scheduled to run
-void AutonomousDrive::Execute()
-{
-	// Extract the next motion profile points
-	// push the points to the left and right talons ->pushMotionProfileTrajectory
-	// Call talons to process motion profile buffer ->processMotionProfileBuffer
-}
-
-// Make this return true when this Command no longer needs to run execute()
 bool AutonomousDrive::IsFinished()
 {
-	return false;
+	return Robot::driveTrain->IsMotionProfileRunning() == false;
 }
 
-// Called once after isFinished returns true
 void AutonomousDrive::End()
 {
-
+	Robot::driveTrain->TerminateMotionProfile();
+	WritePathToFile();
 }
 
-// Called when another command which requires one or more of the same
-// subsystems is scheduled to run
 void AutonomousDrive::Interrupted()
 {
+	Robot::driveTrain->TerminateMotionProfile();
+	WritePathToFile();
+}
 
+void AutonomousDrive::WritePathToFile()
+{
+	Profile left = m_path.m_left;
+	Profile right = m_path.m_right;
+
+	std::ofstream os(GetLogFileName(GetName().c_str()));
+	os << "Left Time,Left Position,Left Velocity,Right Time,Right Position,Right Velocity\n";
+    int t1 = 0;
+    int t2 = 0;
+    ProfilePoint p1 = {};
+    ProfilePoint p2 = {};
+    while (true)
+    {
+        if (!p1.m_last) p1 = left();
+        if (!p2.m_last) p2 = right();
+        t1 = t1 + p1.m_duration;
+        t2 = t2 + p2.m_duration;
+        os << t1 << "," << p1.m_position << "," << p1.m_velocity << "," <<
+        	  t2 << "," << p2.m_position << "," << p2.m_velocity;
+
+        if (p1.m_last && p2.m_last)
+            break;
+    }
+    os.close();
 }
