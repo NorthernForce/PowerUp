@@ -2,22 +2,54 @@
 
 namespace
 {
-RobotNavigation::RobotTrajectory Combine()
+RobotNavigation::RobotTrajectory CombineTrajectories(const std::vector<RobotNavigation::RobotTrajectory>& items)
 {
+	std::vector<Profile> leftProfiles;
+	std::vector<Profile> rightProfiles;
+	for(const auto& item : items)
+	{
+		leftProfiles.push_back(item.m_left);
+		rightProfiles.push_back(item.m_right);
+	}
+
+	return RobotNavigation::RobotTrajectory({
+		CombineProfiles(std::move(leftProfiles)),
+		CombineProfiles(std::move(rightProfiles))
+	});
+}
 
 }
-}
 
-RobotNavigation::RobotNavigation(const FieldOrientation& orientation) :
-		m_fieldOrientation(orientation)
+RobotNavigation::RobotNavigation(const FieldOrientation& orientation) : m_fieldOrientation(orientation)
 {
 }
 
-RobotNavigation::RobotTrajectory RobotNavigation::CreateProfile(const Position from, const Position to)
+RobotNavigation::RobotTrajectory RobotNavigation::CreatePath(const Position from, const Position to)
 {
-	return CreateProfile(2, 0, 0, 0);
+	if(from == Position::StartingPos && to == Position::ScoreOnSwitch)
+	{
+		return CreatePathFromStartToSwitch();
+	}
+
+	return CombineTrajectories({
+		CreateProfile(2, 0, 0, 0)
+	});
 }
 
+RobotNavigation::RobotTrajectory RobotNavigation::CreatePathFromStartToSwitch()
+{
+	const auto vector = m_fieldOrientation.GetSwitchCoordinate() - m_fieldOrientation.GetStartingRobotCoordinate();
+
+	return CombineTrajectories({
+		CreateProfile(vector.y, 0, 0, 0),
+		CreateProfile(0, 0, 0, vector.heading),
+		CreateProfile(vector.x, 0, 0, 0),
+	});
+}
+
+/**
+ * Creates a profile to move the robot along a specified path
+ */
 RobotNavigation::RobotTrajectory RobotNavigation::CreateProfile(const double distance, const double startVelocity, const double finalVelocity, const double angleDegrees)
 {
 	if(angleDegrees == 0)

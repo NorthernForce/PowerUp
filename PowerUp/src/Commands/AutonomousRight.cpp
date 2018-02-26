@@ -4,6 +4,6 @@
 
 AutonomousRight::AutonomousRight()
 {
-	FieldOrientation::SetStartingRobotCoordinate({ FieldOrientation::FieldWidth - FieldOrientation::StartCoordX, FieldOrientation::StartCoordY, FieldOrientation::StartCoordHeading });
+	FieldOrientation::SetStartingRobotCoordinate(Position::Right, { FieldOrientation::FieldWidth - FieldOrientation::StartCoordX, FieldOrientation::StartCoordY, FieldOrientation::StartCoordHeading });
 	AddSequential(GenerateAutonomousSequence());
 }

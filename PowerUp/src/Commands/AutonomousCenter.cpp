@@ -4,6 +4,6 @@
 
 AutonomousCenter::AutonomousCenter()
 {
-	FieldOrientation::SetStartingRobotCoordinate({ FieldOrientation::FieldWidth / 2, FieldOrientation::StartCoordY, FieldOrientation::StartCoordHeading });
+	FieldOrientation::SetStartingRobotCoordinate(Position::Center, { FieldOrientation::FieldWidth / 2, FieldOrientation::StartCoordY, FieldOrientation::StartCoordHeading });
 	AddSequential(GenerateAutonomousSequence());
 }

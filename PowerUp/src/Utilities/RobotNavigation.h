@@ -3,8 +3,8 @@
 
 #include <cstdint>
 #include "ctre/phoenix/Motion/TrajectoryPoint.h"
-#include "Utilities/FieldOrientation.h"
-#include "Utilities/ProfileGenerator.h"
+#include "FieldOrientation.h"
+#include "ProfileGenerator.h"
 #include <functional>
 #include <cmath>
 
@@ -28,8 +28,10 @@ public:
 	RobotNavigation(const FieldOrientation& orientation);
 	RobotNavigation(const RobotNavigation&) = default;
 
-	RobotTrajectory CreateProfile(const Position from, const Position to);
+	RobotTrajectory CreatePath(const Position from, const Position to);
 private:
+	RobotTrajectory CreatePathFromStartToSwitch();
+
 	static RobotTrajectory CreateProfile(const double distance, const double startVelocity, const double finalVelocity, const double angleDegrees);
 
 	constexpr static double wheelTrack = 0.64;

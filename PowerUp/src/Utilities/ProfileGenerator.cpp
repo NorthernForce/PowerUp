@@ -46,7 +46,9 @@ namespace
         {
             assert(m_time < m_durationMilliSec);
 
-            const auto duration = std::min(ConvertDuration(m_durationMilliSec - m_time), TrajectoryDuration::TrajectoryDuration_100ms);
+            // Ideally we would use TrajectoryDuration::TrajectoryDuration_100ms but for debugging using the same as
+            // VelocityTransitionProfile makes life easier
+            const auto duration = std::min(ConvertDuration(m_durationMilliSec - m_time), TrajectoryDuration::TrajectoryDuration_10ms);
             const auto interval = duration / 1000.0;
             m_position += m_velocity * interval;
             m_time += duration;
@@ -117,7 +119,8 @@ namespace
     public:
         ProfileAggregator(ProfileAggregator&& other) = default;
         ProfileAggregator(const ProfileAggregator& other) : m_items(other.m_items), m_current(m_items.begin()), m_positionOffset(other.m_positionOffset) {}
-        ProfileAggregator(std::initializer_list<Profile> items, const double startingPosition) :
+
+        ProfileAggregator(std::vector<Profile>&& items, const double startingPosition) :
             m_items(std::move(items)),
             m_current(m_items.begin()),
             m_positionOffset(startingPosition)
@@ -192,29 +195,44 @@ Profile CreateSimpleProfile(const double distance, const double startVelocity, c
     }
 }
 
-Profile CreateComplexProfile(const double distance, const double startVelocity, const double finalVelocity, double peakVelocity, const double timeToMaxVelocity)
+/**
+ * Creates a motion profile consisting of three parts
+ *  1. A transition from the start velocity to the target velocity
+ *  2. Constant velocity travel at the target velocity
+ *  3. A transition from the target velocity to the final velocity
+ *
+ * Note, if the distance is too short for the target velocity to be achieved then
+ * the profile will contain only parts 1 and 3
+ */
+Profile CreateComplexProfile(const double distance, const double startVelocity, const double finalVelocity, double targetVelocity, const double timeToMaxVelocity)
 {
-    peakVelocity = std::abs(peakVelocity) * (distance > 0 ? 1 : -1);
-    auto d1 = (1 - startVelocity / peakVelocity) * timeToMaxVelocity * (peakVelocity + startVelocity) / 2;
-    auto d3 = (1 - finalVelocity / peakVelocity) * timeToMaxVelocity * (peakVelocity + finalVelocity) / 2;
+	targetVelocity = std::abs(targetVelocity) * (distance > 0 ? 1 : -1);
+    auto d1 = (1 - startVelocity / targetVelocity) * timeToMaxVelocity * (targetVelocity + startVelocity) / 2;
+    auto d3 = (1 - finalVelocity / targetVelocity) * timeToMaxVelocity * (targetVelocity + finalVelocity) / 2;
     auto d2 = distance - d1 - d3;
-    if(d2 * 100 < distance)
+    if(d2 / targetVelocity < TrajectoryDuration_5ms / 1000)
     {
-        peakVelocity = (distance + sqrt(2 * timeToMaxVelocity * timeToMaxVelocity * (finalVelocity * finalVelocity + startVelocity * startVelocity) + distance * distance)) / 2 / timeToMaxVelocity;
-//        peakVelocity = std::sqrt(distance / timeToMaxVelocity + (startVelocity * startVelocity + finalVelocity * finalVelocity) / 2);
-        d1 = (1 - startVelocity / peakVelocity) * timeToMaxVelocity * (peakVelocity + startVelocity) / 2;
-        d3 = distance - d1;
+        if(distance >= 0)
+        {
+            targetVelocity = (distance / timeToMaxVelocity + sqrt(2 * (finalVelocity * finalVelocity + startVelocity * startVelocity) + distance * distance)) / 2;
+        }
+        else
+        {
+            targetVelocity = (distance / timeToMaxVelocity - sqrt(2 * (finalVelocity * finalVelocity + startVelocity * startVelocity) + distance * distance)) / 2;
+        }
+        d1 = (1 - startVelocity / targetVelocity) * timeToMaxVelocity * (targetVelocity + startVelocity) / 2;
         d2 = 0;
+        d3 = distance - d1;
     }
 
     return CombineProfiles({
-        CreateSimpleProfile(d1, startVelocity, peakVelocity),
-        CreateSimpleProfile(d2, peakVelocity, peakVelocity),
-        CreateSimpleProfile(d3, peakVelocity, finalVelocity)
+        CreateSimpleProfile(d1, startVelocity, targetVelocity),
+        CreateSimpleProfile(d2, targetVelocity, targetVelocity),
+        CreateSimpleProfile(d3, targetVelocity, finalVelocity)
     });
  }
 
-Profile CombineProfiles(std::initializer_list<Profile> items, const double startingPosition)
+Profile CombineProfiles(std::vector<Profile>&& items, const double startingPosition)
 {
     ProfileAggregator aggregator(std::move(items), startingPosition);
     const auto distance = aggregator.GetDistance();

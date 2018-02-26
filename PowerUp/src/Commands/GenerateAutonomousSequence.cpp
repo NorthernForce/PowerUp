@@ -70,7 +70,10 @@ frc::CommandGroup* GenerateAutonomousSequence()
 	// We always start the FPS
 	sequence->AddSequential(new StartFieldPositioningSystem());
 
-	const FieldOrientation orientation;
+	const auto& ds = DriverStation::GetInstance();
+	const auto& message = ds.GetGameSpecificMessage();
+
+	const FieldOrientation orientation(message);
 	if (!orientation.IsInitialized())
 	{
 		DriverStation::ReportError("Field orientation is not known - autonomous sequence cannot be generated");

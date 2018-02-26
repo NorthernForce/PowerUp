@@ -4,6 +4,6 @@
 
 AutonomousLeft::AutonomousLeft()
 {
-	FieldOrientation::SetStartingRobotCoordinate({ FieldOrientation::StartCoordX, FieldOrientation::StartCoordY, FieldOrientation::StartCoordHeading });
+	FieldOrientation::SetStartingRobotCoordinate(Position::Left, { FieldOrientation::StartCoordX, FieldOrientation::StartCoordY, FieldOrientation::StartCoordHeading });
 	AddSequential(GenerateAutonomousSequence());
 }
