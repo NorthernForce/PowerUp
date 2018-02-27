@@ -67,17 +67,23 @@ void RobotMap::init() {
 
     driveTrainTalonSRX1->ConfigOpenloopRamp(0.6, 10);
     driveTrainTalonSRX1->SetInverted(false);
+    driveTrainTalonSRX1->SetNeutralMode(NeutralMode::Coast);
     driveTrainTalonSRX3->Follow(*driveTrainTalonSRX1);
     driveTrainTalonSRX3->SetInverted(false);
+    driveTrainTalonSRX3->SetNeutralMode(NeutralMode::Coast);
     driveTrainTalonSRX5->Follow(*driveTrainTalonSRX1);
     driveTrainTalonSRX5->SetInverted(true);
+    driveTrainTalonSRX5->SetNeutralMode(NeutralMode::Coast);
 
     driveTrainTalonSRX2->ConfigOpenloopRamp(0.6, 10);
     driveTrainTalonSRX2->SetInverted(true);
+    driveTrainTalonSRX2->SetNeutralMode(NeutralMode::Coast);
     driveTrainTalonSRX4->Follow(*driveTrainTalonSRX2);
     driveTrainTalonSRX4->SetInverted(true);
+    driveTrainTalonSRX4->SetNeutralMode(NeutralMode::Coast);
     driveTrainTalonSRX6->Follow(*driveTrainTalonSRX2);
     driveTrainTalonSRX6->SetInverted(false);
+    driveTrainTalonSRX6->SetNeutralMode(NeutralMode::Coast);
 
     armTalonSRX8 = std::make_unique<WPI_TalonSRX>(8);
 
