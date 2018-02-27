@@ -24,6 +24,7 @@ class DriveTrain: public frc::Subsystem {
 public:
 	DriveTrain();
 	double GetSpeed();
+	int GetPosition();
 	void InitDefaultCommand() override;
 	void Periodic() override;
 	void ArcadeDrive(double moveValue, double rotateValue, bool squaredInputsf);

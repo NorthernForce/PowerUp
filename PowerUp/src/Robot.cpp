@@ -260,7 +260,9 @@ void Robot::RobotInit() {
 //	lw->Add(gripper);
 //	lw->Add(RobotMap::gripperSolenoid);
 
-//	gimbal.reset(new Gimbal(0, 1));
+	gimbal.reset(new Gimbal(0, 1));
+	gimbal->SetPan(50);
+	gimbal->SetTilt(50);
 //	ultrasonicSensor.reset(new UltrasonicSensor(0, 0, 0));
 
 	CameraServer::GetInstance()->StartAutomaticCapture(0);
@@ -291,6 +293,10 @@ void Robot::AutonomousInit() {
 
 void Robot::AutonomousPeriodic() {
 	frc::Scheduler::GetInstance()->Run();
+	while (IsAutonomous() && IsEnabled() && (driveTrain->GetPosition() < 19000)) {
+		driveTrain->ArcadeDrive(0.0, 1.0, true);
+		Wait(0.01);
+	}
 }
 
 void Robot::TeleopInit() {
