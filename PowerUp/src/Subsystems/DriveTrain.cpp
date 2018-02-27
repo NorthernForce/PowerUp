@@ -24,9 +24,13 @@ void DriveTrain::InitDefaultCommand()
 	SetDefaultCommand(m_driveWithJoystick);
 }
 
+//returns units per 100ms, by default units are in 1/1024 of a rotation
+//https://github.com/CrossTheRoadElec/Phoenix-Documentation/blob/master/Migration%20Guide.md
 double DriveTrain::GetSpeed()
 {
-	return (m_talonSRX1->Get() + m_talonSRX2->Get()) / 2.0;
+	double left = m_talonSRX1->GetSensorCollection().GetQuadratureVelocity();
+	double right = m_talonSRX2->GetSensorCollection().GetQuadratureVelocity();
+	return ( std::abs(left) + std::abs(right) ) / 2;
 }
 
 int DriveTrain::GetPosition() {
