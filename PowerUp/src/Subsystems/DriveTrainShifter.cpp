@@ -15,8 +15,7 @@ DriveTrainShifter::DriveTrainShifter() :
 
 void DriveTrainShifter::Periodic()
 {
-	if(m_shiftCountdown > 0)
-	{
+	if (m_shiftCountdown > 0) {
 		m_shiftCountdown -= 1;
 	}
 }

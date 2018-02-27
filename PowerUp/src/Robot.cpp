@@ -291,6 +291,10 @@ void Robot::AutonomousInit() {
 
 void Robot::AutonomousPeriodic() {
 	frc::Scheduler::GetInstance()->Run();
+	while (IsAutonomous() && IsEnabled() && (driveTrain->GetPosition() < 19000)) {
+		driveTrain->ArcadeDrive(0.0, 1.0, true);
+		Wait(0.01);
+	}
 }
 
 void Robot::TeleopInit() {

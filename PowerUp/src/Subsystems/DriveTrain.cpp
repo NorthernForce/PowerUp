@@ -30,6 +30,10 @@ double DriveTrain::GetSpeed()
 	return ( m_talonSRX1->Get() + m_talonSRX2->Get() ) / 2.0;
 }
 
+int DriveTrain::GetPosition() {
+	return m_talonSRX1->GetSensorCollection().GetQuadraturePosition();
+}
+
 void DriveTrain::Periodic()
 {
 	if(IsMotionProfileRunning())
