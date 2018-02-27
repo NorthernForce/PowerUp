@@ -1,15 +1,14 @@
 
-
 #include "Commands/DriveWithJoystick.h"
 #include "DriveTrain.h"
 #include "../RobotMap.h"
 #include "ctre/Phoenix.h"
 
 DriveTrain::DriveTrain() :
-	frc::Subsystem("DriveTrain"),
-	m_talonSRX1(RobotMap::driveTrainTalonSRX1),
-	m_talonSRX2(RobotMap::driveTrainTalonSRX2),
-	m_robotDrive(RobotMap::driveTrainRobotDrive)
+		frc::Subsystem("DriveTrain"),
+		m_talonSRX1(RobotMap::driveTrainTalonSRX1),
+		m_talonSRX2(RobotMap::driveTrainTalonSRX2),
+		m_robotDrive(RobotMap::driveTrainRobotDrive)
 {
 	ConfigureTalon(*m_talonSRX1);
 	ConfigureTalon(*m_talonSRX2);
@@ -17,7 +16,7 @@ DriveTrain::DriveTrain() :
 
 void DriveTrain::InitDefaultCommand()
 {
-	if(m_driveWithJoystick == nullptr)
+	if (m_driveWithJoystick == nullptr)
 	{
 		m_driveWithJoystick = new DriveWithJoystick();
 	}
@@ -27,12 +26,12 @@ void DriveTrain::InitDefaultCommand()
 
 double DriveTrain::GetSpeed()
 {
-	return ( m_talonSRX1->Get() + m_talonSRX2->Get() ) / 2.0;
+	return (m_talonSRX1->Get() + m_talonSRX2->Get()) / 2.0;
 }
 
 void DriveTrain::Periodic()
 {
-	if(IsMotionProfileRunning())
+	if (IsMotionProfileRunning())
 	{
 		FeedMotionProfile(false);
 	}
@@ -85,18 +84,18 @@ bool DriveTrain::IsMotionProfileRunning() const
 void DriveTrain::FeedMotionProfile(const bool zeroPos)
 {
 	const auto feedTalon = [zeroPos](WPI_TalonSRX& talon, ProfileGenerator& profile)
-	{
-		const auto pidIdx0 = pidIdx;
-		const auto pidIdx1 = 1;
+			{
+				const auto pidIdx0 = pidIdx;
+				const auto pidIdx1 = 1;
 
-		MotionProfileStatus status;
-		talon.GetMotionProfileStatus(status);
-		if(!status.isLast)
-		{
-			PushProfilePoints(talon, status, profile, nativeUnitsPerMeterLowGear, pidIdx0, pidIdx1, zeroPos);
-		}
-		talon.ProcessMotionProfileBuffer();
-	};
+				MotionProfileStatus status;
+				talon.GetMotionProfileStatus(status);
+				if(!status.isLast)
+				{
+					PushProfilePoints(talon, status, profile, nativeUnitsPerMeterLowGear, pidIdx0, pidIdx1, zeroPos);
+				}
+				talon.ProcessMotionProfileBuffer();
+			};
 
 	feedTalon(*m_talonSRX1, m_leftProfile);
 	feedTalon(*m_talonSRX2, m_rightProfile);
@@ -108,7 +107,7 @@ void DriveTrain::ConfigureTalon(WPI_TalonSRX& talon)
 	talon.ClearMotionProfileHasUnderrun(timeoutMs);
 	talon.ClearMotionProfileTrajectories();
 	talon.ChangeMotionControlFramePeriod(5);
-	talon.ConfigMotionProfileTrajectoryPeriod(0,  timeoutMs);
+	talon.ConfigMotionProfileTrajectoryPeriod(0, timeoutMs);
 	talon.SetNeutralMode(NeutralMode::Coast);
 	talon.SelectProfileSlot(slotIdx, pidIdx);
 	talon.Config_kF(slotIdx, feedForwardGain, timeoutMs);

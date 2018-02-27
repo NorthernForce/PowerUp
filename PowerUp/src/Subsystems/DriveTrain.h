@@ -57,7 +57,7 @@ private:
 	const std::shared_ptr<frc::RobotDrive> m_robotDrive;
 	ProfileGenerator m_leftProfile;
 	ProfileGenerator m_rightProfile;
-	Command* m_driveWithJoystick;
+	Command* m_driveWithJoystick = nullptr;
 };
 
 #endif
