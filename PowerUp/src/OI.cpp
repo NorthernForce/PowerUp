@@ -70,6 +70,8 @@ OI::OI() {
     frc::SmartDashboard::PutData("Move arm to switch", new PositionArm(PositionArm::Position::Switch));
     frc::SmartDashboard::PutData("Move arm to scale front", new PositionArm(PositionArm::Position::ScaleFront));
     frc::SmartDashboard::PutData("Move arm to scale rear", new PositionArm(PositionArm::Position::ScaleRear));
+    frc::SmartDashboard::PutData("Move arm to climb setup", new PositionArm(PositionArm::Position::ClimbSet));
+    frc::SmartDashboard::PutData("Climb using arm and elevator", new PositionArm(PositionArm::Position::ClimbExecute));
     frc::SmartDashboard::PutData("Nudge elevator up", new NudgeElevator(+3));
     frc::SmartDashboard::PutData("Nudge elevator down", new NudgeElevator(-3));
     frc::SmartDashboard::PutData("Shift High", new ShiftGearbox(ShiftGearbox::Gear::High));
