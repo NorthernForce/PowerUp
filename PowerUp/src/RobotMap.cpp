@@ -42,7 +42,6 @@ void RobotMap::init() {
     driveTrainTalonSRX2.reset(new WPI_TalonSRX(2));
     driveTrainTalonSRX4.reset(new WPI_TalonSRX(4));
     driveTrainTalonSRX6.reset(new WPI_TalonSRX(6));
-    
     driveTrainRobotDrive.reset(new frc::RobotDrive(driveTrainTalonSRX1, driveTrainTalonSRX2));
     
     driveTrainRobotDrive->SetSafetyEnabled(true);
@@ -65,7 +64,7 @@ void RobotMap::init() {
 
     elevatorBrake.reset(new frc::Solenoid(0));
 
-    driveTrainTalonSRX1->ConfigOpenloopRamp(0.6, 10);
+    driveTrainTalonSRX1->ConfigOpenloopRamp(0.75, 10);
     driveTrainTalonSRX1->SetInverted(false);
     driveTrainTalonSRX1->SetNeutralMode(NeutralMode::Coast);
     driveTrainTalonSRX3->Follow(*driveTrainTalonSRX1);
@@ -75,7 +74,7 @@ void RobotMap::init() {
     driveTrainTalonSRX5->SetInverted(true);
     driveTrainTalonSRX5->SetNeutralMode(NeutralMode::Coast);
 
-    driveTrainTalonSRX2->ConfigOpenloopRamp(0.6, 10);
+    driveTrainTalonSRX2->ConfigOpenloopRamp(0.75, 10);
     driveTrainTalonSRX2->SetInverted(true);
     driveTrainTalonSRX2->SetNeutralMode(NeutralMode::Coast);
     driveTrainTalonSRX4->Follow(*driveTrainTalonSRX2);
