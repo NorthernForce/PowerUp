@@ -260,8 +260,8 @@ void Robot::RobotInit() {
 //	lw->Add(gripper);
 //	lw->Add(RobotMap::gripperSolenoid);
 
-	gimbal.reset(new Gimbal(0, 1));
-	ultrasonicSensor.reset(new UltrasonicSensor(0, 0, 0));
+//	gimbal.reset(new Gimbal(0, 1));
+//	ultrasonicSensor.reset(new UltrasonicSensor(0, 0, 0));
 
 	CameraServer::GetInstance()->StartAutomaticCapture(0);
 
