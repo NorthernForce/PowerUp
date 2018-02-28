@@ -47,7 +47,10 @@ namespace
 
 		void Initialize() override
 		{
-			m_selected = this;
+			m_lastSelected = this;
+			char message[200];
+			sprintf(message, "Autonomous mode %s selected", GetName().c_str());
+			DriverStation::ReportError(message);
 		}
 
 		bool IsFinished() override
@@ -57,28 +60,22 @@ namespace
 
 		static Command* GetAutonomousCommand()
 		{
-			if(m_selected)
+			if(m_lastSelected)
 			{
-				return m_selected->m_builder();
+				return m_lastSelected->m_builder();
 			}
 
 			return nullptr;
 		}
 
-		void Interrupted()
-		{
-			m_selected = nullptr;
-		}
-
-
 	private:
 		static frc::Subsystem* m_autonomousSubsystem;
-		static AutonomousCommandBuilder* m_selected;
+		static AutonomousCommandBuilder* m_lastSelected;
 		Builder m_builder;
 	};
 
 	frc::Subsystem* AutonomousCommandBuilder::m_autonomousSubsystem = new frc::Subsystem("Autonomous subsystem");
-	AutonomousCommandBuilder* AutonomousCommandBuilder::m_selected = nullptr;
+	AutonomousCommandBuilder* AutonomousCommandBuilder::m_lastSelected = nullptr;
 }
 
 Robot* Robot::robot = nullptr;
@@ -106,6 +103,7 @@ void Robot::RobotInit() {
     arm.reset(new Arm());
 	oi.reset(new OI());
 
+    new AutonomousCommandBuilder("Autonomous Mode None", [](){ return nullptr; });
     new AutonomousCommandBuilder("Autonomous Mode Left", [](){ return new AutonomousLeft(); });
     new AutonomousCommandBuilder("Autonomous Mode Center", [](){ return new AutonomousCenter(); });
     new AutonomousCommandBuilder("Autonomous Mode Right", [](){ return new AutonomousRight(); });
@@ -148,7 +146,7 @@ void Robot::AutonomousInit() {
 		char message[200];
 		sprintf(message, "Running autonomous mode %s", autonomousCommand->GetName().c_str());
 		autonomousCommand->Start();
-		DriverStation::ReportError("No autonomous mode selected");
+		DriverStation::ReportError(message);
 	}
 	else
 	{

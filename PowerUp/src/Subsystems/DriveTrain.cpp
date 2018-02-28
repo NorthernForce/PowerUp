@@ -10,7 +10,9 @@ DriveTrain::DriveTrain() :
 		m_talonSRX2(RobotMap::driveTrainTalonSRX2),
 		m_robotDrive(RobotMap::driveTrainRobotDrive),
 		m_leftProfile(*m_talonSRX1, pidIdx),
-		m_rightProfile(*m_talonSRX2, pidIdx)
+		m_rightProfile(*m_talonSRX2, pidIdx),
+		m_leftTelemetry(m_talonSRX1, pidIdx, std::chrono::milliseconds(20)),
+		m_rightTelemetry(m_talonSRX2, pidIdx, std::chrono::milliseconds(20))
 {
 	ConfigureTalon(*m_talonSRX1);
 	ConfigureTalon(*m_talonSRX2);
@@ -60,6 +62,8 @@ void DriveTrain::SetSafetyEnabled(bool enabled)
 
 void DriveTrain::InitializeMotionProfile(const ProfileGenerator& left, const ProfileGenerator& right)
 {
+	m_leftTelemetry.Start();
+	m_rightTelemetry.Start();
 	DriverStation::ReportError("InitializeMotionProfile start");
 	SetSafetyEnabled(false);
 	m_leftProfile.Start(left, nativeUnitsPerMeterLowGear);
@@ -71,6 +75,8 @@ void DriveTrain::TerminateMotionProfile()
 {
 	m_leftProfile.Cancel();
 	m_rightProfile.Cancel();
+	m_leftTelemetry.Stop();
+	m_rightTelemetry.Stop();
 }
 
 bool DriveTrain::IsMotionProfileFinished() const
@@ -88,6 +94,7 @@ void DriveTrain::ConfigureTalon(WPI_TalonSRX& talon)
 	talon.SetNeutralMode(NeutralMode::Coast);
 	talon.SelectProfileSlot(slotIdx, pidIdx);
 	talon.Config_kF(slotIdx, feedForwardGain, timeoutMs);
+	talon.Config_kP(slotIdx, .2, timeoutMs);
 //	talon.Config_kP(slotIdx, pGain, timeoutMs);
 //	talon.Config_kI(slotIdx, iGain, timeoutMs);
 //	talon.ConfigMaxIntegralAccumulator(slotIdx, iLimit, timeoutMs);
