@@ -8,7 +8,9 @@ DriveTrain::DriveTrain() :
 		frc::Subsystem("DriveTrain"),
 		m_talonSRX1(RobotMap::driveTrainTalonSRX1),
 		m_talonSRX2(RobotMap::driveTrainTalonSRX2),
-		m_robotDrive(RobotMap::driveTrainRobotDrive)
+		m_robotDrive(RobotMap::driveTrainRobotDrive),
+		m_leftProfile(*m_talonSRX1, pidIdx),
+		m_rightProfile(*m_talonSRX2, pidIdx)
 {
 	ConfigureTalon(*m_talonSRX1);
 	ConfigureTalon(*m_talonSRX2);
@@ -24,9 +26,13 @@ void DriveTrain::InitDefaultCommand()
 	SetDefaultCommand(m_driveWithJoystick);
 }
 
+//returns units per 100ms, by default units are in 1/1024 of a rotation
+//https://github.com/CrossTheRoadElec/Phoenix-Documentation/blob/master/Migration%20Guide.md
 double DriveTrain::GetSpeed()
 {
-	return (m_talonSRX1->Get() + m_talonSRX2->Get()) / 2.0;
+	double left = m_talonSRX1->GetSensorCollection().GetQuadratureVelocity();
+	double right = m_talonSRX2->GetSensorCollection().GetQuadratureVelocity();
+	return ( std::abs(left) + std::abs(right) ) / 2;
 }
 
 int DriveTrain::GetPosition() {
@@ -40,10 +46,6 @@ void DriveTrain::SetSpeed(double speed) {
 
 void DriveTrain::Periodic()
 {
-	if (IsMotionProfileRunning())
-	{
-		FeedMotionProfile(false);
-	}
 }
 
 void DriveTrain::ArcadeDrive(double moveValue, double rotateValue, bool squaredInputsf)
@@ -58,56 +60,22 @@ void DriveTrain::SetSafetyEnabled(bool enabled)
 
 void DriveTrain::InitializeMotionProfile(const ProfileGenerator& left, const ProfileGenerator& right)
 {
-	m_leftProfile = left;
-	m_rightProfile = right;
+	DriverStation::ReportError("InitializeMotionProfile start");
 	SetSafetyEnabled(false);
-	m_talonSRX1->Set(ControlMode::MotionProfile, SetValueMotionProfile::Disable);
-	m_talonSRX2->Set(ControlMode::MotionProfile, SetValueMotionProfile::Disable);
-	m_talonSRX1->ClearMotionProfileTrajectories();
-	m_talonSRX2->ClearMotionProfileTrajectories();
-	FeedMotionProfile(true);
-	m_talonSRX1->Set(ControlMode::MotionProfile, SetValueMotionProfile::Enable);
-	m_talonSRX2->Set(ControlMode::MotionProfile, SetValueMotionProfile::Enable);
+	m_leftProfile.Start(left, nativeUnitsPerMeterLowGear);
+	m_rightProfile.Start(right, nativeUnitsPerMeterLowGear);
+	DriverStation::ReportError("InitializeMotionProfile finish");
 }
 
 void DriveTrain::TerminateMotionProfile()
 {
-	m_talonSRX1->Set(ControlMode::MotionProfile, SetValueMotionProfile::Disable);
-	m_talonSRX2->Set(ControlMode::MotionProfile, SetValueMotionProfile::Disable);
-	m_leftProfile = nullptr;
-	m_rightProfile = nullptr;
+	m_leftProfile.Cancel();
+	m_rightProfile.Cancel();
 }
 
-bool DriveTrain::IsMotionProfileRunning() const
+bool DriveTrain::IsMotionProfileFinished() const
 {
-	auto isEnabled = [](WPI_TalonSRX& talon)
-	{
-		MotionProfileStatus status;
-		talon.GetMotionProfileStatus(status);
-		return status.outputEnable == SetValueMotionProfile::Enable;
-	};
-
-	return isEnabled(*m_talonSRX1) || isEnabled(*m_talonSRX2);
-}
-
-void DriveTrain::FeedMotionProfile(const bool zeroPos)
-{
-	const auto feedTalon = [zeroPos](WPI_TalonSRX& talon, ProfileGenerator& profile)
-			{
-				const auto pidIdx0 = pidIdx;
-				const auto pidIdx1 = 1;
-
-				MotionProfileStatus status;
-				talon.GetMotionProfileStatus(status);
-				if(!status.isLast)
-				{
-					PushProfilePoints(talon, status, profile, nativeUnitsPerMeterLowGear, pidIdx0, pidIdx1, zeroPos);
-				}
-				talon.ProcessMotionProfileBuffer();
-			};
-
-	feedTalon(*m_talonSRX1, m_leftProfile);
-	feedTalon(*m_talonSRX2, m_rightProfile);
+	return m_leftProfile.IsFinished() && m_rightProfile.IsFinished();
 }
 
 void DriveTrain::ConfigureTalon(WPI_TalonSRX& talon)

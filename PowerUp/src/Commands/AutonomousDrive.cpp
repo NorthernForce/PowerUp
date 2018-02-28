@@ -20,7 +20,7 @@ void AutonomousDrive::Initialize()
 
 bool AutonomousDrive::IsFinished()
 {
-	return Robot::driveTrain->IsMotionProfileRunning() == false;
+	return Robot::driveTrain->IsMotionProfileFinished();
 }
 
 void AutonomousDrive::End()

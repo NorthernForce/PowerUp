@@ -7,6 +7,7 @@ struct PositionArm::PositionSetpoints
 	unsigned m_armDelay;
 };
 
+bool hasClimbed = false;
 const std::map<PositionArm::Position, PositionArm::PositionSetpoints> PositionArm::m_setpoints = {
 		{ PositionArm::Position::Retracted, { 0,    0,     75 } },
 		{ PositionArm::Position::Pickup,    { 420,  -2500, 0 } },

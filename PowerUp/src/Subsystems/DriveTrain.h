@@ -12,7 +12,7 @@
 #ifndef DRIVETRAIN_H
 #define DRIVETRAIN_H
 #include "Commands/Subsystem.h"
-#include "Utilities/ProfileGenerator.h"
+#include "Utilities/MotionProfile.h"
 #include "WPILib.h"
 
 /**
@@ -32,7 +32,7 @@ public:
 	void SetSafetyEnabled(bool enabled);
 	void InitializeMotionProfile(const ProfileGenerator& left, const ProfileGenerator& right);
 	void TerminateMotionProfile();
-	bool IsMotionProfileRunning() const;
+	bool IsMotionProfileFinished() const;
 
 	constexpr static double wheelCircumference = 4 * 0.0254 * M_PI; // Meters
 	constexpr static double lowGgearRatio = 15.0 / 1.0;
@@ -47,7 +47,6 @@ public:
 	constexpr static double feedForwardGain = 1023 / maxNativeUnitsPer100ms;
 
 private:
-	void FeedMotionProfile(const bool zeroPos);
 	void ConfigureTalon(WPI_TalonSRX& talon);
 
 	constexpr static int slotIdx = 0;
@@ -57,8 +56,8 @@ private:
 	const std::shared_ptr<WPI_TalonSRX> m_talonSRX1;
 	const std::shared_ptr<WPI_TalonSRX> m_talonSRX2;
 	const std::shared_ptr<frc::RobotDrive> m_robotDrive;
-	ProfileGenerator m_leftProfile;
-	ProfileGenerator m_rightProfile;
+	MotionProfile m_leftProfile;
+	MotionProfile m_rightProfile;
 	Command* m_driveWithJoystick = nullptr;
 };
 
