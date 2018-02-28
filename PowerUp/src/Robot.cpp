@@ -121,7 +121,10 @@ void Robot::RobotInit() {
 //	gimbal->SetTilt(200);
 //	ultrasonicSensor.reset(new UltrasonicSensor(0, 0, 0));
 
-	CameraServer::GetInstance()->StartAutomaticCapture(0);
+	cs::UsbCamera camera0 = CameraServer::GetInstance()->StartAutomaticCapture(0);
+	if (!camera0.IsConnected()) {
+		CameraServer::GetInstance()->RemoveCamera(camera0.GetName());
+	}
 
 	frc::Scheduler::GetInstance()->AddCommand(new ShiftGearbox(ShiftGearbox::Gear::Low));
 
