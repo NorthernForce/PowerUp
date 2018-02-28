@@ -102,10 +102,8 @@ OI::OI() {
     WhenReleased(manipulatorJoystick, 1, new CloseGripper());
     WhileHeld(manipulatorJoystick, 2, new NudgeElevator(-3));
     WhileHeld(manipulatorJoystick, 3, new NudgeElevator(+3));
-    //TODO: add climb/brake command
-    //WhenPressed(manipulatorJoystick, 4, new RaiseElavator());
-    //TODO: add climb pos
-    //WhenPressed(manipulatorJoystick, 5, new PositionArm(PositionArm::Position::Climb));
+    WhenPressed(manipulatorJoystick, 4, new PositionArm(PositionArm::Position::ClimbSet));
+    WhenPressed(manipulatorJoystick, 5, new PositionArm(PositionArm::Position::ClimbExecute));
     WhenPressed(manipulatorJoystick, 6, new PositionArm(PositionArm::Position::Pickup));
     WhenPressed(manipulatorJoystick, 7, new PositionArm(PositionArm::Position::Switch));
     WhenPressed(manipulatorJoystick, 9, new PositionArm(PositionArm::Position::Retracted));
