@@ -146,7 +146,7 @@ void Robot::AutonomousInit() {
 	if (autonomousCommand != nullptr)
 	{
 		char message[200];
-		sprintf(message, "Running autonomous mode %s", autonomousCommand->GetName());
+		sprintf(message, "Running autonomous mode %s", autonomousCommand->GetName().c_str());
 		autonomousCommand->Start();
 		DriverStation::ReportError("No autonomous mode selected");
 	}
@@ -157,15 +157,7 @@ void Robot::AutonomousInit() {
 }
 
 void Robot::AutonomousPeriodic() {
-	//frc::Scheduler::GetInstance()->Run();
-	driveTrain->SetSafetyEnabled(false);
-	//while (IsAutonomous() && IsEnabled()) {
-		if (driveTrain->GetPosition() < 10000) {
-			driveTrain->ArcadeDrive(0.0, 1.0, true);
-			Wait(0.01);
-		}
-	//}
-
+	frc::Scheduler::GetInstance()->Run();
 }
 
 void Robot::TeleopInit() {
