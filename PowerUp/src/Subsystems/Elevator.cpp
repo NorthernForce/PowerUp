@@ -53,13 +53,13 @@ void Elevator::InitDefaultCommand()
 
 void Elevator::Periodic()
 {
-	m_masterTalon->Set(ControlMode::MotionMagic, m_setpoint);
 }
 
 void Elevator::SetPosition(int setpoint)
 {
 	ReleaseBrake();
 	m_setpoint = setpoint;
+	m_masterTalon->Set(ControlMode::MotionMagic, m_setpoint);
 }
 
 bool Elevator::AtSetpoint()
@@ -86,5 +86,7 @@ void Elevator::SetHomePosition()
 
 void Elevator::Nudge(int distance)
 {
+	ReleaseBrake();
 	m_setpoint = m_setpoint + distance;
+	m_masterTalon->Set(ControlMode::MotionMagic, m_setpoint);
 }
