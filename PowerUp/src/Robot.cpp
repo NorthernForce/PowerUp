@@ -286,17 +286,21 @@ void Robot::DisabledPeriodic() {
 }
 
 void Robot::AutonomousInit() {
-	autonomousCommand = chooser.GetSelected();
-	if (autonomousCommand != nullptr)
-		autonomousCommand->Start();
+	//autonomousCommand = chooser.GetSelected();
+	//if (autonomousCommand != nullptr)
+		//autonomousCommand->Start();
 }
 
 void Robot::AutonomousPeriodic() {
-	frc::Scheduler::GetInstance()->Run();
-	while (IsAutonomous() && IsEnabled() && (driveTrain->GetPosition() < 19000)) {
-		driveTrain->ArcadeDrive(0.0, 1.0, true);
-		Wait(0.01);
-	}
+	//frc::Scheduler::GetInstance()->Run();
+	driveTrain->SetSafetyEnabled(false);
+	//while (IsAutonomous() && IsEnabled()) {
+		if (driveTrain->GetPosition() < 10000) {
+			driveTrain->ArcadeDrive(0.0, 1.0, true);
+			Wait(0.01);
+		}
+	//}
+
 }
 
 void Robot::TeleopInit() {

@@ -25,6 +25,7 @@ public:
 	DriveTrain();
 	double GetSpeed();
 	int GetPosition();
+	void SetSpeed(double speed);
 	void InitDefaultCommand() override;
 	void Periodic() override;
 	void ArcadeDrive(double moveValue, double rotateValue, bool squaredInputsf);
