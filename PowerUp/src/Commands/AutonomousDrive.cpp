@@ -1,14 +1,9 @@
 #include <Commands/AutonomousDrive.h>
 #include "Utilities/LogFileName.h"
 
-AutonomousDrive::AutonomousDrive(const RobotNavigation& navigation,
-		const RobotNavigation::Position start,
-		const RobotNavigation::Position finish) :
-		frc::Command("Autonomous Drive"),
-		m_navigation(navigation),
-		m_start(start),
-		m_finish(finish),
-		m_path(m_navigation.CreatePath(m_start, m_finish))
+AutonomousDrive::AutonomousDrive(const RobotNavigation::RobotTrajectory& path) :
+	frc::Command("Autonomous Drive"),
+	m_path(path)
 {
 	Requires(Robot::driveTrain.get());
 }
@@ -53,7 +48,7 @@ void AutonomousDrive::WritePathToFile()
         t1 = t1 + p1.m_duration;
         t2 = t2 + p2.m_duration;
         os << t1 << "," << p1.m_position << "," << p1.m_velocity << "," <<
-        	  t2 << "," << p2.m_position << "," << p2.m_velocity;
+        	  t2 << "," << p2.m_position << "," << p2.m_velocity << "\n";
 
         if (p1.m_last && p2.m_last)
             break;

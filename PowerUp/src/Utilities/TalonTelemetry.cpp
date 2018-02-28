@@ -134,7 +134,7 @@ void TalonTelemetry::WriteTelemetry()
 void TalonTelemetry::OpenLogFile()
 {
 	const auto& name = m_talons.front()->GetName();
-	const auto path = GetLogFileName(name.c_str(), "Telemetry.csv");
+	const auto path = GetLogFileName(name.c_str(), "Telemetry");
 	m_logfile = std::make_unique<std::ofstream>(path);
 	(*m_logfile) << "Time Sec,Position,Velocity";
 	auto const talon = m_talons.front().get();

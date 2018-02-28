@@ -30,10 +30,14 @@ RobotNavigation::RobotTrajectory RobotNavigation::CreatePath(const Position from
 	{
 		return CreatePathFromStartToSwitch();
 	}
-
-	return CombineTrajectories({
-		CreateProfile(2, 0, 0, 0)
-	});
+	else if(from == Position::StartingPos && to == Position::ScoreOnScale)
+	{
+		return CreatePathFromStartToScale();
+	}
+	else
+	{
+		return {};
+	}
 }
 
 RobotNavigation::RobotTrajectory RobotNavigation::CreatePathFromStartToSwitch() const
@@ -45,6 +49,32 @@ RobotNavigation::RobotTrajectory RobotNavigation::CreatePathFromStartToSwitch() 
 		CreateProfile(0, 0, 0, vector.heading),
 		CreateProfile(vector.x, 0, 0, 0),
 	});
+}
+
+RobotNavigation::RobotTrajectory RobotNavigation::CreatePathFromStartToScale() const
+{
+//	const auto vector = m_fieldOrientation.GetScaleCoordinate() - m_fieldOrientation.GetStartingRobotCoordinate();
+	const auto firstTurn = 4.29;
+
+	if(m_fieldOrientation.GetStartingRobotPos() == m_fieldOrientation.GetScalePos())
+	{
+		const auto angle = m_fieldOrientation.GetScalePos() == ::Position::Left ? 26.46 : -26.46;
+		return CombineTrajectories({
+			CreateProfile(firstTurn, 0, DriveTrain::maxVelocityLowGear, 0),
+			CreateProfile(0.5, DriveTrain::maxVelocityLowGear, DriveTrain::maxVelocityLowGear, angle),
+			CreateProfile(0.5, DriveTrain::maxVelocityLowGear, DriveTrain::maxVelocityLowGear, -angle),
+			CreateProfile(0.5, DriveTrain::maxVelocityLowGear, 0, 0),
+		});
+	}
+	else
+	{
+		return CombineTrajectories({
+			CreateProfile(firstTurn, 0, DriveTrain::maxVelocityLowGear, 0),
+			CreateProfile(0.5, DriveTrain::maxVelocityLowGear, DriveTrain::maxVelocityLowGear, 20),
+			CreateProfile(0.5, DriveTrain::maxVelocityLowGear, DriveTrain::maxVelocityLowGear, -20),
+			CreateProfile(0.5, DriveTrain::maxVelocityLowGear, 0, 0),
+		});
+	}
 }
 
 /**
