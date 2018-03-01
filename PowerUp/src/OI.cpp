@@ -27,6 +27,7 @@
 #include "Commands/SetArmHomePosition.h"
 #include "Commands/SetElevatorHomePosition.h"
 #include "Commands/NudgeElevator.h"
+#include "Commands/NudgeArm.h"
 #include "Commands/OpenGripper.h"
 #include "Commands/CloseGripper.h"
 #include "Commands/ElevatorBrake.h"
@@ -85,13 +86,7 @@ OI::OI() {
     frc::SmartDashboard::PutData("**Reset elevator home position**", new SetElevatorHomePosition());
     //frc::SmartDashboard::PutNumber("elevation position from home", 0.0);
 
-
     // https://www.chiefdelphi.com/forums/showpost.php?p=1003245&postcount=8 for button assignments
-    //Driver controls
-
-    //TODO: change to right trigger (using axes)
-    WhileHeld(driverController, 1, new ShiftGearbox(ShiftGearbox::Gear::High));
-    WhenReleased(driverController, 1, new ShiftGearbox(ShiftGearbox::Gear::Low));
 
     //Manipulator controls
     WhileHeld(manipulatorJoystick, 1, new OpenGripper());
@@ -106,10 +101,10 @@ OI::OI() {
     WhenPressed(manipulatorJoystick, 10, new PositionArm(PositionArm::Position::ScaleRear));
     WhenPressed(manipulatorJoystick, 11, new PositionArm(PositionArm::Position::ScaleFront));
     //This is untested. If it doesn't work try putting it directly in teleop periodic. Values may need to be tuned.
-    if (manipulatorJoystick->GetAxis(frc::Joystick::AxisType::kYAxis) > 0) {
-    	new NudgeArm(+1);
-    } else if (manipulatorJoystick->GetAxis(frc::Joystick::AxisType::kYAxis) < 0) {
-    	new NudgeArm(-1);
+    if (manipulatorJoystick->GetY() > 0) {
+    	NudgeArm(+1);
+    } else if (manipulatorJoystick->GetY() < 0) {
+    	NudgeArm(-1);
     }
 }
 

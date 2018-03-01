@@ -50,10 +50,10 @@ void PositionArm::Execute()
 bool PositionArm::IsFinished()
 {
 	const bool armDone = m_arm->AtSetpoint();
-	if (armDone)
+	/*if (armDone)
 	{
 		m_arm->ApplyBrake();
-	}
+	}*/
 
 	const bool elevatorDone = m_elevator->AtSetpoint();
 	if (elevatorDone)
@@ -67,7 +67,7 @@ bool PositionArm::IsFinished()
 // Called once after isFinished returns true
 void PositionArm::End()
 {
-	m_arm->ApplyBrake();
+	//m_arm->ApplyBrake();
 	m_elevator->ApplyBrake();
 }
 
@@ -75,6 +75,6 @@ void PositionArm::End()
 // subsystems is scheduled to run
 void PositionArm::Interrupted()
 {
-	m_arm->ApplyBrake();
+	//m_arm->ApplyBrake();
 	m_elevator->ApplyBrake();
 }

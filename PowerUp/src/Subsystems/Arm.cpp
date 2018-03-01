@@ -29,13 +29,13 @@ Arm::Arm() :
     m_talonSRX->ConfigContinuousCurrentLimit(4, timeoutMs);
     m_talonSRX->EnableCurrentLimit(true);
 	SetHomePosition();
-	ApplyBrake();
+	//ApplyBrake();
 	m_telemetry.Start();
 }
 
 void Arm::InitDefaultCommand()
 {
-	ApplyBrake();
+	//ApplyBrake();
 }
 
 void Arm::Periodic()
@@ -52,7 +52,7 @@ void Arm::Periodic()
 
 void Arm::SetPosition(int setpoint, unsigned delay)
 {
-	ReleaseBrake();
+	//ReleaseBrake();
 	m_setpoint = setpoint;
 	m_delay = delay;
 }

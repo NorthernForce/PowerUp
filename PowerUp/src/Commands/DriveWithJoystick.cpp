@@ -25,16 +25,22 @@ void DriveWithJoystick::Execute()
 	double XVal, YVal;
 	double joystick_magic_shift = 0.3;
 	int magic_shift_point = 100; //denoted by encoder units seen in the last 100ms by default, 1024 units per encoder revolution
-	if (driverController->GetBumperPressed(frc::XboxController::JoystickHand::kRightHand))
-	{
+	if (driverController->GetBumperPressed(frc::XboxController::JoystickHand::kLeftHand)) {
 		isDriveInverted = !isDriveInverted;
 	}
 
-	YVal = ( isDriveInverted ? 1 : 1 ) * driverController->GetX(frc::XboxController::JoystickHand::kRightHand);
+	if (driverController->GetBumperPressed(frc::XboxController::JoystickHand::kRightHand)) {
+		ShiftGearbox(ShiftGearbox::Gear::Low);
+	}
+	if (driverController->GetBumperReleased(frc::XboxController::JoystickHand::kRightHand)) {
+		ShiftGearbox(ShiftGearbox::Gear::High);
+	}
+
+	YVal = (isDriveInverted ? -1 : 1 ) * driverController->GetX(frc::XboxController::JoystickHand::kRightHand);
 	XVal = driverController->GetY(frc::XboxController::JoystickHand::kLeftHand);
 	auto& driveTrain = Robot::driveTrain;
 	driveTrain->ArcadeDrive(YVal, XVal, true);
-
+//	broken autoshifting code
 //	if ( ( std::abs(XVal) > joystick_magic_shift ) && ( std::abs(driveTrain->GetSpeed()) > magic_shift_point ) )
 //	{
 //		if(driveTrainShifter->GetGear() == DriveTrainShifter::Gear::Low)

@@ -14,7 +14,7 @@ public:
 
 	void Execute() override
 	{
-		Robot::arm->Nudge(m_distance);
+		Robot::arm->NudgeArm(m_distance);
 	}
 
 	bool IsFinished() override
