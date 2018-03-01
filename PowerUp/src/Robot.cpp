@@ -104,9 +104,10 @@ void Robot::RobotInit() {
 	oi.reset(new OI());
 
     new AutonomousCommandBuilder("Autonomous Mode None", [](){ return nullptr; });
-    new AutonomousCommandBuilder("Autonomous Mode Left", [](){ return new AutonomousLeft(); });
-    new AutonomousCommandBuilder("Autonomous Mode Center", [](){ return new AutonomousCenter(); });
-    new AutonomousCommandBuilder("Autonomous Mode Right", [](){ return new AutonomousRight(); });
+//    new AutonomousCommandBuilder("Autonomous Mode Left", [](){ return new AutonomousLeft(); });
+//    new AutonomousCommandBuilder("Autonomous Mode Center", [](){ return new AutonomousCenter(); });
+    new AutonomousCommandBuilder("Autonomous Mode Go Forward", [](){ return new AutonomousLeft(); });
+    new AutonomousCommandBuilder("Autonomous Mode Wait 10 Seconds Then Go", [](){ return new AutonomousLeft(); });
 
 
 //	auto* const lw = LiveWindow::GetInstance();
@@ -143,17 +144,28 @@ void Robot::DisabledPeriodic() {
 }
 
 void Robot::AutonomousInit() {
+	Robot::driveTrain->SetSafetyEnabled(false);
 	autonomousCommand = AutonomousCommandBuilder::GetAutonomousCommand();
-	if (autonomousCommand != nullptr)
-	{
+//	if (autonomousCommand != nullptr)
+//	{
+//		char message[200];
+//		sprintf(message, "Running autonomous mode %s", autonomousCommand->GetName().c_str());
+//		autonomousCommand->Start();
+//		DriverStation::ReportError(message);
+//	}
+//	else
+//	{
+//		DriverStation::ReportError("No autonomous mode selected");
+//	}
+	if (autonomousCommand != nullptr) {
+//		if (autonomousCommand->GetName().compare("Autonomous Mode Wait 10 Seconds Then Go") == 0) {
+			Wait(10);
+//		}
+
 		char message[200];
 		sprintf(message, "Running autonomous mode %s", autonomousCommand->GetName().c_str());
 		autonomousCommand->Start();
 		DriverStation::ReportError(message);
-	}
-	else
-	{
-		DriverStation::ReportError("No autonomous mode selected");
 	}
 }
 
