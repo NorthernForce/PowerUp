@@ -18,6 +18,7 @@ Elevator::Elevator() :
 	m_masterTalon->ConfigNominalOutputForward(+0.0, timeoutMs);
 	m_masterTalon->ConfigNominalOutputReverse(-0.0, timeoutMs);
 	m_masterTalon->SelectProfileSlot(slotIdx, pidIdx);
+	//TODO: change these for more power
 	m_masterTalon->Config_kF(slotIdx, feedForwardGain, timeoutMs);
 	m_masterTalon->Config_kP(slotIdx, pGain, timeoutMs);
 	m_masterTalon->Config_kI(slotIdx, iGain, timeoutMs);
@@ -59,19 +60,12 @@ void Elevator::SetPosition(int setpoint)
 {
 	ReleaseBrake();
 	m_setpoint = setpoint;
-	/*if (m_setpoint == PositionArm::Position::ClimbExecute) {
-		m_masterTalon->ConfigPeakOutputReverse(-1, noTimeoutMs);
-		m_slaveTalon->ConfigPeakOutputReverse(-1, noTimeoutMs);
-	} else {
-		m_masterTalon->ConfigPeakOutputReverse(-0.4, timeoutMs);
-		m_slaveTalon->ConfigPeakOutputReverse(-0.4, timeoutMs);
-	}*/
 	m_masterTalon->Set(ControlMode::MotionMagic, m_setpoint);
 }
 
 void Elevator::SetMaxPower() {
+	m_masterTalon->ConfigPeakOutputForward(1, noTimeoutMs);
 	m_masterTalon->ConfigPeakOutputReverse(-1, noTimeoutMs);
-	m_slaveTalon->ConfigPeakOutputReverse(-1, noTimeoutMs);
 }
 
 bool Elevator::AtSetpoint()

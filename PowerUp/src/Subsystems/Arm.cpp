@@ -62,19 +62,25 @@ bool Arm::AtSetpoint()
 	return false;
 }
 
-void Arm::ApplyBrake()
+/*void Arm::ApplyBrake()
 {
 }
 
 void Arm::ReleaseBrake()
 {
-}
+}*/
 
 void Arm::SetHomePosition()
 {
 	DriverStation::ReportWarning("Arm home position reset");
 	m_setpoint = 0;
 	m_talonSRX->SetSelectedSensorPosition(m_setpoint, pidIdx, timeoutMs);
+}
+
+void Arm::NudgeArm(int distance)
+{
+	m_setpoint = m_setpoint + distance;
+	m_talonSRX->Set(ControlMode::MotionMagic, m_setpoint);
 }
 
 void Arm::InitSendable(SendableBuilder& builder)

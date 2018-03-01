@@ -4,11 +4,6 @@
 #include "Utilities/TalonTelemetry.h"
 #include "WPILib.h"
 
-/**
- *
- *
- * @author ExampleAuthor
- */
 class Arm: public frc::Subsystem
 {
 public:
@@ -17,9 +12,10 @@ public:
 	void Periodic() override;
 	void SetPosition(int setpoint, unsigned delay);
 	bool AtSetpoint();
-	void ApplyBrake();
-	void ReleaseBrake();
+	//void ApplyBrake();
+	//void ReleaseBrake();
 	void SetHomePosition();
+	void NudgeArm(int distance);
 	void InitSendable(SendableBuilder& builder) override;
 
 private:

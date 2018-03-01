@@ -16,7 +16,6 @@
 
 class OI {
 private:
-	std::shared_ptr<frc::Joystick> driverJoystick;
 	std::shared_ptr<frc::Joystick> manipulatorJoystick;
 	std::shared_ptr<frc::XboxController> driverController;
 public:
