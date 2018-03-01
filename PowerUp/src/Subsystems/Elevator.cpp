@@ -82,6 +82,7 @@ void Elevator::SetHomePosition()
 	DriverStation::ReportWarning("Elevator home position reset");
 	m_setpoint = 0;
 	m_masterTalon->SetSelectedSensorPosition(m_setpoint, pidIdx, timeoutMs);
+	m_masterTalon->Set(ControlMode::MotionMagic, m_setpoint);
 }
 
 void Elevator::Nudge(int distance)

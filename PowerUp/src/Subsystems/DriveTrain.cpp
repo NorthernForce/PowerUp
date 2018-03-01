@@ -86,6 +86,11 @@ bool DriveTrain::IsMotionProfileFinished() const
 
 void DriveTrain::ConfigureTalon(WPI_TalonSRX& talon)
 {
+	double pValue = 200;
+	if(talon.GetInverted())
+	{
+		pValue = -pValue;
+	}
 	talon.ConfigSelectedFeedbackSensor(QuadEncoder, pidIdx, timeoutMs);
 	talon.ClearMotionProfileHasUnderrun(timeoutMs);
 	talon.ClearMotionProfileTrajectories();
@@ -94,9 +99,5 @@ void DriveTrain::ConfigureTalon(WPI_TalonSRX& talon)
 	talon.SetNeutralMode(NeutralMode::Coast);
 	talon.SelectProfileSlot(slotIdx, pidIdx);
 	talon.Config_kF(slotIdx, feedForwardGain, timeoutMs);
-	talon.Config_kP(slotIdx, 0, timeoutMs);
-//	talon.Config_kP(slotIdx, pGain, timeoutMs);
-//	talon.Config_kI(slotIdx, iGain, timeoutMs);
-//	talon.ConfigMaxIntegralAccumulator(slotIdx, iLimit, timeoutMs);
-//	talon.Config_kD(slotIdx, dGain, timeoutMs);
+	talon.Config_kP(slotIdx, pValue, timeoutMs);
 }
