@@ -34,6 +34,9 @@ void PositionArm::Initialize()
 	if (setpoints != m_setpoints.end())
 	{
 		m_arm->SetPosition(setpoints->second.m_armSetpoint, setpoints->second.m_armDelay);
+		if (m_position == PositionArm::Position::ClimbExecute) {
+			m_elevator->SetMaxPower();
+		}
 		m_elevator->SetPosition(setpoints->second.m_elevatorSetpoint);
 	}
 }
