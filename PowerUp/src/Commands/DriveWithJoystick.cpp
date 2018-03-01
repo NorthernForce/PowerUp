@@ -35,24 +35,24 @@ void DriveWithJoystick::Execute()
 	auto& driveTrain = Robot::driveTrain;
 	driveTrain->ArcadeDrive(YVal, XVal, true);
 
-	if ( ( std::abs(XVal) > joystick_magic_shift ) && ( std::abs(driveTrain->GetSpeed()) > magic_shift_point ) )
-	{
-		if(driveTrainShifter->GetGear() == DriveTrainShifter::Gear::Low)
-		{
-			DriverStation::ReportError("Auto shift from low to high");
-			frc::Scheduler::GetInstance()->AddCommand(new ShiftGearbox(ShiftGearbox::Gear::High));
-		}
-	}
-	else if ( ( std::abs(XVal) < joystick_magic_shift * 0.8 ) || ( std::abs(driveTrain->GetSpeed()) < ( magic_shift_point * 0.8 ) ) )
-	{
-		if(driveTrainShifter->GetGear() == DriveTrainShifter::Gear::High)
-		{
-			DriverStation::ReportError("Auto shift from high to low");
-//			if ( std::abs(YVal) < (joystick_magic_shift * 0.8 ) )
-//				DriverStation::ReportError("less than joystick hysteresis");
-			frc::Scheduler::GetInstance()->AddCommand(new ShiftGearbox(ShiftGearbox::Gear::Low));
-		}
-	}
+//	if ( ( std::abs(XVal) > joystick_magic_shift ) && ( std::abs(driveTrain->GetSpeed()) > magic_shift_point ) )
+//	{
+//		if(driveTrainShifter->GetGear() == DriveTrainShifter::Gear::Low)
+//		{
+//			DriverStation::ReportError("Auto shift from low to high");
+//			frc::Scheduler::GetInstance()->AddCommand(new ShiftGearbox(ShiftGearbox::Gear::High));
+//		}
+//	}
+//	else if ( ( std::abs(XVal) < joystick_magic_shift * 0.8 ) || ( std::abs(driveTrain->GetSpeed()) < ( magic_shift_point * 0.8 ) ) )
+//	{
+//		if(driveTrainShifter->GetGear() == DriveTrainShifter::Gear::High)
+//		{
+//			DriverStation::ReportError("Auto shift from high to low");
+////			if ( std::abs(YVal) < (joystick_magic_shift * 0.8 ) )
+////				DriverStation::ReportError("less than joystick hysteresis");
+//			frc::Scheduler::GetInstance()->AddCommand(new ShiftGearbox(ShiftGearbox::Gear::Low));
+//		}
+//	}
 }
 
 // Make this return true when this Command no longer needs to run execute()

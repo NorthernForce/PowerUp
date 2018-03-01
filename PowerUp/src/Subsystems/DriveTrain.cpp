@@ -86,7 +86,7 @@ bool DriveTrain::IsMotionProfileFinished() const
 
 void DriveTrain::ConfigureTalon(WPI_TalonSRX& talon)
 {
-	double pValue = 200;
+	double pValue = 0.2;
 	if(talon.GetInverted())
 	{
 		pValue = -pValue;
