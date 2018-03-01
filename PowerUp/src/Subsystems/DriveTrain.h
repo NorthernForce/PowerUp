@@ -42,8 +42,8 @@ public:
 	constexpr static double nativeUnitsPerMeterLowGear = 1 / wheelCircumference * lowGgearEncoderRatio * sensorUnitsPerRev; // Approx. 19249
 
 	constexpr static double maxRPS = 5330 / 60; // Max speed of the CIM
-	constexpr static double maxEfficency = 0.7;
-	constexpr static double maxVelocityLowGear = maxRPS / lowGgearRatio * wheelCircumference * maxEfficency; // Approx. 1.32 Meters per second
+	constexpr static double maxEfficency = 0.8; // measured max efficiency is 0.87
+	constexpr static double maxVelocityLowGear = maxRPS / lowGgearRatio * wheelCircumference * maxEfficency; // Approx. 1.51 Meters per second
 	constexpr static double maxNativeUnitsPer100ms = maxVelocityLowGear * nativeUnitsPerMeterLowGear / 10;
 	constexpr static double feedForwardGain = 1023 / maxNativeUnitsPer100ms;
 
