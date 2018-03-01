@@ -59,14 +59,19 @@ void Elevator::SetPosition(int setpoint)
 {
 	ReleaseBrake();
 	m_setpoint = setpoint;
-	if (m_position == PositionArm::Position::ClimbExecute) {
+	/*if (m_setpoint == PositionArm::Position::ClimbExecute) {
 		m_masterTalon->ConfigPeakOutputReverse(-1, noTimeoutMs);
 		m_slaveTalon->ConfigPeakOutputReverse(-1, noTimeoutMs);
 	} else {
 		m_masterTalon->ConfigPeakOutputReverse(-0.4, timeoutMs);
 		m_slaveTalon->ConfigPeakOutputReverse(-0.4, timeoutMs);
-	}
+	}*/
 	m_masterTalon->Set(ControlMode::MotionMagic, m_setpoint);
+}
+
+void Elevator::SetMaxPower() {
+	m_masterTalon->ConfigPeakOutputReverse(-1, noTimeoutMs);
+	m_slaveTalon->ConfigPeakOutputReverse(-1, noTimeoutMs);
 }
 
 bool Elevator::AtSetpoint()
