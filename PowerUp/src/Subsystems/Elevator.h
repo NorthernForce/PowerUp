@@ -16,12 +16,13 @@ public:
 	void InitDefaultCommand() override;
 	void Periodic() override;
 	void SetPosition(int);
-	void SetMaxPower();
 	bool AtSetpoint();
 	void ApplyBrake();
 	void ReleaseBrake();
 	void SetHomePosition();
 	void Nudge(int distance);
+	void BeginClimb();
+	void EndClimb();
 
 private:
 	enum class State {

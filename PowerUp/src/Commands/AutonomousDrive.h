@@ -8,7 +8,7 @@
 class AutonomousDrive: public frc::Command
 {
 public:
-	AutonomousDrive(const RobotNavigation::RobotTrajectory& path);
+	AutonomousDrive(const RobotNavigation& navigation, const RobotNavigation::Position start, const RobotNavigation::Position finish);
 
 	void Initialize() override;
 	bool IsFinished() override;
@@ -17,6 +17,9 @@ public:
 	void WritePathToFile();
 
 private:
+	const RobotNavigation m_navigation;
+	const RobotNavigation::Position m_start;
+	const RobotNavigation::Position m_finish;
 	RobotNavigation::RobotTrajectory m_path;
 };
 

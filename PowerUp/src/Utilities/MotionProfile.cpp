@@ -66,7 +66,10 @@ void MotionProfile::PeriodicTask()
 		point.zeroPos = m_state == State::Starting;
 		point.timeDur = pt.m_duration;
 		m_talon.PushMotionProfileTrajectory(point);
-		m_state = point.isLastPoint ? State::Running : State::Filling;
+		if (point.isLastPoint)
+		{
+			m_state = State::Running;
+		}
 	}
 
 	// Keep the talon fed

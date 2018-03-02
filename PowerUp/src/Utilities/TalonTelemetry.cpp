@@ -58,7 +58,7 @@ void TalonTelemetry::RecordTelemetry()
 			auto sensorCollection = talon->GetSensorCollection();
 			telemetry.m_sensorPosition = sensorCollection.GetQuadraturePosition();
 			telemetry.m_sensorVelocity = sensorCollection.GetQuadratureVelocity();
-			if(m_pidIdx != -1)
+			if(m_pidIdx != -1 && (talon->GetControlMode() == ControlMode::MotionMagic || talon->GetControlMode() == ControlMode::MotionProfile ))
 			{
 				telemetry.m_closedLoopTarget = talon->GetClosedLoopTarget(m_pidIdx);
 				telemetry.m_closedLoopError = talon->GetClosedLoopError(m_pidIdx);
@@ -134,7 +134,7 @@ void TalonTelemetry::WriteTelemetry()
 void TalonTelemetry::OpenLogFile()
 {
 	const auto& name = m_talons.front()->GetName();
-	const auto path = GetLogFileName(name.c_str(), "Telemetry");
+	const auto path = GetLogFileName(name.c_str(), "Telemetry.csv");
 	m_logfile = std::make_unique<std::ofstream>(path);
 	(*m_logfile) << "Time Sec,Position,Velocity";
 	auto const talon = m_talons.front().get();

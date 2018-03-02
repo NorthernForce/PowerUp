@@ -38,6 +38,10 @@ private:
 	int driveDirection;
 	int driveStick;
 	bool isDriveInverted;
+	bool isComboStep1Complete;
+	bool isComboStep2Complete;
+	bool isComboStep3Complete;
+	bool isComboStep4Complete;
 };
 
 #endif

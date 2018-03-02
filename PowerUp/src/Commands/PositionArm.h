@@ -21,8 +21,7 @@ public:
 		Switch,		// Positioned to score on switch
 		ScaleFront,	// Positioned to score on scale in front of the robot
 		ScaleRear,	// Positioned to score on scale behind robot
-		ClimbSet, //Positioned to climb
-		ClimbExecute // Climbs the robot up
+		Climb       // Positioned to climb
 	};
 
 	PositionArm(Position setpoint);

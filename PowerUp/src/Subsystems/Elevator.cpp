@@ -18,7 +18,6 @@ Elevator::Elevator() :
 	m_masterTalon->ConfigNominalOutputForward(+0.0, timeoutMs);
 	m_masterTalon->ConfigNominalOutputReverse(-0.0, timeoutMs);
 	m_masterTalon->SelectProfileSlot(slotIdx, pidIdx);
-	//TODO: change these for more power
 	m_masterTalon->Config_kF(slotIdx, feedForwardGain, timeoutMs);
 	m_masterTalon->Config_kP(slotIdx, pGain, timeoutMs);
 	m_masterTalon->Config_kI(slotIdx, iGain, timeoutMs);
@@ -54,18 +53,13 @@ void Elevator::InitDefaultCommand()
 
 void Elevator::Periodic()
 {
+	m_masterTalon->Set(ControlMode::MotionMagic, m_setpoint);
 }
 
 void Elevator::SetPosition(int setpoint)
 {
 	ReleaseBrake();
 	m_setpoint = setpoint;
-	m_masterTalon->Set(ControlMode::MotionMagic, m_setpoint);
-}
-
-void Elevator::SetMaxPower() {
-	m_masterTalon->ConfigPeakOutputForward(1, noTimeoutMs);
-	m_masterTalon->ConfigPeakOutputReverse(-1, noTimeoutMs);
 }
 
 bool Elevator::AtSetpoint()
@@ -88,12 +82,21 @@ void Elevator::SetHomePosition()
 	DriverStation::ReportWarning("Elevator home position reset");
 	m_setpoint = 0;
 	m_masterTalon->SetSelectedSensorPosition(m_setpoint, pidIdx, timeoutMs);
-	m_masterTalon->Set(ControlMode::MotionMagic, m_setpoint);
 }
 
 void Elevator::Nudge(int distance)
 {
-	ReleaseBrake();
 	m_setpoint = m_setpoint + distance;
-	m_masterTalon->Set(ControlMode::MotionMagic, m_setpoint);
+}
+
+void Elevator::BeginClimb() {
+	ReleaseBrake();
+	m_masterTalon->ConfigPeakOutputReverse(-1, noTimeoutMs);
+	m_slaveTalon->ConfigPeakOutputReverse(-1, noTimeoutMs);
+	m_masterTalon->Set(-1);
+}
+void Elevator::EndClimb() {
+	m_masterTalon->ConfigPeakOutputReverse(-0.40, timeoutMs);
+	m_slaveTalon->ConfigPeakOutputReverse(-0.40, timeoutMs);
+	ApplyBrake();
 }
