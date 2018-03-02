@@ -62,6 +62,7 @@ void DriveTrain::SetSafetyEnabled(bool enabled)
 
 void DriveTrain::InitializeMotionProfile(const ProfileGenerator& left, const ProfileGenerator& right)
 {
+	Robot::driveTrainShifter->Shift(DriveTrainShifter::Gear::Low);
 	m_leftTelemetry.Start();
 	m_rightTelemetry.Start();
 	DriverStation::ReportError("InitializeMotionProfile start");

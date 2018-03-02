@@ -28,11 +28,6 @@ public:
 		return Robot::driveTrainShifter->IsShiftDone();
 	}
 
-	void End() override
-	{
-		Robot::driveTrainShifter->FinishShift();
-	}
-
 private:
 	Gear m_gear;
 	char m_logMessage[32];
