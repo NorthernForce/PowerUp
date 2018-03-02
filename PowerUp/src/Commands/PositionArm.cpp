@@ -10,12 +10,12 @@ struct PositionArm::PositionSetpoints
 bool hasClimbed = false;
 const std::map<PositionArm::Position, PositionArm::PositionSetpoints> PositionArm::m_setpoints = {
 		{ PositionArm::Position::Retracted, { 0,    0,     75 } },
-		{ PositionArm::Position::Pickup,    { 420,  -2500, 0 } },
+		{ PositionArm::Position::Pickup,    { 420,  -3600, 0 } },
 		{ PositionArm::Position::Switch,    { 500,  +700,  0 } },
 		{ PositionArm::Position::ScaleFront,{ 1600, +1500, 0 } },
 		{ PositionArm::Position::ScaleRear, { 2600, +1500, 0 } },
 		{ PositionArm::Position::ClimbSet, { 2500, +2700, 0 } },
-		{ PositionArm::Position::ClimbExecute, { 2500, 0, 0 } },
+		{ PositionArm::Position::ClimbExecute, { 2500, -1500, 0 } },
 };
 
 PositionArm::PositionArm(Position pos) :
@@ -56,12 +56,12 @@ bool PositionArm::IsFinished()
 	}*/
 
 	const bool elevatorDone = m_elevator->AtSetpoint();
-	if (elevatorDone)
+	/*if (elevatorDone)
 	{
 		m_elevator->ApplyBrake();
-	}
-
-	return false && armDone && elevatorDone;
+	}*/
+	return (armDone && elevatorDone);
+	//return false && armDone && elevatorDone;
 }
 
 // Called once after isFinished returns true
