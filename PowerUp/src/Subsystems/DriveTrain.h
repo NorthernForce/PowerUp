@@ -33,7 +33,9 @@ public:
 	void SetSafetyEnabled(bool enabled);
 	void InitializeMotionProfile(const ProfileGenerator& left, const ProfileGenerator& right);
 	void TerminateMotionProfile();
+	void SetOutput(double speed);
 	bool IsMotionProfileFinished() const;
+
 
 	constexpr static double wheelCircumference = 4 * 0.0254 * M_PI; // Meters
 	constexpr static double lowGgearRatio = 15.0 / 1.0;

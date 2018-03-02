@@ -11,10 +11,10 @@ Elevator::Elevator() :
 	m_slaveTalon(RobotMap::elevatorTalonSRX7),
 	m_telemetry({ m_masterTalon, m_slaveTalon}, pidIdx, std::chrono::milliseconds(100))
 {
-	m_masterTalon->ConfigPeakOutputForward(+0.90, timeoutMs);
-	m_masterTalon->ConfigPeakOutputReverse(-0.50, timeoutMs);
-	m_slaveTalon->ConfigPeakOutputForward(+0.90, timeoutMs);
-	m_slaveTalon->ConfigPeakOutputReverse(-0.50, timeoutMs);
+	m_masterTalon->ConfigPeakOutputForward(+0.72, timeoutMs);
+	m_masterTalon->ConfigPeakOutputReverse(-0.40, timeoutMs);
+	m_slaveTalon->ConfigPeakOutputForward(+0.72, timeoutMs);
+	m_slaveTalon->ConfigPeakOutputReverse(-0.40, timeoutMs);
 	m_masterTalon->ConfigNominalOutputForward(+0.0, timeoutMs);
 	m_masterTalon->ConfigNominalOutputReverse(-0.0, timeoutMs);
 	m_masterTalon->SelectProfileSlot(slotIdx, pidIdx);

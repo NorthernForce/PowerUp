@@ -76,14 +76,18 @@ frc::CommandGroup* GenerateAutonomousSequence()
 	const FieldOrientation orientation(message);
 	const RobotNavigation navigator(orientation);
 
-	if (orientation.GetStartingRobotPos() == Position::Left && orientation.GetStartingRobotPos() == orientation.GetSwitchPos()) {
-//		sequence->AddSequential(new)
+	if ((orientation.GetStartingRobotPos() == Position::Left && orientation.GetStartingRobotPos() == orientation.GetSwitchPos()) || (orientation.GetStartingRobotPos() == Position::Center && Position::Right == orientation.GetSwitchPos())) {
+		sequence->AddSequential(new CloseGripper());
+		sequence->AddSequential(new PositionArm(PositionArm::Position::Switch));
+		sequence->AddParallel(new AutonomousDrive(RobotNavigation::CreateProfile(.25, 0, 0, 0)));
+		sequence->AddSequential(new OpenGripper());
+		return sequence;
 	}
 
 	if (true || !orientation.IsInitialized())
 	{
 		sequence->AddSequential(new CloseGripper());
-		sequence->AddSequential(new AutonomousDrive(RobotNavigation::CreateProfile(2, 0, 0, 0)));
+		sequence->AddSequential(new AutonomousDrive(RobotNavigation::CreateProfile(.25, 0, 0, 0)));
 		return sequence;
 	}
 

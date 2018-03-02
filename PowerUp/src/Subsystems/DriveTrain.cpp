@@ -38,7 +38,6 @@ double DriveTrain::GetSpeed()
 }
 
 int DriveTrain::GetPosition() {
-	printf("srx1: %i srx2: %i\n", m_talonSRX1->GetSensorCollection().GetQuadraturePosition(), m_talonSRX2->GetSensorCollection().GetQuadraturePosition());
 	return m_talonSRX1->GetSensorCollection().GetQuadraturePosition();
 }
 
@@ -101,4 +100,11 @@ void DriveTrain::ConfigureTalon(WPI_TalonSRX& talon)
 	talon.SelectProfileSlot(slotIdx, pidIdx);
 	talon.Config_kF(slotIdx, feedForwardGain, timeoutMs);
 	talon.Config_kP(slotIdx, pValue, timeoutMs);
+}
+
+void DriveTrain::SetOutput(double speed) {
+	m_talonSRX1->ConfigPeakOutputForward(speed, timeoutMs);
+	m_talonSRX1->ConfigPeakOutputReverse(speed, timeoutMs);
+	m_talonSRX2->ConfigPeakOutputForward(speed, timeoutMs);
+	m_talonSRX2->ConfigPeakOutputReverse(speed, timeoutMs);
 }

@@ -102,7 +102,7 @@ void Robot::RobotInit() {
     elevator.reset(new Elevator());
     arm.reset(new Arm());
 	oi.reset(new OI());
-
+	driveTrainShifter->Shift(DriveTrainShifter::Gear::Low);
     new AutonomousCommandBuilder("Autonomous Mode None", [](){ return nullptr; });
     new AutonomousCommandBuilder("Autonomous Mode Left", [](){ return new AutonomousLeft(); });
     new AutonomousCommandBuilder("Autonomous Mode Right", [](){ return new AutonomousRight(); });
