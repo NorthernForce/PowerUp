@@ -75,6 +75,11 @@ frc::CommandGroup* GenerateAutonomousSequence()
 
 	const FieldOrientation orientation(message);
 	const RobotNavigation navigator(orientation);
+
+	if (orientation.GetStartingRobotPos() == Position::Left && orientation.GetStartingRobotPos() == orientation.GetSwitchPos()) {
+//		sequence->AddSequential(new)
+	}
+
 	if (true || !orientation.IsInitialized())
 	{
 		sequence->AddSequential(new CloseGripper());
