@@ -19,12 +19,11 @@ public:
 	void Shift(Gear gear);
 	Gear GetGear();
 	bool IsShiftDone() const;
-	void FinishShift();
 
 private:
 	void BeginShift(const DoubleSolenoid::Value value);
 
-	std::shared_ptr<frc::DoubleSolenoid> shifter;
+	std::shared_ptr<frc::DoubleSolenoid> m_shifter;
 	Gear m_currentGear;
 	TalonTelemetry m_left;
 	TalonTelemetry m_right;

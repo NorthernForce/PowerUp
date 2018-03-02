@@ -6,7 +6,7 @@
 Arm::Arm() :
 	frc::Subsystem("Arm"),
 	m_talonSRX(RobotMap::armTalonSRX8),
-	m_telemetry(m_talonSRX, pidIdx, std::chrono::milliseconds(200)),
+	m_telemetry(m_talonSRX, pidIdx, std::chrono::milliseconds(250)),
 	m_delay(0)
 {
 	m_talonSRX->ConfigPeakOutputForward(+0.40, timeoutMs);
@@ -45,6 +45,7 @@ void Arm::Periodic()
 	else
 	{
 		m_talonSRX->Set(ControlMode::MotionMagic, m_setpoint);
+		m_delay = 10;
 	}
 }
 
