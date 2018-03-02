@@ -29,13 +29,11 @@ Arm::Arm() :
     m_talonSRX->ConfigContinuousCurrentLimit(4, timeoutMs);
     m_talonSRX->EnableCurrentLimit(true);
 	SetHomePosition();
-	//ApplyBrake();
 	m_telemetry.Start();
 }
 
 void Arm::InitDefaultCommand()
 {
-	//ApplyBrake();
 }
 
 void Arm::Periodic()
@@ -52,9 +50,10 @@ void Arm::Periodic()
 
 void Arm::SetPosition(int setpoint, unsigned delay)
 {
-	//ReleaseBrake();
 	m_setpoint = setpoint;
 	m_delay = delay;
+	m_talonSRX->ConfigPeakOutputForward(+0.40, 0);
+	m_talonSRX->ConfigPeakOutputReverse(-0.40, 0);
 }
 
 bool Arm::AtSetpoint()
@@ -62,19 +61,12 @@ bool Arm::AtSetpoint()
 	return false;
 }
 
-/*void Arm::ApplyBrake()
-{
-}
-
-void Arm::ReleaseBrake()
-{
-}*/
-
 void Arm::SetHomePosition()
 {
 	DriverStation::ReportWarning("Arm home position reset");
 	m_setpoint = 0;
 	m_talonSRX->SetSelectedSensorPosition(m_setpoint, pidIdx, timeoutMs);
+	m_talonSRX->Set(ControlMode::MotionMagic, m_setpoint);
 }
 
 void Arm::NudgeArm(int distance)
@@ -91,4 +83,10 @@ void Arm::InitSendable(SendableBuilder& builder)
 		auto data = m_talonSRX->GetSensorCollection();
 		nt::NetworkTableEntry(pos).SetDouble(data.GetQuadraturePosition());
 	});
+}
+
+void Arm::ReducePowerForClimb()
+{
+	m_talonSRX->ConfigPeakOutputForward(+0.10, timeoutMs);
+	m_talonSRX->ConfigPeakOutputReverse(-0.10, timeoutMs);
 }

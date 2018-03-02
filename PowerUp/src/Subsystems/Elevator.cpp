@@ -5,16 +5,12 @@
 
 Elevator::Elevator() :
 	frc::Subsystem("Elevator"),
-	m_elevatorState(State::Braked),
 	m_elevatorBrake(RobotMap::elevatorBrake),
 	m_masterTalon(RobotMap::elevatorTalonSRX9),
 	m_slaveTalon(RobotMap::elevatorTalonSRX7),
 	m_telemetry({ m_masterTalon, m_slaveTalon}, pidIdx, std::chrono::milliseconds(100))
 {
-	m_masterTalon->ConfigPeakOutputForward(+0.90, timeoutMs);
-	m_masterTalon->ConfigPeakOutputReverse(-0.50, timeoutMs);
-	m_slaveTalon->ConfigPeakOutputForward(+0.90, timeoutMs);
-	m_slaveTalon->ConfigPeakOutputReverse(-0.50, timeoutMs);
+	ConfigurePower(+0.9, -0.5, timeoutMs);
 	m_masterTalon->ConfigNominalOutputForward(+0.0, timeoutMs);
 	m_masterTalon->ConfigNominalOutputReverse(-0.0, timeoutMs);
 	m_masterTalon->SelectProfileSlot(slotIdx, pidIdx);
@@ -58,14 +54,11 @@ void Elevator::Periodic()
 
 void Elevator::SetPosition(int setpoint)
 {
+	ConfigurePower(+0.9, -0.5, noTimeoutMs);
+
 	ReleaseBrake();
 	m_setpoint = setpoint;
 	m_masterTalon->Set(ControlMode::MotionMagic, m_setpoint);
-}
-
-void Elevator::SetMaxPower() {
-	m_masterTalon->ConfigPeakOutputForward(1, noTimeoutMs);
-	m_masterTalon->ConfigPeakOutputReverse(-1, noTimeoutMs);
 }
 
 bool Elevator::AtSetpoint()
@@ -75,12 +68,10 @@ bool Elevator::AtSetpoint()
 
 void Elevator::ApplyBrake() {
 	m_elevatorBrake->Set(false);
-	m_elevatorState = State::Braked;
 }
 
 void Elevator::ReleaseBrake() {
 	m_elevatorBrake->Set(true);
-	m_elevatorState = State::Moving;
 }
 
 void Elevator::SetHomePosition()
@@ -96,4 +87,33 @@ void Elevator::Nudge(int distance)
 	ReleaseBrake();
 	m_setpoint = m_setpoint + distance;
 	m_masterTalon->Set(ControlMode::MotionMagic, m_setpoint);
+}
+
+void Elevator::BeginClimb()
+{
+	ReleaseBrake();
+	ConfigurePower(+1, -1, noTimeoutMs);
+	m_masterTalon->ConfigPeakCurrentLimit(30, timeoutMs);
+    m_masterTalon->ConfigContinuousCurrentLimit(20, timeoutMs);
+    m_slaveTalon->ConfigPeakCurrentLimit(30, timeoutMs);
+    m_slaveTalon->ConfigContinuousCurrentLimit(20, timeoutMs);
+	m_masterTalon->Set(-1);
+}
+
+void Elevator::EndClimb()
+{
+	m_masterTalon->Set(0);
+	ApplyBrake();
+	m_masterTalon->ConfigPeakCurrentLimit(10, timeoutMs);
+    m_masterTalon->ConfigContinuousCurrentLimit(8, timeoutMs);
+    m_slaveTalon->ConfigPeakCurrentLimit(10, timeoutMs);
+    m_slaveTalon->ConfigContinuousCurrentLimit(8, timeoutMs);
+}
+
+void Elevator::ConfigurePower(double forward, double reverse, int timeout)
+{
+	m_masterTalon->ConfigPeakOutputForward(forward, timeout);
+	m_masterTalon->ConfigPeakOutputReverse(reverse, timeout);
+	m_slaveTalon->ConfigPeakOutputForward(forward, timeout);
+	m_slaveTalon->ConfigPeakOutputReverse(reverse, timeout);
 }

@@ -139,6 +139,8 @@ void TalonTelemetry::OpenLogFile()
 	(*m_logfile) << "Time Sec,Position,Velocity";
 	auto const talon = m_talons.front().get();
 	talon->SetStatusFramePeriod(StatusFrameEnhanced::Status_3_Quadrature, m_period.count(), 0);
+	talon->SetStatusFramePeriod(StatusFrameEnhanced::Status_2_Feedback0, m_period.count(), 0);
+	talon->SetStatusFramePeriod(StatusFrameEnhanced::Status_13_Base_PIDF0, m_period.count(), 0);
 	if(m_pidIdx != -1)
 	{
 		(*m_logfile) << ",Target,Error,Integral Accumulator";

@@ -6,7 +6,7 @@
 
 class ElevatorClimb : public frc::Command {
 public:
-	ElevatorClimb() override;
+	ElevatorClimb();
 	void Initialize() override;
 	void Execute() override;
 	bool IsFinished() override;

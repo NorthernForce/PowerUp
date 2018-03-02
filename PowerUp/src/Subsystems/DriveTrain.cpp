@@ -11,8 +11,8 @@ DriveTrain::DriveTrain() :
 		m_robotDrive(RobotMap::driveTrainRobotDrive),
 		m_leftProfile(*m_talonSRX1, pidIdx),
 		m_rightProfile(*m_talonSRX2, pidIdx),
-		m_leftTelemetry(m_talonSRX1, pidIdx, std::chrono::milliseconds(20)),
-		m_rightTelemetry(m_talonSRX2, pidIdx, std::chrono::milliseconds(20))
+		m_leftTelemetry(m_talonSRX1, pidIdx, std::chrono::milliseconds(10)),
+		m_rightTelemetry(m_talonSRX2, pidIdx, std::chrono::milliseconds(10))
 {
 	ConfigureTalon(*m_talonSRX1);
 	ConfigureTalon(*m_talonSRX2);
@@ -86,11 +86,9 @@ bool DriveTrain::IsMotionProfileFinished() const
 
 void DriveTrain::ConfigureTalon(WPI_TalonSRX& talon)
 {
-	double pValue = 0.2;
-	if(talon.GetInverted())
-	{
-		pValue = -pValue;
-	}
+	const double pValue = 1;
+	const double iValue = 0.02;
+	const double iLimit = 0.1E6;
 	talon.ConfigSelectedFeedbackSensor(QuadEncoder, pidIdx, timeoutMs);
 	talon.ClearMotionProfileHasUnderrun(timeoutMs);
 	talon.ClearMotionProfileTrajectories();
@@ -100,6 +98,9 @@ void DriveTrain::ConfigureTalon(WPI_TalonSRX& talon)
 	talon.SelectProfileSlot(slotIdx, pidIdx);
 	talon.Config_kF(slotIdx, feedForwardGain, timeoutMs);
 	talon.Config_kP(slotIdx, pValue, timeoutMs);
+	talon.Config_kI(slotIdx, iValue, timeoutMs);
+	talon.ConfigMaxIntegralAccumulator(slotIdx, iLimit, timeoutMs);
+	talon.SetSelectedSensorPosition(0, pidIdx, timeoutMs);
 }
 
 void DriveTrain::SetOutput(double speed) {

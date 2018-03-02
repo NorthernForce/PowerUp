@@ -16,20 +16,17 @@ public:
 	void InitDefaultCommand() override;
 	void Periodic() override;
 	void SetPosition(int);
-	void SetMaxPower();
 	bool AtSetpoint();
 	void ApplyBrake();
 	void ReleaseBrake();
 	void SetHomePosition();
 	void Nudge(int distance);
+	void BeginClimb();
+	void EndClimb();
 
 private:
-	enum class State {
-		Braked,
-		Moving
-	};
+	void ConfigurePower(double forward, double reverse, int timeout);
 
-	State m_elevatorState;
 	const std::shared_ptr<frc::Solenoid> m_elevatorBrake;
 	const std::shared_ptr<WPI_TalonSRX> m_masterTalon;
 	const std::shared_ptr<WPI_TalonSRX> m_slaveTalon;

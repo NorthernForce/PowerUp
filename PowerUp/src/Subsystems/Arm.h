@@ -12,11 +12,10 @@ public:
 	void Periodic() override;
 	void SetPosition(int setpoint, unsigned delay);
 	bool AtSetpoint();
-	//void ApplyBrake();
-	//void ReleaseBrake();
 	void SetHomePosition();
 	void NudgeArm(int distance);
 	void InitSendable(SendableBuilder& builder) override;
+	void ReducePowerForClimb();
 
 private:
 	const std::shared_ptr<WPI_TalonSRX> m_talonSRX;

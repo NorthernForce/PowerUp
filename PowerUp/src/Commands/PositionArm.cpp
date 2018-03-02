@@ -15,7 +15,6 @@ const std::map<PositionArm::Position, PositionArm::PositionSetpoints> PositionAr
 		{ PositionArm::Position::ScaleFront,{ 1600, +1500, 0 } },
 		{ PositionArm::Position::ScaleRear, { 2600, +1500, 0 } },
 		{ PositionArm::Position::ClimbSet, { 2500, +2700, 0 } },
-		{ PositionArm::Position::ClimbExecute, { 2500, -1500, 0 } },
 };
 
 PositionArm::PositionArm(Position pos) :
@@ -34,9 +33,6 @@ void PositionArm::Initialize()
 	if (setpoints != m_setpoints.end())
 	{
 		m_arm->SetPosition(setpoints->second.m_armSetpoint, setpoints->second.m_armDelay);
-		if (m_position == PositionArm::Position::ClimbExecute) {
-			m_elevator->SetMaxPower();
-		}
 		m_elevator->SetPosition(setpoints->second.m_elevatorSetpoint);
 	}
 }

@@ -1,19 +1,18 @@
-#include <Commands/RobotClimb.h>
+#include "Commands/RobotClimb.h"
 
 ElevatorClimb::ElevatorClimb() {
 	Requires(Robot::elevator.get());
-	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(Robot::chassis.get());
+	Requires(Robot::arm.get());
 }
 
 // Called just before this Command runs the first time
 void ElevatorClimb::Initialize() {
-
+	Robot::elevator->BeginClimb();
+	Robot::arm->ReducePowerForClimb();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void ElevatorClimb::Execute()  {
-	Robot::elevator->BeginClimb();
 }
 
 // Make this return true when this Command no longer needs to run execute()
