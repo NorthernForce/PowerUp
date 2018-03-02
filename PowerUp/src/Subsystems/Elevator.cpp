@@ -10,7 +10,7 @@ Elevator::Elevator() :
 	m_slaveTalon(RobotMap::elevatorTalonSRX7),
 	m_telemetry({ m_masterTalon, m_slaveTalon}, pidIdx, std::chrono::milliseconds(100))
 {
-	ConfigurePower(+0.9, -0.5, timeoutMs);
+	ConfigurePower(+0.9, -0.8, timeoutMs);
 	m_masterTalon->ConfigNominalOutputForward(+0.0, timeoutMs);
 	m_masterTalon->ConfigNominalOutputReverse(-0.0, timeoutMs);
 	m_masterTalon->SelectProfileSlot(slotIdx, pidIdx);
@@ -26,15 +26,15 @@ Elevator::Elevator() :
 
 	m_masterTalon->SetName("Elevator", "Elevator");
 	m_masterTalon->SetNeutralMode(NeutralMode::Brake);
-	m_masterTalon->ConfigPeakCurrentLimit(10, timeoutMs);
+	m_masterTalon->ConfigPeakCurrentLimit(15, timeoutMs);
     m_masterTalon->ConfigPeakCurrentDuration(100, timeoutMs);
-    m_masterTalon->ConfigContinuousCurrentLimit(8, timeoutMs);
+    m_masterTalon->ConfigContinuousCurrentLimit(12, timeoutMs);
     m_masterTalon->EnableCurrentLimit(true);
     m_slaveTalon->SetName("Elevator", "Elevator slave");
     m_slaveTalon->SetNeutralMode(NeutralMode::Brake);
-    m_slaveTalon->ConfigPeakCurrentLimit(10, timeoutMs);
+    m_slaveTalon->ConfigPeakCurrentLimit(15, timeoutMs);
     m_slaveTalon->ConfigPeakCurrentDuration(100, timeoutMs);
-    m_slaveTalon->ConfigContinuousCurrentLimit(8, timeoutMs);
+    m_slaveTalon->ConfigContinuousCurrentLimit(12, timeoutMs);
     m_slaveTalon->EnableCurrentLimit(true);
     m_slaveTalon->Follow(*m_masterTalon);
 

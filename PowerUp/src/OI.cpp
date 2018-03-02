@@ -89,8 +89,8 @@ OI::OI() {
     // https://www.chiefdelphi.com/forums/showpost.php?p=1003245&postcount=8 for button assignments
 
     //Driver controls
-    WhenPressed(driverJoystick, 6, new ShiftGearbox(ShiftGearbox::Gear::High));
-    WhenReleased(driverJoystick, 6, new ShiftGearbox(ShiftGearbox::Gear::Low));
+    WhenPressed(driverController, 6, new ShiftGearbox(ShiftGearbox::Gear::High));
+    WhenReleased(driverController, 6, new ShiftGearbox(ShiftGearbox::Gear::Low));
 
     //Manipulator controls
     WhileHeld(manipulatorJoystick, 1, new OpenGripper());
@@ -116,10 +116,6 @@ OI::OI() {
 
 const std::shared_ptr<frc::Joystick>& OI::getManipulatorJoystick() {
 	return manipulatorJoystick;
-}
-
-const std::shared_ptr<frc::Joystick>& OI::getDriverJoystick() {
-	return driverJoystick;
 }
 
 const std::shared_ptr<frc::XboxController>& OI::getDriverController() {
