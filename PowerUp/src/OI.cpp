@@ -94,7 +94,8 @@ OI::OI() {
     WhileHeld(manipulatorJoystick, 2, new NudgeElevator(-3));
     WhileHeld(manipulatorJoystick, 3, new NudgeElevator(+3));
     WhenPressed(manipulatorJoystick, 4, new PositionArm(PositionArm::Position::ClimbSet));
-    WhenPressed(manipulatorJoystick, 5, new PositionArm(PositionArm::Position::ClimbExecute));
+    //WhenPressed(manipulatorJoystick, 5, new PositionArm(PositionArm::Position::ClimbExecute));
+    WhileHeld(manipulatorJoystick, 5, new ElevatorClimb());
     WhenPressed(manipulatorJoystick, 6, new PositionArm(PositionArm::Position::Pickup));
     WhenPressed(manipulatorJoystick, 7, new PositionArm(PositionArm::Position::Switch));
     WhenPressed(manipulatorJoystick, 9, new PositionArm(PositionArm::Position::Retracted));
