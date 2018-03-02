@@ -13,6 +13,7 @@
 #define DRIVETRAIN_H
 #include "Commands/Subsystem.h"
 #include "Utilities/MotionProfile.h"
+#include "Utilities/TalonTelemetry.h"
 #include "WPILib.h"
 
 /**
@@ -25,13 +26,16 @@ public:
 	DriveTrain();
 	double GetSpeed();
 	int GetPosition();
+	void SetSpeed(double speed);
 	void InitDefaultCommand() override;
 	void Periodic() override;
 	void ArcadeDrive(double moveValue, double rotateValue, bool squaredInputsf);
 	void SetSafetyEnabled(bool enabled);
 	void InitializeMotionProfile(const ProfileGenerator& left, const ProfileGenerator& right);
 	void TerminateMotionProfile();
+	void SetOutput(double speed);
 	bool IsMotionProfileFinished() const;
+
 
 	constexpr static double wheelCircumference = 4 * 0.0254 * M_PI; // Meters
 	constexpr static double lowGgearRatio = 15.0 / 1.0;
@@ -40,8 +44,8 @@ public:
 	constexpr static double nativeUnitsPerMeterLowGear = 1 / wheelCircumference * lowGgearEncoderRatio * sensorUnitsPerRev; // Approx. 19249
 
 	constexpr static double maxRPS = 5330 / 60; // Max speed of the CIM
-	constexpr static double maxEfficency = 0.8;
-	constexpr static double maxVelocityLowGear = maxRPS / lowGgearRatio * wheelCircumference * maxEfficency; // Approx. 1.512 Meters per second
+	constexpr static double maxEfficency = 0.8; // measured max efficiency is 0.87
+	constexpr static double maxVelocityLowGear = maxRPS / lowGgearRatio * wheelCircumference * maxEfficency; // Approx. 1.51 Meters per second
 	constexpr static double maxNativeUnitsPer100ms = maxVelocityLowGear * nativeUnitsPerMeterLowGear / 10;
 	constexpr static double feedForwardGain = 1023 / maxNativeUnitsPer100ms;
 
@@ -57,6 +61,8 @@ private:
 	const std::shared_ptr<frc::RobotDrive> m_robotDrive;
 	MotionProfile m_leftProfile;
 	MotionProfile m_rightProfile;
+	TalonTelemetry m_leftTelemetry;
+	TalonTelemetry m_rightTelemetry;
 	Command* m_driveWithJoystick = nullptr;
 };
 

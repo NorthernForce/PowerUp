@@ -30,10 +30,12 @@ public:
 	RobotNavigation(const RobotNavigation&) = default;
 
 	RobotTrajectory CreatePath(const Position from, const Position to) const;
+	static RobotTrajectory CreateProfile(const double distance, const double startVelocity, const double finalVelocity, const double angleDegrees);
+
 private:
 	RobotTrajectory CreatePathFromStartToSwitch() const;
+	RobotTrajectory CreatePathFromStartToScale() const;
 
-	static RobotTrajectory CreateProfile(const double distance, const double startVelocity, const double finalVelocity, const double angleDegrees);
 
 	constexpr static double wheelTrack = 0.64;
 	constexpr static double maxVelocity = DriveTrain::maxVelocityLowGear;

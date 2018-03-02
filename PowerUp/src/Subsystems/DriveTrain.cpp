@@ -10,7 +10,9 @@ DriveTrain::DriveTrain() :
 		m_talonSRX2(RobotMap::driveTrainTalonSRX2),
 		m_robotDrive(RobotMap::driveTrainRobotDrive),
 		m_leftProfile(*m_talonSRX1, pidIdx),
-		m_rightProfile(*m_talonSRX2, pidIdx)
+		m_rightProfile(*m_talonSRX2, pidIdx),
+		m_leftTelemetry(m_talonSRX1, pidIdx, std::chrono::milliseconds(20)),
+		m_rightTelemetry(m_talonSRX2, pidIdx, std::chrono::milliseconds(20))
 {
 	ConfigureTalon(*m_talonSRX1);
 	ConfigureTalon(*m_talonSRX2);
@@ -39,6 +41,11 @@ int DriveTrain::GetPosition() {
 	return m_talonSRX1->GetSensorCollection().GetQuadraturePosition();
 }
 
+void DriveTrain::SetSpeed(double speed) {
+	m_talonSRX1->Set(speed);
+	m_talonSRX2->Set(speed);
+}
+
 void DriveTrain::Periodic()
 {
 }
@@ -55,6 +62,8 @@ void DriveTrain::SetSafetyEnabled(bool enabled)
 
 void DriveTrain::InitializeMotionProfile(const ProfileGenerator& left, const ProfileGenerator& right)
 {
+	m_leftTelemetry.Start();
+	m_rightTelemetry.Start();
 	DriverStation::ReportError("InitializeMotionProfile start");
 	SetSafetyEnabled(false);
 	m_leftProfile.Start(left, nativeUnitsPerMeterLowGear);
@@ -66,6 +75,8 @@ void DriveTrain::TerminateMotionProfile()
 {
 	m_leftProfile.Cancel();
 	m_rightProfile.Cancel();
+	m_leftTelemetry.Stop();
+	m_rightTelemetry.Stop();
 }
 
 bool DriveTrain::IsMotionProfileFinished() const
@@ -75,6 +86,11 @@ bool DriveTrain::IsMotionProfileFinished() const
 
 void DriveTrain::ConfigureTalon(WPI_TalonSRX& talon)
 {
+	double pValue = 0.2;
+	if(talon.GetInverted())
+	{
+		pValue = -pValue;
+	}
 	talon.ConfigSelectedFeedbackSensor(QuadEncoder, pidIdx, timeoutMs);
 	talon.ClearMotionProfileHasUnderrun(timeoutMs);
 	talon.ClearMotionProfileTrajectories();
@@ -83,8 +99,12 @@ void DriveTrain::ConfigureTalon(WPI_TalonSRX& talon)
 	talon.SetNeutralMode(NeutralMode::Coast);
 	talon.SelectProfileSlot(slotIdx, pidIdx);
 	talon.Config_kF(slotIdx, feedForwardGain, timeoutMs);
-//	talon.Config_kP(slotIdx, pGain, timeoutMs);
-//	talon.Config_kI(slotIdx, iGain, timeoutMs);
-//	talon.ConfigMaxIntegralAccumulator(slotIdx, iLimit, timeoutMs);
-//	talon.Config_kD(slotIdx, dGain, timeoutMs);
+	talon.Config_kP(slotIdx, pValue, timeoutMs);
+}
+
+void DriveTrain::SetOutput(double speed) {
+	m_talonSRX1->ConfigPeakOutputForward(speed, timeoutMs);
+	m_talonSRX1->ConfigPeakOutputReverse(speed, timeoutMs);
+	m_talonSRX2->ConfigPeakOutputForward(speed, timeoutMs);
+	m_talonSRX2->ConfigPeakOutputReverse(speed, timeoutMs);
 }
