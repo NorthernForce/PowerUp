@@ -25,16 +25,18 @@ void DriveWithJoystick::Execute()
 	double XVal, YVal;
 	double joystick_magic_shift = 0.3;
 	int magic_shift_point = 100; //denoted by encoder units seen in the last 100ms by default, 1024 units per encoder revolution
-	if (driverController->GetBumperPressed(frc::XboxController::JoystickHand::kLeftHand)) {
+	/*if (driverController->GetBumperPressed(frc::XboxController::JoystickHand::kLeftHand)) {
 		isDriveInverted = !isDriveInverted;
 	}
 
 	if (driverController->GetBumperPressed(frc::XboxController::JoystickHand::kRightHand)) {
-		ShiftGearbox(ShiftGearbox::Gear::Low);
+		ShiftGearbox(ShiftGearbox::Gear::High);
+		printf("tried to shift to high");
 	}
 	if (driverController->GetBumperReleased(frc::XboxController::JoystickHand::kRightHand)) {
-		ShiftGearbox(ShiftGearbox::Gear::High);
-	}
+		printf("trie to shift to low");
+		ShiftGearbox(ShiftGearbox::Gear::Low);
+	}*/
 
 	YVal = (isDriveInverted ? -1 : 1 ) * driverController->GetX(frc::XboxController::JoystickHand::kRightHand);
 	XVal = driverController->GetY(frc::XboxController::JoystickHand::kLeftHand);

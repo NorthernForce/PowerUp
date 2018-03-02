@@ -38,6 +38,7 @@ double DriveTrain::GetSpeed()
 }
 
 int DriveTrain::GetPosition() {
+	printf("srx1: %i srx2: %i\n", m_talonSRX1->GetSensorCollection().GetQuadraturePosition(), m_talonSRX2->GetSensorCollection().GetQuadraturePosition());
 	return m_talonSRX1->GetSensorCollection().GetQuadraturePosition();
 }
 
