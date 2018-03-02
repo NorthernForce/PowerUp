@@ -87,7 +87,7 @@ frc::CommandGroup* GenerateAutonomousSequence()
 	if (true || !orientation.IsInitialized())
 	{
 		sequence->AddSequential(new CloseGripper());
-		sequence->AddSequential(new AutonomousDrive(RobotNavigation::CreateProfile(.25, 0, 0, 0)));
+		sequence->AddSequential(new AutonomousDrive(RobotNavigation::CreateProfile(2, 0, 0, 0)));
 		return sequence;
 	}
 
