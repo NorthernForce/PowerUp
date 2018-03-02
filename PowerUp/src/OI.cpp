@@ -34,17 +34,17 @@
 
 namespace
 {
-	void WhenPressed(const std::shared_ptr<frc::Joystick>& joystick, int button, frc::Command* command) {
+	void WhenPressed(const std::shared_ptr<frc::GenericHID>& joystick, int button, frc::Command* command) {
 		auto joystickButton = new JoystickButton(joystick.get(), button);
 		joystickButton->WhenPressed(command);
 	}
 
-	void WhenReleased(const std::shared_ptr<frc::Joystick>& joystick, int button, frc::Command* command) {
+	void WhenReleased(const std::shared_ptr<frc::GenericHID>& joystick, int button, frc::Command* command) {
 		auto joystickButton = new JoystickButton(joystick.get(), button);
 		joystickButton->WhenReleased(command);
 	}
 
-	void WhileHeld(const std::shared_ptr<frc::Joystick>& joystick, int button, frc::Command* command) {
+	void WhileHeld(const std::shared_ptr<frc::GenericHID>& joystick, int button, frc::Command* command) {
 		auto joystickButton = new JoystickButton(joystick.get(), button);
 		joystickButton->WhileHeld(command);
 	}
@@ -88,13 +88,16 @@ OI::OI() {
 
     // https://www.chiefdelphi.com/forums/showpost.php?p=1003245&postcount=8 for button assignments
 
+    //Driver controls
+    WhenPressed(driverJoystick, 6, new ShiftGearbox(ShiftGearbox::Gear::High));
+    WhenReleased(driverJoystick, 6, new ShiftGearbox(ShiftGearbox::Gear::Low));
+
     //Manipulator controls
     WhileHeld(manipulatorJoystick, 1, new OpenGripper());
     WhenReleased(manipulatorJoystick, 1, new CloseGripper());
     WhileHeld(manipulatorJoystick, 2, new NudgeElevator(-3));
     WhileHeld(manipulatorJoystick, 3, new NudgeElevator(+3));
     WhenPressed(manipulatorJoystick, 4, new PositionArm(PositionArm::Position::ClimbSet));
-    //WhenPressed(manipulatorJoystick, 5, new PositionArm(PositionArm::Position::ClimbExecute));
     WhileHeld(manipulatorJoystick, 5, new ElevatorClimb());
     WhenPressed(manipulatorJoystick, 6, new PositionArm(PositionArm::Position::Pickup));
     WhenPressed(manipulatorJoystick, 7, new PositionArm(PositionArm::Position::Switch));
@@ -113,6 +116,10 @@ OI::OI() {
 
 const std::shared_ptr<frc::Joystick>& OI::getManipulatorJoystick() {
 	return manipulatorJoystick;
+}
+
+const std::shared_ptr<frc::Joystick>& OI::getDriverJoystick() {
+	return driverJoystick;
 }
 
 const std::shared_ptr<frc::XboxController>& OI::getDriverController() {
