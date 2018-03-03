@@ -43,7 +43,6 @@ Elevator::Elevator() :
 
 void Elevator::InitDefaultCommand()
 {
-	ApplyBrake();
 }
 
 void Elevator::Periodic()

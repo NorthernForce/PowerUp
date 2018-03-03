@@ -45,9 +45,7 @@ bool PositionArm::IsFinished()
 }
 
 void PositionArm::End() {
-	m_elevator->ApplyBrake();
 }
 
 void PositionArm::Interrupted() {
-	m_elevator->ApplyBrake();
-}
+ }

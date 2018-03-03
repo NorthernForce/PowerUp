@@ -60,5 +60,5 @@ void RobotMap::init() {
     driveTrainTalonSRX6->SetInverted(false);
     driveTrainTalonSRX6->SetNeutralMode(NeutralMode::Coast);
     compressor->SetClosedLoopControl(true);
-    ahrs = std::make_unique<AHRS>(frc::SPI::Port::kMXP);
+    ahrs = std::make_shared<AHRS>(frc::SPI::Port::kMXP);
 }
