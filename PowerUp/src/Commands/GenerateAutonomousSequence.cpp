@@ -1,5 +1,6 @@
 #include "GenerateAutonomousSequence.h"
 #include "AutonomousDrive.h"
+#include "AutonomousDriveForward.h"
 #include "OpenGripper.h"
 #include "CloseGripper.h"
 #include "RunIntake.h"
@@ -76,15 +77,16 @@ frc::CommandGroup* GenerateAutonomousSequence()
 	const FieldOrientation orientation(message);
 	const RobotNavigation navigator(orientation);
 
+	sequence->AddSequential(new CloseGripper());
+	sequence->AddSequential(new PositionArm(PositionArm::Position::Switch));
+//	sequence->AddSequential(new AutonomousDrive(RobotNavigation::CreateProfile(2.56, 0, 0, 0)));
+	sequence->AddSequential(new AutonomousDriveForward(4000, -0.8));
 	if ((orientation.GetStartingRobotPos() == Position::Left && orientation.GetStartingRobotPos() == orientation.GetSwitchPos()) || (orientation.GetStartingRobotPos() == Position::Center && Position::Right == orientation.GetSwitchPos())) {
-		sequence->AddSequential(new CloseGripper());
-		sequence->AddSequential(new PositionArm(PositionArm::Position::Switch));
-		sequence->AddParallel(new AutonomousDrive(RobotNavigation::CreateProfile(.25, 0, 0, 0)));
 		sequence->AddSequential(new OpenGripper());
-		return sequence;
 	}
+	return sequence;
 
-	if (true || !orientation.IsInitialized())
+	/*if (true || !orientation.IsInitialized())
 	{
 		sequence->AddSequential(new CloseGripper());
 		sequence->AddSequential(new AutonomousDrive(RobotNavigation::CreateProfile(2, 0, 0, 0)));
@@ -104,5 +106,5 @@ frc::CommandGroup* GenerateAutonomousSequence()
 		sequence->AddSequential(ScoreCube(navigator, RobotNavigation::Position::PickupCubeAtSwitch, RobotNavigation::Position::ScoreOnScale, PositionArm::Position::ScaleRear));
 	}
 
-	return sequence;
+	return sequence;*/
 }

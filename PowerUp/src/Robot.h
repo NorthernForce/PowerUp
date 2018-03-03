@@ -21,6 +21,8 @@
 #include "Commands/AutonomousLeft.h"
 #include "Commands/AutonomousCenter.h"
 #include "Commands/AutonomousRight.h"
+
+#include "Commands/AutonomousDriveForward.h"
 //#include "Commands/ShiftGearBox.h"
 #include "Subsystems/DriveTrain.h"
 #include "Subsystems/DriveTrainShifter.h"

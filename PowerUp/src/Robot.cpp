@@ -103,10 +103,10 @@ void Robot::RobotInit() {
     arm.reset(new Arm());
 	oi.reset(new OI());
 	driveTrainShifter->Shift(DriveTrainShifter::Gear::Low);
-    new AutonomousCommandBuilder("Autonomous Mode None", [](){ return nullptr; });
-    new AutonomousCommandBuilder("Autonomous Mode Left", [](){ return new AutonomousLeft(); });
-    new AutonomousCommandBuilder("Autonomous Mode Right", [](){ return new AutonomousRight(); });
-    new AutonomousCommandBuilder("Autonomous Mode Center", [](){ return new AutonomousCenter(); });
+//    new AutonomousCommandBuilder("Autonomous Mode None", [](){ return nullptr; });
+//    new AutonomousCommandBuilder("Autonomous Mode Left", [](){ return new AutonomousLeft(); });
+//    new AutonomousCommandBuilder("Autonomous Mode Right", [](){ return new AutonomousRight(); });
+//    new AutonomousCommandBuilder("Autonomous Mode Center", [](){ return new AutonomousCenter(); });
 //    new AutonomousCommandBuilder("Autonomous Mode Go Forward", [](){ return new AutonomousLeft(); });
 //    new AutonomousCommandBuilder("Autonomous Mode Wait 10 Seconds Then Go", [](){ return new AutonomousLeft(); });
 
@@ -146,19 +146,41 @@ void Robot::DisabledPeriodic() {
 }
 
 void Robot::AutonomousInit() {
-	Robot::driveTrain->SetSafetyEnabled(false);
-	autonomousCommand = AutonomousCommandBuilder::GetAutonomousCommand();
-	if (autonomousCommand != nullptr)
-	{
-		char message[200];
-		sprintf(message, "Running autonomous mode %s", autonomousCommand->GetName().c_str());
-		autonomousCommand->Start();
-		DriverStation::ReportError(message);
-	}
-	else
-	{
-		DriverStation::ReportError("No autonomous mode selected");
-	}
+	driveTrain->SetSafetyEnabled(false);
+//	autonomousCommand = AutonomousCommandBuilder::GetAutonomousCommand();
+//	if (autonomousCommand != nullptr)
+//	{
+//		char message[200];
+//		sprintf(message, "Running autonomous mode %s", autonomousCommand->GetName().c_str());
+//		autonomousCommand->Start();
+//		DriverStation::ReportError(message);
+//	}
+//	else
+//	{
+//		DriverStation::ReportError("No autonomous mode selected");
+//	}
+
+// --- THIS SHOULD DO SWITCH STUFF ---
+//	autonomousCommand = new AutonomousLeft();
+////	autonomousCommand = new AutonomousCenter();
+////	autonomousCommand = new AutonomousRight();
+//
+////	Wait(10);
+//
+//	char message[200];
+//	sprintf(message, "Running autonomous mode YAY");
+//	autonomousCommand->Start();
+//	DriverStation::ReportError(message);
+// ---   ----------------------    ---
+
+// --- THIS ONLY DRIVES FORWARD ---
+	autonomousCommand = new AutonomousDriveForward(4000, -0.8);
+
+	char message[200];
+	sprintf(message, "Running autonomous mode FORWARD ONWARD FORTH GOOOOO!");
+	autonomousCommand->Start();
+	DriverStation::ReportError(message);
+// ---   --------------------   ---
 }
 
 void Robot::AutonomousPeriodic() {
