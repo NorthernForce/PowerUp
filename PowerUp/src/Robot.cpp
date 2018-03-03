@@ -160,27 +160,16 @@ void Robot::AutonomousInit() {
 //		DriverStation::ReportError("No autonomous mode selected");
 //	}
 
-// --- THIS SHOULD DO SWITCH STUFF ---
-//	autonomousCommand = new AutonomousLeft();
-////	autonomousCommand = new AutonomousCenter();
-////	autonomousCommand = new AutonomousRight();
-//
-////	Wait(10);
-//
-//	char message[200];
-//	sprintf(message, "Running autonomous mode YAY");
-//	autonomousCommand->Start();
-//	DriverStation::ReportError(message);
-// ---   ----------------------    ---
+	autonomousCommand = new AutonomousLeft();
+//	autonomousCommand = new AutonomousCenter();
+//	autonomousCommand = new AutonomousRight();
 
-// --- THIS ONLY DRIVES FORWARD ---
-	autonomousCommand = new AutonomousDriveForward(4000, -0.8);
+//	Wait(10);
 
 	char message[200];
-	sprintf(message, "Running autonomous mode FORWARD ONWARD FORTH GOOOOO!");
+	sprintf(message, "Running autonomous mode YAY");
 	autonomousCommand->Start();
 	DriverStation::ReportError(message);
-// ---   --------------------   ---
 }
 
 void Robot::AutonomousPeriodic() {
