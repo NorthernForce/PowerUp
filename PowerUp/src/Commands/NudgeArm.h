@@ -4,21 +4,17 @@
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
 
-class NudgeArm : public frc::Command
-{
+class NudgeArm : public frc::Command {
 public:
-	NudgeArm(int distance) : m_distance(distance)
-	{
+	NudgeArm(int distance) : m_distance(distance) {
 		Requires(Robot::arm.get());
 	}
 
-	void Execute() override
-	{
+	void Execute() override {
 		Robot::arm->NudgeArm(m_distance);
 	}
 
-	bool IsFinished() override
-	{
+	bool IsFinished() override {
 		return false;
 	}
 

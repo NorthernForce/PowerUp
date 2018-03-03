@@ -1,7 +1,6 @@
 #include "PositionArm.h"
 
-struct PositionArm::PositionSetpoints
-{
+struct PositionArm::PositionSetpoints {
 	int m_armSetpoint;
 	int m_elevatorSetpoint;
 	unsigned m_armDelay;
@@ -26,51 +25,29 @@ PositionArm::PositionArm(Position pos) :
 	Requires(m_elevator.get());
 }
 
-// Called just before this Command runs the first time
-void PositionArm::Initialize()
-{
+void PositionArm::Initialize() {
 	const auto setpoints = m_setpoints.find(m_position);
-	if (setpoints != m_setpoints.end())
-	{
+	if (setpoints != m_setpoints.end()) {
 		m_arm->SetPosition(setpoints->second.m_armSetpoint, setpoints->second.m_armDelay);
 		m_elevator->SetPosition(setpoints->second.m_elevatorSetpoint);
 	}
 }
 
-// Called repeatedly when this Command is scheduled to run
-void PositionArm::Execute()
-{
+void PositionArm::Execute() {
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool PositionArm::IsFinished()
 {
 	const bool armDone = m_arm->AtSetpoint();
-	/*if (armDone)
-	{
-		m_arm->ApplyBrake();
-	}*/
-
 	const bool elevatorDone = m_elevator->AtSetpoint();
-	/*if (elevatorDone)
-	{
-		m_elevator->ApplyBrake();
-	}*/
 	return (armDone && elevatorDone);
-	//return false && armDone && elevatorDone;
 }
 
-// Called once after isFinished returns true
-void PositionArm::End()
-{
-	//m_arm->ApplyBrake();
+void PositionArm::End() {
 	m_elevator->ApplyBrake();
 }
 
-// Called when another command which requires one or more of the same
-// subsystems is scheduled to run
-void PositionArm::Interrupted()
-{
-	//m_arm->ApplyBrake();
+void PositionArm::Interrupted() {
 	m_elevator->ApplyBrake();
 }

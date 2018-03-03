@@ -8,14 +8,12 @@ Gripper::Gripper() :
 {
 }
 
-void Gripper::SetOpen()
-{
+void Gripper::SetOpen() {
 	m_gripperSolenoid->Set(true);
 	m_gripperState = State::Open;
 }
 
-void Gripper::SetClosed()
-{
+void Gripper::SetClosed() {
 	m_gripperSolenoid->Set(false);
 	m_gripperState = State::Closed;
 }

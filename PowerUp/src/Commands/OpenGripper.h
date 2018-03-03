@@ -4,20 +4,14 @@
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
 
-/**
- *
- *
- */
 class OpenGripper: public frc::TimedCommand {
 public:
 
-	OpenGripper() : frc::TimedCommand(timeToOpen)
-	{
+	OpenGripper() : frc::TimedCommand(timeToOpen) {
 		Requires(Robot::gripper.get());
 	}
 
-	void Initialize() override
-	{
+	void Initialize() override {
 		Robot::gripper->SetOpen();
 	}
 

@@ -4,20 +4,14 @@
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
 
-/**
- *
- *
- */
 class CloseGripper: public frc::TimedCommand {
 public:
 
-	CloseGripper() : frc::TimedCommand(timeToClose)
-	{
+	CloseGripper() : frc::TimedCommand(timeToClose) {
 		Requires(Robot::gripper.get());
 	}
 
-	void Initialize() override
-	{
+	void Initialize() override {
 		Robot::gripper->SetClosed();
 	}
 

@@ -17,14 +17,12 @@ public:
 		strcpy(m_logMessage, m_gear == Gear::Low ? "Shift to low" : "Shift to high");
 	}
 
-	void Initialize() override
-	{
+	void Initialize() override {
 		DriverStation::ReportWarning(m_logMessage);
 		Robot::driveTrainShifter->Shift(m_gear);
 	}
 
-	bool IsFinished() override
-	{
+	bool IsFinished() override {
 		return Robot::driveTrainShifter->IsShiftDone();
 	}
 

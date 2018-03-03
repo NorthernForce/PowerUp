@@ -12,21 +12,18 @@ public:
 		BrakeOff
 	};
 
-	ElevatorBreak(State state) : m_state(state)
-	{
+	ElevatorBreak(State state) : m_state(state) {
 		Requires(Robot::elevator.get());
 	}
 
-	void Execute() override
-	{
+	void Execute() override {
 		if(m_state == State::BrakeOn)
 			Robot::elevator->ApplyBrake();
 		else
 			Robot::elevator->ReleaseBrake();
 	}
 
-	bool IsFinished() override
-	{
+	bool IsFinished() override {
 		return true;
 	}
 

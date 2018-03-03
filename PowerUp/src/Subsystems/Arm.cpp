@@ -32,52 +32,42 @@ Arm::Arm() :
 	m_telemetry.Start();
 }
 
-void Arm::InitDefaultCommand()
-{
+void Arm::InitDefaultCommand() {
 }
 
-void Arm::Periodic()
-{
-	if(m_delay > 0)
-	{
+void Arm::Periodic() {
+	if (m_delay > 0) {
 		m_delay -= 1;
-	}
-	else
-	{
+	} else {
 		m_talonSRX->Set(ControlMode::MotionMagic, m_setpoint);
 		m_delay = 10;
 	}
 }
 
-void Arm::SetPosition(int setpoint, unsigned delay)
-{
+void Arm::SetPosition(int setpoint, unsigned delay) {
 	m_setpoint = setpoint;
 	m_delay = delay;
 	m_talonSRX->ConfigPeakOutputForward(+0.40, 0);
 	m_talonSRX->ConfigPeakOutputReverse(-0.40, 0);
 }
 
-bool Arm::AtSetpoint()
-{
+bool Arm::AtSetpoint() {
 	return m_talonSRX->GetClosedLoopError(pidIdx) < 50;
 }
 
-void Arm::SetHomePosition()
-{
+void Arm::SetHomePosition() {
 	DriverStation::ReportWarning("Arm home position reset");
 	m_setpoint = 0;
 	m_talonSRX->SetSelectedSensorPosition(m_setpoint, pidIdx, timeoutMs);
 	m_talonSRX->Set(ControlMode::MotionMagic, m_setpoint);
 }
 
-void Arm::NudgeArm(int distance)
-{
+void Arm::NudgeArm(int distance) {
 	m_setpoint = m_setpoint + distance;
 	m_talonSRX->Set(ControlMode::MotionMagic, m_setpoint);
 }
 
-void Arm::InitSendable(SendableBuilder& builder)
-{
+void Arm::InitSendable(SendableBuilder& builder) {
 	Subsystem::InitSendable(builder);
 	auto pos = builder.GetEntry("Encoder position").GetHandle();
 	builder.SetUpdateTable([=]() {
@@ -86,8 +76,7 @@ void Arm::InitSendable(SendableBuilder& builder)
 	});
 }
 
-void Arm::ReducePowerForClimb()
-{
+void Arm::ReducePowerForClimb() {
 	m_talonSRX->ConfigPeakOutputForward(+0.10, timeoutMs);
 	m_talonSRX->ConfigPeakOutputReverse(-0.10, timeoutMs);
 }

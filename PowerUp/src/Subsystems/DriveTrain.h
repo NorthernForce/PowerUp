@@ -16,11 +16,6 @@
 #include "Utilities/TalonTelemetry.h"
 #include "WPILib.h"
 
-/**
- *
- *
- * @author ExampleAuthor
- */
 class DriveTrain: public frc::Subsystem {
 public:
 	DriveTrain();

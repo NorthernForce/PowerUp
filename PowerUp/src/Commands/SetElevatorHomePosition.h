@@ -4,20 +4,19 @@
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
 
-class SetElevatorHomePosition : public frc::Command
-{
+class SetElevatorHomePosition : public frc::Command {
 public:
-	SetElevatorHomePosition()
-	{
+	SetElevatorHomePosition() {
 		SetRunWhenDisabled(true);
 	}
 
-	void Initialize() override
-	{
+	void Initialize() override {
 		Robot::elevator->SetHomePosition();
 	}
 
-	bool IsFinished() override { return true; }
+	bool IsFinished() override {
+		return true;
+	}
 };
 
-#endif
+#endif //SETELEVATORHOMEPOSITION_H

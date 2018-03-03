@@ -10,32 +10,20 @@ DriveWithJoystick::DriveWithJoystick(): frc::Command() {
     Requires(Robot::driveTrain.get());
 }
 
-// Called just before this Command runs the first time
-void DriveWithJoystick::Initialize()
-{
+void DriveWithJoystick::Initialize() {
 	DriverStation::ReportError("WithJoystick::Initialize");
 	Robot::driveTrain->SetSafetyEnabled(true);
 }
 
-// Called repeatedly when this Command is scheduled to run
-void DriveWithJoystick::Execute()
-{
+void DriveWithJoystick::Execute() {
 	const auto& driverController = Robot::oi->getDriverController();
 	const auto& driveTrainShifter = Robot::driveTrainShifter;
 	double XVal, YVal;
 	double joystick_magic_shift = 0.3;
 	int magic_shift_point = 100; //denoted by encoder units seen in the last 100ms by default, 1024 units per encoder revolution
+	//TODO: fix inverted stuff
 	/*if (driverController->GetBumperPressed(frc::XboxController::JoystickHand::kLeftHand)) {
 		isDriveInverted = !isDriveInverted;
-	}
-
-	if (driverController->GetBumperPressed(frc::XboxController::JoystickHand::kRightHand)) {
-		ShiftGearbox(ShiftGearbox::Gear::High);
-		printf("tried to shift to high");
-	}
-	if (driverController->GetBumperReleased(frc::XboxController::JoystickHand::kRightHand)) {
-		printf("trie to shift to low");
-		ShiftGearbox(ShiftGearbox::Gear::Low);
 	}*/
 
 	YVal = (isDriveInverted ? -1 : 1 ) * driverController->GetX(frc::XboxController::JoystickHand::kRightHand);
@@ -63,18 +51,14 @@ void DriveWithJoystick::Execute()
 //	}
 }
 
-// Make this return true when this Command no longer needs to run execute()
 bool DriveWithJoystick::IsFinished() {
     return false;
 }
 
-// Called once after isFinished returns true
 void DriveWithJoystick::End() {
 
 }
 
-// Called when another command which requires one or more of the same
-// subsystems is scheduled to run
 void DriveWithJoystick::Interrupted() {
 
 }

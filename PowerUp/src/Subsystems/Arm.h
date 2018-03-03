@@ -4,8 +4,7 @@
 #include "Utilities/TalonTelemetry.h"
 #include "WPILib.h"
 
-class Arm: public frc::Subsystem
-{
+class Arm: public frc::Subsystem {
 public:
 	Arm();
 	void InitDefaultCommand() override;
@@ -22,7 +21,6 @@ private:
 	TalonTelemetry m_telemetry;
 	int m_setpoint;
 	unsigned m_delay;
-
 	constexpr static int timeoutMs = 10;
 	constexpr static int noTimeoutMs = 0;
 	constexpr static double freeSpeedRPM = 18730;
@@ -41,4 +39,4 @@ private:
 	constexpr static int pidIdx = 0;
 };
 
-#endif
+#endif //ARM_H

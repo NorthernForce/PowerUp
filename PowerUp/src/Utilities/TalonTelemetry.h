@@ -8,13 +8,7 @@
 #include <mutex>
 #include <thread>
 
-/**
- *
- *
- * @author ExampleAuthor
- */
-class TalonTelemetry
-{
+class TalonTelemetry {
 public:
 	TalonTelemetry(std::initializer_list<std::shared_ptr<WPI_TalonSRX>> talons, const int pidIdx, const std::chrono::milliseconds period);
 	TalonTelemetry(std::shared_ptr<WPI_TalonSRX> talon, const int pidIdx, const std::chrono::milliseconds period);
@@ -27,17 +21,14 @@ private:
 	void WriteTelemetry();
 	void OpenLogFile();
 	void CloseLogFile();
-
-	struct Telemetry
-	{
-		struct TalonInfo
-		{
+	struct Telemetry {
+		struct TalonInfo {
 			double m_output;
 			double m_voltage;
 			double m_current;
 			int m_temperature;
 		};
-
+		//TODO: look into this warning
 		inline Telemetry(int = 0) {}
 		double m_time;
 		int m_sensorPosition;
@@ -47,7 +38,6 @@ private:
 		int m_integralAccumulator;
 		std::array<TalonInfo, 4> m_talonDetails;
 	};
-
 	const std::vector<std::shared_ptr<WPI_TalonSRX> > m_talons;
 	const int m_pidIdx;
 	const std::chrono::milliseconds m_period;
@@ -59,4 +49,4 @@ private:
 	std::thread m_write;
 };
 
-#endif
+#endif //TALONTELEMETRY_H

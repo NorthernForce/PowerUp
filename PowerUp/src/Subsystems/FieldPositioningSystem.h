@@ -13,29 +13,22 @@
 #include <mutex>
 #include <ostream>
 
-/**
- *
- *
- */
 class FieldPositioningSystem: public frc::Subsystem {
 public:
 	FieldPositioningSystem();
 	~FieldPositioningSystem();
-
 	void InitDefaultCommand() override;
 	void Periodic() override;
-
 	void Start(frc::Vector2d position, float heading);
 	void Stop();
-
 	frc::Vector2d GetPosition() const;
 	float GetHeading() const;
 
 private:
 	void WriteLog();
 private:
-	struct Telemetry
-	{
+	struct Telemetry {
+		//TODO: address this warning
 		inline Telemetry(int = 0) {}
 		double time;
 		float heading, pitch, roll, yaw;
@@ -44,7 +37,6 @@ private:
 		float xAccel, yAccel, zAccel;
 		bool isMoving;
 	};
-
 
 	frc::Vector2d currentPosition;
 	float currentHeading;

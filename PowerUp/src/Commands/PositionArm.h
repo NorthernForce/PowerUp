@@ -6,16 +6,9 @@
 
 #include <map>
 
-/**
- *
- *
- * @author ExampleAuthor
- */
-class PositionArm: public frc::Command
-{
+class PositionArm: public frc::Command {
 public:
-	enum class Position
-	{
+	enum class Position {
 		Retracted,	// Starting position with arm in robot frame perimeter
 		Pickup,		// Positioned to pick up
 		Switch,		// Positioned to score on switch
@@ -26,7 +19,6 @@ public:
 	};
 
 	PositionArm(Position setpoint);
-
 	void Initialize() override;
 	void Execute() override;
 	bool IsFinished() override;

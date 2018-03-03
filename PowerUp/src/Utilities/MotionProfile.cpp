@@ -14,8 +14,7 @@ MotionProfile::MotionProfile(TalonSRX& talon, int pidIdx0, int pidIdx1) :
 	m_talon.ConfigMotionProfileTrajectoryPeriod(0, timeoutMs);
 }
 
-void MotionProfile::Start(const ProfileGenerator& generator, const double scale)
-{
+void MotionProfile::Start(const ProfileGenerator& generator, const double scale) {
 	assert(m_state == State::Disabled);
 	m_generator = generator;
 	m_scale = scale;
@@ -23,38 +22,30 @@ void MotionProfile::Start(const ProfileGenerator& generator, const double scale)
 	m_talon.Set(ControlMode::MotionProfile, SetValueMotionProfile::Disable);
 	m_talon.ClearMotionProfileTrajectories();
 
-	if (m_status.hasUnderrun)
-	{
+	if (m_status.hasUnderrun) {
 		DriverStation::ReportError("Motion profile underrun");
 		m_talon.ClearMotionProfileHasUnderrun(timeoutMs);
 	}
 
 	// Prefill a few points
-	for (unsigned i = 0; i < minPointsInTalon; ++i)
-	{
+	for (unsigned i = 0; i < minPointsInTalon; ++i) {
 		PeriodicTask();
 	}
-
 	m_talon.GetMotionProfileStatus(m_status);
 	// assert(m_status.btmBufferCnt > kMinPointsInTalon); // Unlikely as I think GetMotionProfileStatus returns the last status sent
-
 	m_notifer.StartPeriodic(0.005);
 	m_talon.Set(ControlMode::MotionProfile, SetValueMotionProfile::Enable);
 }
 
-void MotionProfile::Cancel()
-{
+void MotionProfile::Cancel() {
 	m_notifer.Stop();
 	m_talon.Set(ControlMode::MotionProfile, SetValueMotionProfile::Disable);
 	m_state = State::Finished;
 }
 
-void MotionProfile::PeriodicTask()
-{
+void MotionProfile::PeriodicTask() {
 	// Pull the next point from the profile and send it to the talon
-	if ((m_state == State::Starting || m_state == State::Filling)
-			&& m_status.topBufferRem > 0)
-	{
+	if ((m_state == State::Starting || m_state == State::Filling) && m_status.topBufferRem > 0) {
 		const auto pt = m_generator();
 		TrajectoryPoint point;
 		point.position = pt.m_position * m_scale;
@@ -71,20 +62,17 @@ void MotionProfile::PeriodicTask()
 
 	// Keep the talon fed
 	m_talon.ProcessMotionProfileBuffer();
-
 	// Check the status of the profile
 	m_talon.GetMotionProfileStatus(m_status);
 	// auto pos = m_talon.GetActiveTrajectoryPosition();
 	// auto vel = m_talon.GetActiveTrajectoryVelocity();
-	if (m_status.activePointValid && m_status.isLast)
-	{
+	if (m_status.activePointValid && m_status.isLast) {
 		m_notifer.Stop();
 		m_state = State::Finished;
 		m_talon.Set(ControlMode::MotionProfile, SetValueMotionProfile::Disable);
 	}
 
-	if (m_status.hasUnderrun)
-	{
+	if (m_status.hasUnderrun) {
 		DriverStation::ReportError("Motion profile underrun");
 		m_talon.ClearMotionProfileHasUnderrun(noTimeoutMs);
 	}

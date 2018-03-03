@@ -4,11 +4,6 @@
 #include "Utilities/TalonTelemetry.h"
 #include "WPILib.h"
 
-/**
- *
- *
- * @author ExampleAuthor
- */
 class Elevator: public frc::Subsystem
 {
 public:
