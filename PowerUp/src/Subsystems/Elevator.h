@@ -20,7 +20,7 @@ public:
 	void EndClimb();
 
 private:
-	void ConfigurePower(double forward, double reverse, int timeout);
+	void ConfigureCurrentLimits(int peakAmps, int continuousCurrent, int timeout);
 
 	const std::shared_ptr<frc::Solenoid> m_elevatorBrake;
 	const std::shared_ptr<WPI_TalonSRX> m_masterTalon;
@@ -44,6 +44,8 @@ private:
 	constexpr static double timeToMaxSpeed = 0.75;
 	constexpr static int slotIdx = 0;
 	constexpr static int pidIdx = 0;
+	constexpr static int defaultPeakAmps = 15;
+	constexpr static int defaultContinuousCurrent = 12;
 };
 
 #endif

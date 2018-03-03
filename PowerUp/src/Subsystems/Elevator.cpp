@@ -10,7 +10,12 @@ Elevator::Elevator() :
 	m_slaveTalon(RobotMap::elevatorTalonSRX7),
 	m_telemetry({ m_masterTalon, m_slaveTalon}, pidIdx, std::chrono::milliseconds(20))
 {
-	ConfigurePower(+0.9, -0.8, timeoutMs);
+	m_masterTalon->ConfigPeakOutputForward(+1, timeoutMs);
+	m_masterTalon->ConfigPeakOutputReverse(-1, timeoutMs);
+	m_slaveTalon->ConfigPeakOutputForward(+1, timeoutMs);
+	m_slaveTalon->ConfigPeakOutputReverse(-1, timeoutMs);
+
+    ConfigureCurrentLimits(defaultPeakAmps, defaultContinuousCurrent, timeoutMs);
 	m_masterTalon->ConfigNominalOutputForward(+0.0, timeoutMs);
 	m_masterTalon->ConfigNominalOutputReverse(-0.0, timeoutMs);
 	m_masterTalon->SelectProfileSlot(slotIdx, pidIdx);
@@ -26,16 +31,9 @@ Elevator::Elevator() :
 
 	m_masterTalon->SetName("Elevator", "Elevator");
 	m_masterTalon->SetNeutralMode(NeutralMode::Brake);
-	m_masterTalon->ConfigPeakCurrentLimit(15, timeoutMs);
-    m_masterTalon->ConfigPeakCurrentDuration(100, timeoutMs);
-    m_masterTalon->ConfigContinuousCurrentLimit(12, timeoutMs);
-    m_masterTalon->EnableCurrentLimit(true);
     m_slaveTalon->SetName("Elevator", "Elevator slave");
     m_slaveTalon->SetNeutralMode(NeutralMode::Brake);
-    m_slaveTalon->ConfigPeakCurrentLimit(15, timeoutMs);
-    m_slaveTalon->ConfigPeakCurrentDuration(100, timeoutMs);
-    m_slaveTalon->ConfigContinuousCurrentLimit(12, timeoutMs);
-    m_slaveTalon->EnableCurrentLimit(true);
+
     m_slaveTalon->Follow(*m_masterTalon);
 
    	SetHomePosition();
@@ -54,8 +52,6 @@ void Elevator::Periodic()
 
 void Elevator::SetPosition(int setpoint)
 {
-	ConfigurePower(+0.9, -0.5, noTimeoutMs);
-
 	ReleaseBrake();
 	m_setpoint = setpoint;
 	m_masterTalon->Set(ControlMode::MotionMagic, m_setpoint);
@@ -92,11 +88,7 @@ void Elevator::Nudge(int distance)
 void Elevator::BeginClimb()
 {
 	ReleaseBrake();
-	ConfigurePower(+1, -1, noTimeoutMs);
-	m_masterTalon->ConfigPeakCurrentLimit(30, timeoutMs);
-    m_masterTalon->ConfigContinuousCurrentLimit(20, timeoutMs);
-    m_slaveTalon->ConfigPeakCurrentLimit(30, timeoutMs);
-    m_slaveTalon->ConfigContinuousCurrentLimit(20, timeoutMs);
+	ConfigureCurrentLimits(30, 20, noTimeoutMs);
 	m_masterTalon->Set(-1);
 }
 
@@ -104,16 +96,17 @@ void Elevator::EndClimb()
 {
 	m_masterTalon->Set(0);
 	ApplyBrake();
-	m_masterTalon->ConfigPeakCurrentLimit(10, timeoutMs);
-    m_masterTalon->ConfigContinuousCurrentLimit(8, timeoutMs);
-    m_slaveTalon->ConfigPeakCurrentLimit(10, timeoutMs);
-    m_slaveTalon->ConfigContinuousCurrentLimit(8, timeoutMs);
+	ConfigureCurrentLimits(defaultPeakAmps, defaultContinuousCurrent, noTimeoutMs);
 }
 
-void Elevator::ConfigurePower(double forward, double reverse, int timeout)
+void Elevator::ConfigureCurrentLimits(int peakAmps, int continuousCurrent, int timeout)
 {
-	m_masterTalon->ConfigPeakOutputForward(forward, timeout);
-	m_masterTalon->ConfigPeakOutputReverse(reverse, timeout);
-	m_slaveTalon->ConfigPeakOutputForward(forward, timeout);
-	m_slaveTalon->ConfigPeakOutputReverse(reverse, timeout);
+	m_masterTalon->ConfigPeakCurrentLimit(peakAmps, timeout);
+    m_masterTalon->ConfigContinuousCurrentLimit(continuousCurrent, timeout);
+    m_masterTalon->ConfigPeakCurrentDuration(100, timeout);
+    m_masterTalon->EnableCurrentLimit(true);
+    m_slaveTalon->ConfigPeakCurrentLimit(peakAmps, timeout);
+    m_slaveTalon->ConfigContinuousCurrentLimit(continuousCurrent, timeout);
+    m_slaveTalon->ConfigPeakCurrentDuration(100, timeout);
+    m_slaveTalon->EnableCurrentLimit(true);
 }
