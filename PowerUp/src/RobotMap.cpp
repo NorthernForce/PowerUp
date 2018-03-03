@@ -10,7 +10,7 @@ std::shared_ptr<WPI_TalonSRX> RobotMap::driveTrainTalonSRX6;
 std::shared_ptr<WPI_TalonSRX> RobotMap::elevatorTalonSRX7;
 std::shared_ptr<WPI_TalonSRX> RobotMap::elevatorTalonSRX9;
 std::shared_ptr<WPI_TalonSRX> RobotMap::armTalonSRX8;
-std::shared_ptr<WPI_TalonSRX> RobotMap::gripperIntakeTalonSRX10;
+std::shared_ptr<WPI_TalonSRX> RobotMap::gripperIntakeTalonSRX11;
 std::shared_ptr<frc::RobotDrive> RobotMap::driveTrainRobotDrive;
 std::shared_ptr<frc::Compressor> RobotMap::compressor;
 std::shared_ptr<frc::DoubleSolenoid> RobotMap::driveTrainShifterDS;
