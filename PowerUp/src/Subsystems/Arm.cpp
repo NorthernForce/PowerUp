@@ -6,7 +6,7 @@
 Arm::Arm() :
 	frc::Subsystem("Arm"),
 	m_talonSRX(RobotMap::armTalonSRX8),
-	m_telemetry(m_talonSRX, pidIdx, std::chrono::milliseconds(250)),
+	m_telemetry(m_talonSRX, pidIdx, std::chrono::milliseconds(20)),
 	m_delay(0)
 {
 	m_talonSRX->ConfigPeakOutputForward(+0.50, timeoutMs);
@@ -59,7 +59,7 @@ void Arm::SetPosition(int setpoint, unsigned delay)
 
 bool Arm::AtSetpoint()
 {
-	return false;
+	return m_talonSRX->GetClosedLoopError(pidIdx) < 50;
 }
 
 void Arm::SetHomePosition()

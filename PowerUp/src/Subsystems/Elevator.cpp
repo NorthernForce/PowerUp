@@ -8,7 +8,7 @@ Elevator::Elevator() :
 	m_elevatorBrake(RobotMap::elevatorBrake),
 	m_masterTalon(RobotMap::elevatorTalonSRX9),
 	m_slaveTalon(RobotMap::elevatorTalonSRX7),
-	m_telemetry({ m_masterTalon, m_slaveTalon}, pidIdx, std::chrono::milliseconds(100))
+	m_telemetry({ m_masterTalon, m_slaveTalon}, pidIdx, std::chrono::milliseconds(20))
 {
 	ConfigurePower(+0.9, -0.8, timeoutMs);
 	m_masterTalon->ConfigNominalOutputForward(+0.0, timeoutMs);
@@ -63,7 +63,7 @@ void Elevator::SetPosition(int setpoint)
 
 bool Elevator::AtSetpoint()
 {
-	return false;
+	return m_masterTalon->GetClosedLoopError(pidIdx) < 250;
 }
 
 void Elevator::ApplyBrake() {
