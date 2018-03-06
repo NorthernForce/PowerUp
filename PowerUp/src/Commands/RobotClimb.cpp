@@ -1,28 +1,28 @@
 #include "Commands/RobotClimb.h"
 
-//Change from ElevatorClimb to RobotClimb
+//Change from RobotClimb to RobotClimb
 
-ElevatorClimb::ElevatorClimb() {
+RobotClimb::RobotClimb() {
 	Requires(Robot::elevator.get());
 	Requires(Robot::arm.get());
 }
 
-void ElevatorClimb::Initialize() {
+void RobotClimb::Initialize() {
 	Robot::elevator->BeginClimb();
 	Robot::arm->ReducePowerForClimb();
 }
 
-void ElevatorClimb::Execute()  {
+void RobotClimb::Execute()  {
 }
 
-bool ElevatorClimb::IsFinished() {
+bool RobotClimb::IsFinished() {
 	return false;
 }
 
-void ElevatorClimb::End() {
+void RobotClimb::End() {
 	Robot::elevator->EndClimb();
 }
 
-void ElevatorClimb::Interrupted() {
+void RobotClimb::Interrupted() {
 	Robot::elevator->EndClimb();
 }

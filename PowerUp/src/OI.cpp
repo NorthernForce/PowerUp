@@ -42,14 +42,13 @@ OI::OI() {
     frc::SmartDashboard::PutData("RunIntake", new RunIntake());
     frc::SmartDashboard::PutData("DriveWithJoystick", new DriveWithJoystick());
     //Call this pos home instead of retracted
-    frc::SmartDashboard::PutData("Move arm to start position", new PositionArm(PositionArm::Position::Retracted));
+    frc::SmartDashboard::PutData("Move arm to start position", new PositionArm(PositionArm::Position::Home));
     frc::SmartDashboard::PutData("Move arm to pickup", new PositionArm(PositionArm::Position::Pickup));
     frc::SmartDashboard::PutData("Move arm to switch", new PositionArm(PositionArm::Position::Switch));
     frc::SmartDashboard::PutData("Move arm to scale front", new PositionArm(PositionArm::Position::ScaleFront));
     frc::SmartDashboard::PutData("Move arm to scale rear", new PositionArm(PositionArm::Position::ScaleRear));
     frc::SmartDashboard::PutData("Move arm to climb setup", new PositionArm(PositionArm::Position::ClimbSet));
-    //TODO: fix description -> should not be PositionArm - > RobotClimb
-    frc::SmartDashboard::PutData("Climb using arm and elevator", new PositionArm(PositionArm::Position::ClimbExecute));
+    frc::SmartDashboard::PutData("Climb using elevator", new RobotClimb());
     frc::SmartDashboard::PutData("Nudge elevator up", new NudgeElevator(+3));
     frc::SmartDashboard::PutData("Nudge elevator down", new NudgeElevator(-3));
     //These arm values may need to be tuned
@@ -75,18 +74,13 @@ OI::OI() {
     WhileHeld(manipulatorJoystick, 2, new NudgeElevator(-3));
     WhileHeld(manipulatorJoystick, 3, new NudgeElevator(+3));
     WhenPressed(manipulatorJoystick, 4, new PositionArm(PositionArm::Position::ClimbSet));
-    WhileHeld(manipulatorJoystick, 5, new ElevatorClimb());
+    WhileHeld(manipulatorJoystick, 5, new RobotClimb());
     WhenPressed(manipulatorJoystick, 6, new PositionArm(PositionArm::Position::Pickup));
     WhenPressed(manipulatorJoystick, 7, new PositionArm(PositionArm::Position::Switch));
-    WhenPressed(manipulatorJoystick, 9, new PositionArm(PositionArm::Position::Retracted));
+    WhenPressed(manipulatorJoystick, 9, new PositionArm(PositionArm::Position::Home));
+    WhileHeld(manipulatorJoystick, 8, new NudgeArm(getManipulatorJoystick().get()));
     WhenPressed(manipulatorJoystick, 10, new PositionArm(PositionArm::Position::ScaleRear));
     WhenPressed(manipulatorJoystick, 11, new PositionArm(PositionArm::Position::ScaleFront));
-    //TODO: fix this
-    /*if (manipulatorJoystick->GetY() > 0) {
-    	NudgeArm(+1);
-    } else if (manipulatorJoystick->GetY() < 0) {
-    	NudgeArm(-1);
-    }*/
 }
 
 const std::shared_ptr<frc::Joystick>& OI::getManipulatorJoystick() {

@@ -1,12 +1,12 @@
-#ifndef ElevatorClimb_H
-#define ElevatorClimb_H
+#ifndef RobotClimb_H
+#define RobotClimb_H
 
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
 
-class ElevatorClimb : public frc::Command {
+class RobotClimb : public frc::Command {
 public:
-	ElevatorClimb();
+	RobotClimb();
 	void Initialize() override;
 	void Execute() override;
 	bool IsFinished() override;
@@ -14,4 +14,4 @@ public:
 	void Interrupted() override;
 };
 
-#endif  // ElevatorClimb_H
+#endif  // RobotClimb_H

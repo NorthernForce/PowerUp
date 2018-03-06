@@ -8,7 +8,7 @@ struct PositionArm::PositionSetpoints {
 
 bool hasClimbed = false;
 const std::map<PositionArm::Position, PositionArm::PositionSetpoints> PositionArm::m_setpoints = {
-		{ PositionArm::Position::Retracted, { 0,    0,     75 } },
+		{ PositionArm::Position::Home, { 0,    0,     75 } },
 		{ PositionArm::Position::Pickup,    { 420,  -3600, 0 } },
 		{ PositionArm::Position::Switch,    { 500,  +700,  0 } },
 		{ PositionArm::Position::ScaleFront,{ 1600, +1500, 0 } },
@@ -36,7 +36,6 @@ void PositionArm::Initialize() {
 void PositionArm::Execute() {
 }
 
-// Make this return true when this Command no longer needs to run execute()
 bool PositionArm::IsFinished()
 {
 	const bool armDone = m_arm->AtSetpoint();
