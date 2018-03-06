@@ -15,6 +15,13 @@ DriveTrain::DriveTrain() :
 {
 	ConfigureTalon(*m_talonSRX1);
 	ConfigureTalon(*m_talonSRX2);
+	RobotMap::driveTrainTalonSRX1->ConfigVoltageCompSaturation(11, timeoutMs);
+	RobotMap::driveTrainTalonSRX2->ConfigVoltageCompSaturation(11, timeoutMs);
+	RobotMap::driveTrainTalonSRX3->ConfigVoltageCompSaturation(11, timeoutMs);
+	RobotMap::driveTrainTalonSRX4->ConfigVoltageCompSaturation(11, timeoutMs);
+	RobotMap::driveTrainTalonSRX5->ConfigVoltageCompSaturation(11, timeoutMs);
+	RobotMap::driveTrainTalonSRX6->ConfigVoltageCompSaturation(11, timeoutMs);
+	EnableVoltageCompensation(false);
 }
 
 void DriveTrain::InitDefaultCommand()
@@ -108,4 +115,14 @@ void DriveTrain::SetOutput(double speed) {
 	m_talonSRX1->ConfigPeakOutputReverse(speed, timeoutMs);
 	m_talonSRX2->ConfigPeakOutputForward(speed, timeoutMs);
 	m_talonSRX2->ConfigPeakOutputReverse(speed, timeoutMs);
+}
+
+void DriveTrain::EnableVoltageCompensation(bool enabled)
+{
+	RobotMap::driveTrainTalonSRX1->EnableVoltageCompensation(enabled);
+	RobotMap::driveTrainTalonSRX2->EnableVoltageCompensation(enabled);
+	RobotMap::driveTrainTalonSRX3->EnableVoltageCompensation(enabled);
+	RobotMap::driveTrainTalonSRX4->EnableVoltageCompensation(enabled);
+	RobotMap::driveTrainTalonSRX5->EnableVoltageCompensation(enabled);
+	RobotMap::driveTrainTalonSRX6->EnableVoltageCompensation(enabled);
 }
