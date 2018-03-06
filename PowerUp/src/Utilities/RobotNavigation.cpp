@@ -44,17 +44,17 @@ RobotNavigation::RobotTrajectory RobotNavigation::CreatePathFromStartToScale() c
 	if (m_fieldOrientation.GetStartingRobotPos() == m_fieldOrientation.GetScalePos()) {
 		const auto angle = m_fieldOrientation.GetScalePos() == ::Position::Left ? 26.46 : -26.46;
 		return CombineTrajectories({
-			CreateProfile(firstTurn, 0, DriveTrain::maxVelocityLowGear, 0),
-			CreateProfile(0.5, DriveTrain::maxVelocityLowGear, DriveTrain::maxVelocityLowGear, angle),
-			CreateProfile(0.5, DriveTrain::maxVelocityLowGear, DriveTrain::maxVelocityLowGear, -angle),
-			CreateProfile(0.5, DriveTrain::maxVelocityLowGear, 0, 0),
+			CreateProfile(firstTurn, 0, maxVelocity, 0),
+			CreateProfile(0.5, maxVelocity, maxVelocity, angle),
+			CreateProfile(0.5, maxVelocity, maxVelocity, -angle),
+			CreateProfile(0.5, maxVelocity, 0, 0),
 		});
 	} else {
 		return CombineTrajectories({
-			CreateProfile(firstTurn, 0, DriveTrain::maxVelocityLowGear, 0),
-			CreateProfile(0.5, DriveTrain::maxVelocityLowGear, DriveTrain::maxVelocityLowGear, 20),
-			CreateProfile(0.5, DriveTrain::maxVelocityLowGear, DriveTrain::maxVelocityLowGear, -20),
-			CreateProfile(0.5, DriveTrain::maxVelocityLowGear, 0, 0),
+			CreateProfile(firstTurn, 0, maxVelocity, 0),
+			CreateProfile(0.5, maxVelocity, maxVelocity, 20),
+			CreateProfile(0.5, maxVelocity, maxVelocity, -20),
+			CreateProfile(0.5, maxVelocity, 0, 0),
 		});
 	}
 }

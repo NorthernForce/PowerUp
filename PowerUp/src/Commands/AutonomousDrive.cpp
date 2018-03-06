@@ -12,6 +12,7 @@ void AutonomousDrive::Initialize()
 {
 	Robot::driveTrain->SetSafetyEnabled(false);
 	Robot::driveTrain->InitializeMotionProfile(m_path.m_left.m_generator, m_path.m_right.m_generator);
+	Robot::driveTrain->EnableVoltageCompensation(true);
 }
 
 bool AutonomousDrive::IsFinished()
@@ -23,12 +24,14 @@ void AutonomousDrive::End()
 {
 	Robot::driveTrain->TerminateMotionProfile();
 	WritePathToFile();
+	Robot::driveTrain->EnableVoltageCompensation(false);
 }
 
 void AutonomousDrive::Interrupted()
 {
 	Robot::driveTrain->TerminateMotionProfile();
 	WritePathToFile();
+	Robot::driveTrain->EnableVoltageCompensation(false);
 }
 
 void AutonomousDrive::WritePathToFile()

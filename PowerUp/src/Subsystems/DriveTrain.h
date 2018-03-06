@@ -30,7 +30,7 @@ public:
 	void TerminateMotionProfile();
 	void SetOutput(double speed);
 	bool IsMotionProfileFinished() const;
-
+	void EnableVoltageCompensation(bool enabled);
 
 	constexpr static double wheelCircumference = 4 * 0.0254 * M_PI; // Meters
 	constexpr static double lowGgearRatio = 15.0 / 1.0;
@@ -38,10 +38,8 @@ public:
 	constexpr static double sensorUnitsPerRev = 256 * 4; // The TalonSRX counts 4 edges per encoder count, the quadrature encoder has 256 counts per revolution
 	constexpr static double nativeUnitsPerMeterLowGear = 1 / wheelCircumference * lowGgearEncoderRatio * sensorUnitsPerRev; // Approx. 19249
 
-	constexpr static double maxRPS = 5330 / 60; // Max speed of the CIM
-	constexpr static double maxEfficency = 0.8; // measured max efficiency is 0.87
-	constexpr static double maxVelocityLowGear = maxRPS / lowGgearRatio * wheelCircumference * maxEfficency; // Approx. 1.51 Meters per second
-	constexpr static double maxNativeUnitsPer100ms = maxVelocityLowGear * nativeUnitsPerMeterLowGear / 10;
+	constexpr static double maxNativeUnitsPer100ms = 2950; // measured at 11v on comp bot
+	constexpr static double maxVelocityLowGear = 10 * maxNativeUnitsPer100ms / nativeUnitsPerMeterLowGear; // Approx. 1.51 Meters per second
 	constexpr static double feedForwardGain = 1023 / maxNativeUnitsPer100ms;
 
 private:
