@@ -1,3 +1,7 @@
+#ifndef PRACTICE_BOT
+#define PRACTICE_BOT // Comment me out for the competition bot!
+#endif //PRACTICE_BOT
+
 #include "PositionArm.h"
 
 struct PositionArm::PositionSetpoints {
@@ -7,14 +11,24 @@ struct PositionArm::PositionSetpoints {
 };
 
 bool hasClimbed = false;
+
+#ifdef PRACTICE_BOT
+const std::map<PositionArm::Position, PositionArm::PositionSetpoints> PositionArm::m_setpoints = {
+		{ PositionArm::Position::Retracted, { 0,    0,     75 } },
+		{ PositionArm::Position::Pickup,    { 420,  -2500, 0 } },
+		{ PositionArm::Position::Switch,    { 500,  +700,  0 } },
+		{ PositionArm::Position::ScaleFront,{ 1600, +1500, 0 } },
+		{ PositionArm::Position::ScaleRear, { 2600, +1500, 0 } },
+};
+#else
 const std::map<PositionArm::Position, PositionArm::PositionSetpoints> PositionArm::m_setpoints = {
 		{ PositionArm::Position::Retracted, { 0,    0,     75 } },
 		{ PositionArm::Position::Pickup,    { 420,  -3600, 0 } },
 		{ PositionArm::Position::Switch,    { 500,  +700,  0 } },
 		{ PositionArm::Position::ScaleFront,{ 1600, +1500, 0 } },
 		{ PositionArm::Position::ScaleRear, { 2600, +1500, 0 } },
-		{ PositionArm::Position::ClimbSet, { 2500, +2700, 0 } },
 };
+#endif //PRACTICE_BOT
 
 PositionArm::PositionArm(Position pos) :
 	m_elevator(Robot::elevator.get()),
