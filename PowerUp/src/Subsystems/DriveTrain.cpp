@@ -126,3 +126,21 @@ void DriveTrain::EnableVoltageCompensation(bool enabled)
 	RobotMap::driveTrainTalonSRX5->EnableVoltageCompensation(enabled);
 	RobotMap::driveTrainTalonSRX6->EnableVoltageCompensation(enabled);
 }
+
+int DriveTrain::GetPositionLeft() {
+	return m_talonSRX1->GetSensorCollection().GetQuadraturePosition();
+}
+
+int DriveTrain::GetPositionRight() {
+	return m_talonSRX2->GetSensorCollection().GetQuadraturePosition();
+}
+
+void DriveTrain::SetBrake() {
+	m_talonSRX1->SetNeutralMode(NeutralMode::Brake);
+	m_talonSRX2->SetNeutralMode(NeutralMode::Brake);
+}
+
+void DriveTrain::SetCoast() {
+	m_talonSRX1->SetNeutralMode(NeutralMode::Coast);
+	m_talonSRX2->SetNeutralMode(NeutralMode::Coast);
+}
