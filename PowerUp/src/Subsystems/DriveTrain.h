@@ -32,6 +32,11 @@ public:
 	bool IsMotionProfileFinished() const;
 	void EnableVoltageCompensation(bool enabled);
 
+	int GetPositionLeft();
+	int GetPositionRight();
+	void SetBrake();
+	void SetCoast();
+
 	constexpr static double wheelCircumference = 4 * 0.0254 * M_PI; // Meters
 	constexpr static double lowGgearRatio = 15.0 / 1.0;
 	constexpr static double lowGgearEncoderRatio = lowGgearRatio * (12.0 / 30.0);
