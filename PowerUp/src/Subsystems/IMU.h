@@ -11,7 +11,7 @@
 #include <AHRS.h>
 #include <RobotMap.h>
 
-class IMU : public frc::Subsystem
+class IMU : public frc::Subsystem, public frc::PIDOutput
 {
 
   private:

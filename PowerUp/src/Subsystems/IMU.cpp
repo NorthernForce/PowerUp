@@ -15,11 +15,11 @@ IMU::IMU() :
 	m_ahrs(RobotMap::ahrs)
 
 {
-//m_TurnControl = std::make_shared<frc::PIDController>(kP, kI, kD, m_ahrs.get(), this);
-//	m_TurnControl->SetInputRange(-180.0, 180.0);
-//	m_TurnControl->SetOutputRange(-1.0, 1.0);
-//	m_TurnControl->SetAbsoluteTolerance(kToleranceDegrees);
-//	m_TurnControl->SetContinuous(true);
+	m_TurnControl = std::make_shared<frc::PIDController>(kP, kI, kD, m_ahrs.get(), this);
+	m_TurnControl->SetInputRange(-180.0, 180.0);
+	m_TurnControl->SetOutputRange(-1.0, 1.0);
+	m_TurnControl->SetAbsoluteTolerance(kToleranceDegrees);
+	m_TurnControl->SetContinuous(true);
 }
 
 void IMU::InitDefaultCommand()
