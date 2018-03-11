@@ -51,7 +51,7 @@ void TalonTelemetry::RecordTelemetry() {
 			auto sensorCollection = talon->GetSensorCollection();
 			telemetry.m_sensorPosition = sensorCollection.GetQuadraturePosition();
 			telemetry.m_sensorVelocity = sensorCollection.GetQuadratureVelocity();
-			if(m_pidIdx != -1) {
+			if(m_pidIdx != -1 && (talon->GetControlMode() != ControlMode::PercentOutput)) {
 				telemetry.m_closedLoopTarget = talon->GetClosedLoopTarget(m_pidIdx);
 				telemetry.m_closedLoopError = talon->GetClosedLoopError(m_pidIdx);
 				telemetry.m_integralAccumulator = talon->GetIntegralAccumulator(m_pidIdx);
