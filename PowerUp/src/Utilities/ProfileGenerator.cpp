@@ -16,16 +16,12 @@ namespace {
 	    else return TrajectoryDuration_100ms;
     }
 
-    constexpr double RoundDuration(const double duration, TrajectoryDuration interval) {
-        return static_cast<unsigned>((duration * 1000 + interval / 2) / interval) * interval / 1000.0;
-    }
-
     class ConstantVelocityProfile {
         using TrajectoryDuration = ctre::phoenix::motion::TrajectoryDuration;
     public:
         ConstantVelocityProfile(const ConstantVelocityProfile&) = default;
         ConstantVelocityProfile(const double distance, const double velocity) :
-            m_durationMilliSec(static_cast<unsigned>(RoundDuration(distance / velocity, TrajectoryDuration::TrajectoryDuration_5ms) * 1000)),
+            m_durationMilliSec(GetDurationMs(distance, velocity)),
             m_velocity(velocity),
             m_position(distance - m_durationMilliSec * velocity / 1000),
             m_time(0)
@@ -33,7 +29,11 @@ namespace {
             assert(m_durationMilliSec > 0);
         }
 
-        double GetDuration() const {
+        inline static constexpr double GetDurationMs(const double distance, const double velocity) {
+        	return static_cast<unsigned>(RoundProfileDuration(distance / velocity, TrajectoryDuration::TrajectoryDuration_5ms) * 1000);
+        }
+
+        inline double GetDuration() const {
             return m_durationMilliSec / 1000.0;
         }
 
@@ -59,7 +59,7 @@ namespace {
     public:
         VelocityTransitionProfile(const VelocityTransitionProfile&) = default;
         VelocityTransitionProfile(const double distance, const double startVelocity, const double finalVelocity) :
-            m_durationMilliSec(static_cast<unsigned>(RoundDuration(distance / (startVelocity + finalVelocity) * 2, TrajectoryDuration::TrajectoryDuration_20ms) * 1000)),
+            m_durationMilliSec(GetDurationMs(distance, startVelocity, finalVelocity)),
             m_jerk(8 * (finalVelocity - (distance / m_durationMilliSec * 1000.0)) / std::pow(m_durationMilliSec / 1000.0, 2)),
             m_position(0),
             m_velocity((distance / m_durationMilliSec * 1000.0) * 2 - finalVelocity),
@@ -69,7 +69,11 @@ namespace {
             assert(m_durationMilliSec > 0);
         }
 
-        double GetDuration() const {
+        inline static constexpr double GetDurationMs(const double distance, const double startVelocity, const double finalVelocity) {
+        	return static_cast<unsigned>(RoundProfileDuration(distance / (startVelocity + finalVelocity) * 2, TrajectoryDuration::TrajectoryDuration_20ms) * 1000);
+        }
+
+        inline double GetDuration() const {
             return m_durationMilliSec / 1000.0;
         }
 
@@ -152,6 +156,10 @@ namespace {
 
 }
 
+constexpr double RoundProfileDuration(const double duration, TrajectoryDuration interval) {
+    return static_cast<unsigned>((duration * 1000 + interval / 2) / interval) * interval / 1000.0;
+}
+
 Profile CreateSimpleProfile(const double distance, const double startVelocity, const double finalVelocity) {
     if (distance == 0) {
         return {};
@@ -168,7 +176,7 @@ Profile CreateSimpleProfile(const double distance, const double startVelocity, c
 }
 
 /**
- * Creates a motion profile consisting of three parts
+ * Creates a motion profile definition consisting of up to three parts
  *  1. A transition from the start velocity to the target velocity
  *  2. Constant velocity travel at the target velocity
  *  3. A transition from the target velocity to the final velocity
@@ -206,28 +214,4 @@ Profile CombineProfiles(std::vector<Profile>&& items, const double startingPosit
     return {
     	std::move(aggregator), distance, duration
     };
-}
-
-bool PushProfilePoints(WPI_TalonSRX& talon, const MotionProfileStatus& status, ProfileGenerator& generator, const double scale, const uint32_t profileSlotSelect0, const uint32_t profileSlotSelect1, const bool zeroPos) {
-	if (status.isLast) {
-		return true;
-	}
-	unsigned time = 0;
-	ctre::phoenix::motion::TrajectoryPoint trajPt = {};
-	trajPt.zeroPos = zeroPos;
-	trajPt.profileSlotSelect0 = profileSlotSelect0;
-	trajPt.profileSlotSelect1 = profileSlotSelect1;
-	int topBufferRem = status.topBufferRem;
-	while (!trajPt.isLastPoint && time < 100 && --topBufferRem > 0) {
-		const auto pt = generator();
-		trajPt.position = pt.m_position * scale;
-		trajPt.velocity = pt.m_velocity * scale;
-		trajPt.timeDur = pt.m_duration;
-		trajPt.isLastPoint = pt.m_last;
-		talon.PushMotionProfileTrajectory(trajPt);
-		// Set zeroPos for all subsequent points
-		trajPt.zeroPos = false;
-		time = time + pt.m_duration;
-	}
-	return trajPt.isLastPoint;
 }

@@ -7,6 +7,7 @@
 #include <atomic>
 #include <mutex>
 #include <thread>
+#include <array>
 
 class TalonTelemetry {
 public:

@@ -63,30 +63,44 @@ RobotNavigation::RobotTrajectory RobotNavigation::CreatePathFromStartToScale() c
  * Creates a profile to move the robot along a specified path
  */
 RobotNavigation::RobotTrajectory RobotNavigation::CreateProfile(const double distance, const double startVelocity, const double finalVelocity, const double angleDegrees) {
+    // When not turning we use the same profile for both left and right sides
 	if (angleDegrees == 0) {
 		const auto profile = CreateComplexProfile(distance, startVelocity, finalVelocity, maxVelocity, timeToMaxSpeed);
 		return RobotTrajectory { profile, profile };
 	}
+
+    // Determine the inside and outside travel distances
     const auto outsideDistance = distance + std::abs(angleDegrees) / 360 * M_PI * wheelTrack;
-    const auto outsideProfile = CreateComplexProfile(outsideDistance, startVelocity, finalVelocity, maxVelocity, timeToMaxSpeed);
-    // There is probably a better way to calculate the target velocity for the inside wheels than this
     const auto insideDistance = distance - std::abs(angleDegrees) / 360 * M_PI * wheelTrack;
-    auto vMax = maxVelocity;
-    auto vMin = 0.0;
-    while (true) {
-        const auto insideProfile = CreateComplexProfile(insideDistance, startVelocity, finalVelocity, (vMax + vMin) / 2, timeToMaxSpeed);
-        if (std::abs(insideProfile.m_duration - outsideProfile.m_duration) < 0.01) {
-            if (angleDegrees > 0) {
-                return { outsideProfile, insideProfile };
-            } else {
-                return{ insideProfile, outsideProfile };
-            }
-        }
-        if (insideProfile.m_duration > outsideProfile.m_duration) {
-            vMin = (vMax + vMin) / 2;
-        }
-        else {
-            vMax = (vMax + vMin) / 2;
-        }
+
+    // Determine the approx average velocity and the duration of the two profiles
+    // Note each profile will comprise of 4 equal duration sections, each a multiple of 10ms, so the whole
+    // profile must be a multiple of 40ms
+    const auto avgVelocity = startVelocity == 0 && finalVelocity == 0 ? maxVelocity / 2 : (startVelocity + finalVelocity) / 2;
+    const auto duration = RoundProfileDuration(outsideDistance / avgVelocity, TrajectoryDuration::TrajectoryDuration_40ms);
+
+    // Determine the outside target velocity midway through the turn
+    const auto outsideTargetVelocity = 2 * outsideDistance / duration - (startVelocity + finalVelocity) / 2;
+    auto outsideProfile = CombineProfiles({
+        CreateSimpleProfile((startVelocity + outsideTargetVelocity) * duration / 4, startVelocity, outsideTargetVelocity),
+        CreateSimpleProfile((outsideTargetVelocity + finalVelocity) * duration / 4, outsideTargetVelocity, finalVelocity)
+    });
+
+    // Determine the inside target velocity midway through the turn
+    const auto insideTargetVelocity = 2 * insideDistance / duration - (startVelocity + finalVelocity) / 2;
+    auto insideProfile = CombineProfiles({
+        CreateSimpleProfile((startVelocity + insideTargetVelocity) * duration / 4, startVelocity, insideTargetVelocity),
+        CreateSimpleProfile((insideTargetVelocity + finalVelocity) * duration / 4, insideTargetVelocity, finalVelocity)
+    });
+
+    // Verify the profiles seem reasonable
+    assert(std::abs(insideProfile.m_duration - outsideProfile.m_duration) < 1e-3);
+    assert(std::abs(insideProfile.m_distance - insideDistance) < 1e-3);
+    assert(std::abs(outsideProfile.m_distance - outsideDistance) < 1e-3);
+
+    if (angleDegrees > 0) {
+        return { std::move(outsideProfile), std::move(insideProfile) };
+    } else {
+        return{ std::move(insideProfile), std::move(outsideProfile) };
     }
 }
