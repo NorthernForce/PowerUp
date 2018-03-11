@@ -8,8 +8,10 @@ RobotClimb::RobotClimb() {
 }
 
 void RobotClimb::Initialize() {
-	Robot::elevator->BeginClimb();
+	Robot::elevator->EnableVoltageCompensation(false);
+	Robot::arm->EnableVoltageCompensation(false);
 	Robot::arm->ReducePowerForClimb();
+	Robot::elevator->BeginClimb();
 }
 
 void RobotClimb::Execute()  {
@@ -20,9 +22,13 @@ bool RobotClimb::IsFinished() {
 }
 
 void RobotClimb::End() {
+	Robot::elevator->EnableVoltageCompensation(true);
+	Robot::arm->EnableVoltageCompensation(true);
 	Robot::elevator->EndClimb();
 }
 
 void RobotClimb::Interrupted() {
+	Robot::elevator->EnableVoltageCompensation(true);
+	Robot::arm->EnableVoltageCompensation(true);
 	Robot::elevator->EndClimb();
 }

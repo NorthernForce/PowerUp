@@ -18,16 +18,15 @@ public:
 	void Nudge(int distance);
 	void BeginClimb();
 	void EndClimb();
+	void EnableVoltageCompensation(bool doEnable);
 
 private:
 	void ConfigureCurrentLimits(int peakAmps, int continuousCurrent, int timeout);
-
 	const std::shared_ptr<frc::Solenoid> m_elevatorBrake;
 	const std::shared_ptr<WPI_TalonSRX> m_masterTalon;
 	const std::shared_ptr<WPI_TalonSRX> m_slaveTalon;
 	TalonTelemetry m_telemetry;
 	int m_setpoint;
-
 	constexpr static int timeoutMs = 10;
 	constexpr static int noTimeoutMs = 0;
 	constexpr static double freeSpeedRPM = 18730;
@@ -46,6 +45,9 @@ private:
 	constexpr static int pidIdx = 0;
 	constexpr static int defaultPeakAmps = 15;
 	constexpr static int defaultContinuousCurrent = 12;
+	int numTimesElevatorStalled = 0;
+	int numTimesSinceLastElevatorStall = 0;
+	bool isElevatorStalled = false;
 };
 
 #endif

@@ -28,6 +28,8 @@ Arm::Arm() :
     m_talonSRX->ConfigPeakCurrentDuration(100, timeoutMs);
     m_talonSRX->ConfigContinuousCurrentLimit(4, timeoutMs);
     m_talonSRX->EnableCurrentLimit(true);
+    m_talonSRX->EnableVoltageCompensation(true);
+    m_talonSRX->ConfigVoltageCompSaturation(11, timeoutMs);
 	SetHomePosition();
 	m_telemetry.Start();
 }
@@ -36,6 +38,27 @@ void Arm::InitDefaultCommand() {
 }
 
 void Arm::Periodic() {
+	const double armCurrent = m_talonSRX->GetOutputCurrent();
+	const double armVelocity = m_talonSRX->GetSensorCollection().GetQuadratureVelocity();
+	const double armStallCurrent = 5.0;
+	const double armStallVelocity = 10.0;
+	if (armCurrent > armStallCurrent && (std::abs(armVelocity) < armStallVelocity)) {
+		numTimesArmStalled++;
+	} else {
+		numTimesSinceLastArmStall++;
+	}
+	if (numTimesArmStalled >= 10) {
+		isArmStalled = true;
+	} else {
+		isArmStalled = false;
+		if (numTimesSinceLastArmStall >= 100) {
+			numTimesArmStalled = 0;
+		}
+	}
+	if (isArmStalled) {
+		m_talonSRX->StopMotor();
+		printf("Arm stalled. Stopping motor");
+	}
 	if (m_delay > 0) {
 		m_delay -= 1;
 	} else {
@@ -79,4 +102,8 @@ void Arm::InitSendable(SendableBuilder& builder) {
 void Arm::ReducePowerForClimb() {
 	m_talonSRX->ConfigPeakOutputForward(+0.10, timeoutMs);
 	m_talonSRX->ConfigPeakOutputReverse(-0.10, timeoutMs);
+}
+
+void Arm::EnableVoltageCompensation(bool doEnable) {
+	m_talonSRX->EnableVoltageCompensation(doEnable);
 }

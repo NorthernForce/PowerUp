@@ -34,8 +34,11 @@ Elevator::Elevator() :
     m_slaveTalon->SetName("Elevator", "Elevator slave");
     m_slaveTalon->SetNeutralMode(NeutralMode::Brake);
 
+    m_masterTalon->EnableVoltageCompensation(true);
+    m_masterTalon->ConfigVoltageCompSaturation(11, timeoutMs);
+    m_slaveTalon->EnableVoltageCompensation(true);
+    m_slaveTalon->ConfigVoltageCompSaturation(11, timeoutMs);
     m_slaveTalon->Follow(*m_masterTalon);
-
    	SetHomePosition();
 	ApplyBrake();
 	m_telemetry.Start();
@@ -45,8 +48,31 @@ void Elevator::InitDefaultCommand()
 {
 }
 
-void Elevator::Periodic()
-{
+void Elevator::Periodic() {
+	//TODO: tune these values using log file
+	const double elevatorStallCurrent = 5.0;
+	const double elevatorStallVelocity = 10.0;
+	const double elevatorCurrent = (std::max(m_masterTalon->GetOutputCurrent(), m_slaveTalon->GetOutputCurrent()));
+	const double elevatorVelocity = m_masterTalon->GetSensorCollection().GetQuadratureVelocity();
+	if (elevatorCurrent > elevatorStallCurrent && (std::abs(elevatorVelocity) < elevatorStallVelocity)) {
+		numTimesElevatorStalled++;
+		printf("stalled");
+	} else {
+		numTimesSinceLastElevatorStall++;
+	}
+	if (numTimesElevatorStalled >= 10) {
+		isElevatorStalled = true;
+	} else {
+		isElevatorStalled = false;
+		if (numTimesSinceLastElevatorStall >= 100) {
+			numTimesElevatorStalled = 0;
+		}
+	}
+	if (isElevatorStalled) {
+		m_masterTalon->StopMotor();
+		m_slaveTalon->StopMotor();
+		printf("Elevator stalled. Stopping motors");
+	}
 }
 
 void Elevator::SetPosition(int setpoint)
@@ -108,4 +134,9 @@ void Elevator::ConfigureCurrentLimits(int peakAmps, int continuousCurrent, int t
     m_slaveTalon->ConfigContinuousCurrentLimit(continuousCurrent, timeout);
     m_slaveTalon->ConfigPeakCurrentDuration(100, timeout);
     m_slaveTalon->EnableCurrentLimit(true);
+}
+
+void Elevator::EnableVoltageCompensation(bool doEnable) {
+	m_masterTalon->EnableVoltageCompensation(doEnable);
+	m_slaveTalon->EnableVoltageCompensation(doEnable);
 }

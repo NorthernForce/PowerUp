@@ -15,6 +15,7 @@ public:
 	void NudgeArm(int distance);
 	void InitSendable(SendableBuilder& builder) override;
 	void ReducePowerForClimb();
+	void EnableVoltageCompensation(bool doEnable);
 
 private:
 	const std::shared_ptr<WPI_TalonSRX> m_talonSRX;
@@ -37,6 +38,9 @@ private:
 	constexpr static double timeToMaxSpeed = 2.5;
 	constexpr static int slotIdx = 0;
 	constexpr static int pidIdx = 0;
+	int numTimesArmStalled = 0;
+	int numTimesSinceLastArmStall = 0;
+	bool isArmStalled = false;
 };
 
 #endif //ARM_H

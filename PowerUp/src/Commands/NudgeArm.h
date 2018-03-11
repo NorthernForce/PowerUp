@@ -11,7 +11,7 @@ public:
 	}
 
 	NudgeArm(GenericHID* controller) : m_controller(controller), m_distance(0) {
-
+		Requires(Robot::arm.get());
 	}
 
 	void Execute() override {
