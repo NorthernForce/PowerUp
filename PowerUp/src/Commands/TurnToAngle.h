@@ -8,6 +8,7 @@
 #pragma once
 
 #include <Commands/Command.h>
+#include "../Robot.h"
 
 class TurnToAngle : public frc::Command {
 public:
