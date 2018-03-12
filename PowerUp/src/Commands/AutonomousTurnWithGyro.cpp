@@ -26,6 +26,7 @@ void AutonomousTurnWithGyro::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void AutonomousTurnWithGyro::Execute() {
+	printf("angle: %f", RobotMap::ahrs->GetAngle());
 	Robot::driveTrain->ArcadeDrive(speed, 0, false);
 }
 
