@@ -49,7 +49,7 @@ void Elevator::InitDefaultCommand()
 }
 
 void Elevator::Periodic() {
-	DriverStation::ReportWarning("reached elevator periodic");
+	DriverStation::ReportWarning("Current: " + std::to_string(std::max(m_masterTalon->GetOutputCurrent(), m_slaveTalon->GetOutputCurrent())));
 	//TODO: tune these values using log file
 	const double elevatorStallCurrent = 5.0;
 	const double elevatorStallVelocity = 10.0;
