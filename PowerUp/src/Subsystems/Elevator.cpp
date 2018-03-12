@@ -49,6 +49,7 @@ void Elevator::InitDefaultCommand()
 }
 
 void Elevator::Periodic() {
+	DriverStation::ReportWarning("reached elevator periodic");
 	//TODO: tune these values using log file
 	const double elevatorStallCurrent = 5.0;
 	const double elevatorStallVelocity = 10.0;
@@ -56,7 +57,7 @@ void Elevator::Periodic() {
 	const double elevatorVelocity = m_masterTalon->GetSensorCollection().GetQuadratureVelocity();
 	if (elevatorCurrent > elevatorStallCurrent && (std::abs(elevatorVelocity) < elevatorStallVelocity)) {
 		numTimesElevatorStalled++;
-		printf("stalled");
+		DriverStation::ReportWarning("elevator stall detected");
 	} else {
 		numTimesSinceLastElevatorStall++;
 	}
@@ -71,7 +72,7 @@ void Elevator::Periodic() {
 	if (isElevatorStalled) {
 		m_masterTalon->StopMotor();
 		m_slaveTalon->StopMotor();
-		printf("Elevator stalled. Stopping motors");
+		DriverStation::ReportWarning("Elevator stalled. Stopping motors");
 	}
 }
 

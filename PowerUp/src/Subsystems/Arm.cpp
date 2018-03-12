@@ -38,12 +38,14 @@ void Arm::InitDefaultCommand() {
 }
 
 void Arm::Periodic() {
+	DriverStation::ReportWarning("reached arm periodic");
 	const double armCurrent = m_talonSRX->GetOutputCurrent();
 	const double armVelocity = m_talonSRX->GetSensorCollection().GetQuadratureVelocity();
 	const double armStallCurrent = 5.0;
 	const double armStallVelocity = 10.0;
 	if (armCurrent > armStallCurrent && (std::abs(armVelocity) < armStallVelocity)) {
 		numTimesArmStalled++;
+		DriverStation::ReportWarning("arm stall detected");
 	} else {
 		numTimesSinceLastArmStall++;
 	}
@@ -57,7 +59,7 @@ void Arm::Periodic() {
 	}
 	if (isArmStalled) {
 		m_talonSRX->StopMotor();
-		printf("Arm stalled. Stopping motor");
+		DriverStation::ReportWarning("Arm stalled. Stopping motor");
 	}
 	if (m_delay > 0) {
 		m_delay -= 1;
