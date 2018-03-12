@@ -61,7 +61,7 @@ void Elevator::Periodic() {
 	} else {
 		numTimesSinceLastElevatorStall++;
 	}
-	if (numTimesElevatorStalled >= 10) {
+	if (numTimesElevatorStalled >= 5) {
 		isElevatorStalled = true;
 	} else {
 		isElevatorStalled = false;

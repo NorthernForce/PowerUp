@@ -38,7 +38,7 @@ void Arm::InitDefaultCommand() {
 }
 
 void Arm::Periodic() {
-	DriverStation::ReportWarning("reached arm periodic");
+	DriverStation::ReportWarning("Arm Current: " + std::to_string(m_talonSRX->GetOutputCurrent()));
 	const double armCurrent = m_talonSRX->GetOutputCurrent();
 	const double armVelocity = m_talonSRX->GetSensorCollection().GetQuadratureVelocity();
 	const double armStallCurrent = 5.0;
@@ -49,7 +49,7 @@ void Arm::Periodic() {
 	} else {
 		numTimesSinceLastArmStall++;
 	}
-	if (numTimesArmStalled >= 10) {
+	if (numTimesArmStalled >= 5) {
 		isArmStalled = true;
 	} else {
 		isArmStalled = false;
