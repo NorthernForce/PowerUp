@@ -21,8 +21,8 @@ void AutonomousDriveWithEncoders::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void AutonomousDriveWithEncoders::Execute() {
-//	Robot::driveTrain->ArcadeDrive(0, speed, false);
-	Robot::driveTrain->ArcadeDrive(RobotMap::ahrs->GetAngle() * -0.03, speed, false);
+	Robot::driveTrain->ArcadeDrive(0, speed, false);
+//	Robot::driveTrain->ArcadeDrive(RobotMap::ahrs->GetAngle() * -0.03, speed, false);
 }
 
 // Make this return true when this Command no longer needs to run execute()

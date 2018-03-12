@@ -156,10 +156,6 @@ namespace {
 
 }
 
-constexpr double RoundProfileDuration(const double duration, TrajectoryDuration interval) {
-    return static_cast<unsigned>((duration * 1000 + interval / 2) / interval) * interval / 1000.0;
-}
-
 Profile CreateSimpleProfile(const double distance, const double startVelocity, const double finalVelocity) {
     if (distance == 0) {
         return {};
