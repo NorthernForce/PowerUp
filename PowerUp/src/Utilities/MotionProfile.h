@@ -15,7 +15,7 @@ private:
 	void PeriodicTask();
 	static constexpr auto timeoutMs = 10;
 	static constexpr auto noTimeoutMs = 0;
-	static constexpr auto minPointsInTalon = 5;
+	static constexpr auto minPointsInTalon = 10;
 	enum class State {
 		Disabled, Starting, Filling, Running, Finished
 	};
