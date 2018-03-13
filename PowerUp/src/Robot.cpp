@@ -58,6 +58,7 @@ Robot* Robot::robot = nullptr;
 
 Robot::Robot() {
 	robot = this;
+	panDirect = 1;
 }
 
 void Robot::RobotInit() {
@@ -78,8 +79,8 @@ void Robot::RobotInit() {
 //    new AutonomousCommandBuilder("Autonomous Mode Go Forward", [](){ return new AutonomousLeft(); });
 //    new AutonomousCommandBuilder("Autonomous Mode Wait 10 Seconds Then Go", [](){ return new AutonomousLeft(); });
 	//gimbal.reset(new Gimbal(0, 1));
-//	gimbal->SetPan(100);
-//	gimbal->SetTilt(200);
+	gimbal->SetPan(100);
+	gimbal->SetTilt(100);
 //	ultrasonicSensor.reset(new UltrasonicSensor(0, 0, 0));
 //	cs::UsbCamera camera0 = CameraServer::GetInstance()->StartAutomaticCapture(0);
 //	if (!camera0.IsConnected()) {
@@ -134,6 +135,25 @@ void Robot::AutonomousInit() {
 }
 
 void Robot::AutonomousPeriodic() {
+	int pan = gimbal->GetPan();
+	switch (panDirect)
+	{
+		case 1: if (pan < 180) gimbal->SetPan(++pan);
+	        	else {panDirect = -1;
+	        		  gimbal->SetPan(--pan);
+	             	 };
+		break;
+
+		case -1: if (pan > 0) gimbal->SetPan(--pan);
+			 	else {panDirect = 1;
+			 	      gimbal->SetPan(++pan);
+			 	 	 };
+		break;
+
+		default: panDirect = 1;
+	};
+
+
 	frc::Scheduler::GetInstance()->Run();
 }
 

@@ -64,5 +64,6 @@ public:
 
 private :
 	frc::Command* autonomousCommand = nullptr;
+	int panDirect;
 };
 #endif
