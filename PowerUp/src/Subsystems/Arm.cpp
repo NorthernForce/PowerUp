@@ -49,7 +49,7 @@ void Arm::Periodic() {
 	} else {
 		numTimesSinceLastArmStall++;
 	}
-	if (numTimesArmStalled >= 2) {
+	if (numTimesArmStalled >= 1) {
 		isArmStalled = true;
 	} else {
 		isArmStalled = false;
@@ -58,8 +58,12 @@ void Arm::Periodic() {
 		}
 	}
 	if (isArmStalled) {
-		m_talonSRX->StopMotor();
 		DriverStation::ReportWarning("Arm stalled. Stopping motor");
+		m_talonSRX->StopMotor();
+		m_talonSRX->ClearMotionProfileTrajectories();
+		m_talonSRX->SetIntegralAccumulator(0, pidIdx, timeoutMs);
+		//TODO: change control mode
+		//TODO: re-enable
 	}
 	if (m_delay > 0) {
 		m_delay -= 1;

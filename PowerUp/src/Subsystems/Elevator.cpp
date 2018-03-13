@@ -49,7 +49,7 @@ void Elevator::InitDefaultCommand()
 }
 
 void Elevator::Periodic() {
-	DriverStation::ReportWarning("Elevator Current: " + std::to_string(std::max(m_masterTalon->GetOutputCurrent(), m_slaveTalon->GetOutputCurrent())));
+	//DriverStation::ReportWarning("Elevator Current: " + std::to_string(std::max(m_masterTalon->GetOutputCurrent(), m_slaveTalon->GetOutputCurrent())));
 	//TODO: tune these values using log file
 	const double elevatorStallCurrent = 5.0;
 	const double elevatorStallVelocity = 10.0;
@@ -61,7 +61,7 @@ void Elevator::Periodic() {
 	} else {
 		numTimesSinceLastElevatorStall++;
 	}
-	if (numTimesElevatorStalled >= 2) {
+	if (numTimesElevatorStalled >= 1) {
 		isElevatorStalled = true;
 	} else {
 		isElevatorStalled = false;
@@ -70,9 +70,15 @@ void Elevator::Periodic() {
 		}
 	}
 	if (isElevatorStalled) {
+		DriverStation::ReportWarning("Elevator stalled. Stopping motors");
 		m_masterTalon->StopMotor();
 		m_slaveTalon->StopMotor();
-		DriverStation::ReportWarning("Elevator stalled. Stopping motors");
+		m_masterTalon->ClearMotionProfileTrajectories();
+		m_slaveTalon->ClearMotionProfileTrajectories();
+		m_masterTalon->SetIntegralAccumulator(0, pidIdx, timeoutMs);
+		m_slaveTalon->SetIntegralAccumulator(0, pidIdx, timeoutMs);
+		//TODO: change control mode
+		//TODO: re-enable
 	}
 }
 
