@@ -49,7 +49,7 @@ void Arm::Periodic() {
 	} else {
 		numTimesSinceLastArmStall++;
 	}
-	if (numTimesArmStalled >= 5) {
+	if (numTimesArmStalled >= 2) {
 		isArmStalled = true;
 	} else {
 		isArmStalled = false;

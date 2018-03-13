@@ -49,7 +49,7 @@ void Elevator::InitDefaultCommand()
 }
 
 void Elevator::Periodic() {
-	DriverStation::ReportWarning("Current: " + std::to_string(std::max(m_masterTalon->GetOutputCurrent(), m_slaveTalon->GetOutputCurrent())));
+	DriverStation::ReportWarning("Elevator Current: " + std::to_string(std::max(m_masterTalon->GetOutputCurrent(), m_slaveTalon->GetOutputCurrent())));
 	//TODO: tune these values using log file
 	const double elevatorStallCurrent = 5.0;
 	const double elevatorStallVelocity = 10.0;
@@ -61,7 +61,7 @@ void Elevator::Periodic() {
 	} else {
 		numTimesSinceLastElevatorStall++;
 	}
-	if (numTimesElevatorStalled >= 5) {
+	if (numTimesElevatorStalled >= 2) {
 		isElevatorStalled = true;
 	} else {
 		isElevatorStalled = false;
