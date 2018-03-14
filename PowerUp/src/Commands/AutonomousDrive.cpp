@@ -11,8 +11,8 @@ AutonomousDrive::AutonomousDrive(const RobotNavigation::RobotTrajectory& path) :
 void AutonomousDrive::Initialize()
 {
 	Robot::driveTrain->SetSafetyEnabled(false);
-	Robot::driveTrain->InitializeMotionProfile(m_path.m_left.m_generator, m_path.m_right.m_generator);
 	Robot::driveTrain->EnableVoltageCompensation(true);
+	Robot::driveTrain->InitializeMotionProfile(m_path.m_left.m_generator, m_path.m_right.m_generator);
 }
 
 bool AutonomousDrive::IsFinished()

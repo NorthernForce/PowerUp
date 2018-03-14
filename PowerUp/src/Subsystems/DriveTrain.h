@@ -41,10 +41,10 @@ public:
 	constexpr static double lowGgearRatio = 15.0 / 1.0;
 	constexpr static double lowGgearEncoderRatio = lowGgearRatio * (12.0 / 30.0);
 	constexpr static double sensorUnitsPerRev = 128 * 4; // The TalonSRX counts 4 edges per encoder count, the quadrature encoder has 256 counts per revolution
-	constexpr static double nativeUnitsPerMeterLowGear = 1 / wheelCircumference * lowGgearEncoderRatio * sensorUnitsPerRev; // Approx. 19249
+	constexpr static double nativeUnitsPerMeterLowGear = 1 / wheelCircumference * lowGgearEncoderRatio * sensorUnitsPerRev; // Approx. 19249 for 256 count per rev, 9624 for 128 count per rev
 
-	constexpr static double maxNativeUnitsPer100ms = 2950; // measured at 11v on comp bot
-	constexpr static double maxVelocityLowGear = 10 * maxNativeUnitsPer100ms / nativeUnitsPerMeterLowGear; // Approx. 1.51 Meters per second
+    constexpr static double maxNativeUnitsPer100ms = 2950 * sensorUnitsPerRev / 1024; // measured at 11v on comp bot with 1024 native units per rev
+    constexpr static double maxVelocityLowGear = 10 * maxNativeUnitsPer100ms / nativeUnitsPerMeterLowGear; // Approx. 1.51 Meters per second
 	constexpr static double feedForwardGain = 1023 / maxNativeUnitsPer100ms;
 
 private:
