@@ -8,57 +8,49 @@
 #include <Commands/AutonomousTurnWithGyro.h>
 
 AutonomousTurnWithGyro::AutonomousTurnWithGyro(double angleToTurn, double speedToMove) {
-//	angle = angleToTurn / 180 * 3.1415925639;
+	Requires(Robot::driveTrain.get());
+
+//	angle = angleToTurn / 180 * 3.141592653589;
 	angle = angleToTurn;
 
 	if (angle > 0)
 		speed = std::abs(speedToMove) * -1;
 	else if (angle < 0)
 		speed = std::abs(speedToMove);
-	else if (angle == 0)
+	else
 		speed = 0;
 }
 
 // Called just before this Command runs the first time
 void AutonomousTurnWithGyro::Initialize() {
 	Robot::driveTrain->SetBrake();
+
 	RobotMap::ahrs->Reset();
 	RobotMap::ahrs->ResetDisplacement();
-
 }
 
 // Called repeatedly when this Command is scheduled to run
 void AutonomousTurnWithGyro::Execute() {
-	DriverStation::ReportWarning("angle: " + std::to_string(RobotMap::ahrs->GetAngle()));
-//	DriverStation::ReportWarning("Yaw: " + std::to_string(RobotMap::ahrs->GetYaw()));
-//	DriverStation::ReportWarning("Pitch: " + std::to_string(RobotMap::ahrs->GetPitch()));
-//	DriverStation::ReportWarning("Roll: " + std::to_string(RobotMap::ahrs->GetRoll()));
+	DriverStation::ReportWarning("angle: " +std::to_string(RobotMap::ahrs->GetAngle()) +" speed: " +std::to_string(speed));
+
 	Robot::driveTrain->ArcadeDrive(speed, 0, false);
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool AutonomousTurnWithGyro::IsFinished() {
-	if (speed < 0) {
-		if (RobotMap::ahrs->GetAngle() >= angle)
-			return true;
-		else
-			return false;
-	}
-	else if (speed > 0) {
-		if (RobotMap::ahrs->GetAngle() <= angle)
-			return true;
-		else
-			return false;
-	}
-	else
-		return true;
+	return std::abs(RobotMap::ahrs->GetAngle()) >= std::abs(angle) || speed == 0;
 }
 
 // Called once after isFinished returns true
 void AutonomousTurnWithGyro::End() {
-	Robot::driveTrain->SetCoast();
+	RobotMap::ahrs->Reset();
 	RobotMap::ahrs->ResetDisplacement();
+
 	Robot::driveTrain->ArcadeDrive(0, 0, false);
+
+	// maybe wait to give it time to brake before coasting again
+	Wait(50);
+	Robot::driveTrain->SetCoast();
 }
 
 // Called when another command which requires one or more of the same
