@@ -14,9 +14,9 @@ AutonomousTurnWithGyro::AutonomousTurnWithGyro(double angleToTurn, double speedT
 	angle = angleToTurn;
 
 	if (angle > 0)
-		speed = std::abs(speedToMove) * -1;
-	else if (angle < 0)
 		speed = std::abs(speedToMove);
+	else if (angle < 0)
+		speed = std::abs(speedToMove) * -1;
 	else
 		speed = 0;
 }
@@ -31,14 +31,15 @@ void AutonomousTurnWithGyro::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void AutonomousTurnWithGyro::Execute() {
-	DriverStation::ReportWarning("angle: " +std::to_string(RobotMap::ahrs->GetAngle()) +" speed: " +std::to_string(speed));
-
-	Robot::driveTrain->ArcadeDrive(speed, 0, false);
+	double error = std::abs((angle - RobotMap::ahrs->GetAngle()) / angle);
+	DriverStation::ReportWarning("angle: " +std::to_string(RobotMap::ahrs->GetAngle()) +" speed: " +std::to_string(speed*error));
+//	speed = error * pgain;
+	Robot::driveTrain->ArcadeDrive(speed*error+speed*0.6, 0, false);
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool AutonomousTurnWithGyro::IsFinished() {
-	return std::abs(RobotMap::ahrs->GetAngle()) >= std::abs(angle) || speed == 0;
+	return (std::abs(angle - RobotMap::ahrs->GetAngle()) < 2) || speed ==0;
 }
 
 // Called once after isFinished returns true
@@ -49,7 +50,7 @@ void AutonomousTurnWithGyro::End() {
 	Robot::driveTrain->ArcadeDrive(0, 0, false);
 
 	// maybe wait to give it time to brake before coasting again
-	Wait(50);
+//	Wait(50);
 	Robot::driveTrain->SetCoast();
 }
 
