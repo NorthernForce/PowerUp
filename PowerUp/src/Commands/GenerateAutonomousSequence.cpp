@@ -55,11 +55,16 @@ frc::CommandGroup* GenerateAutonomousSequence() {
 	const RobotNavigation navigator(orientation);
 
 	sequence->AddSequential(new CloseGripper());
-	sequence->AddSequential(new AutonomousWait(2000));
+//	sequence->AddSequential(new AutonomousWait(2000));
 //	sequence->AddSequential(new PositionArm(PositionArm::Position::Switch));
-//	sequence->AddSequential(new AutonomousDriveForward(4000, -0.8));
-//	sequence->AddSequential(new AutonomousDriveWithEncoders(-1, -0.8));
-	sequence->AddSequential(new AutonomousTurnWithGyro(45, 0.5));
+	sequence->AddSequential(new AutonomousDriveForward(8450, -0.8));
+//	sequence->AddSequential(new AutonomousDriveWithEncoders(1, -0.8));
+	sequence->AddSequential(new AutonomousTurnWithGyro(-90, 0.5));
+	sequence->AddSequential(new PositionArm(PositionArm::Position::ScaleRear));
+	sequence->AddSequential(new AutonomousDriveForward(-200, -0.8));
+	sequence->AddSequential(new CloseGripper());
+	sequence->AddSequential(new AutonomousWait(500));
+	sequence->AddSequential(new OpenGripper());
 	if ((orientation.GetStartingRobotPos() == Position::Left && orientation.GetStartingRobotPos() == orientation.GetSwitchPos()) || (orientation.GetStartingRobotPos() == Position::Center && Position::Right == orientation.GetSwitchPos())) {
 		sequence->AddSequential(new OpenGripper());
 	}
