@@ -42,7 +42,7 @@ OI::OI() {
     frc::SmartDashboard::PutData("RunIntake", new RunIntake());
     frc::SmartDashboard::PutData("DriveWithJoystick", new DriveWithJoystick());
     //Call this pos home instead of retracted
-    frc::SmartDashboard::PutData("Move arm to start position", new PositionArm(PositionArm::Position::Home));
+    frc::SmartDashboard::PutData("Move arm to start position", new PositionArm(PositionArm::Position::Retracted));
     frc::SmartDashboard::PutData("Move arm to pickup", new PositionArm(PositionArm::Position::Pickup));
     frc::SmartDashboard::PutData("Move arm to switch", new PositionArm(PositionArm::Position::Switch));
     frc::SmartDashboard::PutData("Move arm to scale front", new PositionArm(PositionArm::Position::ScaleFront));
@@ -77,7 +77,7 @@ OI::OI() {
     WhileHeld(manipulatorJoystick, 5, new RobotClimb());
     WhenPressed(manipulatorJoystick, 6, new PositionArm(PositionArm::Position::Pickup));
     WhenPressed(manipulatorJoystick, 7, new PositionArm(PositionArm::Position::Switch));
-    WhenPressed(manipulatorJoystick, 9, new PositionArm(PositionArm::Position::Home));
+    WhenPressed(manipulatorJoystick, 9, new PositionArm(PositionArm::Position::Retracted));
     WhileHeld(manipulatorJoystick, 8, new NudgeArm(getManipulatorJoystick().get()));
     WhenPressed(manipulatorJoystick, 10, new PositionArm(PositionArm::Position::ScaleRear));
     WhenPressed(manipulatorJoystick, 11, new PositionArm(PositionArm::Position::ScaleFront));
