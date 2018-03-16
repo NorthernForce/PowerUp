@@ -3,6 +3,7 @@
 #include "AutonomousDriveForward.h"
 #include "AutonomousDriveWithEncoders.h"
 #include "AutonomousTurnWithGyro.h"
+#include "AutonomousWait.h"
 #include "OpenGripper.h"
 #include "CloseGripper.h"
 #include "RunIntake.h"
@@ -54,9 +55,10 @@ frc::CommandGroup* GenerateAutonomousSequence() {
 	const RobotNavigation navigator(orientation);
 
 	sequence->AddSequential(new CloseGripper());
-	sequence->AddSequential(new PositionArm(PositionArm::Position::Switch));
+	sequence->AddSequential(new AutonomousWait(2000));
+//	sequence->AddSequential(new PositionArm(PositionArm::Position::Switch));
 //	sequence->AddSequential(new AutonomousDriveForward(4000, -0.8));
-	sequence->AddSequential(new AutonomousDriveWithEncoders(-2.56, -0.8));
+	sequence->AddSequential(new AutonomousDriveWithEncoders(-1, -0.8));
 	if ((orientation.GetStartingRobotPos() == Position::Left && orientation.GetStartingRobotPos() == orientation.GetSwitchPos()) || (orientation.GetStartingRobotPos() == Position::Center && Position::Right == orientation.GetSwitchPos())) {
 		sequence->AddSequential(new OpenGripper());
 	}

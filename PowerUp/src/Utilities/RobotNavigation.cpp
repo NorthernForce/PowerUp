@@ -1,4 +1,5 @@
 #include "RobotNavigation.h"
+#include <cmath>
 
 namespace {
 	RobotNavigation::RobotTrajectory CombineTrajectories(const std::vector<RobotNavigation::RobotTrajectory>& items) {
@@ -44,17 +45,17 @@ RobotNavigation::RobotTrajectory RobotNavigation::CreatePathFromStartToScale() c
 	if (m_fieldOrientation.GetStartingRobotPos() == m_fieldOrientation.GetScalePos()) {
 		const auto angle = m_fieldOrientation.GetScalePos() == ::Position::Left ? 26.46 : -26.46;
 		return CombineTrajectories({
-			CreateProfile(firstTurn, 0, maxVelocity, 0),
-			CreateProfile(0.5, maxVelocity, maxVelocity, angle),
-			CreateProfile(0.5, maxVelocity, maxVelocity, -angle),
-			CreateProfile(0.5, maxVelocity, 0, 0),
+			CreateProfile(firstTurn, 0, maxSpeed, 0),
+			CreateProfile(0.5, maxSpeed, maxSpeed, angle),
+			CreateProfile(0.5, maxSpeed, maxSpeed, -angle),
+			CreateProfile(0.5, maxSpeed, 0, 0),
 		});
 	} else {
 		return CombineTrajectories({
-			CreateProfile(firstTurn, 0, maxVelocity, 0),
-			CreateProfile(0.5, maxVelocity, maxVelocity, 20),
-			CreateProfile(0.5, maxVelocity, maxVelocity, -20),
-			CreateProfile(0.5, maxVelocity, 0, 0),
+			CreateProfile(firstTurn, 0, maxSpeed, 0),
+			CreateProfile(0.5, maxSpeed, maxSpeed, 20),
+			CreateProfile(0.5, maxSpeed, maxSpeed, -20),
+			CreateProfile(0.5, maxSpeed, 0, 0),
 		});
 	}
 }
@@ -65,7 +66,7 @@ RobotNavigation::RobotTrajectory RobotNavigation::CreatePathFromStartToScale() c
 RobotNavigation::RobotTrajectory RobotNavigation::CreateProfile(const double distance, const double startVelocity, const double finalVelocity, const double angleDegrees) {
     // When not turning we use the same profile for both left and right sides
 	if (angleDegrees == 0) {
-		const auto profile = CreateComplexProfile(distance, startVelocity, finalVelocity, maxVelocity, timeToMaxSpeed);
+		const auto profile = CreateComplexProfile(distance, startVelocity, finalVelocity, maxSpeed, timeToMaxSpeed);
 		return RobotTrajectory { profile, profile };
 	}
 
@@ -73,11 +74,7 @@ RobotNavigation::RobotTrajectory RobotNavigation::CreateProfile(const double dis
     const auto outsideDistance = distance + std::abs(angleDegrees) / 360 * M_PI * wheelTrack;
     const auto insideDistance = distance - std::abs(angleDegrees) / 360 * M_PI * wheelTrack;
 
-    // Determine the approx average velocity and the duration of the two profiles
-    // Note each profile will comprise of 4 equal duration sections, each a multiple of 10ms, so the whole
-    // profile must be a multiple of 40ms
-    const auto avgVelocity = startVelocity == 0 && finalVelocity == 0 ? maxVelocity / 2 : (startVelocity + finalVelocity) / 2;
-    const auto duration = RoundProfileDuration(outsideDistance / avgVelocity, TrajectoryDuration::TrajectoryDuration_40ms);
+    const auto duration = CalculateDuration(outsideDistance, startVelocity, finalVelocity);
 
     // Determine the outside target velocity midway through the turn
     const auto outsideTargetVelocity = 2 * outsideDistance / duration - (startVelocity + finalVelocity) / 2;
@@ -103,4 +100,26 @@ RobotNavigation::RobotTrajectory RobotNavigation::CreateProfile(const double dis
     } else {
         return{ std::move(insideProfile), std::move(outsideProfile) };
     }
+}
+
+double RobotNavigation::CalculateDuration(const double distance, const double startVelocity, const double finalVelocity)
+{
+	// First calculate the average velocity of the two profiles
+	double duration;
+	if(startVelocity != 0 || finalVelocity != 0) {
+		const double avgVelocity = (startVelocity + finalVelocity) / 2;
+		duration = distance / avgVelocity;
+	}
+	else {
+        // Calculate two durations - one velocity limited, the other jerk limited, and
+        // use the slowest, so ensuring we do not exceed eithe the maximum jerk or velocity
+        const auto maxTurnSpeed = maxSpeed / 2;
+        const auto maxJerkDuration = 2 * std::pow(distance * 6 / maxTurnSpeed * timeToMaxSpeed, 1.0 / 3.0);
+        const auto maxVelocityDuration = 2 * distance / maxTurnSpeed;
+        duration = std::max(maxJerkDuration, maxVelocityDuration);
+    }
+
+    // Note each profile will comprise of 4 equal duration sections, each a multiple of 10ms, so the whole
+    // profile must be a multiple of 40ms
+    return RoundProfileDuration(duration, TrajectoryDuration::TrajectoryDuration_40ms);
 }

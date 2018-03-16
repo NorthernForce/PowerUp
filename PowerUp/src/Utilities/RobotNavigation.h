@@ -28,10 +28,12 @@ public:
 	static RobotTrajectory CreateProfile(const double distance, const double startVelocity, const double finalVelocity, const double angleDegrees);
 
 private:
+	static double CalculateDuration(const double distance, const double startVelocity, const double finalVelocity);
+
 	RobotTrajectory CreatePathFromStartToSwitch() const;
 	RobotTrajectory CreatePathFromStartToScale() const;
 	constexpr static double wheelTrack = 0.64;
-	constexpr static double maxVelocity = DriveTrain::maxVelocityLowGear * 0.8;
+	constexpr static double maxSpeed = DriveTrain::maxVelocityLowGear * 0.8;
 	constexpr static double timeToMaxSpeed = 1.0;
 	const FieldOrientation m_fieldOrientation;
 };
