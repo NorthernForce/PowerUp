@@ -50,7 +50,7 @@ void AutonomousDriveWithEncoders::End() {
 	Robot::driveTrain->ArcadeDrive(0, 0, false);
 
 	// maybe wait to give it time to brake before coasting again
-	Wait(50);
+	//	Wait(50);
 	Robot::driveTrain->SetCoast();
 }
 
