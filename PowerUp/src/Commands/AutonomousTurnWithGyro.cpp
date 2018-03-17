@@ -5,13 +5,16 @@ AutonomousTurnWithGyro::AutonomousTurnWithGyro(int degToTurn, double speedToDriv
 
 	angleToTurn = degToTurn;
 
+	//Using the Britton formula for angular velocity
 	if (degToTurn > 0) {
 		highSpeed = std::abs(speedToDrive) * -1;
-		lowSpeed = std::abs(lowSpeed) * -1;
+//		lowSpeed = std::abs(lowSpeed) * -1;
+		lowSpeed = (10 / std::abs(angleToTurn * highSpeed) + 0.1) * -1;
 	}
 	else if (degToTurn < 0) {
 		highSpeed = std::abs(speedToDrive);
-		lowSpeed = std::abs(lowSpeed);
+//		lowSpeed = std::abs(lowSpeed);
+		lowSpeed = (10 / std::abs(angleToTurn * highSpeed) + 0.1);
 	}
 	else {
 		highSpeed = 0;

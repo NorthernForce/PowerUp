@@ -5,6 +5,7 @@ AutonomousDriveWithEncoders::AutonomousDriveWithEncoders(double metersToDrive, d
 
 //	initial = (Robot::driveTrain->GetPositionLeft() + Robot::driveTrain->GetPositionRight()) / 2;
 	initialPosition = Robot::driveTrain->GetPositionRight();
+//	distanceToDrive = round(metersToDrive * Robot::driveTrain->nativeUnitsPerMeterHighGear);
 	distanceToDrive = round(metersToDrive * Robot::driveTrain->nativeUnitsPerMeterLowGear);
 
 	if (metersToDrive > 0) {
