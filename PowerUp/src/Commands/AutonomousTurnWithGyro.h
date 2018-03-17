@@ -26,8 +26,6 @@ private:
 	double highSpeed;
 	double lowSpeed = 0.2;
 
-	double turnConstant = -0.03;
-
-	int slowThreshold = 20;
+	int slowThreshold = 30;
 	int stopThreshold = 2;
 };

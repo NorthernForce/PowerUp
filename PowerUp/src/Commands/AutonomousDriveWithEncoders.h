@@ -20,6 +20,8 @@ private:
 	double highSpeed;
 	double lowSpeed = 0.25;
 
+	double turnConstant = -0.03;
+
 	int slowThreshold = round(0.6 * Robot::driveTrain->nativeUnitsPerMeterLowGear);
 	int stopThreshold = round(0.02 * Robot::driveTrain->nativeUnitsPerMeterLowGear);
 };
