@@ -58,7 +58,8 @@ frc::CommandGroup* GenerateAutonomousSequence() {
 	sequence->AddSequential(new AutonomousWait(2000));
 //	sequence->AddSequential(new PositionArm(PositionArm::Position::Switch));
 //	sequence->AddSequential(new AutonomousDriveForward(4000, -0.8));
-	sequence->AddSequential(new AutonomousDriveWithEncoders(-1, -0.8));
+	sequence->AddSequential(new AutonomousDriveWithEncoders(4, 0.8));
+	sequence->AddSequential(new AutonomousTurnWithGyro(90, 0.6));
 	if ((orientation.GetStartingRobotPos() == Position::Left && orientation.GetStartingRobotPos() == orientation.GetSwitchPos()) || (orientation.GetStartingRobotPos() == Position::Center && Position::Right == orientation.GetSwitchPos())) {
 		sequence->AddSequential(new OpenGripper());
 	}

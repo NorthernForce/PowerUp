@@ -14,8 +14,12 @@ public:
 	void Interrupted() override;
 
 private:
-	int initial;
-	int distance;
-	double speed;
-};
+	int initialPosition;
+	int distanceToDrive;
 
+	double highSpeed;
+	double lowSpeed = 0.25;
+
+	int slowThreshold = round(0.6 * Robot::driveTrain->nativeUnitsPerMeterLowGear);
+	int stopThreshold = round(0.02 * Robot::driveTrain->nativeUnitsPerMeterLowGear);
+};
