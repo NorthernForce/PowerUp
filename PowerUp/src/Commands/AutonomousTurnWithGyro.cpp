@@ -30,9 +30,9 @@ void AutonomousTurnWithGyro::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void AutonomousTurnWithGyro::Execute() {
 	if (std::abs(RobotMap::ahrs->GetAngle()) >= std::abs(angleToTurn) - slowThreshold)
-		Robot::driveTrain->ArcadeDrive(highSpeed, 0, false);
-	else
 		Robot::driveTrain->ArcadeDrive(lowSpeed, 0, false);
+	else
+		Robot::driveTrain->ArcadeDrive(highSpeed, 0, false);
 
 //	DriverStation::ReportWarning("angle: " +std::to_string(RobotMap::ahrs->GetAngle()) +" speed: " +std::to_string(speed));
 }

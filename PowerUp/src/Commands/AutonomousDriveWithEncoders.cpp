@@ -35,9 +35,11 @@ void AutonomousDriveWithEncoders::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void AutonomousDriveWithEncoders::Execute() {
 	if (std::abs(Robot::driveTrain->GetPositionRight() - initialPosition) >= std::abs(distanceToDrive) - slowThreshold)
-		Robot::driveTrain->ArcadeDrive(0, highSpeed, false);
-	else
 		Robot::driveTrain->ArcadeDrive(0, lowSpeed, false);
+//		Robot::driveTrain->ArcadeDrive(RobotMap::ahrs->GetAngle() * -0.03, lowSpeed, false);
+	else
+		Robot::driveTrain->ArcadeDrive(0, highSpeed, false);
+//		Robot::driveTrain->ArcadeDrive(RobotMap::ahrs->GetAngle() * -0.03, highSpeed, false);
 
 //	printf("distance from target: %f currentPos: %f initialPos: %f speed: %f\n", distanceToDrive - std::abs((Robot::driveTrain->GetPositionRight() / unitConv - initialPosition)), Robot::driveTrain->GetPositionLeft() / unitConv, initialPosition, speed);
 //	Robot::driveTrain->ArcadeDrive(RobotMap::ahrs->GetAngle() * -0.03, speed, false);
