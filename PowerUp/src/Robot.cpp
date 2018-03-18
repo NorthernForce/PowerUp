@@ -149,6 +149,7 @@ void Robot::TeleopInit() {
 
 void Robot::TeleopPeriodic() {
 	frc::Scheduler::GetInstance()->Run();
+//	printf("elevator pos: %i\n", RobotMap::elevatorTalonSRX9->GetSensorCollection().GetQuadraturePosition());
 }
 
 START_ROBOT_CLASS(Robot);

@@ -13,14 +13,19 @@
 
 class AutonomousTurnWithGyro : public frc::Command {
 public:
-	AutonomousTurnWithGyro(double angleToTurn, double speedToMove);
+	AutonomousTurnWithGyro(int degToTurn, double speedToDrive);
 	void Initialize() override;
 	void Execute() override;
 	bool IsFinished() override;
 	void End() override;
 	void Interrupted() override;
 
-	double angle;
-	double speed;
-};
+private:
+	int angleToTurn;
 
+	double highSpeed;
+	double lowSpeed = 0.2;
+
+	int slowThreshold = 30;
+	int stopThreshold = 2;
+};

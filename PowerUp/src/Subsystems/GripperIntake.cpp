@@ -4,21 +4,37 @@
 #include "GripperIntake.h"
 #include "../RobotMap.h"
 
-GripperIntake::GripperIntake() : frc::Subsystem("GripperIntake") {
-    talonSRX11 = RobotMap::gripperIntakeTalonSRX11;
+GripperIntake::GripperIntake() : frc::Subsystem("GripperIntake") ,
+	m_gripperIntakeTalon(RobotMap::gripperIntakeTalonSRX11),
+    m_gripperIntakeSolenoid(RobotMap::gripperIntakeSolenoid)
+
+	{
+    isRunning = false;
 }
 
-void GripperIntake::InitDefaultCommand() {
+void GripperIntake::RunIntakeWheels() {
+	m_gripperIntakeTalon->Set(0.5);
+	isRunning = true;
 }
 
-void GripperIntake::Periodic() {
+void GripperIntake::StopIntakeWheels() {
+	m_gripperIntakeTalon->StopMotor();
+	isRunning = false;
 }
 
-
-void GripperIntake::Enable() {
-	talonSRX11->Set(0.5);
+void GripperIntake::LowerIntake() {
+	m_gripperIntakeSolenoid->Set(true);
 }
 
-void GripperIntake::Disable() {
-	talonSRX11->StopMotor();
+void GripperIntake::RaiseIntake() {
+	m_gripperIntakeSolenoid->Set(false);
 }
+
+bool GripperIntake::IsDown() {
+	return m_gripperIntakeSolenoid->Get();
+}
+
+bool GripperIntake::IsRunning() {
+	return isRunning;
+}
+

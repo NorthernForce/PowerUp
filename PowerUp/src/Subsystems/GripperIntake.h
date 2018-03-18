@@ -6,14 +6,19 @@
 #include "WPILib.h"
 
 class GripperIntake: public frc::Subsystem {
-private:
-	std::shared_ptr<WPI_TalonSRX> talonSRX11;
 public:
 	GripperIntake();
-	void InitDefaultCommand() override;
-	void Periodic() override;
-	void Enable();
-	void Disable();
+	void RunIntakeWheels();
+	void StopIntakeWheels();
+	void RaiseIntake();
+	void LowerIntake();
+	bool IsDown();
+	bool IsRunning();
+private:
+	bool isRunning;
+	const std::shared_ptr<WPI_TalonSRX> m_gripperIntakeTalon;
+	const std::shared_ptr<frc::Solenoid> m_gripperIntakeSolenoid;
+
 };
 
 #endif //GRIPPERINTAKE_H

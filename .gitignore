@@ -2,5 +2,6 @@
 eclipse-workspace
 *.*~
 Debug/
+Release/
 PowerUp/.settings/language.settings.xml
 .settings
