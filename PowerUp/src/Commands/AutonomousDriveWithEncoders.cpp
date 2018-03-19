@@ -3,10 +3,16 @@
 AutonomousDriveWithEncoders::AutonomousDriveWithEncoders(double metersToDrive, double speedToDrive) {
 	Requires(Robot::driveTrain.get());
 
-//	initial = (Robot::driveTrain->GetPositionLeft() + Robot::driveTrain->GetPositionRight()) / 2;
-	initialPosition = Robot::driveTrain->GetPositionRight();
-//	distanceToDrive = round(metersToDrive * Robot::driveTrain->nativeUnitsPerMeterHighGear);
-	distanceToDrive = round(metersToDrive * Robot::driveTrain->nativeUnitsPerMeterLowGear);
+	if (Robot::driveTrainShifter->GetGear() == DriveTrainShifter::Gear::High)
+		convUnits = Robot::driveTrain->nativeUnitsPerMeterHighGear;
+	else
+		convUnits = Robot::driveTrain->nativeUnitsPerMeterLowGear;
+
+	slowThreshold = round(slowThreshold * convUnits);
+	stopThreshold = round(stopThreshold * convUnits);
+
+	initialPosition = GetPosition();
+	distanceToDrive = round(metersToDrive * convUnits);
 
 	if (metersToDrive > 0) {
 		highSpeed = std::abs(speedToDrive) * -1;
@@ -26,8 +32,7 @@ AutonomousDriveWithEncoders::AutonomousDriveWithEncoders(double metersToDrive, d
 void AutonomousDriveWithEncoders::Initialize() {
 	Robot::driveTrain->SetBrake();
 
-//	initial = (Robot::driveTrain->GetPositionLeft() + Robot::driveTrain->GetPositionRight()) / 2;
-	initialPosition = Robot::driveTrain->GetPositionRight();
+	initialPosition = GetPosition();
 
 	RobotMap::ahrs->Reset();
 	RobotMap::ahrs->ResetDisplacement();
@@ -35,20 +40,17 @@ void AutonomousDriveWithEncoders::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void AutonomousDriveWithEncoders::Execute() {
-	if (std::abs(Robot::driveTrain->GetPositionRight() - initialPosition) >= std::abs(distanceToDrive) - slowThreshold)
-//		Robot::driveTrain->ArcadeDrive(0, lowSpeed, false);
+	if (std::abs(Robot::driveTrain->GetPosition() - initialPosition) >= std::abs(distanceToDrive) - slowThreshold)
 		Robot::driveTrain->ArcadeDrive(RobotMap::ahrs->GetAngle() * turnConstant, lowSpeed, false);
 	else
-//		Robot::driveTrain->ArcadeDrive(0, highSpeed, false);
 		Robot::driveTrain->ArcadeDrive(RobotMap::ahrs->GetAngle() * turnConstant, highSpeed, false);
 
-//	printf("distance from target: %f currentPos: %f initialPos: %f speed: %f\n", distanceToDrive - std::abs((Robot::driveTrain->GetPositionRight() / unitConv - initialPosition)), Robot::driveTrain->GetPositionLeft() / unitConv, initialPosition, speed);
-//	Robot::driveTrain->ArcadeDrive(RobotMap::ahrs->GetAngle() * -0.03, speed, false);
+//	printf("distance from target: %f currentPos: %f initialPos: %f \n", distanceToDrive - std::abs((Robot::driveTrain->GetPosition() / convUnits - initialPosition)), Robot::driveTrain->GetPosition() / convUnits, initialPosition);
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool AutonomousDriveWithEncoders::IsFinished() {
-	return std::abs(Robot::driveTrain->GetPositionRight() - initialPosition) >= std::abs(distanceToDrive) - stopThreshold || highSpeed == 0;
+	return std::abs(GetPosition() - initialPosition) >= std::abs(distanceToDrive) - stopThreshold || highSpeed == 0;
 }
 
 // Called once after isFinished returns true
@@ -67,4 +69,11 @@ void AutonomousDriveWithEncoders::End() {
 // subsystems is scheduled to run
 void AutonomousDriveWithEncoders::Interrupted() {
 
+}
+
+int AutonomousDriveWithEncoders::GetPosition() {
+	if (getRightEncoder)
+		return Robot::driveTrain->GetPositionRight();
+	else
+		return Robot::driveTrain->GetPositionLeft();
 }

@@ -74,14 +74,14 @@ frc::CommandGroup* GenerateAutonomousSequence() {
 	// --- ## --- !!22 ## 55 %%%%%%%%%%% 55 ## 22!! --- ## ---
 
 //	//right scale from left side ---###----
-//	sequence->AddSequential(new ShiftGearbox(ShiftGearbox::Gear::High));
+	sequence->AddSequential(new ShiftGearbox(ShiftGearbox::Gear::High));
 	sequence->AddSequential(new AutonomousDriveWithEncoders(5.57, 1));
 	sequence->AddSequential(new AutonomousTurnWithGyro(-90, 0.8));
 	sequence->AddSequential(new PositionArm(PositionArm::Position::ScaleFront));
 	sequence->AddSequential(new AutonomousDriveWithEncoders(5.2, 1));
 	sequence->AddSequential(new AutonomousTurnWithGyro(90, 0.8));
 	sequence->AddSequential(new AutonomousDriveWithEncoders(1.16, 1));
-//	sequence->AddSequential(new ShiftGearbox(ShiftGearbox::Gear::Low));
+	sequence->AddSequential(new ShiftGearbox(ShiftGearbox::Gear::Low));
 
 
 

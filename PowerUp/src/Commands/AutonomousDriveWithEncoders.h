@@ -22,8 +22,11 @@ private:
 
 	double turnConstant = -0.03;
 
-	int slowThreshold = round(0.6 * Robot::driveTrain->nativeUnitsPerMeterLowGear);
-	int stopThreshold = round(0.02 * Robot::driveTrain->nativeUnitsPerMeterLowGear);
-//	int slowThreshold = round(0.6 * Robot::driveTrain->nativeUnitsPerMeterHighGear);
-//	int stopThreshold = round(0.02 * Robot::driveTrain->nativeUnitsPerMeterHighGear);
+	double convUnits;
+
+	int slowThreshold = 0.6;
+	int stopThreshold = 0.02;
+
+	bool getRightEncoder = true;
+	int GetPosition();
 };

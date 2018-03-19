@@ -1,7 +1,3 @@
-#ifndef PRACTICE_BOT
-#define PRACTICE_BOT // Comment me out for the competition bot!
-#endif //PRACTICE_BOT
-
 #include "PositionArm.h"
 
 struct PositionArm::PositionSetpoints {
