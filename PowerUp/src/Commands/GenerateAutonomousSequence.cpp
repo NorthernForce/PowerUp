@@ -1,3 +1,4 @@
+#include <Commands/RunIntakeWheels.h>
 #include "GenerateAutonomousSequence.h"
 #include "AutonomousDrive.h"
 #include "AutonomousDriveForward.h"
@@ -6,7 +7,6 @@
 #include "AutonomousWait.h"
 #include "OpenGripper.h"
 #include "CloseGripper.h"
-#include "RunIntake.h"
 #include "PositionArm.h"
 #include "StartFieldPositioningSystem.h"
 #include "Utilities/CommandGroupBuilder.h"
@@ -29,7 +29,7 @@ frc::CommandGroup* PickupCube(const RobotNavigation& navigator, const RobotNavig
 			new AutonomousDrive(navigator.CreatePath(startPos, RobotNavigation::Position::PickupCubeAtSwitch)),
 			new PositionArm(PositionArm::Position::Pickup),
 			new OpenGripper(),
-			new RunIntake()
+			new RunIntakeWheels()
 		}),
 		new CloseGripper()
 	});

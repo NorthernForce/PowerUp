@@ -1,10 +1,10 @@
+#include <Commands/RunIntakeWheels.h>
 #include "OI.h"
 #include "SmartDashboard/SmartDashboard.h"
 #include "Commands/AutonomousCenter.h"
 #include "Commands/AutonomousLeft.h"
 #include "Commands/AutonomousRight.h"
 #include "Commands/DriveWithJoystick.h"
-#include "Commands/RunIntake.h"
 #include "Commands/StartFieldPositioningSystem.h"
 #include "Commands/PositionArm.h"
 #include "Commands/ShiftGearbox.h"
@@ -17,6 +17,10 @@
 #include "Commands/OpenGripper.h"
 #include "Commands/CloseGripper.h"
 #include "Commands/ElevatorBrake.h"
+#include "Commands/RunIntakeWheels.h"
+#include "Commands/StopIntakeWheels.h"
+#include "Commands/RaiseGripperIntake.h"
+#include "Commands/LowerGripperIntake.h"
 
 namespace {
 	void WhenPressed(const std::shared_ptr<frc::GenericHID>& joystick, int button, frc::Command* command) {
@@ -39,7 +43,7 @@ OI::OI() {
 	driverController.reset(new frc::XboxController(0));
     manipulatorJoystick.reset(new frc::Joystick(1));
     // SmartDashboard Buttons
-    frc::SmartDashboard::PutData("RunIntake", new RunIntake());
+    frc::SmartDashboard::PutData("RunIntake", new RunIntakeWheels());
     frc::SmartDashboard::PutData("DriveWithJoystick", new DriveWithJoystick());
     //Call this pos home instead of retracted
     frc::SmartDashboard::PutData("Move arm to start position", new PositionArm(PositionArm::Position::Retracted));
@@ -58,10 +62,16 @@ OI::OI() {
     frc::SmartDashboard::PutData("Shift Low", new ShiftGearbox(ShiftGearbox::Gear::Low));
 	frc::SmartDashboard::PutData("Open gripper", new OpenGripper());
 	frc::SmartDashboard::PutData("Close gripper", new CloseGripper());
+	frc::SmartDashboard::PutData("Run Intake Wheels", new RunIntakeWheels());
+	frc::SmartDashboard::PutData("Stop Intake Wheels", new StopIntakeWheels());
+	frc::SmartDashboard::PutData("Raise Intake", new RaiseGripperIntake());
+	frc::SmartDashboard::PutData("Lower Intake", new LowerGripperIntake());
 	frc::SmartDashboard::PutData("Break elevator", new ElevatorBreak(ElevatorBreak::State::BrakeOn));
 	frc::SmartDashboard::PutData("Release elevator", new ElevatorBreak(ElevatorBreak::State::BrakeOff));
 	frc::SmartDashboard::PutData("**Reset arm home position**", new SetArmHomePosition());
     frc::SmartDashboard::PutData("**Reset elevator home position**", new SetElevatorHomePosition());
+
+
 
     //TODO: switch to using enums for joystick buttons
 

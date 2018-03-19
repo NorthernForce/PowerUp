@@ -17,6 +17,7 @@ public:
 	static std::shared_ptr<WPI_TalonSRX> elevatorTalonSRX9;
 	static std::shared_ptr<WPI_TalonSRX> armTalonSRX8;
 	static std::shared_ptr<WPI_TalonSRX> gripperIntakeTalonSRX11;
+	static std::shared_ptr<frc::Solenoid> gripperIntakeSolenoid;
 	static std::shared_ptr<frc::RobotDrive> driveTrainRobotDrive;
 	static std::shared_ptr<frc::Compressor> compressor;
 	static std::shared_ptr<frc::DoubleSolenoid> driveTrainShifterDS;
