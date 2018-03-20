@@ -21,13 +21,12 @@ void GripperIntake::StopIntakeWheels() {
 	m_gripperIntakeTalon->StopMotor();
 	isRunning = false;
 }
-
-void GripperIntake::LowerIntake() {
-	m_gripperIntakeSolenoid->Set(true);
-}
-
-void GripperIntake::RaiseIntake() {
-	m_gripperIntakeSolenoid->Set(false);
+void GripperIntake::SetIntake(State state) {
+	if(state == State::Raised) {
+		m_gripperIntakeSolenoid->Set(false);
+	} else {
+		m_gripperIntakeSolenoid->Set(true);
+	}
 }
 
 bool GripperIntake::IsDown() {

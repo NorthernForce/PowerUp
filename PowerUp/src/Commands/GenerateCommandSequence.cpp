@@ -1,9 +1,9 @@
+#include "Subsystems/GripperIntake.h"
 #include "GenerateCommandSequence.h"]
 #include "Commands/PositionArm.h"
+#include <Commands/SetGripperIntake.h>
 #include "Commands/RunIntakeWheels.h"
 #include "Commands/StopIntakeWheels.h"
-#include "Commands/RaiseGripperIntake.h"
-#include "Commands/LowerGripperIntake.h"
 
 
 namespace {
@@ -11,7 +11,7 @@ namespace {
 		frc::CommandGroup* const sequence = new frc::CommandGroup;
 
 		sequence->AddSequential(new PositionArm(PositionArm::Position::Switch));
-		sequence->AddSequential(new LowerGripperIntake());
+		sequence->AddSequential(new SetGripperIntake(GripperIntake::State::Lowered));
 		sequence->AddSequential(new PositionArm(PositionArm::Position::Pickup));
 
 		return sequence;
@@ -22,7 +22,7 @@ namespace {
 		frc::CommandGroup* const sequence = new frc::CommandGroup;
 
 		sequence->AddSequential(new PositionArm(pos));
-		sequence->AddSequential(new RaiseGripperIntake());
+		sequence->AddSequential(new SetGripperIntake(GripperIntake::State::Lowered));
 	}
 
 }

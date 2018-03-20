@@ -1,5 +1,6 @@
-#include <Commands/RunIntakeWheels.h>
 #include "OI.h"
+#include <Commands/RunIntakeWheels.h>
+#include <Commands/SetGripperIntake.h>
 #include "SmartDashboard/SmartDashboard.h"
 #include "Commands/AutonomousCenter.h"
 #include "Commands/AutonomousLeft.h"
@@ -19,8 +20,6 @@
 #include "Commands/ElevatorBrake.h"
 #include "Commands/RunIntakeWheels.h"
 #include "Commands/StopIntakeWheels.h"
-#include "Commands/RaiseGripperIntake.h"
-#include "Commands/LowerGripperIntake.h"
 
 namespace {
 	void WhenPressed(const std::shared_ptr<frc::GenericHID>& joystick, int button, frc::Command* command) {
@@ -64,8 +63,8 @@ OI::OI() {
 	frc::SmartDashboard::PutData("Close gripper", new CloseGripper());
 	frc::SmartDashboard::PutData("Run Intake Wheels", new RunIntakeWheels());
 	frc::SmartDashboard::PutData("Stop Intake Wheels", new StopIntakeWheels());
-	frc::SmartDashboard::PutData("Raise Intake", new RaiseGripperIntake());
-	frc::SmartDashboard::PutData("Lower Intake", new LowerGripperIntake());
+	frc::SmartDashboard::PutData("Raise Intake", new SetGripperIntake(GripperIntake::State::Raised));
+	frc::SmartDashboard::PutData("Lower Intake", new SetGripperIntake(GripperIntake::State::Lowered));
 	frc::SmartDashboard::PutData("Break elevator", new ElevatorBreak(ElevatorBreak::State::BrakeOn));
 	frc::SmartDashboard::PutData("Release elevator", new ElevatorBreak(ElevatorBreak::State::BrakeOff));
 	frc::SmartDashboard::PutData("**Reset arm home position**", new SetArmHomePosition());
