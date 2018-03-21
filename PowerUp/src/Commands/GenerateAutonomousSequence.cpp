@@ -16,7 +16,6 @@
 #include "ShiftGearbox.h"
 
 namespace {
-
 bool ScoreOnScaleFirst(const FieldOrientation& orientation) {
 	return orientation.GetStartingRobotPos() == Position::Center ||
 		   orientation.GetStartingRobotPos() == orientation.GetScalePos() ||
@@ -54,44 +53,67 @@ frc::CommandGroup* GenerateAutonomousSequence() {
 	const auto& message = ds.GetGameSpecificMessage();
 	const FieldOrientation orientation(message);
 	const RobotNavigation navigator(orientation);
-
+	AutoTarget target;
+	StartingPos pos;
+	//Get target and pos from SmartDashboard chooser
 	sequence->AddSequential(new CloseGripper());
+	if (orientation.GetStartingRobotPos() == Position::Center) {
+		//Score on switch from center
+	} else if (orientation.GetStartingRobotPos() == Position::Left) {
+		if (target == AutoTarget::Switch) {
+			if (orientation.GetSwitchPos() == Position::Left) {
+				//Score on left switch from left
+			} else if (orientation.GetStartingRobotPos() == Position::Right) {
+				//Score on right switch from left
+			}
+		} else if (target == AutoTarget::Scale) {
+			if (orientation.GetSwitchPos() == Position::Left) {
+				//Score on left scale from left
+				//Might be wrong
+				sequence->AddSequential(new AutonomousDriveWithEncoders(3.5, 0.8));
+				sequence->AddSequential(new AutonomousTurnWithGyro(-20, 0.6));
+				sequence->AddSequential(new PositionArm(PositionArm::Position::ScaleFront));
+				sequence->AddSequential(new AutonomousDriveWithEncoders(3.5, 0.8));
+			} else if (orientation.GetStartingRobotPos() == Position::Right) {
+				//Score on right scale from left
+				//Might be wrong
+				sequence->AddSequential(new ShiftGearbox(ShiftGearbox::Gear::High));
+				sequence->AddSequential(new AutonomousDriveWithEncoders(5.57, 1));
+				sequence->AddSequential(new AutonomousTurnWithGyro(-90, 0.8));
+				sequence->AddSequential(new PositionArm(PositionArm::Position::ScaleFront));
+				sequence->AddSequential(new AutonomousDriveWithEncoders(5.2, 1));
+				sequence->AddSequential(new AutonomousTurnWithGyro(90, 0.8));
+				sequence->AddSequential(new AutonomousDriveWithEncoders(1.16, 1));
+				sequence->AddSequential(new ShiftGearbox(ShiftGearbox::Gear::Low));
+			}
+		}
+	} else if (orientation.GetStartingRobotPos() == Position::Right) {
+		if (target == AutoTarget::Switch) {
+			if (orientation.GetSwitchPos() == Position::Left) {
+				//Score on left switch from right
+			} else if (orientation.GetSwitchPos() == Position::Right) {
+				//Score on right switch from right
+			}
+		} else if (target == AutoTarget::Scale) {
+			if (orientation.GetSwitchPos() == Position::Left) {
+				//Score on left scale from right
+			} else if (orientation.GetSwitchPos() == Position::Right) {
+				//Score on right scale from right
+			}
+		}
+	}
+
+
 //	sequence->AddSequential(new AutonomousWait(2000));
 //	sequence->AddSequential(new PositionArm(PositionArm::Position::Switch));
 //	sequence->AddSequential(new AutonomousDriveForward(4000, -0.8));
 
-	// --- ## --- Goes to left scale from left side --- ## ---
-//	sequence->AddSequential(new AutonomousDriveWithEncoders(3.5, 0.8));
-//	sequence->AddSequential(new AutonomousTurnWithGyro(-20, 0.6));
-//	sequence->AddSequential(new PositionArm(PositionArm::Position::ScaleFront));
-//	sequence->AddSequential(new AutonomousDriveWithEncoders(3.5, 0.8));
-
-
-	// --- GET TO SCALE CONT OOOLALA ----
-
-//	sequence->AddSequential(new AutonomousDriveWithEncoders(-0.5, 0.8));
-
-	// --- ## --- !!22 ## 55 %%%%%%%%%%% 55 ## 22!! --- ## ---
-
-//	//right scale from left side ---###----
-	sequence->AddSequential(new ShiftGearbox(ShiftGearbox::Gear::High));
-	sequence->AddSequential(new AutonomousDriveWithEncoders(5.57, 1));
-	sequence->AddSequential(new AutonomousTurnWithGyro(-90, 0.8));
-	sequence->AddSequential(new PositionArm(PositionArm::Position::ScaleFront));
-	sequence->AddSequential(new AutonomousDriveWithEncoders(5.2, 1));
-	sequence->AddSequential(new AutonomousTurnWithGyro(90, 0.8));
-	sequence->AddSequential(new AutonomousDriveWithEncoders(1.16, 1));
-	sequence->AddSequential(new ShiftGearbox(ShiftGearbox::Gear::Low));
-
-
-
-
-	if ((orientation.GetStartingRobotPos() == Position::Left && orientation.GetStartingRobotPos() == orientation.GetSwitchPos()) || (orientation.GetStartingRobotPos() == Position::Center && Position::Right == orientation.GetSwitchPos())) {
-		sequence->AddSequential(new OpenGripper());
-	}
+	//if ((orientation.GetStartingRobotPos() == Position::Left && orientation.GetStartingRobotPos() == orientation.GetSwitchPos()) || (orientation.GetStartingRobotPos() == Position::Center && Position::Right == orientation.GetSwitchPos())) {
+	sequence->AddSequential(new OpenGripper());
+	//}
 	return sequence;
 
-	//useful stuff for laters
+	//useful stuff for later
 	/*if (true || !orientation.IsInitialized()) {
 		sequence->AddSequential(new CloseGripper());
 		sequence->AddSequential(new AutonomousDrive(RobotNavigation::CreateProfile(2, 0, 0, 0)));
