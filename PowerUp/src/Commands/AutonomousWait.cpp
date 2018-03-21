@@ -19,7 +19,7 @@ void AutonomousWait::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool AutonomousWait::IsFinished() {
-	DriverStation::ReportWarning(std::to_string(counter) + " counts remaining");
+//	DriverStation::ReportWarning(std::to_string(counter) + " counts remaining");
 	return (counter*20 >= duration);
 }
 

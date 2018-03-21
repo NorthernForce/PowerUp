@@ -5,16 +5,20 @@ AutonomousTurnWithGyro::AutonomousTurnWithGyro(int degToTurn, double speedToDriv
 
 	angleToTurn = degToTurn;
 
+	slowThreshold = std::abs(degToTurn) * 0.3;
+	if (slowThreshold > 35)
+		slowThreshold = 35;
+
 	//Using the Britton formula for angular velocity
 	if (degToTurn > 0) {
 		highSpeed = std::abs(speedToDrive) * -1;
-//		lowSpeed = std::abs(lowSpeed) * -1;
-		lowSpeed = (10 / std::abs(angleToTurn * highSpeed) + 0.1) * -1;
+		lowSpeed = std::abs(lowSpeed) * -1;
+//		lowSpeed = (10 / std::abs(angleToTurn * highSpeed) + 0.1) * -1;
 	}
 	else if (degToTurn < 0) {
 		highSpeed = std::abs(speedToDrive);
-//		lowSpeed = std::abs(lowSpeed);
-		lowSpeed = (10 / std::abs(angleToTurn * highSpeed) + 0.1);
+		lowSpeed = std::abs(lowSpeed);
+//		lowSpeed = (10 / std::abs(angleToTurn * highSpeed) + 0.1);
 	}
 	else {
 		highSpeed = 0;
@@ -37,6 +41,7 @@ void AutonomousTurnWithGyro::Execute() {
 	else
 		Robot::driveTrain->ArcadeDrive(highSpeed, 0, false);
 
+//	printf("angle: %f\n", RobotMap::ahrs->GetAngle());
 //	DriverStation::ReportWarning("angle: " +std::to_string(RobotMap::ahrs->GetAngle()) +" speed: " +std::to_string(speed));
 }
 
@@ -54,7 +59,7 @@ void AutonomousTurnWithGyro::End() {
 
 	// maybe wait to give it time to brake before coasting again
 //	Wait(0.05);
-	Robot::driveTrain->SetCoast();
+//	Robot::driveTrain->SetCoast();
 }
 
 // Called when another command which requires one or more of the same

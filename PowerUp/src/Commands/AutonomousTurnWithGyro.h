@@ -24,8 +24,8 @@ private:
 	int angleToTurn;
 
 	double highSpeed;
-	double lowSpeed = 0.2;
+	double lowSpeed = 0.3;
 
 	int slowThreshold = 30;
-	int stopThreshold = 2;
+	int stopThreshold = 1;
 };

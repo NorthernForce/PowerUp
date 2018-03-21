@@ -24,9 +24,6 @@ private:
 
 	double convUnits;
 
-	int slowThreshold = 0.6;
-	int stopThreshold = 0.02;
-
-	bool getRightEncoder = true;
-	int GetPosition();
+	int slowThreshold = 1;
+	int stopThreshold = 0.00;
 };
