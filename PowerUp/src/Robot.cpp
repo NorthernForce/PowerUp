@@ -77,6 +77,12 @@ void Robot::RobotInit() {
 //    new AutonomousCommandBuilder("Autonomous Mode Center", [](){ return new AutonomousCenter(); });
 //    new AutonomousCommandBuilder("Autonomous Mode Go Forward", [](){ return new AutonomousLeft(); });
 //    new AutonomousCommandBuilder("Autonomous Mode Wait 10 Seconds Then Go", [](){ return new AutonomousLeft(); });
+    //initializes autonomous mode chooser
+    autonomousChooser.AddDefault("AutonomousLeft", new AutonomousLeft());
+    autonomousChooser.AddObject("AutonomousCenter", new AutonomousCenter());
+   	autonomousChooser.AddObject("AutonomousRight", new AutonomousRight());
+
+   	frc::SmartDashboard::PutData("Autonomous Modes", &autonomousChooser);
 	//gimbal.reset(new Gimbal(0, 1));
 //	gimbal->SetPan(100);
 //	gimbal->SetTilt(200);
@@ -121,15 +127,18 @@ void Robot::AutonomousInit() {
 //		DriverStation::ReportError("No autonomous mode selected");
 //	}
 
-	autonomousCommand = new AutonomousLeft();
+//	autonomousCommand = new AutonomousLeft();
 //	autonomousCommand = new AutonomousCenter();
 //	autonomousCommand = new AutonomousRight();
+	autonomousCommand.reset(autonomousChooser.GetSelected());
 
 //	Wait(10);
 
 	char message[200];
 	sprintf(message, "Running autonomous mode YAY");
-	autonomousCommand->Start();
+	if(autonomousCommand.get() != nullptr) {
+		autonomousCommand->Start();
+	}
 	DriverStation::ReportError(message);
 }
 
