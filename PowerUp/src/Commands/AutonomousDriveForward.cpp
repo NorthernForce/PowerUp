@@ -11,12 +11,15 @@ AutonomousDriveForward::AutonomousDriveForward(int timeToTravel, double speedToM
 
 void AutonomousDriveForward::Initialize() {
 	Robot::driveTrain->SetSafetyEnabled(false);
+
+	Robot::driveTrain->SetBrake();
+
+	RobotMap::ahrs->Reset();
+	RobotMap::ahrs->ResetDisplacement();
 }
 
 void AutonomousDriveForward::Execute() {
-	printf("speed: %f timer: %i time: %i\n", speed, timer, time);
-	Robot::driveTrain->SetSafetyEnabled(false);
-	Robot::driveTrain->ArcadeDrive(0, speed, true);
+	Robot::driveTrain->ArcadeDrive(RobotMap::ahrs->GetAngle() * -0.03, speed, true);
 	timer++;
 }
 
@@ -27,6 +30,9 @@ bool AutonomousDriveForward::IsFinished() {
 void AutonomousDriveForward::End() {
 	Robot::driveTrain->SetSafetyEnabled(false);
 	Robot::driveTrain->ArcadeDrive(0, 0, true);
+
+	RobotMap::ahrs->Reset();
+	RobotMap::ahrs->ResetDisplacement();
 
 }
 
