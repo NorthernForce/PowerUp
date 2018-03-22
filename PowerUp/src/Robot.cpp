@@ -78,9 +78,16 @@ void Robot::RobotInit() {
 //    new AutonomousCommandBuilder("Autonomous Mode Go Forward", [](){ return new AutonomousLeft(); });
 //    new AutonomousCommandBuilder("Autonomous Mode Wait 10 Seconds Then Go", [](){ return new AutonomousLeft(); });
     //initializes autonomous mode chooser
-    autonomousChooser.AddDefault("AutonomousLeft", new AutonomousLeft());
-    autonomousChooser.AddObject("AutonomousCenter", new AutonomousCenter());
-   	autonomousChooser.AddObject("AutonomousRight", new AutonomousRight());
+//    autonomousChooser.AddDefault("AutonomousLeft", new AutonomousLeft());
+//    autonomousChooser.AddObject("AutonomousCenter", new AutonomousCenter());
+//   	autonomousChooser.AddObject("AutonomousRight", new AutonomousRight());
+
+    autonomousChooser.AddDefault("Cross the Auto-Line", new CrossAutoLine());
+    autonomousChooser.AddObject("Left Scale from Left Side", new ScaleFromLeft());
+    autonomousChooser.AddObject("Right Scale from Right Side", new ScaleFromRight());
+    autonomousChooser.AddObject("Left Switch from Left Side", new SwitchFromLeft());
+    autonomousChooser.AddObject("Right Switch from Right Side", new SwitchFromRight());
+    autonomousChooser.AddObject("Right Switch from Center Side (Untested)", new SwitchFromCenter());
 
    	frc::SmartDashboard::PutData("Autonomous Modes", &autonomousChooser);
 	//gimbal.reset(new Gimbal(0, 1));
@@ -132,12 +139,10 @@ void Robot::AutonomousInit() {
 //	autonomousCommand = new AutonomousRight();
 	autonomousCommand.reset(autonomousChooser.GetSelected());
 
-	DriverStation::ReportError(autonomousCommand->GetName());
-
 //	Wait(10);
 
 	char message[200];
-	sprintf(message, "Running autonomous mode YAY");
+	sprintf(message, "Running autonomous mode %s", autonomousCommand->GetName().c_str());
 	if(autonomousCommand.get() != nullptr) {
 		autonomousCommand->Start();
 	}

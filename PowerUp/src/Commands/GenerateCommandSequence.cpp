@@ -1,5 +1,5 @@
 #include "Subsystems/GripperIntake.h"
-#include "GenerateCommandSequence.h"]
+#include "GenerateCommandSequence.h"
 #include "Commands/PositionArm.h"
 #include <Commands/SetGripperIntake.h>
 #include "Commands/RunIntakeWheels.h"
