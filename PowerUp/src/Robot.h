@@ -13,7 +13,7 @@
 #define _ROBOT_H
 
 #ifndef PRACTICE_BOT
-#define PRACTICE_BOT // Comment me out for the competition bot!
+//#define PRACTICE_BOT // Comment me out for the competition bot!
 #endif //PRACTICE_BOT
 
 #include "WPILib.h"
@@ -57,6 +57,7 @@ public:
 	static std::shared_ptr<Arm> arm;
 	static std::shared_ptr<Gimbal> gimbal;
 	static std::shared_ptr<UltrasonicSensor> ultrasonicSensor;
+
 	Robot();
 	void RobotInit() override;
 	void DisabledInit() override;
@@ -67,6 +68,7 @@ public:
 	void TeleopPeriodic() override;
 
 private :
-	frc::Command* autonomousCommand = nullptr;
+	std::unique_ptr<frc::Command> autonomousCommand;
+	frc::SendableChooser<frc::Command*> autonomousChooser;
 };
 #endif
