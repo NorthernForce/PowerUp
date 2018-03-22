@@ -132,6 +132,8 @@ void Robot::AutonomousInit() {
 //	autonomousCommand = new AutonomousRight();
 	autonomousCommand.reset(autonomousChooser.GetSelected());
 
+	DriverStation::ReportError(autonomousCommand->GetName());
+
 //	Wait(10);
 
 	char message[200];

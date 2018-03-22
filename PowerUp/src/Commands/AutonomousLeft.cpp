@@ -2,10 +2,9 @@
 #include "GenerateAutonomousSequence.h"
 #include "Utilities/FieldOrientation.h"
 
-AutonomousLeft::AutonomousLeft()
+
+AutonomousLeft::AutonomousLeft() : frc::CommandGroup("Autonomous Left")
 {
 	FieldOrientation::SetStartingRobotCoordinate(Position::Left, { FieldOrientation::StartCoordX, FieldOrientation::StartCoordY, FieldOrientation::StartCoordHeading });
-	printf("Auto Left Being Run!");
 	AddSequential(GenerateAutonomousSequence());
-
 }
