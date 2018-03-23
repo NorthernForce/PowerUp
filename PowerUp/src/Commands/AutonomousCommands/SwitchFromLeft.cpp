@@ -13,19 +13,13 @@
 #include "Commands/ShiftGearbox.h"
 
 SwitchFromLeft::SwitchFromLeft() {
-	const auto& ds = DriverStation::GetInstance();
-	const auto& message = ds.GetGameSpecificMessage();
-	const FieldOrientation orientation(message);
-
 	AddSequential(new CloseGripper());
 	AddSequential(new PositionArm(PositionArm::Position::Switch));
 	AddSequential(new AutonomousDriveForward(4000, -0.8));
-	if (orientation.GetSwitchPos() == Position::Left) {
-		AddSequential(new AutonomousTurnWithGyro(-90, 0.35));
-		AddSequential(new AutonomousDriveForward(1500, -0.6));
-		AddSequential(new AutonomousWait(500));
-		AddSequential(new OpenGripper());
-	}
+	AddSequential(new AutonomousTurnWithGyro(-90, 0.35));
+	AddSequential(new AutonomousDriveForward(1500, -0.6));
+	AddSequential(new AutonomousWait(500));
+	AddSequential(new OpenGripper());
 	AddSequential(new AutonomousWait(500));
 	AddSequential(new CloseGripper());
 }

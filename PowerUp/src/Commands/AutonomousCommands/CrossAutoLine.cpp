@@ -12,7 +12,7 @@
 CrossAutoLine::CrossAutoLine() {
 	AddSequential(new CloseGripper());
 	AddSequential(new PositionArm(PositionArm::Position::Switch));
-	AddSequential(new AutonomousDriveForward(3500, -0.8));
+	AddSequential(new AutonomousDriveForward(5500, -0.8));
 	AddSequential(new AutonomousWait(500));
 	AddSequential(new CloseGripper());
 }
