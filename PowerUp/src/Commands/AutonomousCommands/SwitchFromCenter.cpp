@@ -12,15 +12,7 @@
 #include "Commands/OpenGripper.h"
 #include "Commands/ShiftGearbox.h"
 
-SwitchFromCenter::SwitchFromCenter() {}
-
-void SwitchFromCenter::Initialize() {
-	for (int time = 0; time <= 500; time++) {
-		if (DriverStation::GetInstance().GetGameSpecificMessage() == "")
-			break;
-		Wait(0.01);
-	}
-
+SwitchFromCenter::SwitchFromCenter() {
 	const auto& ds = DriverStation::GetInstance();
 	const auto& message = ds.GetGameSpecificMessage();
 	const FieldOrientation orientation(message);

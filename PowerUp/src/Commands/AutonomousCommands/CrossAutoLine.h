@@ -5,5 +5,4 @@
 class CrossAutoLine: public frc::CommandGroup {
 public:
 	CrossAutoLine();
-	void Initialize() override;
 };

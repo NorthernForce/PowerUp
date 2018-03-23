@@ -5,5 +5,4 @@
 class SwitchFromLeft: public frc::CommandGroup {
 public:
 	SwitchFromLeft();
-	void Initialize() override;
 };

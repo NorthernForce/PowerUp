@@ -2,6 +2,13 @@
 #include "Robot.h"
 #include "Vision.h"
 
+#include "Commands/CreateAuto/CreateCrossAutoLine.h"
+#include "Commands/CreateAuto/CreateScaleFromLeft.h"
+#include "Commands/CreateAuto/CreateScaleFromRight.h"
+#include "Commands/CreateAuto/CreateSwitchFromLeft.h"
+#include "Commands/CreateAuto/CreateSwitchFromRight.h"
+#include "Commands/CreateAuto/CreateSwitchFromCenter.h"
+
 std::shared_ptr<DriveTrain> Robot::driveTrain;
 std::shared_ptr<DriveTrainShifter> Robot::driveTrainShifter;
 std::shared_ptr<FieldPositioningSystem> Robot::fieldPositioningSystem;
@@ -82,12 +89,19 @@ void Robot::RobotInit() {
 //    autonomousChooser.AddObject("AutonomousCenter", new AutonomousCenter());
 //   	autonomousChooser.AddObject("AutonomousRight", new AutonomousRight());
 
-    autonomousChooser.AddDefault("Cross the Auto-Line", new CrossAutoLine());
-    autonomousChooser.AddObject("Left Scale from Left Side", new ScaleFromLeft());
-    autonomousChooser.AddObject("Right Scale from Right Side", new ScaleFromRight());
-    autonomousChooser.AddObject("Left Switch from Left Side", new SwitchFromLeft());
-    autonomousChooser.AddObject("Right Switch from Right Side", new SwitchFromRight());
-    autonomousChooser.AddObject("Right Switch from Center Side (Untested)", new SwitchFromCenter());
+//    autonomousChooser.AddDefault("Cross the Auto-Line", new CrossAutoLine());
+//    autonomousChooser.AddObject("Left Scale from Left Side", new ScaleFromLeft());
+//    autonomousChooser.AddObject("Right Scale from Right Side", new ScaleFromRight());
+//    autonomousChooser.AddObject("Left Switch from Left Side", new SwitchFromLeft());
+//    autonomousChooser.AddObject("Right Switch from Right Side", new SwitchFromRight());
+//    autonomousChooser.AddObject("Right Switch from Center Side (Untested)", new SwitchFromCenter());
+
+    autonomousChooser.AddDefault("Cross the Auto-Line", new CreateCrossAutoLine());
+    autonomousChooser.AddObject("Left Scale from Left Side", new CreateScaleFromLeft());
+    autonomousChooser.AddObject("Right Scale from Right Side", new CreateScaleFromRight());
+    autonomousChooser.AddObject("Left Switch from Left Side", new CreateSwitchFromLeft());
+    autonomousChooser.AddObject("Right Switch from Right Side", new CreateSwitchFromRight());
+    autonomousChooser.AddObject("Right Switch from Center Side (Untested)", new CreateSwitchFromCenter());
 
    	frc::SmartDashboard::PutData("Autonomous Modes", &autonomousChooser);
 

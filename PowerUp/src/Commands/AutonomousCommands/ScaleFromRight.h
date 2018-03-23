@@ -5,5 +5,4 @@
 class ScaleFromRight: public frc::CommandGroup {
 public:
 	ScaleFromRight();
-	void Initialize() override;
 };

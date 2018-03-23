@@ -44,13 +44,6 @@
 #include "Subsystems/Gimbal.h"
 #include "Subsystems/UltrasonicSensor.h"
 
-#include "Commands/AutonomousCommands/CrossAutoLine.h"
-#include "Commands/AutonomousCommands/ScaleFromLeft.h"
-#include "Commands/AutonomousCommands/ScaleFromRight.h"
-#include "Commands/AutonomousCommands/SwitchFromLeft.h"
-#include "Commands/AutonomousCommands/SwitchFromRight.h"
-#include "Commands/AutonomousCommands/SwitchFromCenter.h"
-
 class Robot : public frc::TimedRobot {
 public:
 	static Robot* robot;

@@ -5,5 +5,4 @@
 class SwitchFromCenter: public frc::CommandGroup {
 public:
 	SwitchFromCenter();
-	void Initialize() override;
 };
