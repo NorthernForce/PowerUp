@@ -90,6 +90,7 @@ void Robot::RobotInit() {
     autonomousChooser.AddObject("Right Switch from Center Side (Untested)", new SwitchFromCenter());
 
    	frc::SmartDashboard::PutData("Autonomous Modes", &autonomousChooser);
+
 	//gimbal.reset(new Gimbal(0, 1));
 //	gimbal->SetPan(100);
 //	gimbal->SetTilt(200);

@@ -1,12 +1,9 @@
-#ifndef SWITCHFROMCENTER_H
-#define SWITCHFROMCENTER_H
+#pragma once
 
 #include "Commands/CommandGroup.h"
 
-class SwitchFromCenter: public frc::CommandGroup
-{
+class SwitchFromCenter: public frc::CommandGroup {
 public:
 	SwitchFromCenter();
+	void Initialize() override;
 };
-
-#endif

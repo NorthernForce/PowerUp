@@ -1,12 +1,9 @@
-#ifndef SCALEFROMLEFT_H
-#define SCALEFROMLEFT_H
+#pragma once
 
 #include "Commands/CommandGroup.h"
 
-class ScaleFromLeft: public frc::CommandGroup
-{
+class ScaleFromLeft: public frc::CommandGroup {
 public:
 	ScaleFromLeft();
+	void Initialize() override;
 };
-
-#endif

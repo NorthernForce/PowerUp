@@ -1,12 +1,9 @@
-#ifndef SWITCHFROMRIGHT_H
-#define SWITCHFROMRIGHT_H
+#pragma once
 
 #include "Commands/CommandGroup.h"
 
-class SwitchFromRight: public frc::CommandGroup
-{
+class SwitchFromRight: public frc::CommandGroup {
 public:
 	SwitchFromRight();
+	void Initialize() override;
 };
-
-#endif
