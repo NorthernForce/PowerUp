@@ -6,8 +6,6 @@ struct PositionArm::PositionSetpoints {
 	unsigned m_armDelay;
 };
 
-bool hasClimbed = false;
-
 #ifdef PRACTICE_BOT
 const std::map<PositionArm::Position, PositionArm::PositionSetpoints> PositionArm::m_setpoints = {
 		{ PositionArm::Position::Home, { 0,    0,     75 } },
@@ -43,6 +41,7 @@ void PositionArm::Initialize() {
 		m_arm->SetPosition(setpoints->second.m_armSetpoint, setpoints->second.m_armDelay);
 		m_elevator->SetPosition(setpoints->second.m_elevatorSetpoint);
 	}
+	m_elevator->SetInClimbPosition(false);
 }
 
 void PositionArm::Execute() {

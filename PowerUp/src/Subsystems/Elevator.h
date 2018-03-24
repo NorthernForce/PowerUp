@@ -18,6 +18,8 @@ public:
 	void Nudge(int distance);
 	void BeginClimb();
 	void EndClimb();
+	void SetInClimbPosition(bool climbPos);
+	bool GetInClimbPosition();
 
 private:
 	void ConfigureCurrentLimits(int peakAmps, int continuousCurrent, int timeout);
@@ -46,6 +48,7 @@ private:
 	constexpr static int pidIdx = 0;
 	constexpr static int defaultPeakAmps = 15;
 	constexpr static int defaultContinuousCurrent = 12;
+	bool isInClimbPosition = false;
 };
 
 #endif
