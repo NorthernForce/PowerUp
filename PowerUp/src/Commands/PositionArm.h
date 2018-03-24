@@ -9,7 +9,7 @@
 class PositionArm: public frc::Command {
 public:
 	enum class Position {
-		Retracted,	// Starting position with arm in robot frame perimeter
+		Home,	// Starting position with arm in robot frame perimeter
 		Pickup,		// Positioned to pick up
 		Switch,		// Positioned to score on switch
 		ScaleFront,	// Positioned to score on scale in front of the robot

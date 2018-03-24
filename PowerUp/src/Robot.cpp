@@ -10,6 +10,8 @@
 #include "Commands/CreateAuto/CreateSwitchFromRight.h"
 #include "Commands/CreateAuto/CreateSwitchFromCenter.h"
 
+#include "Commands/PositionArm.h"
+
 std::shared_ptr<DriveTrain> Robot::driveTrain;
 std::shared_ptr<DriveTrainShifter> Robot::driveTrainShifter;
 std::shared_ptr<FieldPositioningSystem> Robot::fieldPositioningSystem;
@@ -128,6 +130,7 @@ void Robot::RobotInit() {
  */
 void Robot::DisabledInit() {
 	//TODO: go to home pos for arm
+	arm->SetPosition(0, 10);
 }
 
 void Robot::DisabledPeriodic() {
