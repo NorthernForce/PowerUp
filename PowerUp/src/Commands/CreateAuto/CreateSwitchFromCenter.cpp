@@ -27,8 +27,8 @@ void CreateSwitchFromCenter::Initialize() {
 		Wait(0.01);
 	}
 
-	frc::CommandGroup* mode = new SwitchFromCenter();
-	mode->Start();
+	frc::CommandGroup* autonomousCommand = new SwitchFromCenter();
+	autonomousCommand->Start();
 }
 
 // Called repeatedly when this Command is scheduled to run

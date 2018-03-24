@@ -21,8 +21,8 @@ CreateCrossAutoLine::CreateCrossAutoLine() {
 }
 
 void CreateCrossAutoLine::Initialize() {
-	frc::Command* mode = new CrossAutoLine();
-	mode->Start();
+	frc::Command* autonomousCommand = new CrossAutoLine();
+	autonomousCommand->Start();
 }
 
 // Called repeatedly when this Command is scheduled to run

@@ -33,15 +33,19 @@ void CreateSwitchFromRight::Initialize() {
 	const auto& message = ds.GetGameSpecificMessage();
 	const FieldOrientation orientation(message);
 
-	frc::CommandGroup* mode = new CrossAutoLine();
+	frc::CommandGroup* autonomousCommand = nullptr;
 	if (orientation.GetSwitchPos() == Position::Right) {
-		mode = new SwitchFromRight();
+		autonomousCommand = new SwitchFromRight();
 	}
 	else if (orientation.GetScalePos() == Position::Right) {
-		mode = new ScaleFromRight();
+		autonomousCommand = new ScaleFromRight();
+	}
+	else {
+		autonomousCommand = new CrossAutoLine();
 	}
 
-	mode->Start();
+	if (autonomousCommand != nullptr)
+		autonomousCommand->Start();
 }
 
 // Called repeatedly when this Command is scheduled to run

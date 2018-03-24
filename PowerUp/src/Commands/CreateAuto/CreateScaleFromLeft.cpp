@@ -33,15 +33,19 @@ void CreateScaleFromLeft::Initialize() {
 	const auto& message = ds.GetGameSpecificMessage();
 	const FieldOrientation orientation(message);
 
-	frc::CommandGroup* mode = new CrossAutoLine();
+	frc::CommandGroup* autonomousCommand = nullptr;
 	if (orientation.GetScalePos() == Position::Left) {
-		mode = new ScaleFromLeft();
+		autonomousCommand = new ScaleFromLeft();
 	}
 	else if (orientation.GetSwitchPos() == Position::Left) {
-		mode = new SwitchFromLeft();
+		autonomousCommand = new SwitchFromLeft();
+	}
+	else {
+		autonomousCommand = new CrossAutoLine();
 	}
 
-	mode->Start();
+	if (autonomousCommand != nullptr)
+		autonomousCommand->Start();
 
 }
 
