@@ -14,7 +14,7 @@
 
 #include "Commands/AutonomousCommands/ScaleFromRight.h"
 #include "Commands/AutonomousCommands/SwitchFromRight.h"
-#include "Commands/AutonomousCommands/CrossAutoLine.h"
+#include "Commands/AutonomousCommands/GotoOtherSide.h"
 
 CreateScaleFromRight::CreateScaleFromRight() {
 	// Use Requires() here to declare subsystem dependencies
@@ -41,7 +41,7 @@ void CreateScaleFromRight::Initialize() {
 		autonomousCommand = new SwitchFromRight();
 	}
 	else {
-		autonomousCommand = new CrossAutoLine();
+		autonomousCommand = new GotoOtherSide();
 	}
 
 	if (autonomousCommand != nullptr)

@@ -12,9 +12,6 @@
 #include "Commands/OpenGripper.h"
 #include "Commands/ShiftGearbox.h"
 
-#include "Commands/AutonomousCommands/SwitchFromLeft.h"
-#include "Commands/AutonomousCommands/CrossAutoLine.h"
-
 ScaleFromLeft::ScaleFromLeft() {
 	AddSequential(new CloseGripper());
 	AddSequential(new ShiftGearbox(ShiftGearbox::Gear::High));
