@@ -17,7 +17,7 @@ ScaleFromLeft::ScaleFromLeft() {
 	AddSequential(new ShiftGearbox(ShiftGearbox::Gear::High));
 	AddSequential(new PositionArm(PositionArm::Position::ScaleFront));
 	AddSequential(new AutonomousDriveWithEncoders(4.2, 0.6));
-	AddSequential(new AutonomousTurnWithGyro(-14, 0.4));
+	AddSequential(new AutonomousTurnWithGyro(-14));
 	AddSequential(new AutonomousDriveWithEncoders(2.75, 0.6));
 	AddSequential(new AutonomousWait(500));
 	AddSequential(new OpenGripper());

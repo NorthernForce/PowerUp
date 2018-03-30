@@ -12,8 +12,6 @@
 
 #include "WPILib.h"
 
-#include "Commands/AutonomousCommands/ScaleFromLeft.h"
-#include "Commands/AutonomousCommands/SwitchFromLeft.h"
 #include "Commands/AutonomousCommands/CrossAutoLine.h"
 
 CreateCrossAutoLine::CreateCrossAutoLine() {
@@ -21,7 +19,7 @@ CreateCrossAutoLine::CreateCrossAutoLine() {
 }
 
 void CreateCrossAutoLine::Initialize() {
-	frc::Command* autonomousCommand = new CrossAutoLine();
+	frc::CommandGroup* autonomousCommand = new CrossAutoLine();
 	autonomousCommand->Start();
 }
 

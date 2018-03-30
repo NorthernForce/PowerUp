@@ -21,14 +21,14 @@ SwitchFromCenter::SwitchFromCenter() {
 	AddSequential(new PositionArm(PositionArm::Position::Switch));
 	AddSequential(new AutonomousDriveForward(800, -0.8));
 	if (orientation.GetSwitchPos() == Position::Right) {
-		AddSequential(new AutonomousTurnWithGyro(-45, 0.35));
+		AddSequential(new AutonomousTurnWithGyro(-45));
 		AddSequential(new AutonomousDriveForward(2000, -0.8));
-		AddSequential(new AutonomousTurnWithGyro(45, 0.35));
+		AddSequential(new AutonomousTurnWithGyro(45));
 	}
 	else {
-		AddSequential(new AutonomousTurnWithGyro(45, 0.35));
+		AddSequential(new AutonomousTurnWithGyro(45));
 		AddSequential(new AutonomousDriveForward(2000, -0.8));
-		AddSequential(new AutonomousTurnWithGyro(-45, 0.35));
+		AddSequential(new AutonomousTurnWithGyro(-45));
 	}
 	AddSequential(new AutonomousDriveForward(1500, -0.6));
 	AddSequential(new AutonomousWait(500));

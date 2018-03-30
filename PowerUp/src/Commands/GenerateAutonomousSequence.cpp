@@ -71,7 +71,7 @@ frc::CommandGroup* GenerateAutonomousSequence() {
 				//Score on left scale from left
 				//Might be wrong
 				sequence->AddSequential(new AutonomousDriveWithEncoders(3.5, 0.8));
-				sequence->AddSequential(new AutonomousTurnWithGyro(-20, 0.6));
+				sequence->AddSequential(new AutonomousTurnWithGyro(-20));
 				sequence->AddSequential(new PositionArm(PositionArm::Position::ScaleFront));
 				sequence->AddSequential(new AutonomousDriveWithEncoders(3.5, 0.8));
 			} else if (orientation.GetStartingRobotPos() == Position::Right) {
@@ -79,10 +79,10 @@ frc::CommandGroup* GenerateAutonomousSequence() {
 				//Might be wrong
 				sequence->AddSequential(new ShiftGearbox(ShiftGearbox::Gear::High));
 				sequence->AddSequential(new AutonomousDriveWithEncoders(5.57, 1));
-				sequence->AddSequential(new AutonomousTurnWithGyro(-90, 0.8));
+				sequence->AddSequential(new AutonomousTurnWithGyro(-90));
 				sequence->AddSequential(new PositionArm(PositionArm::Position::ScaleFront));
 				sequence->AddSequential(new AutonomousDriveWithEncoders(5.2, 1));
-				sequence->AddSequential(new AutonomousTurnWithGyro(90, 0.8));
+				sequence->AddSequential(new AutonomousTurnWithGyro(90));
 				sequence->AddSequential(new AutonomousDriveWithEncoders(1.16, 1));
 				sequence->AddSequential(new ShiftGearbox(ShiftGearbox::Gear::Low));
 			}
