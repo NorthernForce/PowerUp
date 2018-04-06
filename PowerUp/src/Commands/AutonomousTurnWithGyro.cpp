@@ -4,37 +4,36 @@ AutonomousTurnWithGyro::AutonomousTurnWithGyro(int degToTurn) {
 	Requires(Robot::driveTrain.get());
 
 	angleToTurn = degToTurn;
+
+	error = 0;
+	errorOffset = 0;
+	output = 0;
 }
 
 void AutonomousTurnWithGyro::Initialize() {
+	Robot::driveTrain->SetSafetyEnabled(false);
+
 	Robot::driveTrain->SetBrake();
 
 	RobotMap::ahrs->Reset();
 	RobotMap::ahrs->ResetDisplacement();
 }
 
-double k_error, i_error, d_error, k_error_prev, p_out, i_out, d_out, output;
+double error, output;
 
 void AutonomousTurnWithGyro::Execute() {
-	k_error = angleToTurn - RobotMap::ahrs->GetAngle();
-	i_error = i_error + k_error;
-	d_error = k_error_prev - k_error;
+	error = (angleToTurn - RobotMap::ahrs->GetAngle()) / 120;
+	errorOffset = 0.45 * ((error > 0) ? 1 : -1);
 
-	p_out = kp * k_error;
-	i_out = ki * i_error;
-	d_out = kd * d_error;
+	output = error + errorOffset;
 
-	output = p_out + i_out + d_out;
-
-	k_error_prev = k_error;
-
-	printf("output: %f angle: %f k_out: %f i_out: %f d_out: %f\n", output, RobotMap::ahrs->GetAngle(), p_out, i_out, d_out);
+//	printf("output: %f angle: %f error: %f\n", output, RobotMap::ahrs->GetAngle(), error);
 
 	Robot::driveTrain->ArcadeDrive(output, 0, false);
 }
 
 bool AutonomousTurnWithGyro::IsFinished() {
-	return false;
+	return RobotMap::ahrs->GetAngle() < angleToTurn + 1 && RobotMap::ahrs->GetAngle() > angleToTurn - 1 && std::abs(RobotMap::ahrs->GetRate()) < 2;
 }
 
 void AutonomousTurnWithGyro::End() {

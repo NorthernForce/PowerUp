@@ -16,7 +16,7 @@ GotoOtherSide::GotoOtherSide() {
 
 	AddSequential(new CloseGripper());
 	AddSequential(new PositionArm(PositionArm::Position::ScaleFront));
-	AddSequential(new AutonomousDriveForward(5500, -0.8));
+	AddSequential(new AutonomousDriveForward(5500, 0.8));
 //	if (orientation.GetScalePos() == Position::Right)
 //		AddSequential(new AutonomousTurnWithGyro(-90, 0.35));
 //	else

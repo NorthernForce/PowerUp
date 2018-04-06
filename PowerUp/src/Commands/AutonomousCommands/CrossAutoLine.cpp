@@ -21,7 +21,9 @@ CrossAutoLine::CrossAutoLine() {
 
 	AddSequential(new ShiftGearbox(ShiftGearbox::Gear::High));
 	AddSequential(new AutonomousWait(500));
-	AddSequential(new AutonomousTurnWithGyro(45));
+	AddSequential(new AutonomousDriveWithEncoders(5));
+	AddSequential(new AutonomousTurnWithGyro(90));
+	AddSequential(new AutonomousDriveWithEncoders(5));
 	AddSequential(new AutonomousWait(500));
 	AddSequential(new ShiftGearbox(ShiftGearbox::Gear::Low));
 }

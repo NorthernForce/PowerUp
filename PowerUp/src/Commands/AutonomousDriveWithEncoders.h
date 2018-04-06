@@ -6,7 +6,7 @@
 
 class AutonomousDriveWithEncoders : public frc::Command {
 public:
-	AutonomousDriveWithEncoders(double metersToDrive, double speedToDrive);
+	AutonomousDriveWithEncoders(double metersToDrive);
 	void Initialize() override;
 	void Execute() override;
 	bool IsFinished() override;
@@ -14,16 +14,15 @@ public:
 	void Interrupted() override;
 
 private:
-	int initialPosition;
 	int distanceToDrive;
 
-	double highSpeed;
-	double lowSpeed = 0.25;
+#ifdef PRACTICE_BOT
+	double convUnits = 3600;
+#else
+	double convUnits = 7000;
+#endif
 
 	double turnConstant = -0.03;
 
-	double convUnits;
-
-	int slowThreshold = 1;
-	int stopThreshold = 0.00;
+	double error, errorOffset, output;
 };

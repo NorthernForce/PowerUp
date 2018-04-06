@@ -16,13 +16,13 @@ ScaleFromRight::ScaleFromRight() {
 	AddSequential(new CloseGripper());
 	AddSequential(new ShiftGearbox(ShiftGearbox::Gear::High));
 	AddSequential(new PositionArm(PositionArm::Position::ScaleFront));
-	AddSequential(new AutonomousDriveWithEncoders(3, 0.6));
+	AddSequential(new AutonomousDriveWithEncoders(3));
 	AddSequential(new AutonomousTurnWithGyro(20));
-	AddSequential(new AutonomousDriveWithEncoders(3.2, 0.6));
+	AddSequential(new AutonomousDriveWithEncoders(3.2));
 	AddSequential(new AutonomousWait(500));
 	AddSequential(new OpenGripper());
 	AddSequential(new AutonomousWait(500));
-	AddSequential(new AutonomousDriveWithEncoders(-1, 0.6));
+	AddSequential(new AutonomousDriveWithEncoders(-1));
 	AddSequential(new CloseGripper());
 	AddSequential(new PositionArm(PositionArm::Position::Pickup));
 	AddSequential(new AutonomousWait(500));

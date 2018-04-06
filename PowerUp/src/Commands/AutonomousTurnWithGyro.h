@@ -23,7 +23,5 @@ public:
 private:
 	int angleToTurn;
 
-	double kp = 0.025;
-	double ki = 0;
-	double kd = 0;
+	double error, errorOffset, output;
 };
