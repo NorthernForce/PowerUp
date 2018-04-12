@@ -5,67 +5,68 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "CreateScaleFromLeft.h"
-
+#include "TargetScaleFromLeft.h"
 #include "DriverStation.h"
 #include "Utilities/FieldOrientation.h"
 
+#include "Commands/AutonomousCommands/ScaleFromLeft.h"
+#include "Commands/AutonomousCommands/FarScaleFromLeft.h"
+#include "Commands/AutonomousCommands/GoToOtherSide.h"
+
 #include "WPILib.h"
 
-#include "Commands/AutonomousCommands/ScaleFromLeft.h"
-#include "Commands/AutonomousCommands/SwitchFromLeft.h"
-#include "Commands/AutonomousCommands/GotoOtherSide.h"
-
-CreateScaleFromLeft::CreateScaleFromLeft() {
+TargetScaleFromLeft::TargetScaleFromLeft() {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
 }
 
 // Called just before this Command runs the first time
-void CreateScaleFromLeft::Initialize() {
+void TargetScaleFromLeft::Initialize() {
 	for (int time = 0; time <= 50; time++) {
-		if (DriverStation::GetInstance().GetGameSpecificMessage() == "")
-			break;
-		Wait(0.01);
-	}
+			if (DriverStation::GetInstance().GetGameSpecificMessage() == "")
+				break;
+			Wait(0.01);
+		}
 
-	const auto& ds = DriverStation::GetInstance();
-	const auto& message = ds.GetGameSpecificMessage();
-	const FieldOrientation orientation(message);
+		const auto& ds = DriverStation::GetInstance();
+		const auto& message = ds.GetGameSpecificMessage();
+		const FieldOrientation orientation(message);
 
-	frc::CommandGroup* autonomousCommand = nullptr;
-	if (orientation.GetScalePos() == Position::Left) {
-		autonomousCommand = new ScaleFromLeft();
-	}
-	else if (orientation.GetSwitchPos() == Position::Left) {
-		autonomousCommand = new SwitchFromLeft();
-	}
-	else {
-		autonomousCommand = new GotoOtherSide();
-	}
+		frc::CommandGroup* autonomousCommand = nullptr;
+		if (orientation.GetScalePos() == Position::Left) {
+			autonomousCommand = new ScaleFromLeft();
+		}
+		else if (orientation.GetScalePos() == Position::Right) {
+			printf("hey im here");
+			autonomousCommand = new FarScaleFromLeft();
+		}
+		else {
+			autonomousCommand = new GotoOtherSide();
+		}
 
-	if (autonomousCommand != nullptr)
-		autonomousCommand->Start();
+		if (autonomousCommand != nullptr)
+			autonomousCommand->Start();
+
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void CreateScaleFromLeft::Execute() {
+void TargetScaleFromLeft::Execute() {
 
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool CreateScaleFromLeft::IsFinished() {
+bool TargetScaleFromLeft::IsFinished() {
 	return false;
 }
 
 // Called once after isFinished returns true
-void CreateScaleFromLeft::End() {
+void TargetScaleFromLeft::End() {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void CreateScaleFromLeft::Interrupted() {
+void TargetScaleFromLeft::Interrupted() {
 
 }

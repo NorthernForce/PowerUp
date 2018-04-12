@@ -13,7 +13,7 @@
 #define _ROBOT_H
 
 #ifndef PRACTICE_BOT
-//#define PRACTICE_BOT // Comment me out for the competition bot!
+#define PRACTICE_BOT // Comment me out for the competition bot!
 #endif //PRACTICE_BOT
 
 #include "WPILib.h"

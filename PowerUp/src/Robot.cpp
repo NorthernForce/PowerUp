@@ -4,11 +4,14 @@
 #include "Vision.h"
 
 #include "Commands/CreateAuto/CreateCrossAutoLine.h"
-#include "Commands/CreateAuto/CreateScaleFromLeft.h"
-#include "Commands/CreateAuto/CreateScaleFromRight.h"
 #include "Commands/CreateAuto/CreateSwitchFromLeft.h"
 #include "Commands/CreateAuto/CreateSwitchFromRight.h"
 #include "Commands/CreateAuto/CreateSwitchFromCenter.h"
+#include "Commands/CreateAuto/CreateFarScaleFromLeft.h"
+#include "Commands/CreateAuto/TargetLeftSide.h"
+#include "Commands/CreateAuto/TargetRightSide.h"
+#include "Commands/CreateAuto/TargetScaleFromLeft.h"
+
 
 std::shared_ptr<DriveTrain> Robot::driveTrain;
 std::shared_ptr<DriveTrainShifter> Robot::driveTrainShifter;
@@ -97,9 +100,11 @@ void Robot::RobotInit() {
 //    autonomousChooser.AddObject("Right Switch from Right Side", new SwitchFromRight());
 //    autonomousChooser.AddObject("Right Switch from Center Side (Untested)", new SwitchFromCenter());
 
-    autonomousChooser.AddDefault("Cross the Auto-Line", new CreateCrossAutoLine());
-    autonomousChooser.AddObject("Left Scale from Left Side", new CreateScaleFromLeft());
-    autonomousChooser.AddObject("Right Scale from Right Side", new CreateScaleFromRight());
+    autonomousChooser.AddDefault("1) Cross the Auto-Line", new CreateCrossAutoLine());
+    autonomousChooser.AddObject("2) Score on the Left Side", new TargetLeftSide());
+    autonomousChooser.AddObject("3) Score on the Right Side", new TargetRightSide());
+    autonomousChooser.AddObject("4) Target Scale Only From Left Side", new TargetScaleFromLeft());
+    //autonomousChooser.AddObject("5) Target Scale Only From Right Side", new TargetScaleFromRight());
     autonomousChooser.AddObject("Left Switch from Left Side", new CreateSwitchFromLeft());
     autonomousChooser.AddObject("Right Switch from Right Side", new CreateSwitchFromRight());
     autonomousChooser.AddObject("Right Switch from Center Side (Untested)", new CreateSwitchFromCenter());
