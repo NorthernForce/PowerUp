@@ -4,13 +4,17 @@ AutonomousDriveWithEncoders::AutonomousDriveWithEncoders(double metersToDrive, d
 	Requires(Robot::driveTrain.get());
 
 //	if (Robot::driveTrainShifter->GetGear() == DriveTrainShifter::Gear::High)
+#ifdef PRACTICE_BOT
 		convUnits = Robot::driveTrain->nativeUnitsPerMeterHighGear;
+#else
+		convUnits = 4700;
+#endif
 //	else
 //		convUnits = Robot::driveTrain->nativeUnitsPerMeterLowGear;
 
 //	convUnits = 6000;
 
-	initialPosition = Robot::driveTrain->GetPositionRight()*-1;
+	initialPosition = Robot::driveTrain->GetPositionLeft()*-1;
 	distanceToDrive = round(metersToDrive * convUnits);
 
 	slowThreshold = std::abs(metersToDrive) * 0.5;
@@ -38,7 +42,7 @@ AutonomousDriveWithEncoders::AutonomousDriveWithEncoders(double metersToDrive, d
 void AutonomousDriveWithEncoders::Initialize() {
 	Robot::driveTrain->SetBrake();
 
-	initialPosition = Robot::driveTrain->GetPositionRight()*-1;
+	initialPosition = Robot::driveTrain->GetPositionLeft()*-1;
 
 	RobotMap::ahrs->Reset();
 	RobotMap::ahrs->ResetDisplacement();
@@ -46,7 +50,7 @@ void AutonomousDriveWithEncoders::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void AutonomousDriveWithEncoders::Execute() {
-	if (std::abs(Robot::driveTrain->GetPositionRight()*-1 - initialPosition) >= std::abs(distanceToDrive) - slowThreshold)
+	if (std::abs(Robot::driveTrain->GetPositionLeft()*-1 - initialPosition) >= std::abs(distanceToDrive) - slowThreshold)
 		Robot::driveTrain->ArcadeDrive(RobotMap::ahrs->GetAngle() * turnConstant, lowSpeed, false);
 	else
 		Robot::driveTrain->ArcadeDrive(RobotMap::ahrs->GetAngle() * turnConstant, highSpeed, false);
@@ -54,7 +58,7 @@ void AutonomousDriveWithEncoders::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool AutonomousDriveWithEncoders::IsFinished() {
-	return std::abs(Robot::driveTrain->GetPositionRight()*-1 - initialPosition) >= std::abs(distanceToDrive) - stopThreshold || highSpeed == 0;
+	return std::abs(Robot::driveTrain->GetPositionLeft()*-1 - initialPosition) >= std::abs(distanceToDrive) - stopThreshold || highSpeed == 0;
 }
 
 // Called once after isFinished returns true

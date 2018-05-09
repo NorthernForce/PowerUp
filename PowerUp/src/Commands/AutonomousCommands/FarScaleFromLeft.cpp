@@ -16,13 +16,13 @@ FarScaleFromLeft::FarScaleFromLeft() {
 	AddSequential(new CloseGripper());
 	AddSequential(new ShiftGearbox(ShiftGearbox::Gear::High));
 	AddSequential(new PositionArm(PositionArm::Position::ScaleFront));
-	AddSequential(new AutonomousDriveWithEncoders(6.25, 0.8));
+	AddSequential(new AutonomousDriveWithEncoders(6, 0.8));
 	AddSequential(new AutonomousWait(200));
 	AddSequential(new ShiftGearbox(ShiftGearbox::Gear::Low));
 	AddSequential(new AutonomousWait(200));
 	AddSequential(new AutonomousTurnWithGyro(-75, 1));
 	AddSequential(new ShiftGearbox(ShiftGearbox::Gear::High));
-	AddSequential(new AutonomousDriveWithEncoders(6, 0.8));
+	AddSequential(new AutonomousDriveWithEncoders(7, 0.8));
 	AddSequential(new AutonomousWait(200));
 	AddSequential(new ShiftGearbox(ShiftGearbox::Gear::Low));
 	AddSequential(new AutonomousWait(200));
