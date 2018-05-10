@@ -24,6 +24,6 @@ private:
 
 	double convUnits;
 
-	int slowThreshold = 1;
+	int slowThreshold = 0.95;
 	int stopThreshold = 0.00;
 };
