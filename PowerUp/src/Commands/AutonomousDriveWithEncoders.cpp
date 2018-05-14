@@ -7,7 +7,7 @@ AutonomousDriveWithEncoders::AutonomousDriveWithEncoders(double metersToDrive, d
 #ifdef PRACTICE_BOT
 		convUnits = Robot::driveTrain->nativeUnitsPerMeterHighGear;
 #else
-		convUnits = 4700;
+		convUnits = 3700;
 #endif
 //	else
 //		convUnits = Robot::driveTrain->nativeUnitsPerMeterLowGear;

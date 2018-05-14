@@ -11,7 +11,7 @@
 
 #include "Commands/AutonomousCommands/ScaleFromRight.h"
 #include "Commands/AutonomousCommands/FarScaleFromRight.h"
-#include "Commands/AutonomousCommands/GoToOtherSide.h"
+#include "Commands/AutonomousCommands/GotoOtherSide.h"
 
 #include "WPILib.h"
 
