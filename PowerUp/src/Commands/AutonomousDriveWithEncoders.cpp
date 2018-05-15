@@ -1,4 +1,5 @@
 #include "AutonomousDriveWithEncoders.h"
+#include "SmartDashboard/SmartDashboard.h"
 
 AutonomousDriveWithEncoders::AutonomousDriveWithEncoders(double metersToDrive, double speedToDrive) {
 	Requires(Robot::driveTrain.get());
@@ -50,6 +51,8 @@ void AutonomousDriveWithEncoders::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void AutonomousDriveWithEncoders::Execute() {
+	frc::SmartDashboard::PutNumber("Encoder Units", Robot::driveTrain->GetPositionLeft()*-1 - initialPosition);
+
 	if (std::abs(Robot::driveTrain->GetPositionLeft()*-1 - initialPosition) >= std::abs(distanceToDrive) - slowThreshold)
 		Robot::driveTrain->ArcadeDrive(RobotMap::ahrs->GetAngle() * turnConstant, lowSpeed, false);
 	else
