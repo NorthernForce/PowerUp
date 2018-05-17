@@ -9,9 +9,9 @@
 
 #include <Commands/Command.h>
 
-class TargetScaleFromRight : public frc::Command {
+class CreateRightOnlySwitch : public frc::Command {
 public:
-	TargetScaleFromRight();
+	CreateRightOnlySwitch();
 	void Initialize() override;
 	void Execute() override;
 	bool IsFinished() override;

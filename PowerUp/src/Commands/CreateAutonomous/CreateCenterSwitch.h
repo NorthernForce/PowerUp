@@ -9,9 +9,9 @@
 
 #include <Commands/Command.h>
 
-class TargetRightSide : public frc::Command {
+class CreateCenterSwitch : public frc::Command {
 public:
-	TargetRightSide();
+	CreateCenterSwitch();
 	void Initialize() override;
 	void Execute() override;
 	bool IsFinished() override;

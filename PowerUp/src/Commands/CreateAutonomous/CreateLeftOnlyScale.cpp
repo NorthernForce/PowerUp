@@ -5,23 +5,23 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "TargetScaleFromLeft.h"
+#include "CreateLeftOnlyScale.h"
 #include "DriverStation.h"
 #include "Utilities/FieldOrientation.h"
 
-#include "Commands/AutonomousCommands/ScaleFromLeft.h"
-#include "Commands/AutonomousCommands/FarScaleFromLeft.h"
-#include "Commands/AutonomousCommands/GotoOtherSide.h"
-
 #include "WPILib.h"
 
-TargetScaleFromLeft::TargetScaleFromLeft() {
+#include "../AutonomousCommands/ScaleFromLeft.h"
+#include "../AutonomousCommands/FarScaleFromLeft.h"
+#include "../AutonomousCommands/GotoOtherSide.h"
+
+CreateLeftOnlyScale::CreateLeftOnlyScale() {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
 }
 
 // Called just before this Command runs the first time
-void TargetScaleFromLeft::Initialize() {
+void CreateLeftOnlyScale::Initialize() {
 	for (int time = 0; time <= 50; time++) {
 			if (DriverStation::GetInstance().GetGameSpecificMessage() == "")
 				break;
@@ -51,22 +51,22 @@ void TargetScaleFromLeft::Initialize() {
 }
 
 // Called repeatedly when this Command is scheduled to run
-void TargetScaleFromLeft::Execute() {
+void CreateLeftOnlyScale::Execute() {
 
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool TargetScaleFromLeft::IsFinished() {
+bool CreateLeftOnlyScale::IsFinished() {
 	return false;
 }
 
 // Called once after isFinished returns true
-void TargetScaleFromLeft::End() {
+void CreateLeftOnlyScale::End() {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void TargetScaleFromLeft::Interrupted() {
+void CreateLeftOnlyScale::Interrupted() {
 
 }

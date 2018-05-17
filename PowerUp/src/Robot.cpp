@@ -1,18 +1,18 @@
+#include "Robot.h"
+#include "Vision.h" // haha yeah right.
+
+#include "Commands/CreateAutonomous/CreateCrossAutoLine.h"
+#include "Commands/CreateAutonomous/CreateLeftOnlyScale.h"
+#include "Commands/CreateAutonomous/CreateLeftOnlySwitch.h"
+#include "Commands/CreateAutonomous/CreateLeftPrioritizeScale.h"
+#include "Commands/CreateAutonomous/CreateLeftPrioritizeSwitch.h"
+#include "Commands/CreateAutonomous/CreateRightOnlyScale.h"
+#include "Commands/CreateAutonomous/CreateRightOnlySwitch.h"
+#include "Commands/CreateAutonomous/CreateRightPrioritizeScale.h"
+#include "Commands/CreateAutonomous/CreateRightPrioritizeSwitch.h"
+#include "Commands/CreateAutonomous/CreateCenterSwitch.h"
 
 #include "Commands/ShiftGearbox.h"
-#include "Robot.h"
-#include "Vision.h"
-
-#include "Commands/CreateAuto/CreateCrossAutoLine.h"
-#include "Commands/CreateAuto/CreateSwitchFromLeft.h"
-#include "Commands/CreateAuto/CreateSwitchFromRight.h"
-#include "Commands/CreateAuto/CreateSwitchFromCenter.h"
-#include "Commands/CreateAuto/CreateFarScaleFromLeft.h"
-#include "Commands/CreateAuto/TargetLeftSide.h"
-#include "Commands/CreateAuto/TargetRightSide.h"
-#include "Commands/CreateAuto/TargetScaleFromLeft.h"
-#include "Commands/CreateAuto/TargetScaleFromRight.h"
-
 
 std::shared_ptr<DriveTrain> Robot::driveTrain;
 std::shared_ptr<DriveTrainShifter> Robot::driveTrainShifter;
@@ -83,32 +83,17 @@ void Robot::RobotInit() {
     arm.reset(new Arm());
 	oi.reset(new OI());
 	driveTrainShifter->Shift(DriveTrainShifter::Gear::Low);
-//    new AutonomousCommandBuilder("Autonomous Mode None", [](){ return nullptr; });
-//    new AutonomousCommandBuilder("Autonomous Mode Left", [](){ return new AutonomousLeft(); });
-//    new AutonomousCommandBuilder("Autonomous Mode Right", [](){ return new AutonomousRight(); });
-//    new AutonomousCommandBuilder("Autonomous Mode Center", [](){ return new AutonomousCenter(); });
-//    new AutonomousCommandBuilder("Autonomous Mode Go Forward", [](){ return new AutonomousLeft(); });
-//    new AutonomousCommandBuilder("Autonomous Mode Wait 10 Seconds Then Go", [](){ return new AutonomousLeft(); });
-    //initializes autonomous mode chooser
-//    autonomousChooser.AddDefault("AutonomousLeft", new AutonomousLeft());
-//    autonomousChooser.AddObject("AutonomousCenter", new AutonomousCenter());
-//   	autonomousChooser.AddObject("AutonomousRight", new AutonomousRight());
-
-//    autonomousChooser.AddDefault("Cross the Auto-Line", new CrossAutoLine());
-//    autonomousChooser.AddObject("Left Scale from Left Side", new ScaleFromLeft());
-//    autonomousChooser.AddObject("Right Scale from Right Side", new ScaleFromRight());
-//    autonomousChooser.AddObject("Left Switch from Left Side", new SwitchFromLeft());
-//    autonomousChooser.AddObject("Right Switch from Right Side", new SwitchFromRight());
-//    autonomousChooser.AddObject("Right Switch from Center Side (Untested)", new SwitchFromCenter());
 
     autonomousChooser.AddDefault("1) Cross the Auto-Line", new CreateCrossAutoLine());
-    autonomousChooser.AddObject("2) Prioritize Scale Left Side", new TargetLeftSide());
-    autonomousChooser.AddObject("3) Prioritize Scale Right Side", new TargetRightSide());
-    autonomousChooser.AddObject("4) Left Side Target Scale Only", new TargetScaleFromLeft());
-    autonomousChooser.AddObject("5) Right Side Target Scale Only", new TargetScaleFromRight());
-    autonomousChooser.AddObject("Left Switch from Left Side", new CreateSwitchFromLeft());
-    autonomousChooser.AddObject("Right Switch from Right Side", new CreateSwitchFromRight());
-    autonomousChooser.AddObject("Right Switch from Center Side (Untested)", new CreateSwitchFromCenter());
+    autonomousChooser.AddObject("2) Left: Prioritize Scale", new CreateLeftPrioritizeScale());
+    autonomousChooser.AddObject("3) Right: Prioritize Scale", new CreateRightPrioritizeScale());
+    autonomousChooser.AddObject("4) Left: Only Scale", new CreateLeftOnlyScale());
+    autonomousChooser.AddObject("5) Right: Only Scale", new CreateRightOnlyScale());
+    autonomousChooser.AddObject("6) Left: Prioritize Switch", new CreateLeftPrioritizeSwitch());
+    autonomousChooser.AddObject("7) Right: Prioritize Switch", new CreateRightPrioritizeSwitch());
+    autonomousChooser.AddObject("8) Left: Only Switch (Not working)", new CreateLeftOnlySwitch());
+    autonomousChooser.AddObject("9) Right: Only Switch (Not Working)", new CreateRightOnlySwitch());
+    autonomousChooser.AddObject("10) Center: Switch (Untested)", new CreateCenterSwitch());
 
    	frc::SmartDashboard::PutData("Autonomous Modes", &autonomousChooser);
 

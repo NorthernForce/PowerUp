@@ -5,24 +5,23 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "CreateSwitchFromRight.h"
-
+#include "CreateRightPrioritizeSwitch.h"
 #include "DriverStation.h"
 #include "Utilities/FieldOrientation.h"
 
 #include "WPILib.h"
 
-#include "Commands/AutonomousCommands/SwitchFromRight.h"
-#include "Commands/AutonomousCommands/ScaleFromRight.h"
-#include "Commands/AutonomousCommands/GotoOtherSide.h"
+#include "../AutonomousCommands/SwitchFromRight.h"
+#include "../AutonomousCommands/ScaleFromRight.h"
+#include "../AutonomousCommands/GotoOtherSide.h"
 
-CreateSwitchFromRight::CreateSwitchFromRight() {
+CreateRightPrioritizeSwitch::CreateRightPrioritizeSwitch() {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
 }
 
 // Called just before this Command runs the first time
-void CreateSwitchFromRight::Initialize() {
+void CreateRightPrioritizeSwitch::Initialize() {
 	for (int time = 0; time <= 50; time++) {
 		if (DriverStation::GetInstance().GetGameSpecificMessage() == "")
 			break;
@@ -49,22 +48,22 @@ void CreateSwitchFromRight::Initialize() {
 }
 
 // Called repeatedly when this Command is scheduled to run
-void CreateSwitchFromRight::Execute() {
+void CreateRightPrioritizeSwitch::Execute() {
 
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool CreateSwitchFromRight::IsFinished() {
+bool CreateRightPrioritizeSwitch::IsFinished() {
 	return false;
 }
 
 // Called once after isFinished returns true
-void CreateSwitchFromRight::End() {
+void CreateRightPrioritizeSwitch::End() {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void CreateSwitchFromRight::Interrupted() {
+void CreateRightPrioritizeSwitch::Interrupted() {
 
 }

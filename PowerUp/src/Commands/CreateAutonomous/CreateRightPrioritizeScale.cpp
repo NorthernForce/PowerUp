@@ -5,23 +5,23 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include <Commands/CreateAuto/TargetLeftSide.h>
+#include "CreateRightPrioritizeScale.h"
 #include "DriverStation.h"
 #include "Utilities/FieldOrientation.h"
 
 #include "WPILib.h"
 
-#include "Commands/AutonomousCommands/ScaleFromLeft.h"
-#include "Commands/AutonomousCommands/SwitchFromLeft.h"
-#include "Commands/AutonomousCommands/GotoOtherSide.h"
+#include "../AutonomousCommands/ScaleFromRight.h"
+#include "../AutonomousCommands/SwitchFromRight.h"
+#include "../AutonomousCommands/GotoOtherSide.h"
 
-TargetLeftSide::TargetLeftSide() {
+CreateRightPrioritizeScale::CreateRightPrioritizeScale() {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
 }
 
 // Called just before this Command runs the first time
-void TargetLeftSide::Initialize() {
+void CreateRightPrioritizeScale::Initialize() {
 	for (int time = 0; time <= 50; time++) {
 		if (DriverStation::GetInstance().GetGameSpecificMessage() == "")
 			break;
@@ -33,11 +33,11 @@ void TargetLeftSide::Initialize() {
 	const FieldOrientation orientation(message);
 
 	frc::CommandGroup* autonomousCommand = nullptr;
-	if (orientation.GetScalePos() == Position::Left) {
-		autonomousCommand = new ScaleFromLeft();
+	if (orientation.GetScalePos() == Position::Right) {
+		autonomousCommand = new ScaleFromRight();
 	}
-	else if (orientation.GetSwitchPos() == Position::Left) {
-		autonomousCommand = new SwitchFromLeft();
+	else if (orientation.GetSwitchPos() == Position::Right) {
+		autonomousCommand = new SwitchFromRight();
 	}
 	else {
 		autonomousCommand = new GotoOtherSide();
@@ -45,26 +45,25 @@ void TargetLeftSide::Initialize() {
 
 	if (autonomousCommand != nullptr)
 		autonomousCommand->Start();
-
 }
 
 // Called repeatedly when this Command is scheduled to run
-void TargetLeftSide::Execute() {
+void CreateRightPrioritizeScale::Execute() {
 
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool TargetLeftSide::IsFinished() {
+bool CreateRightPrioritizeScale::IsFinished() {
 	return false;
 }
 
 // Called once after isFinished returns true
-void TargetLeftSide::End() {
+void CreateRightPrioritizeScale::End() {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void TargetLeftSide::Interrupted() {
+void CreateRightPrioritizeScale::Interrupted() {
 
 }

@@ -5,24 +5,23 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "CreateFarScaleFromLeft.h"
-
+#include "CreateLeftPrioritizeSwitch.h"
 #include "DriverStation.h"
 #include "Utilities/FieldOrientation.h"
 
 #include "WPILib.h"
 
-#include "Commands/AutonomousCommands/FarScaleFromLeft.h"
-#include "Commands/AutonomousCommands/SwitchFromLeft.h"
-#include "Commands/AutonomousCommands/GotoOtherSide.h"
+#include "../AutonomousCommands/SwitchFromLeft.h"
+#include "../AutonomousCommands/ScaleFromLeft.h"
+#include "../AutonomousCommands/GotoOtherSide.h"
 
-CreateFarScaleFromLeft::CreateFarScaleFromLeft() {
+CreateLeftPrioritizeSwitch::CreateLeftPrioritizeSwitch() {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
 }
 
 // Called just before this Command runs the first time
-void CreateFarScaleFromLeft::Initialize() {
+void CreateLeftPrioritizeSwitch::Initialize() {
 	for (int time = 0; time <= 50; time++) {
 		if (DriverStation::GetInstance().GetGameSpecificMessage() == "")
 			break;
@@ -34,11 +33,11 @@ void CreateFarScaleFromLeft::Initialize() {
 	const FieldOrientation orientation(message);
 
 	frc::CommandGroup* autonomousCommand = nullptr;
-	if (orientation.GetScalePos() == Position::Right) {
-		autonomousCommand = new FarScaleFromLeft();
-	}
-	else if (orientation.GetSwitchPos() == Position::Left) {
+	if (orientation.GetSwitchPos() == Position::Left) {
 		autonomousCommand = new SwitchFromLeft();
+	}
+	else if (orientation.GetScalePos() == Position::Left) {
+		autonomousCommand = new ScaleFromLeft();
 	}
 	else {
 		autonomousCommand = new GotoOtherSide();
@@ -46,26 +45,25 @@ void CreateFarScaleFromLeft::Initialize() {
 
 	if (autonomousCommand != nullptr)
 		autonomousCommand->Start();
-
 }
 
 // Called repeatedly when this Command is scheduled to run
-void CreateFarScaleFromLeft::Execute() {
+void CreateLeftPrioritizeSwitch::Execute() {
 
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool CreateFarScaleFromLeft::IsFinished() {
+bool CreateLeftPrioritizeSwitch::IsFinished() {
 	return false;
 }
 
 // Called once after isFinished returns true
-void CreateFarScaleFromLeft::End() {
+void CreateLeftPrioritizeSwitch::End() {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void CreateFarScaleFromLeft::Interrupted() {
+void CreateLeftPrioritizeSwitch::Interrupted() {
 
 }

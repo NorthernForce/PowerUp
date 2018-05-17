@@ -9,9 +9,9 @@
 
 #include <Commands/Command.h>
 
-class CreateFarScaleFromLeft : public frc::Command {
+class CreateRightPrioritizeSwitch : public frc::Command {
 public:
-	CreateFarScaleFromLeft();
+	CreateRightPrioritizeSwitch();
 	void Initialize() override;
 	void Execute() override;
 	bool IsFinished() override;

@@ -5,23 +5,23 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include <Commands/CreateAuto/TargetRightSide.h>
+#include "CreateLeftOnlySwitch.h"
 #include "DriverStation.h"
 #include "Utilities/FieldOrientation.h"
 
 #include "WPILib.h"
 
-#include "Commands/AutonomousCommands/ScaleFromRight.h"
-#include "Commands/AutonomousCommands/SwitchFromRight.h"
-#include "Commands/AutonomousCommands/GotoOtherSide.h"
+#include "../AutonomousCommands/SwitchFromLeft.h"
+#include "../AutonomousCommands/ScaleFromLeft.h"
+#include "../AutonomousCommands/GotoOtherSide.h"
 
-TargetRightSide::TargetRightSide() {
+CreateLeftOnlySwitch::CreateLeftOnlySwitch() {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
 }
 
 // Called just before this Command runs the first time
-void TargetRightSide::Initialize() {
+void CreateLeftOnlySwitch::Initialize() {
 	for (int time = 0; time <= 50; time++) {
 		if (DriverStation::GetInstance().GetGameSpecificMessage() == "")
 			break;
@@ -33,11 +33,11 @@ void TargetRightSide::Initialize() {
 	const FieldOrientation orientation(message);
 
 	frc::CommandGroup* autonomousCommand = nullptr;
-	if (orientation.GetScalePos() == Position::Right) {
-		autonomousCommand = new ScaleFromRight();
+	if (orientation.GetSwitchPos() == Position::Left) {
+		autonomousCommand = new SwitchFromLeft();
 	}
-	else if (orientation.GetSwitchPos() == Position::Right) {
-		autonomousCommand = new SwitchFromRight();
+	else if (orientation.GetScalePos() == Position::Left) {
+		autonomousCommand = new ScaleFromLeft();
 	}
 	else {
 		autonomousCommand = new GotoOtherSide();
@@ -48,22 +48,22 @@ void TargetRightSide::Initialize() {
 }
 
 // Called repeatedly when this Command is scheduled to run
-void TargetRightSide::Execute() {
+void CreateLeftOnlySwitch::Execute() {
 
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool TargetRightSide::IsFinished() {
+bool CreateLeftOnlySwitch::IsFinished() {
 	return false;
 }
 
 // Called once after isFinished returns true
-void TargetRightSide::End() {
+void CreateLeftOnlySwitch::End() {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void TargetRightSide::Interrupted() {
+void CreateLeftOnlySwitch::Interrupted() {
 
 }
