@@ -37,7 +37,6 @@ void CreateRightOnlyScale::Initialize() {
 			autonomousCommand = new FarScaleFromRight();
 		}
 		else if (orientation.GetScalePos() == Position::Right) {
-			printf("hey im here");
 			autonomousCommand = new ScaleFromRight();
 		}
 		else {

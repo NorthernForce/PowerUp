@@ -15,7 +15,7 @@ AutonomousDriveWithEncoders::AutonomousDriveWithEncoders(double metersToDrive, d
 
 //	convUnits = 6000;
 
-	initialPosition = Robot::driveTrain->GetPositionLeft()*-1;
+	initialPosition = Robot::driveTrain->GetPositionLeft() * -1;
 	distanceToDrive = round(metersToDrive * convUnits);
 
 	slowThreshold = std::abs(metersToDrive) * 0.5;
