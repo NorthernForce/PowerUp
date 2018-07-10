@@ -8,6 +8,7 @@ struct PositionArm::PositionSetpoints {
 
 bool hasClimbed = false;
 
+// Format: Arm Position, Elevator Position, Arm Delay
 #ifdef PRACTICE_BOT
 const std::map<PositionArm::Position, PositionArm::PositionSetpoints> PositionArm::m_setpoints = {
 		{ PositionArm::Position::Retracted, { 0,    0,     75 } },
