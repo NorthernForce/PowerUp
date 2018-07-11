@@ -21,10 +21,10 @@ const std::map<PositionArm::Position, PositionArm::PositionSetpoints> PositionAr
 #else
 const std::map<PositionArm::Position, PositionArm::PositionSetpoints> PositionArm::m_setpoints = {
 		{ PositionArm::Position::Retracted, { 0,    0,     75 } },
-		{ PositionArm::Position::Pickup,    { 420,  -3600, 0 } },
-		{ PositionArm::Position::Switch,    { 500,  +700,  0 } },
-		{ PositionArm::Position::ScaleFront,{ 1600, +1500, 0 } },
-		{ PositionArm::Position::ScaleRear, { 2600, +1500, 0 } },
+		{ PositionArm::Position::Pickup,    { 475,  -3900, 0 } },
+		{ PositionArm::Position::Switch,    { 500,  +1210,  0 } },
+		{ PositionArm::Position::ScaleFront,{ 1600, +2660, 0 } },
+		{ PositionArm::Position::ScaleRear, { 2600, +2660, 0 } },
         { PositionArm::Position::ClimbSet,  { 2500, +2700, 0 } },
 };
 #endif //PRACTICE_BOT
