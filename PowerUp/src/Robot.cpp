@@ -11,6 +11,7 @@
 #include "Commands/CreateAutonomous/CreateRightPrioritizeScale.h"
 #include "Commands/CreateAutonomous/CreateRightPrioritizeSwitch.h"
 #include "Commands/CreateAutonomous/CreateCenterSwitch.h"
+#include "Commands/CreateAutonomous/DONOTHING.h"
 
 #include "Commands/ShiftGearbox.h"
 
@@ -94,6 +95,7 @@ void Robot::RobotInit() {
     autonomousChooser.AddObject("8) Left: Only Switch (Not working)", new CreateLeftOnlySwitch());
     autonomousChooser.AddObject("9) Right: Only Switch (Not Working)", new CreateRightOnlySwitch());
     autonomousChooser.AddObject("10) Center: Switch (Untested)", new CreateCenterSwitch());
+    autonomousChooser.AddObject("11) DO NOTHING BECAUSE ENCODERS BE BROKE!", new DONOTHING());
 
    	frc::SmartDashboard::PutData("Autonomous Modes", &autonomousChooser);
 
