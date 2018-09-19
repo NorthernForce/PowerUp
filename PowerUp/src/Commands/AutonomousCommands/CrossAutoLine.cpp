@@ -11,11 +11,6 @@
 #include "Commands/ShiftGearbox.h"
 
 CrossAutoLine::CrossAutoLine() {
-//	AddSequential(new CloseGripper());
-	AddSequential(new ShiftGearbox(ShiftGearbox::Gear::High));
-//	AddSequential(new PositionArm(PositionArm::Position::Switch));
-	AddSequential(new AutonomousDriveWithEncoders(5, 0.8));
-//	AddSequential(new AutonomousWait(1000));
-//	AddSequential(new ShiftGearbox(ShiftGearbox::Gear::Low));
-//	AddSequential(new CloseGripper());
+//	AddSequential(new ShiftGearbox(ShiftGearbox::Gear::High));
+	AddSequential(new AutonomousDriveWithEncoders(13, 1));
 }
