@@ -19,6 +19,8 @@ std::shared_ptr<frc::Solenoid> RobotMap::gripperSolenoid;
 std::shared_ptr<frc::Solenoid> RobotMap::elevatorBrake;
 std::shared_ptr<AHRS> RobotMap::ahrs;
 
+bool RobotMap::bothEncodersBroke = false;
+
 void RobotMap::init() {
 	//TODO: move away from ".reset", use make_shared\
 	//Low priority
@@ -63,4 +65,6 @@ void RobotMap::init() {
     driveTrainTalonSRX6->SetNeutralMode(NeutralMode::Coast);
     compressor->SetClosedLoopControl(true);
     ahrs = std::make_unique<AHRS>(frc::SPI::Port::kMXP);
+
+    RobotMap::bothEncodersBroke = false;
 }

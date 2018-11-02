@@ -95,7 +95,7 @@ void Robot::RobotInit() {
     autonomousChooser.AddObject("8) Left: Only Switch (Not working)", new CreateLeftOnlySwitch());
     autonomousChooser.AddObject("9) Right: Only Switch (Not Working)", new CreateRightOnlySwitch());
     autonomousChooser.AddObject("10) Center: Switch (Untested)", new CreateCenterSwitch());
-    autonomousChooser.AddObject("11) DO NOTHING BECAUSE ENCODERS BE BROKE!", new DONOTHING());
+    autonomousChooser.AddObject("11) Do nothing", new DONOTHING());
 
    	frc::SmartDashboard::PutData("Autonomous Modes", &autonomousChooser);
 
@@ -121,10 +121,15 @@ void Robot::RobotInit() {
  */
 void Robot::DisabledInit() {
 	//TODO: go to home pos for arm
+
+	RobotMap::bothEncodersBroke = false;
 }
 
 void Robot::DisabledPeriodic() {
 	frc::Scheduler::GetInstance()->Run();
+
+	frc::SmartDashboard::PutNumber("Left Encoder Positon (Talon 1):", Robot::driveTrain->GetPositionLeft());
+	frc::SmartDashboard::PutNumber("Right Encoder Positon (Talon 2):", Robot::driveTrain->GetPositionRight());
 }
 
 void Robot::AutonomousInit() {
@@ -160,6 +165,13 @@ void Robot::AutonomousInit() {
 
 void Robot::AutonomousPeriodic() {
 	frc::Scheduler::GetInstance()->Run();
+
+	frc::SmartDashboard::PutNumber("Left Encoder Positon (Talon 1):", Robot::driveTrain->GetPositionLeft());
+	frc::SmartDashboard::PutNumber("Right Encoder Positon (Talon 2):", Robot::driveTrain->GetPositionRight());
+
+	if (RobotMap::bothEncodersBroke) {
+		autonomousCommand->Cancel();
+	}
 }
 
 void Robot::TeleopInit() {
@@ -174,6 +186,9 @@ void Robot::TeleopInit() {
 
 void Robot::TeleopPeriodic() {
 	frc::Scheduler::GetInstance()->Run();
+
+	frc::SmartDashboard::PutNumber("Left Encoder Positon (Talon 1):", Robot::driveTrain->GetPositionLeft());
+	frc::SmartDashboard::PutNumber("Right Encoder Positon (Talon 2):", Robot::driveTrain->GetPositionRight());
 //	printf("elevator pos: %i\n", RobotMap::elevatorTalonSRX9->GetSensorCollection().GetQuadraturePosition());
 }
 

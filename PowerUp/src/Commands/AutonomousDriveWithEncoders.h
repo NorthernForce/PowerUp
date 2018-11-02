@@ -15,7 +15,10 @@ public:
 
 private:
 	int initialPosition;
+
 	int distanceToDrive;
+
+	int failCounter;
 
 	double highSpeed;
 	double lowSpeed = 0.25;

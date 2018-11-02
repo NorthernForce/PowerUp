@@ -25,5 +25,9 @@ public:
 	static std::shared_ptr<frc::Solenoid> elevatorBrake;
 	static std::shared_ptr<AHRS> ahrs;
 	static void init();
+
+	static bool bothEncodersBroke;
+
+
 };
 #endif

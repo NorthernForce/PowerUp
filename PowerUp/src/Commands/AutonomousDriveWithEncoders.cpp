@@ -1,15 +1,6 @@
 #include "AutonomousDriveWithEncoders.h"
 #include "SmartDashboard/SmartDashboard.h"
 
-// uncomment this to use left encoder, comment to use right
-#ifdef ENCODER_TO_USE
-#warning WHY IS IT ALREADY DEFINED????
-#endif
-//#define ENCODER_TO_USE  (Robot::driveTrain->GetPositionLeft())
-#ifndef ENCODER_TO_USE
-#define ENCODER_TO_USE  (Robot::driveTrain->GetPositionRight())
-#endif
-
 AutonomousDriveWithEncoders::AutonomousDriveWithEncoders(double metersToDrive, double speedToDrive) {
 	Requires(Robot::driveTrain.get());
 
@@ -24,7 +15,8 @@ AutonomousDriveWithEncoders::AutonomousDriveWithEncoders(double metersToDrive, d
 
 //	convUnits = 6000;
 
-	initialPosition = ENCODER_TO_USE * -1;
+	initialPosition = 0;
+
 	distanceToDrive = round(metersToDrive * convUnits);
 
 	slowThreshold = std::abs(metersToDrive) * 0.5;
@@ -46,13 +38,21 @@ AutonomousDriveWithEncoders::AutonomousDriveWithEncoders(double metersToDrive, d
 		highSpeed = 0;
 		lowSpeed = 0;
 	}
+
+	failCounter = 0;
 }
 
 // Called just before this Command runs the first time
 void AutonomousDriveWithEncoders::Initialize() {
 	Robot::driveTrain->SetBrake();
 
-	initialPosition = ENCODER_TO_USE*-1;
+	int initialLeftPosition = Robot::driveTrain->GetPositionLeft()*-1;
+	int initialRightPosition = Robot::driveTrain->GetPositionRight()*-1;
+
+	if (std::abs(initialLeftPosition) > std::abs(initialRightPosition))
+		initialPosition = initialLeftPosition;
+	else
+		initialPosition = initialRightPosition;
 
 	RobotMap::ahrs->Reset();
 	RobotMap::ahrs->ResetDisplacement();
@@ -60,17 +60,31 @@ void AutonomousDriveWithEncoders::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void AutonomousDriveWithEncoders::Execute() {
-	frc::SmartDashboard::PutNumber("Encoder Units", ENCODER_TO_USE*-1 - initialPosition);
+	int leftPos = Robot::driveTrain->GetPositionLeft()*-1;
+	int rightPos = Robot::driveTrain->GetPositionRight()*-1;
 
-	if (std::abs(ENCODER_TO_USE*-1 - initialPosition) >= std::abs(distanceToDrive) - slowThreshold)
+	int pos = 0;
+	if (std::abs(leftPos) > std::abs(rightPos))
+		pos = leftPos;
+	else
+		pos = rightPos;
+
+	if (std::abs(pos - initialPosition) >= std::abs(distanceToDrive) - slowThreshold)
 		Robot::driveTrain->ArcadeDrive(RobotMap::ahrs->GetAngle() * turnConstant, lowSpeed, false);
 	else
 		Robot::driveTrain->ArcadeDrive(RobotMap::ahrs->GetAngle() * turnConstant, highSpeed, false);
+
+	failCounter++;
+	if ((failCounter >= 20) && (std::abs(pos) < 100))
+		RobotMap::bothEncodersBroke = true;
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool AutonomousDriveWithEncoders::IsFinished() {
-	return std::abs(ENCODER_TO_USE*-1 - initialPosition) >= std::abs(distanceToDrive) - stopThreshold || highSpeed == 0;
+	bool leftResult = std::abs(Robot::driveTrain->GetPositionLeft()*-1 - initialPosition) >= std::abs(distanceToDrive) - stopThreshold || highSpeed == 0;
+	bool rightResult = std::abs(Robot::driveTrain->GetPositionRight()*-1 - initialPosition) >= std::abs(distanceToDrive) - stopThreshold || highSpeed == 0;
+
+	return leftResult || rightResult;
 }
 
 // Called once after isFinished returns true
