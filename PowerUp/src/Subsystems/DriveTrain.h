@@ -34,6 +34,8 @@ public:
 
 	int GetPositionLeft();
 	int GetPositionRight();
+	void ResetPositionLeft();
+	void ResetPositionRight();
 	void SetBrake();
 	void SetCoast();
 

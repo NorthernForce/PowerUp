@@ -135,6 +135,14 @@ int DriveTrain::GetPositionRight() {
 	return m_talonSRX2->GetSensorCollection().GetQuadraturePosition();
 }
 
+void DriveTrain::ResetPositionLeft() {
+	m_talonSRX1->GetSensorCollection().SetQuadraturePosition(0, 10);
+}
+
+void DriveTrain::ResetPositionRight() {
+	m_talonSRX2->GetSensorCollection().SetQuadraturePosition(0, 10);
+}
+
 void DriveTrain::SetBrake() {
 	m_talonSRX1->SetNeutralMode(NeutralMode::Brake);
 	m_talonSRX2->SetNeutralMode(NeutralMode::Brake);

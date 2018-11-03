@@ -15,7 +15,12 @@ AutonomousDriveWithEncoders::AutonomousDriveWithEncoders(double metersToDrive, d
 
 //	convUnits = 6000;
 
-	initialPosition = 0;
+	initialPos = 0;
+
+	failCheckLeftPos = 0;
+	failCheckRightPos = 0;
+
+	failCounter = 0;
 
 	distanceToDrive = round(metersToDrive * convUnits);
 
@@ -38,21 +43,27 @@ AutonomousDriveWithEncoders::AutonomousDriveWithEncoders(double metersToDrive, d
 		highSpeed = 0;
 		lowSpeed = 0;
 	}
-
-	failCounter = 0;
 }
 
 // Called just before this Command runs the first time
 void AutonomousDriveWithEncoders::Initialize() {
 	Robot::driveTrain->SetBrake();
 
-	int initialLeftPosition = Robot::driveTrain->GetPositionLeft()*-1;
-	int initialRightPosition = Robot::driveTrain->GetPositionRight()*-1;
+	Robot::driveTrain->ResetPositionLeft();
+	Robot::driveTrain->ResetPositionRight();
 
-	if (std::abs(initialLeftPosition) > std::abs(initialRightPosition))
-		initialPosition = initialLeftPosition;
-	else
-		initialPosition = initialRightPosition;
+//	failCheckLeftPos = Robot::driveTrain->GetPositionLeft();
+//	failCheckRightPos = Robot::driveTrain->GetPositionRight();
+
+//	int initialLeftPos = Robot::driveTrain->GetPositionLeft()*-1;
+//	int initialRightPos = Robot::driveTrain->GetPositionRight()*-1;
+
+//	if (std::abs(initialLeftPos) > std::abs(initialRightPos))
+//		initialPos = initialLeftPos;
+//	else
+//		initialPos = initialRightPos;
+
+//	initialPos = 0;
 
 	RobotMap::ahrs->Reset();
 	RobotMap::ahrs->ResetDisplacement();
@@ -63,26 +74,42 @@ void AutonomousDriveWithEncoders::Execute() {
 	int leftPos = Robot::driveTrain->GetPositionLeft()*-1;
 	int rightPos = Robot::driveTrain->GetPositionRight()*-1;
 
+	if (failCounter >= 20) {
+		if (std::abs(failCheckLeftPos - leftPos) <= 100)
+			RobotMap::leftEncoderBroke = true;
+		else
+			RobotMap::leftEncoderBroke = false;
+
+		if (std::abs(failCheckRightPos - rightPos) <= 100)
+			RobotMap::rightEncoderBroke = true;
+		else
+			RobotMap::rightEncoderBroke = false;
+
+		failCounter = 0;
+	}
+	if (failCounter == 0) {
+		failCheckLeftPos = leftPos;
+		failCheckRightPos = rightPos;
+	}
+
 	int pos = 0;
 	if (std::abs(leftPos) > std::abs(rightPos))
 		pos = leftPos;
 	else
 		pos = rightPos;
 
-	if (std::abs(pos - initialPosition) >= std::abs(distanceToDrive) - slowThreshold)
+	if (std::abs(pos - initialPos) >= (std::abs(distanceToDrive) - slowThreshold))
 		Robot::driveTrain->ArcadeDrive(RobotMap::ahrs->GetAngle() * turnConstant, lowSpeed, false);
 	else
 		Robot::driveTrain->ArcadeDrive(RobotMap::ahrs->GetAngle() * turnConstant, highSpeed, false);
 
 	failCounter++;
-	if ((failCounter >= 20) && (std::abs(pos) < 100))
-		RobotMap::bothEncodersBroke = true;
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool AutonomousDriveWithEncoders::IsFinished() {
-	bool leftResult = std::abs(Robot::driveTrain->GetPositionLeft()*-1 - initialPosition) >= std::abs(distanceToDrive) - stopThreshold || highSpeed == 0;
-	bool rightResult = std::abs(Robot::driveTrain->GetPositionRight()*-1 - initialPosition) >= std::abs(distanceToDrive) - stopThreshold || highSpeed == 0;
+	bool leftResult = std::abs(Robot::driveTrain->GetPositionLeft()*-1 - initialPos) >= std::abs(distanceToDrive) - stopThreshold || highSpeed == 0;
+	bool rightResult = std::abs(Robot::driveTrain->GetPositionRight()*-1 - initialPos) >= std::abs(distanceToDrive) - stopThreshold || highSpeed == 0;
 
 	return leftResult || rightResult;
 }

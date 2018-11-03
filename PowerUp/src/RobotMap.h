@@ -26,7 +26,8 @@ public:
 	static std::shared_ptr<AHRS> ahrs;
 	static void init();
 
-	static bool bothEncodersBroke;
+	static bool leftEncoderBroke;
+	static bool rightEncoderBroke;
 
 
 };

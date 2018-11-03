@@ -14,7 +14,10 @@ public:
 	void Interrupted() override;
 
 private:
-	int initialPosition;
+	int initialPos;
+
+	int failCheckLeftPos;
+	int failCheckRightPos;
 
 	int distanceToDrive;
 

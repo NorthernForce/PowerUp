@@ -122,7 +122,8 @@ void Robot::RobotInit() {
 void Robot::DisabledInit() {
 	//TODO: go to home pos for arm
 
-	RobotMap::bothEncodersBroke = false;
+	RobotMap::leftEncoderBroke = false;
+	RobotMap::rightEncoderBroke = false;
 }
 
 void Robot::DisabledPeriodic() {
@@ -164,14 +165,14 @@ void Robot::AutonomousInit() {
 }
 
 void Robot::AutonomousPeriodic() {
+	if (RobotMap::leftEncoderBroke && RobotMap::rightEncoderBroke) {
+		autonomousCommand->Cancel();
+	}
+
 	frc::Scheduler::GetInstance()->Run();
 
 	frc::SmartDashboard::PutNumber("Left Encoder Positon (Talon 1):", Robot::driveTrain->GetPositionLeft());
 	frc::SmartDashboard::PutNumber("Right Encoder Positon (Talon 2):", Robot::driveTrain->GetPositionRight());
-
-	if (RobotMap::bothEncodersBroke) {
-		autonomousCommand->Cancel();
-	}
 }
 
 void Robot::TeleopInit() {
