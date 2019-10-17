@@ -1,0 +1,733 @@
+See file:///C:/Users/huntr/git/powerupnew/PowerUp/build/tmp/compileFrcUserProgramWindowsx86-64ReleaseExecutableFrcUserProgramCpp/output.txt for all output for compileFrcUserProgramWindowsx86-64ReleaseExecutableFrcUserProgramCpp.
+compiling AutonomousCommand.cpp failed.
+AutonomousCommand.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(29): error C2676: binary '/': 'TrajectoryDuration' does not define this operator or a conversion to a type acceptable to the predefined operator
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): error C3615: constexpr function 'RoundProfileDuration' cannot result in a constant expression
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): note: failure was because type 'TrajectoryDuration' is not a literal type
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\cci-5.14.1-headers.zip_42f03008fdd4b33a89db7947fe126318\ctre/phoenix/motion/TrajectoryPoint.h(10): note: type 'ctre::phoenix::motion::TrajectoryPoint' is not a literal type because it is not an aggregate type, a closure type, or does not have a constexpr constructor that is not a copy or move constructor
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(30): note: failure was caused by control reaching the end of a constexpr function
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+
+compiling CrossAutoLine.cpp failed.
+CrossAutoLine.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(29): error C2676: binary '/': 'TrajectoryDuration' does not define this operator or a conversion to a type acceptable to the predefined operator
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): error C3615: constexpr function 'RoundProfileDuration' cannot result in a constant expression
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): note: failure was because type 'TrajectoryDuration' is not a literal type
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\cci-5.14.1-headers.zip_42f03008fdd4b33a89db7947fe126318\ctre/phoenix/Motion/TrajectoryPoint.h(10): note: type 'ctre::phoenix::motion::TrajectoryPoint' is not a literal type because it is not an aggregate type, a closure type, or does not have a constexpr constructor that is not a copy or move constructor
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(30): note: failure was caused by control reaching the end of a constexpr function
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities/MotionProfile.h(25): error C3646: 'm_notifer': unknown override specifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities/MotionProfile.h(25): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(71): error C2143: syntax error: missing ';' before '*'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(71): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(71): error C2238: unexpected token(s) preceding ';'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+
+compiling FarScaleFromLeft.cpp failed.
+FarScaleFromLeft.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(29): error C2676: binary '/': 'TrajectoryDuration' does not define this operator or a conversion to a type acceptable to the predefined operator
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): error C3615: constexpr function 'RoundProfileDuration' cannot result in a constant expression
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): note: failure was because type 'TrajectoryDuration' is not a literal type
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\cci-5.14.1-headers.zip_42f03008fdd4b33a89db7947fe126318\ctre/phoenix/Motion/TrajectoryPoint.h(10): note: type 'ctre::phoenix::motion::TrajectoryPoint' is not a literal type because it is not an aggregate type, a closure type, or does not have a constexpr constructor that is not a copy or move constructor
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(30): note: failure was caused by control reaching the end of a constexpr function
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities/MotionProfile.h(25): error C3646: 'm_notifer': unknown override specifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities/MotionProfile.h(25): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(71): error C2143: syntax error: missing ';' before '*'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(71): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(71): error C2238: unexpected token(s) preceding ';'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+
+compiling FarScaleFromRight.cpp failed.
+FarScaleFromRight.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(29): error C2676: binary '/': 'TrajectoryDuration' does not define this operator or a conversion to a type acceptable to the predefined operator
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): error C3615: constexpr function 'RoundProfileDuration' cannot result in a constant expression
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): note: failure was because type 'TrajectoryDuration' is not a literal type
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\cci-5.14.1-headers.zip_42f03008fdd4b33a89db7947fe126318\ctre/phoenix/Motion/TrajectoryPoint.h(10): note: type 'ctre::phoenix::motion::TrajectoryPoint' is not a literal type because it is not an aggregate type, a closure type, or does not have a constexpr constructor that is not a copy or move constructor
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(30): note: failure was caused by control reaching the end of a constexpr function
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities/MotionProfile.h(25): error C3646: 'm_notifer': unknown override specifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities/MotionProfile.h(25): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(71): error C2143: syntax error: missing ';' before '*'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(71): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(71): error C2238: unexpected token(s) preceding ';'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+
+compiling GotoOtherSide.cpp failed.
+GotoOtherSide.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(29): error C2676: binary '/': 'TrajectoryDuration' does not define this operator or a conversion to a type acceptable to the predefined operator
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): error C3615: constexpr function 'RoundProfileDuration' cannot result in a constant expression
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): note: failure was because type 'TrajectoryDuration' is not a literal type
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\cci-5.14.1-headers.zip_42f03008fdd4b33a89db7947fe126318\ctre/phoenix/Motion/TrajectoryPoint.h(10): note: type 'ctre::phoenix::motion::TrajectoryPoint' is not a literal type because it is not an aggregate type, a closure type, or does not have a constexpr constructor that is not a copy or move constructor
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(30): note: failure was caused by control reaching the end of a constexpr function
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities/MotionProfile.h(25): error C3646: 'm_notifer': unknown override specifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities/MotionProfile.h(25): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(71): error C2143: syntax error: missing ';' before '*'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(71): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(71): error C2238: unexpected token(s) preceding ';'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+
+compiling ScaleFromLeft.cpp failed.
+ScaleFromLeft.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(29): error C2676: binary '/': 'TrajectoryDuration' does not define this operator or a conversion to a type acceptable to the predefined operator
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): error C3615: constexpr function 'RoundProfileDuration' cannot result in a constant expression
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): note: failure was because type 'TrajectoryDuration' is not a literal type
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\cci-5.14.1-headers.zip_42f03008fdd4b33a89db7947fe126318\ctre/phoenix/Motion/TrajectoryPoint.h(10): note: type 'ctre::phoenix::motion::TrajectoryPoint' is not a literal type because it is not an aggregate type, a closure type, or does not have a constexpr constructor that is not a copy or move constructor
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(30): note: failure was caused by control reaching the end of a constexpr function
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities/MotionProfile.h(25): error C3646: 'm_notifer': unknown override specifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities/MotionProfile.h(25): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(71): error C2143: syntax error: missing ';' before '*'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(71): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(71): error C2238: unexpected token(s) preceding ';'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+
+compiling ScaleFromRight.cpp failed.
+ScaleFromRight.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(29): error C2676: binary '/': 'TrajectoryDuration' does not define this operator or a conversion to a type acceptable to the predefined operator
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): error C3615: constexpr function 'RoundProfileDuration' cannot result in a constant expression
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): note: failure was because type 'TrajectoryDuration' is not a literal type
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\cci-5.14.1-headers.zip_42f03008fdd4b33a89db7947fe126318\ctre/phoenix/Motion/TrajectoryPoint.h(10): note: type 'ctre::phoenix::motion::TrajectoryPoint' is not a literal type because it is not an aggregate type, a closure type, or does not have a constexpr constructor that is not a copy or move constructor
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(30): note: failure was caused by control reaching the end of a constexpr function
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities/MotionProfile.h(25): error C3646: 'm_notifer': unknown override specifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities/MotionProfile.h(25): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(71): error C2143: syntax error: missing ';' before '*'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(71): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(71): error C2238: unexpected token(s) preceding ';'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+
+compiling SwitchFromCenter.cpp failed.
+SwitchFromCenter.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(29): error C2676: binary '/': 'TrajectoryDuration' does not define this operator or a conversion to a type acceptable to the predefined operator
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): error C3615: constexpr function 'RoundProfileDuration' cannot result in a constant expression
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): note: failure was because type 'TrajectoryDuration' is not a literal type
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\cci-5.14.1-headers.zip_42f03008fdd4b33a89db7947fe126318\ctre/phoenix/Motion/TrajectoryPoint.h(10): note: type 'ctre::phoenix::motion::TrajectoryPoint' is not a literal type because it is not an aggregate type, a closure type, or does not have a constexpr constructor that is not a copy or move constructor
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(30): note: failure was caused by control reaching the end of a constexpr function
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities/MotionProfile.h(25): error C3646: 'm_notifer': unknown override specifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities/MotionProfile.h(25): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(71): error C2143: syntax error: missing ';' before '*'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(71): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(71): error C2238: unexpected token(s) preceding ';'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+
+compiling SwitchFromLeft.cpp failed.
+SwitchFromLeft.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(29): error C2676: binary '/': 'TrajectoryDuration' does not define this operator or a conversion to a type acceptable to the predefined operator
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): error C3615: constexpr function 'RoundProfileDuration' cannot result in a constant expression
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): note: failure was because type 'TrajectoryDuration' is not a literal type
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\cci-5.14.1-headers.zip_42f03008fdd4b33a89db7947fe126318\ctre/phoenix/Motion/TrajectoryPoint.h(10): note: type 'ctre::phoenix::motion::TrajectoryPoint' is not a literal type because it is not an aggregate type, a closure type, or does not have a constexpr constructor that is not a copy or move constructor
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(30): note: failure was caused by control reaching the end of a constexpr function
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities/MotionProfile.h(25): error C3646: 'm_notifer': unknown override specifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities/MotionProfile.h(25): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(71): error C2143: syntax error: missing ';' before '*'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(71): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(71): error C2238: unexpected token(s) preceding ';'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+
+compiling SwitchFromRight.cpp failed.
+SwitchFromRight.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(29): error C2676: binary '/': 'TrajectoryDuration' does not define this operator or a conversion to a type acceptable to the predefined operator
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): error C3615: constexpr function 'RoundProfileDuration' cannot result in a constant expression
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): note: failure was because type 'TrajectoryDuration' is not a literal type
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\cci-5.14.1-headers.zip_42f03008fdd4b33a89db7947fe126318\ctre/phoenix/Motion/TrajectoryPoint.h(10): note: type 'ctre::phoenix::motion::TrajectoryPoint' is not a literal type because it is not an aggregate type, a closure type, or does not have a constexpr constructor that is not a copy or move constructor
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(30): note: failure was caused by control reaching the end of a constexpr function
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities/MotionProfile.h(25): error C3646: 'm_notifer': unknown override specifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities/MotionProfile.h(25): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(71): error C2143: syntax error: missing ';' before '*'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(71): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(71): error C2238: unexpected token(s) preceding ';'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+
+compiling AutonomousDrive.cpp failed.
+AutonomousDrive.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(29): error C2676: binary '/': 'TrajectoryDuration' does not define this operator or a conversion to a type acceptable to the predefined operator
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): error C3615: constexpr function 'RoundProfileDuration' cannot result in a constant expression
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): note: failure was because type 'TrajectoryDuration' is not a literal type
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\cci-5.14.1-headers.zip_42f03008fdd4b33a89db7947fe126318\ctre/phoenix/Motion/TrajectoryPoint.h(10): note: type 'ctre::phoenix::motion::TrajectoryPoint' is not a literal type because it is not an aggregate type, a closure type, or does not have a constexpr constructor that is not a copy or move constructor
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(30): note: failure was caused by control reaching the end of a constexpr function
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities/MotionProfile.h(25): error C3646: 'm_notifer': unknown override specifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities/MotionProfile.h(25): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(71): error C2143: syntax error: missing ';' before '*'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(71): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(71): error C2238: unexpected token(s) preceding ';'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Commands\AutonomousDrive.cpp(52): error C2677: binary '+': no global operator found which takes type 'TrajectoryDuration' (or there is no acceptable conversion)
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Commands\AutonomousDrive.cpp(53): error C2677: binary '+': no global operator found which takes type 'TrajectoryDuration' (or there is no acceptable conversion)
+
+compiling AutonomousDriveForward.cpp failed.
+AutonomousDriveForward.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(29): error C2676: binary '/': 'TrajectoryDuration' does not define this operator or a conversion to a type acceptable to the predefined operator
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): error C3615: constexpr function 'RoundProfileDuration' cannot result in a constant expression
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): note: failure was because type 'TrajectoryDuration' is not a literal type
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\cci-5.14.1-headers.zip_42f03008fdd4b33a89db7947fe126318\ctre/phoenix/motion/TrajectoryPoint.h(10): note: type 'ctre::phoenix::motion::TrajectoryPoint' is not a literal type because it is not an aggregate type, a closure type, or does not have a constexpr constructor that is not a copy or move constructor
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(30): note: failure was caused by control reaching the end of a constexpr function
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+
+compiling AutonomousDriveWithEncoders.cpp failed.
+AutonomousDriveWithEncoders.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(29): error C2676: binary '/': 'TrajectoryDuration' does not define this operator or a conversion to a type acceptable to the predefined operator
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): error C3615: constexpr function 'RoundProfileDuration' cannot result in a constant expression
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): note: failure was because type 'TrajectoryDuration' is not a literal type
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\cci-5.14.1-headers.zip_42f03008fdd4b33a89db7947fe126318\ctre/phoenix/motion/TrajectoryPoint.h(10): note: type 'ctre::phoenix::motion::TrajectoryPoint' is not a literal type because it is not an aggregate type, a closure type, or does not have a constexpr constructor that is not a copy or move constructor
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(30): note: failure was caused by control reaching the end of a constexpr function
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\SmartDashboard/SmartDashboard.h(12): warning C4081: expected '('; found 'string'
+
+compiling AutonomousTurnWithGyro.cpp failed.
+AutonomousTurnWithGyro.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(29): error C2676: binary '/': 'TrajectoryDuration' does not define this operator or a conversion to a type acceptable to the predefined operator
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): error C3615: constexpr function 'RoundProfileDuration' cannot result in a constant expression
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): note: failure was because type 'TrajectoryDuration' is not a literal type
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\cci-5.14.1-headers.zip_42f03008fdd4b33a89db7947fe126318\ctre/phoenix/motion/TrajectoryPoint.h(10): note: type 'ctre::phoenix::motion::TrajectoryPoint' is not a literal type because it is not an aggregate type, a closure type, or does not have a constexpr constructor that is not a copy or move constructor
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(30): note: failure was caused by control reaching the end of a constexpr function
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+
+compiling AutonomousWait.cpp successful.
+AutonomousWait.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+
+compiling CreateCenterSwitch.cpp successful.
+CreateCenterSwitch.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+
+compiling CreateCrossAutoLine.cpp successful.
+CreateCrossAutoLine.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+
+compiling CreateLeftOnlyScale.cpp successful.
+CreateLeftOnlyScale.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+
+compiling CreateLeftOnlySwitch.cpp successful.
+CreateLeftOnlySwitch.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+
+compiling CreateLeftPrioritizeScale.cpp successful.
+CreateLeftPrioritizeScale.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+
+compiling CreateLeftPrioritizeSwitch.cpp successful.
+CreateLeftPrioritizeSwitch.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+
+compiling CreateRightOnlyScale.cpp successful.
+CreateRightOnlyScale.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+
+compiling CreateRightOnlySwitch.cpp successful.
+CreateRightOnlySwitch.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+
+compiling CreateRightPrioritizeScale.cpp successful.
+CreateRightPrioritizeScale.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+
+compiling CreateRightPrioritizeSwitch.cpp successful.
+CreateRightPrioritizeSwitch.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+
+compiling DONOTHING.cpp successful.
+DONOTHING.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+
+compiling DriveWithJoystick.cpp failed.
+DriveWithJoystick.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(29): error C2676: binary '/': 'TrajectoryDuration' does not define this operator or a conversion to a type acceptable to the predefined operator
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): error C3615: constexpr function 'RoundProfileDuration' cannot result in a constant expression
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): note: failure was because type 'TrajectoryDuration' is not a literal type
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\cci-5.14.1-headers.zip_42f03008fdd4b33a89db7947fe126318\ctre/phoenix/motion/TrajectoryPoint.h(10): note: type 'ctre::phoenix::motion::TrajectoryPoint' is not a literal type because it is not an aggregate type, a closure type, or does not have a constexpr constructor that is not a copy or move constructor
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(30): note: failure was caused by control reaching the end of a constexpr function
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+
+compiling GenerateAutonomousSequence.cpp failed.
+GenerateAutonomousSequence.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(29): error C2676: binary '/': 'TrajectoryDuration' does not define this operator or a conversion to a type acceptable to the predefined operator
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): error C3615: constexpr function 'RoundProfileDuration' cannot result in a constant expression
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): note: failure was because type 'TrajectoryDuration' is not a literal type
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\cci-5.14.1-headers.zip_42f03008fdd4b33a89db7947fe126318\ctre/phoenix/motion/TrajectoryPoint.h(10): note: type 'ctre::phoenix::motion::TrajectoryPoint' is not a literal type because it is not an aggregate type, a closure type, or does not have a constexpr constructor that is not a copy or move constructor
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(30): note: failure was caused by control reaching the end of a constexpr function
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+
+compiling GenerateCommandSequence.cpp failed.
+GenerateCommandSequence.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(29): error C2676: binary '/': 'TrajectoryDuration' does not define this operator or a conversion to a type acceptable to the predefined operator
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): error C3615: constexpr function 'RoundProfileDuration' cannot result in a constant expression
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): note: failure was because type 'TrajectoryDuration' is not a literal type
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\cci-5.14.1-headers.zip_42f03008fdd4b33a89db7947fe126318\ctre/phoenix/motion/TrajectoryPoint.h(10): note: type 'ctre::phoenix::motion::TrajectoryPoint' is not a literal type because it is not an aggregate type, a closure type, or does not have a constexpr constructor that is not a copy or move constructor
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(30): note: failure was caused by control reaching the end of a constexpr function
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+
+compiling PositionArm.cpp failed.
+PositionArm.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(29): error C2676: binary '/': 'TrajectoryDuration' does not define this operator or a conversion to a type acceptable to the predefined operator
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): error C3615: constexpr function 'RoundProfileDuration' cannot result in a constant expression
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): note: failure was because type 'TrajectoryDuration' is not a literal type
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\cci-5.14.1-headers.zip_42f03008fdd4b33a89db7947fe126318\ctre/phoenix/motion/TrajectoryPoint.h(10): note: type 'ctre::phoenix::motion::TrajectoryPoint' is not a literal type because it is not an aggregate type, a closure type, or does not have a constexpr constructor that is not a copy or move constructor
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(30): note: failure was caused by control reaching the end of a constexpr function
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+
+compiling RobotClimb.cpp failed.
+RobotClimb.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(29): error C2676: binary '/': 'TrajectoryDuration' does not define this operator or a conversion to a type acceptable to the predefined operator
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): error C3615: constexpr function 'RoundProfileDuration' cannot result in a constant expression
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): note: failure was because type 'TrajectoryDuration' is not a literal type
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\cci-5.14.1-headers.zip_42f03008fdd4b33a89db7947fe126318\ctre/phoenix/motion/TrajectoryPoint.h(10): note: type 'ctre::phoenix::motion::TrajectoryPoint' is not a literal type because it is not an aggregate type, a closure type, or does not have a constexpr constructor that is not a copy or move constructor
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(30): note: failure was caused by control reaching the end of a constexpr function
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+
+compiling StartFieldPositioningSystem.cpp failed.
+StartFieldPositioningSystem.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(29): error C2676: binary '/': 'TrajectoryDuration' does not define this operator or a conversion to a type acceptable to the predefined operator
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): error C3615: constexpr function 'RoundProfileDuration' cannot result in a constant expression
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): note: failure was because type 'TrajectoryDuration' is not a literal type
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\cci-5.14.1-headers.zip_42f03008fdd4b33a89db7947fe126318\ctre/phoenix/motion/TrajectoryPoint.h(10): note: type 'ctre::phoenix::motion::TrajectoryPoint' is not a literal type because it is not an aggregate type, a closure type, or does not have a constexpr constructor that is not a copy or move constructor
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(30): note: failure was caused by control reaching the end of a constexpr function
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+
+compiling OI.cpp failed.
+OI.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(29): error C2676: binary '/': 'TrajectoryDuration' does not define this operator or a conversion to a type acceptable to the predefined operator
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): error C3615: constexpr function 'RoundProfileDuration' cannot result in a constant expression
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): note: failure was because type 'TrajectoryDuration' is not a literal type
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\cci-5.14.1-headers.zip_42f03008fdd4b33a89db7947fe126318\ctre/phoenix/motion/TrajectoryPoint.h(10): note: type 'ctre::phoenix::motion::TrajectoryPoint' is not a literal type because it is not an aggregate type, a closure type, or does not have a constexpr constructor that is not a copy or move constructor
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(30): note: failure was caused by control reaching the end of a constexpr function
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\SmartDashboard/SmartDashboard.h(12): warning C4081: expected '('; found 'string'
+
+compiling Robot.cpp failed.
+Robot.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(29): error C2676: binary '/': 'TrajectoryDuration' does not define this operator or a conversion to a type acceptable to the predefined operator
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): error C3615: constexpr function 'RoundProfileDuration' cannot result in a constant expression
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): note: failure was because type 'TrajectoryDuration' is not a literal type
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\cci-5.14.1-headers.zip_42f03008fdd4b33a89db7947fe126318\ctre/phoenix/motion/TrajectoryPoint.h(10): note: type 'ctre::phoenix::motion::TrajectoryPoint' is not a literal type because it is not an aggregate type, a closure type, or does not have a constexpr constructor that is not a copy or move constructor
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(30): note: failure was caused by control reaching the end of a constexpr function
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+
+compiling Arm.cpp failed.
+Arm.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems\Arm.h(16): error C2061: syntax error: identifier 'SendableBuilder'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems\Arm.h(16): error C3668: 'Arm::InitSendable': method with override specifier 'override' did not override any base class methods
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems\Arm.cpp(70): error C2511: 'void Arm::InitSendable(frc::SendableBuilder &)': overloaded member function not found in 'Arm'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems\Arm.h(7): note: see declaration of 'Arm'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems\Arm.cpp(71): error C2352: 'frc::Subsystem::InitSendable': illegal call of non-static member function
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\frc/commands/Subsystem.h(165): note: see declaration of 'frc::Subsystem::InitSendable'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems\Arm.cpp(76): error C2671: 'Arm::InitSendable': static member functions do not have 'this' pointers
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems\Arm.cpp(76): error C2440: '<function-style-cast>': cannot convert from 'NT_Entry' to 'Arm::InitSendable::<lambda_45a1fc1a8eb5b0d0ae0b1b19dd46fea9>'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems\Arm.cpp(76): note: No constructor could take the source type, or constructor overload resolution was ambiguous
+
+compiling RobotMap.cpp successful.
+RobotMap.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+
+compiling DriveTrain.cpp failed.
+DriveTrain.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(29): error C2676: binary '/': 'TrajectoryDuration' does not define this operator or a conversion to a type acceptable to the predefined operator
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): error C3615: constexpr function 'RoundProfileDuration' cannot result in a constant expression
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): note: failure was because type 'TrajectoryDuration' is not a literal type
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\cci-5.14.1-headers.zip_42f03008fdd4b33a89db7947fe126318\ctre/phoenix/motion/TrajectoryPoint.h(10): note: type 'ctre::phoenix::motion::TrajectoryPoint' is not a literal type because it is not an aggregate type, a closure type, or does not have a constexpr constructor that is not a copy or move constructor
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(30): note: failure was caused by control reaching the end of a constexpr function
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+
+compiling Elevator.cpp successful.
+Elevator.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+
+compiling Gimbal.cpp successful.
+Gimbal.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+
+compiling FieldPositioningSystem.cpp successful.
+FieldPositioningSystem.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+
+compiling Gripper.cpp successful.
+Gripper.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+
+compiling GripperIntake.cpp successful.
+GripperIntake.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+
+compiling CommandGroupBuilder.cpp successful.
+CommandGroupBuilder.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+
+compiling UltrasonicSensor.cpp successful.
+UltrasonicSensor.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+
+compiling PCM.cpp successful.
+PCM.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+
+compiling FieldOrientation.cpp successful.
+FieldOrientation.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+
+compiling LogFileName.cpp successful.
+LogFileName.cpp
+
+compiling MotionProfile.cpp failed.
+MotionProfile.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(29): error C2676: binary '/': 'TrajectoryDuration' does not define this operator or a conversion to a type acceptable to the predefined operator
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): error C3615: constexpr function 'RoundProfileDuration' cannot result in a constant expression
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): note: failure was because type 'TrajectoryDuration' is not a literal type
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\cci-5.14.1-headers.zip_42f03008fdd4b33a89db7947fe126318\ctre/phoenix/motion/TrajectoryPoint.h(10): note: type 'ctre::phoenix::motion::TrajectoryPoint' is not a literal type because it is not an aggregate type, a closure type, or does not have a constexpr constructor that is not a copy or move constructor
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(30): note: failure was caused by control reaching the end of a constexpr function
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\MotionProfile.h(25): error C3646: 'm_notifer': unknown override specifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\MotionProfile.h(25): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\MotionProfile.cpp(8): error C2614: 'MotionProfile': illegal member initialization: 'm_notifer' is not a base or member
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\MotionProfile.cpp(36): error C2065: 'm_notifer': undeclared identifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\MotionProfile.cpp(41): error C2065: 'm_notifer': undeclared identifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\MotionProfile.cpp(58): error C2440: '=': cannot convert from 'const TrajectoryDuration' to 'int'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\MotionProfile.cpp(58): note: No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\MotionProfile.cpp(70): error C2065: 'm_notifer': undeclared identifier
+
+compiling ProfileGenerator.cpp failed.
+ProfileGenerator.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(29): error C2676: binary '/': 'TrajectoryDuration' does not define this operator or a conversion to a type acceptable to the predefined operator
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): error C3615: constexpr function 'RoundProfileDuration' cannot result in a constant expression
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): note: failure was because type 'TrajectoryDuration' is not a literal type
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\cci-5.14.1-headers.zip_42f03008fdd4b33a89db7947fe126318\ctre/phoenix/motion/TrajectoryPoint.h(10): note: type 'ctre::phoenix::motion::TrajectoryPoint' is not a literal type because it is not an aggregate type, a closure type, or does not have a constexpr constructor that is not a copy or move constructor
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(30): note: failure was caused by control reaching the end of a constexpr function
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.cpp(10): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.cpp(10): error C2440: 'return': cannot convert from 'int' to 'ctre::phoenix::motion::TrajectoryPoint'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.cpp(10): note: No constructor could take the source type, or constructor overload resolution was ambiguous
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.cpp(11): error C2065: 'TrajectoryDuration_5ms': undeclared identifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.cpp(12): error C2065: 'TrajectoryDuration_20ms': undeclared identifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.cpp(12): error C2065: 'TrajectoryDuration_10ms': undeclared identifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.cpp(13): error C2065: 'TrajectoryDuration_30ms': undeclared identifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.cpp(13): error C2065: 'TrajectoryDuration_20ms': undeclared identifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.cpp(14): error C2065: 'TrajectoryDuration_40ms': undeclared identifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.cpp(14): error C2065: 'TrajectoryDuration_30ms': undeclared identifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.cpp(15): error C2065: 'TrajectoryDuration_50ms': undeclared identifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.cpp(15): error C2065: 'TrajectoryDuration_40ms': undeclared identifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.cpp(16): error C2065: 'TrajectoryDuration_100ms': undeclared identifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.cpp(16): error C2065: 'TrajectoryDuration_50ms': undeclared identifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.cpp(17): error C2065: 'TrajectoryDuration_100ms': undeclared identifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.cpp(34): error C2039: 'TrajectoryDuration_5ms': is not a member of 'ctre::phoenix::motion::TrajectoryPoint'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\cci-5.14.1-headers.zip_42f03008fdd4b33a89db7947fe126318\ctre/phoenix/motion/TrajectoryPoint.h(10): note: see declaration of 'ctre::phoenix::motion::TrajectoryPoint'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.cpp(34): error C2065: 'TrajectoryDuration_5ms': undeclared identifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.cpp(33): error C3615: constexpr function '`anonymous-namespace'::ConstantVelocityProfile::GetDurationMs' cannot result in a constant expression
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.cpp(35): note: failure was caused by control reaching the end of a constexpr function
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.cpp(45): error C2039: 'TrajectoryDuration_10ms': is not a member of 'ctre::phoenix::motion::TrajectoryPoint'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\cci-5.14.1-headers.zip_42f03008fdd4b33a89db7947fe126318\ctre/phoenix/motion/TrajectoryPoint.h(10): note: see declaration of 'ctre::phoenix::motion::TrajectoryPoint'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.cpp(45): error C2065: 'TrajectoryDuration_10ms': undeclared identifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.cpp(45): error C2789: 'duration': an object of const-qualified type must be initialized
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.cpp(45): note: see declaration of 'duration'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.cpp(46): error C3536: 'duration': cannot be used before it is initialized
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.cpp(49): error C2440: 'return': cannot convert from 'initializer list' to 'ProfilePoint'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.cpp(49): note: Invalid aggregate initialization
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.cpp(74): error C2039: 'TrajectoryDuration_20ms': is not a member of 'ctre::phoenix::motion::TrajectoryPoint'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\cci-5.14.1-headers.zip_42f03008fdd4b33a89db7947fe126318\ctre/phoenix/motion/TrajectoryPoint.h(10): note: see declaration of 'ctre::phoenix::motion::TrajectoryPoint'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.cpp(74): error C2065: 'TrajectoryDuration_20ms': undeclared identifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.cpp(73): error C3615: constexpr function '`anonymous-namespace'::VelocityTransitionProfile::GetDurationMs' cannot result in a constant expression
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.cpp(75): note: failure was caused by control reaching the end of a constexpr function
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.cpp(83): error C2039: 'TrajectoryDuration_10ms': is not a member of 'ctre::phoenix::motion::TrajectoryPoint'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\cci-5.14.1-headers.zip_42f03008fdd4b33a89db7947fe126318\ctre/phoenix/motion/TrajectoryPoint.h(10): note: see declaration of 'ctre::phoenix::motion::TrajectoryPoint'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.cpp(83): error C2065: 'TrajectoryDuration_10ms': undeclared identifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.cpp(83): error C2127: 'duration': illegal initialization of 'constexpr' entity with a non-constant expression
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.cpp(86): error C3536: 'interval': cannot be used before it is initialized
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.cpp(189): error C2065: 'TrajectoryDuration_5ms': undeclared identifier
+
+compiling RobotNavigation.cpp failed.
+RobotNavigation.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(29): error C2676: binary '/': 'TrajectoryDuration' does not define this operator or a conversion to a type acceptable to the predefined operator
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): error C3615: constexpr function 'RoundProfileDuration' cannot result in a constant expression
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): note: failure was because type 'TrajectoryDuration' is not a literal type
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\cci-5.14.1-headers.zip_42f03008fdd4b33a89db7947fe126318\ctre/phoenix/Motion/TrajectoryPoint.h(10): note: type 'ctre::phoenix::motion::TrajectoryPoint' is not a literal type because it is not an aggregate type, a closure type, or does not have a constexpr constructor that is not a copy or move constructor
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(30): note: failure was caused by control reaching the end of a constexpr function
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities/MotionProfile.h(25): error C3646: 'm_notifer': unknown override specifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities/MotionProfile.h(25): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(71): error C2143: syntax error: missing ';' before '*'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(71): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(71): error C2238: unexpected token(s) preceding ';'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\RobotNavigation.cpp(126): error C2664: 'double RoundProfileDuration(const double,TrajectoryDuration)': cannot convert argument 2 from 'int' to 'TrajectoryDuration'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\RobotNavigation.cpp(126): note: No constructor could take the source type, or constructor overload resolution was ambiguous
+
+compiling TalonTelemetry.cpp failed.
+TalonTelemetry.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(29): error C2676: binary '/': 'TrajectoryDuration' does not define this operator or a conversion to a type acceptable to the predefined operator
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): error C3615: constexpr function 'RoundProfileDuration' cannot result in a constant expression
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): note: failure was because type 'TrajectoryDuration' is not a literal type
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\cci-5.14.1-headers.zip_42f03008fdd4b33a89db7947fe126318\ctre/phoenix/motion/TrajectoryPoint.h(10): note: type 'ctre::phoenix::motion::TrajectoryPoint' is not a literal type because it is not an aggregate type, a closure type, or does not have a constexpr constructor that is not a copy or move constructor
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(30): note: failure was caused by control reaching the end of a constexpr function
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Timer.h(12): warning C4081: expected '('; found 'string'
+
+compiling DriveTrainShifter.cpp failed.
+DriveTrainShifter.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(29): error C2676: binary '/': 'TrajectoryDuration' does not define this operator or a conversion to a type acceptable to the predefined operator
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): error C3615: constexpr function 'RoundProfileDuration' cannot result in a constant expression
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): note: failure was because type 'TrajectoryDuration' is not a literal type
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\cci-5.14.1-headers.zip_42f03008fdd4b33a89db7947fe126318\ctre/phoenix/motion/TrajectoryPoint.h(10): note: type 'ctre::phoenix::motion::TrajectoryPoint' is not a literal type because it is not an aggregate type, a closure type, or does not have a constexpr constructor that is not a copy or move constructor
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(30): note: failure was caused by control reaching the end of a constexpr function
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+
+compiling Vision.cpp failed.
+Vision.cpp
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(29): error C2676: binary '/': 'TrajectoryDuration' does not define this operator or a conversion to a type acceptable to the predefined operator
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): error C3615: constexpr function 'RoundProfileDuration' cannot result in a constant expression
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(28): note: failure was because type 'TrajectoryDuration' is not a literal type
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\cci-5.14.1-headers.zip_42f03008fdd4b33a89db7947fe126318\ctre/phoenix/motion/TrajectoryPoint.h(10): note: type 'ctre::phoenix::motion::TrajectoryPoint' is not a literal type because it is not an aggregate type, a closure type, or does not have a constexpr constructor that is not a copy or move constructor
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Utilities\ProfileGenerator.h(30): note: failure was caused by control reaching the end of a constexpr function
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Vision.cpp(54): error C2131: expression did not evaluate to a constant
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Vision.cpp(54): note: failure was caused by call of undefined function or one not declared 'constexpr'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Vision.cpp(54): note: see usage of 'std::vector<std::vector<cv::Point,std::allocator<_Ty>>,std::allocator<std::vector<_Ty,std::allocator<_Ty>>>>::size'
+        with
+        [
+            _Ty=cv::Point
+        ]
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Vision.cpp(55): error C2131: expression did not evaluate to a constant
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Vision.cpp(55): note: failure was caused by call of undefined function or one not declared 'constexpr'
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Vision.cpp(55): note: see usage of 'std::vector<std::vector<cv::Point,std::allocator<_Ty>>,std::allocator<std::vector<_Ty,std::allocator<_Ty>>>>::size'
+        with
+        [
+            _Ty=cv::Point
+        ]
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Vision.cpp(61): error C3863: array type 'double ['function']' is not assignable
+C:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp\Vision.cpp(62): error C3863: array type 'cv::Point ['function']' is not assignable
+
+Finished compileFrcUserProgramWindowsx86-64ReleaseExecutableFrcUserProgramCpp, see full log file:///C:/Users/huntr/git/powerupnew/PowerUp/build/tmp/compileFrcUserProgramWindowsx86-64ReleaseExecutableFrcUserProgramCpp/output.txt.
