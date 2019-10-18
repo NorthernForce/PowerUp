@@ -2,7 +2,9 @@
 #define MOTIONPROFILE_H
 
 #include "ProfileGenerator.h"
-#include <Notifier.h>
+#include "Notifier.h"
+// #include "build/tmp/expandedArchives/cscore-cpp-2019.4.1-sources.zip_35f77497d636edf40e6457730c589f42/Notifier.h"
+// Use for cs::Notifier
 
 class MotionProfile {
 public:
@@ -22,10 +24,11 @@ public:
 	const int m_pidIdx0;
 	const int m_pidIdx1;
 
-    //Notifier m_notifier;
+	using Notifier = frc::Notifier;
+    Notifier m_notifier;
 	State m_state;
 	MotionProfileStatus m_status;
 	ProfileGenerator m_generator;
 	double m_scale;
 };
-#endif // MOTIONPROFILE_H
+#endif // NOTIFIER_H
