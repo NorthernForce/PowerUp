@@ -195,7 +195,7 @@ Profile CreateComplexProfile(const double distance, const double startVelocity, 
     auto d1 = (1 - startVelocity / targetVelocity) * timeToMaxVelocity * (targetVelocity + startVelocity) / 2;
     auto d3 = (1 - finalVelocity / targetVelocity) * timeToMaxVelocity * (targetVelocity + finalVelocity) / 2;
     auto d2 = distance - d1 - d3;
-    if (d2 / targetVelocity < TrajectoryDuration_5ms / 1000) {
+    if (d2 / targetVelocity < m_t5 / 1000) {
         if (distance >= 0) {
             targetVelocity = (distance / timeToMaxVelocity + sqrt(2 * (finalVelocity * finalVelocity + startVelocity * startVelocity) + distance * distance)) / 2;
         } else {
