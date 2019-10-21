@@ -10,6 +10,7 @@
 
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/core/core.hpp>
+#include <vector>
 
 volatile bool vtLookForLights = true;
 volatile bool vtLookForBlue = true;
@@ -51,8 +52,12 @@ void VisionThread() {
 				if (contours.size() > 0) {
 					double totalBlue = 0;
 					double totalRed = 0;
-					double sizes[contours.size()];
-					cv::Point centers[contours.size()];
+					std::vector<double> sizes;
+					sizes.push_back(contours.size());
+					std::vector<cv::Point> centers;
+					centers.push_back(contours.size());
+					// double sizes[contours.size()];
+					// cv::Point centers[contours.size()];
 					int mostLeft = -1;
 					int mostRight = -1;
 					for (unsigned int i = 0; i < contours.size(); i++) {
