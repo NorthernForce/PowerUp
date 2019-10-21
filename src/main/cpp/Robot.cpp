@@ -85,17 +85,17 @@ void Robot::RobotInit() {
 	oi.reset(new OI());
 	driveTrainShifter->Shift(DriveTrainShifter::Gear::Low);
 
-    autonomousChooser.AddDefault("1) Cross the Auto-Line", new CreateCrossAutoLine());
-    autonomousChooser.AddObject("2) Left: Prioritize Scale", new CreateLeftPrioritizeScale());
-    autonomousChooser.AddObject("3) Right: Prioritize Scale", new CreateRightPrioritizeScale());
-    autonomousChooser.AddObject("4) Left: Only Scale", new CreateLeftOnlyScale());
-    autonomousChooser.AddObject("5) Right: Only Scale", new CreateRightOnlyScale());
-    autonomousChooser.AddObject("6) Left: Prioritize Switch", new CreateLeftPrioritizeSwitch());
-    autonomousChooser.AddObject("7) Right: Prioritize Switch", new CreateRightPrioritizeSwitch());
-    autonomousChooser.AddObject("8) Left: Only Switch (Not working)", new CreateLeftOnlySwitch());
-    autonomousChooser.AddObject("9) Right: Only Switch (Not Working)", new CreateRightOnlySwitch());
-    autonomousChooser.AddObject("10) Center: Switch (Untested)", new CreateCenterSwitch());
-    autonomousChooser.AddObject("11) DO NOTHING BECAUSE ENCODERS BE BROKE!", new DONOTHING());
+    // autonomousChooser.AddDefault("1) Cross the Auto-Line", new CreateCrossAutoLine());
+    // autonomousChooser.AddObject("2) Left: Prioritize Scale", new CreateLeftPrioritizeScale());
+    // autonomousChooser.AddObject("3) Right: Prioritize Scale", new CreateRightPrioritizeScale());
+    // autonomousChooser.AddObject("4) Left: Only Scale", new CreateLeftOnlyScale());
+    // autonomousChooser.AddObject("5) Right: Only Scale", new CreateRightOnlyScale());
+    // autonomousChooser.AddObject("6) Left: Prioritize Switch", new CreateLeftPrioritizeSwitch());
+    // autonomousChooser.AddObject("7) Right: Prioritize Switch", new CreateRightPrioritizeSwitch());
+    // autonomousChooser.AddObject("8) Left: Only Switch (Not working)", new CreateLeftOnlySwitch());
+    // autonomousChooser.AddObject("9) Right: Only Switch (Not Working)", new CreateRightOnlySwitch());
+    // autonomousChooser.AddObject("10) Center: Switch (Untested)", new CreateCenterSwitch());
+    // autonomousChooser.AddObject("11) DO NOTHING BECAUSE ENCODERS BE BROKE!", new DONOTHING());
 
    	frc::SmartDashboard::PutData("Autonomous Modes", &autonomousChooser);
 

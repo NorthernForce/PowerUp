@@ -1,8 +1,8 @@
-#pragma once
+// #pragma once
 
-#include "Commands/CommandGroup.h"
+// #include "Commands/CommandGroup.h"
 
-class GotoOtherSide: public frc::CommandGroup {
-public:
-	GotoOtherSide();
-};
+// class GotoOtherSide: public frc::CommandGroup {
+// public:
+// 	GotoOtherSide();
+// };

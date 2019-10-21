@@ -1,8 +1,8 @@
-#pragma once
+// #pragma once
 
-#include "Commands/CommandGroup.h"
+// #include "Commands/CommandGroup.h"
 
-class ScaleFromLeft: public frc::CommandGroup {
-public:
-	ScaleFromLeft();
-};
+// class ScaleFromLeft: public frc::CommandGroup {
+// public:
+// 	ScaleFromLeft();
+// };

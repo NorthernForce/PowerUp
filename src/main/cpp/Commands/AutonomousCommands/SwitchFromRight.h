@@ -1,8 +1,8 @@
-#pragma once
+// #pragma once
 
-#include "Commands/CommandGroup.h"
+// #include "Commands/CommandGroup.h"
 
-class SwitchFromRight: public frc::CommandGroup {
-public:
-	SwitchFromRight();
-};
+// class SwitchFromRight: public frc::CommandGroup {
+// public:
+// 	SwitchFromRight();
+// };

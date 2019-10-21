@@ -1,8 +1,8 @@
-#pragma once
+// #pragma once
 
-#include "Commands/CommandGroup.h"
+// #include "Commands/CommandGroup.h"
 
-class FarScaleFromRight: public frc::CommandGroup {
-public:
-	FarScaleFromRight();
-};
+// class FarScaleFromRight: public frc::CommandGroup {
+// public:
+// 	FarScaleFromRight();
+// };

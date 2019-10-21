@@ -1,16 +1,16 @@
-#ifndef AUTONOMOUSSEQUENCE_H
-#define AUTONOMOUSSEQUENCE_H
+// #ifndef AUTONOMOUSSEQUENCE_H
+// #define AUTONOMOUSSEQUENCE_H
 
-#include "Commands/CommandGroup.h"
-enum class StartingPos {
-	Left,
-	Center,
-	Right
-};
-enum class AutoTarget {
-	Switch,
-	Scale
-};
+// #include "Commands/CommandGroup.h"
+// enum class StartingPos {
+// 	Left,
+// 	Center,
+// 	Right
+// };
+// enum class AutoTarget {
+// 	Switch,
+// 	Scale
+// };
 
-frc::CommandGroup* GenerateAutonomousSequence();
-#endif
+// frc::CommandGroup* GenerateAutonomousSequence();
+// #endif
