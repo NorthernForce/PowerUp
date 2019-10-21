@@ -5,7 +5,7 @@ MotionProfile::MotionProfile(TalonSRX& talon, int pidIdx0, int pidIdx1) :
 	m_talon(talon),
 	m_pidIdx0(pidIdx0),
 	m_pidIdx1(pidIdx1),
-	m_notifier(&MotionProfile::PeriodicTask),
+	m_notifier(&MotionProfile::PeriodicTask, this),
 	m_state(State::Disabled),
 	m_scale(0)
 {
@@ -48,6 +48,7 @@ void MotionProfile::PeriodicTask() {
 	if ((m_state == State::Starting || m_state == State::Filling) && m_status.topBufferRem > 0) {
 		const auto pt = m_generator();
 		TrajectoryPoint point;
+		Profile pt_profile;
 		point.position = pt.m_position * m_scale;
 		point.velocity = pt.m_velocity * m_scale;
 		point.headingDeg = 0;
@@ -55,7 +56,7 @@ void MotionProfile::PeriodicTask() {
 		point.profileSlotSelect1 = 0;
 		point.isLastPoint = pt.m_last;
 		point.zeroPos = m_state == State::Starting;
-		point.timeDur = pt.m_duration;
+		point.timeDur = pt_profile.m_duration; // Possible point of failure but definately worth trying
 		m_talon.PushMotionProfileTrajectory(point);
 		m_state = point.isLastPoint ? State::Running : State::Filling;
 	}
