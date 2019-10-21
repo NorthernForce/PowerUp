@@ -67,7 +67,7 @@ void Arm::NudgeArm(int distance) {
 	m_talonSRX->Set(ControlMode::MotionMagic, m_setpoint);
 }
 
-void Arm::InitSendable(SendableBuilder& builder) {
+void Arm::InitSendable(frc::SendableBuilder& builder) {
 	Subsystem::InitSendable(builder);
 	auto pos = builder.GetEntry("Encoder position").GetHandle();
 	builder.SetUpdateTable([=]() {

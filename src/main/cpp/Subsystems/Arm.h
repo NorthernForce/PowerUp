@@ -13,7 +13,7 @@ public:
 	bool AtSetpoint();
 	void SetHomePosition();
 	void NudgeArm(int distance);
-	void InitSendable(SendableBuilder& builder) override;
+	void InitSendable(frc::SendableBuilder& builder) override;
 	void ReducePowerForClimb();
 
 private:
