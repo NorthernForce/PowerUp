@@ -1,0 +1,11 @@
+See file:///C:/Users/huntr/git/PowerUp/build/tmp/linkFrcUserProgramLinuxathenaDebugExecutable/output.txt for all output for linkFrcUserProgramLinuxathenaDebugExecutable.
+linking frcUserProgram failed.
+C:\Users\huntr\git\PowerUp\build\objs\frcUserProgram\linuxathena\debug\frcUserProgramCpp\5b8cu8f438nptppsf5r371rub\FieldPositioningSystem.o: In function `FieldPositioningSystem::Start(frc::Vector2d, float)':
+C:\Users\huntr\git\PowerUp\src\main\cpp\Subsystems/FieldPositioningSystem.cpp:75: undefined reference to `frc::GetCurrentThreadPriority(bool*)'
+C:\Users\huntr\git\PowerUp\src\main\cpp\Subsystems/FieldPositioningSystem.cpp:76: undefined reference to `frc::SetThreadPriority(std::thread&, bool, int)'
+C:\Users\huntr\git\PowerUp\build\objs\frcUserProgram\linuxathena\debug\frcUserProgramCpp\9lpoubpzmlw569b7og73sn9yd\TalonTelemetry.o: In function `TalonTelemetry::WriteTelemetry()':
+C:\Users\huntr\git\PowerUp\src\main\cpp\Utilities/TalonTelemetry.cpp:75: undefined reference to `frc::GetCurrentThreadPriority(bool*)'
+C:\Users\huntr\git\PowerUp\src\main\cpp\Utilities/TalonTelemetry.cpp:76: undefined reference to `frc::SetCurrentThreadPriority(bool, int)'
+collect2.exe: error: ld returned 1 exit status
+
+Finished linkFrcUserProgramLinuxathenaDebugExecutable, see full log file:///C:/Users/huntr/git/PowerUp/build/tmp/linkFrcUserProgramLinuxathenaDebugExecutable/output.txt.

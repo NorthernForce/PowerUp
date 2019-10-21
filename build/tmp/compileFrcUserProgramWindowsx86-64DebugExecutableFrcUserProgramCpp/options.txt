@@ -9,22 +9,22 @@
 /Zc:inline
 /Od
 /MDd
-/IC:\Users\huntr\git\powerupnew\PowerUp\src\main\include
-/IC:\Users\huntr\git\powerupnew\PowerUp\src\main\cpp
-/IC:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b
-/IC:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\hal-cpp-2019.4.1-headers.zip_c188c7b3a999a3880106aec59871f632
-/IC:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpiutil-cpp-2019.4.1-headers.zip_5e342f497d78cde8042c25fea7a66506
-/IC:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\ntcore-cpp-2019.4.1-headers.zip_9555d7c48fd82baf566f02717a6c3cb0
-/IC:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\cscore-cpp-2019.4.1-headers.zip_6f6b3f86ef5e8708aac28c5ba02696ca
-/IC:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\cameraserver-cpp-2019.4.1-headers.zip_992d6c67f4984f018ec363e9353431cb
-/IC:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\opencv-cpp-3.4.4-4-headers.zip_ed19d56be47d37c8193b8f0377a9cfe6
-/IC:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\navx-cpp-3.1.377-headers.zip_875ca7f002e07eee81039e669ce1edb5
-/IC:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\wpiapi-cpp-5.14.1-headers.zip_97f59bce4d16b98c31d785272d2cbf90
-/IC:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\api-cpp-5.14.1-headers.zip_030289be05cf3375b8caa56d34c0f684
-/IC:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\cci-5.14.1-headers.zip_42f03008fdd4b33a89db7947fe126318
-/IC:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\canutils-5.14.1-headers.zip_2ad929bb93bc974fa970e45d0db54581
-/IC:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\platform-stub-5.14.1-headers.zip_ac71b9bf27563c732ca95374a3f8ae41
-/IC:\Users\huntr\git\powerupnew\PowerUp\build\tmp\expandedArchives\core-5.14.1-headers.zip_1a0852ca4a5eb80a8696df6da036e292
+/IC:\Users\huntr\git\PowerUp\src\main\include
+/IC:\Users\huntr\git\PowerUp\src\main\cpp
+/IC:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b
+/IC:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\hal-cpp-2019.4.1-headers.zip_c188c7b3a999a3880106aec59871f632
+/IC:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpiutil-cpp-2019.4.1-headers.zip_5e342f497d78cde8042c25fea7a66506
+/IC:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\ntcore-cpp-2019.4.1-headers.zip_9555d7c48fd82baf566f02717a6c3cb0
+/IC:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\cscore-cpp-2019.4.1-headers.zip_6f6b3f86ef5e8708aac28c5ba02696ca
+/IC:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\cameraserver-cpp-2019.4.1-headers.zip_992d6c67f4984f018ec363e9353431cb
+/IC:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\opencv-cpp-3.4.4-4-headers.zip_ed19d56be47d37c8193b8f0377a9cfe6
+/IC:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\navx-cpp-3.1.377-headers.zip_875ca7f002e07eee81039e669ce1edb5
+/IC:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpiapi-cpp-5.14.1-headers.zip_97f59bce4d16b98c31d785272d2cbf90
+/IC:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\api-cpp-5.14.1-headers.zip_030289be05cf3375b8caa56d34c0f684
+/IC:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\cci-5.14.1-headers.zip_42f03008fdd4b33a89db7947fe126318
+/IC:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\canutils-5.14.1-headers.zip_2ad929bb93bc974fa970e45d0db54581
+/IC:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\platform-stub-5.14.1-headers.zip_ac71b9bf27563c732ca95374a3f8ae41
+/IC:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\core-5.14.1-headers.zip_1a0852ca4a5eb80a8696df6da036e292
 "/IC:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include"
 "/IC:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um"
 "/IC:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared"

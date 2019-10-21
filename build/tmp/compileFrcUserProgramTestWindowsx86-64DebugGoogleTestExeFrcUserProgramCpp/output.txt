@@ -1,0 +1,331 @@
+See file:///C:/Users/huntr/git/PowerUp/build/tmp/compileFrcUserProgramTestWindowsx86-64DebugGoogleTestExeFrcUserProgramCpp/output.txt for all output for compileFrcUserProgramTestWindowsx86-64DebugGoogleTestExeFrcUserProgramCpp.
+compiling CrossAutoLine.cpp failed.
+CrossAutoLine.cpp
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+
+compiling AutonomousCommand.cpp failed.
+AutonomousCommand.cpp
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+
+compiling FarScaleFromLeft.cpp failed.
+FarScaleFromLeft.cpp
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+
+compiling SwitchFromCenter.cpp failed.
+SwitchFromCenter.cpp
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+
+compiling ScaleFromLeft.cpp failed.
+ScaleFromLeft.cpp
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+
+compiling ScaleFromRight.cpp failed.
+ScaleFromRight.cpp
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+
+compiling SwitchFromLeft.cpp failed.
+SwitchFromLeft.cpp
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+
+compiling SwitchFromRight.cpp failed.
+SwitchFromRight.cpp
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+
+compiling AutonomousDrive.cpp failed.
+AutonomousDrive.cpp
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\src\main\cpp\Commands\AutonomousDrive.cpp(52): error C2677: binary '+': no global operator found which takes type 'TrajectoryDuration' (or there is no acceptable conversion)
+C:\Users\huntr\git\PowerUp\src\main\cpp\Commands\AutonomousDrive.cpp(53): error C2677: binary '+': no global operator found which takes type 'TrajectoryDuration' (or there is no acceptable conversion)
+
+compiling AutonomousDriveForward.cpp failed.
+AutonomousDriveForward.cpp
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+
+compiling AutonomousDriveWithEncoders.cpp failed.
+AutonomousDriveWithEncoders.cpp
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\SmartDashboard/SmartDashboard.h(12): warning C4081: expected '('; found 'string'
+
+compiling AutonomousTurnWithGyro.cpp failed.
+AutonomousTurnWithGyro.cpp
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+
+compiling AutonomousWait.cpp successful.
+AutonomousWait.cpp
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+
+compiling CreateCenterSwitch.cpp successful.
+CreateCenterSwitch.cpp
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+
+compiling CreateCrossAutoLine.cpp successful.
+CreateCrossAutoLine.cpp
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+
+compiling CreateLeftOnlyScale.cpp successful.
+CreateLeftOnlyScale.cpp
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+
+compiling CreateLeftOnlySwitch.cpp successful.
+CreateLeftOnlySwitch.cpp
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+
+compiling CreateLeftPrioritizeScale.cpp successful.
+CreateLeftPrioritizeScale.cpp
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+
+compiling CreateLeftPrioritizeSwitch.cpp successful.
+CreateLeftPrioritizeSwitch.cpp
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+
+compiling CreateRightOnlyScale.cpp failed.
+CreateRightOnlyScale.cpp
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+
+compiling CreateRightOnlySwitch.cpp failed.
+CreateRightOnlySwitch.cpp
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+
+compiling CreateRightPrioritizeScale.cpp failed.
+CreateRightPrioritizeScale.cpp
+
+compiling DriveWithJoystick.cpp failed.
+DriveWithJoystick.cpp
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+
+compiling DONOTHING.cpp successful.
+DONOTHING.cpp
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+
+compiling CreateRightPrioritizeSwitch.cpp successful.
+CreateRightPrioritizeSwitch.cpp
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+
+compiling GenerateAutonomousSequence.cpp failed.
+GenerateAutonomousSequence.cpp
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\DriverStation.h(12): warning C4081: expected '('; found 'string'
+
+compiling PositionArm.cpp failed.
+PositionArm.cpp
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+
+compiling GenerateCommandSequence.cpp failed.
+GenerateCommandSequence.cpp
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+
+compiling RobotClimb.cpp failed.
+RobotClimb.cpp
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+
+compiling StartFieldPositioningSystem.cpp failed.
+StartFieldPositioningSystem.cpp
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+
+compiling OI.cpp failed.
+OI.cpp
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\SmartDashboard/SmartDashboard.h(12): warning C4081: expected '('; found 'string'
+
+compiling Robot.cpp failed.
+Robot.cpp
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Command.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\LiveWindow/LiveWindow.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/CommandGroup.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Notifier.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\src\main\cpp\Subsystems/DriveTrain.h(40): error C2065: 'M_PI': undeclared identifier
+
+compiling RobotMap.cpp successful.
+RobotMap.cpp
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+
+compiling Arm.cpp successful.
+Arm.cpp
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\circular_buffer.h(12): warning C4081: expected '('; found 'string'
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\WPILib.h(12): warning C4081: expected '('; found 'string'
+
+compiling DriveTrainShifter.cpp failed.
+DriveTrainShifter.cpp
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+
+compiling Elevator.cpp failed.
+Elevator.cpp
+
+compiling DriveTrain.cpp failed.
+DriveTrain.cpp
+C:\Users\huntr\git\PowerUp\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b\Commands/Subsystem.h(12): warning C4081: expected '('; found 'string'
+
