@@ -8,9 +8,9 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 
-
 #ifndef DRIVETRAIN_H
 #define DRIVETRAIN_H
+#define M_PI 3.14159265358979323846 // pi
 #include "Commands/Subsystem.h"
 #include "Utilities/MotionProfile.h"
 #include "Utilities/TalonTelemetry.h"
