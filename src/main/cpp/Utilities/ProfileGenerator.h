@@ -33,13 +33,13 @@ Profile CreateSimpleProfile(const double distance, const double startVelocity, c
 Profile CreateComplexProfile(const double distance, const double startVelocity, const double finalVelocity, const double peakVelocity, const double timeToMaxVelocity);
 Profile CombineProfiles(std::vector<Profile>&& items, const double startingPosition = 0);
 
-uint32_t m_t5 = 5;
-uint32_t m_t10 = 10;
-uint32_t m_t20 = 20;
-uint32_t m_t30 = 30;
-uint32_t m_t40 = 40;
-uint32_t m_t50 = 50;
-uint32_t m_t100 = 100;
+const uint32_t m_t5 = 5;
+const uint32_t m_t10 = 10;
+const uint32_t m_t20 = 20;
+const uint32_t m_t30 = 30;
+const uint32_t m_t40 = 40;
+const uint32_t m_t50 = 50;
+const uint32_t m_t100 = 100;
 
 
 #endif
