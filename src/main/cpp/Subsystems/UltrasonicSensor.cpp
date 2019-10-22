@@ -1,6 +1,6 @@
 #include "UltrasonicSensor.h"
 #include "../RobotMap.h"
-#include <WPILib.h>
+#include <frc/WPILib.h>
 
 UltrasonicSensor::UltrasonicSensor(int analogChannel,  int serialChannel, int onChannel) :
 	frc::Subsystem("UltrasonicSensor"),
