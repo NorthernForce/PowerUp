@@ -2,7 +2,7 @@
 #define MOTIONPROFILE_H
 
 #include "ProfileGenerator.h"
-#include "Notifier.h"
+#include "frc/Notifier.h"
 // #include "build/tmp/expandedArchives/cscore-cpp-2019.4.1-sources.zip_35f77497d636edf40e6457730c589f42/Notifier.h"
 // Use for cs::Notifier
 
