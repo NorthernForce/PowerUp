@@ -1,5 +1,5 @@
 #include "MotionProfile.h"
-#include "DriverStation.h"
+#include "frc/DriverStation.h"
 
 MotionProfile::MotionProfile(TalonSRX& talon, int pidIdx0, int pidIdx1) :
 	m_talon(talon),

@@ -1,8 +1,8 @@
 #ifndef DRIVETRAINSHIFTER_H
 #define DRIVETRAINSHIFTER_H
-#include "Commands/Subsystem.h"
+#include "frc/commands/Subsystem.h"
 #include "Utilities/TalonTelemetry.h"
-#include "WPILib.h"
+#include "frc/WPILib.h"
 
 class DriveTrainShifter: public frc::Subsystem
 {

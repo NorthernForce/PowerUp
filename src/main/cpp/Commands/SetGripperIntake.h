@@ -1,7 +1,7 @@
 #ifndef SETGRIPPERINTAKE_H
 #define SETGRIPPERINTAKE_H
 
-#include "Commands/Subsystem.h"
+#include "frc/commands/Subsystem.h"
 #include "../Robot.h"
 #include "Subsystems/GripperIntake.h"
 

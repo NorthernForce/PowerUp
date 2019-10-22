@@ -3,9 +3,9 @@
 #ifndef FIELDPOSITIONINGSYSTEM_H
 #define FIELDPOSITIONINGSYSTEM_H
 
-#include "Commands/Subsystem.h"
-#include "WPILib.h"
-#include "circular_buffer.h"
+#include "frc/commands/Subsystem.h"
+#include "frc/WPILib.h"
+#include "frc/circular_buffer.h"
 #include "AHRS.h"
 
 #include <thread>

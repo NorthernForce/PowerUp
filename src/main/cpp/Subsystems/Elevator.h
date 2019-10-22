@@ -1,8 +1,8 @@
 #ifndef ELEVATOR_H
 #define ELEVATOR_H
-#include "Commands/Subsystem.h"
+#include "frc/commands/Subsystem.h"
 #include "Utilities/TalonTelemetry.h"
-#include "WPILib.h"
+#include "frc/WPILib.h"
 
 class Elevator: public frc::Subsystem
 {

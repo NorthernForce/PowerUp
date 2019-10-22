@@ -2,8 +2,8 @@
 //Add $ifndef, etc.
 #pragma once
 
-#include "Commands/Subsystem.h"
-#include <WPILib.h>
+#include "frc/commands/Subsystem.h"
+#include <frc/WPILib.h>
 
 class UltrasonicSensor: public frc::Subsystem {
 	public:

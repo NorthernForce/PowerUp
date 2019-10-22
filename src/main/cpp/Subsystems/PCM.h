@@ -2,8 +2,8 @@
 
 #ifndef PCM_H
 #define PCM_H
-#include "Commands/Subsystem.h"
-#include "WPILib.h"
+#include "frc/commands/Subsystem.h"
+#include "frc/WPILib.h"
 
 class PCM: public frc::Subsystem {
 private:

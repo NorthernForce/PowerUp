@@ -1,7 +1,7 @@
 #ifndef CLOSEGRIPPER_H
 #define CLOSEGRIPPER_H
 
-#include "Commands/Subsystem.h"
+#include "frc/commands/Subsystem.h"
 #include "../Robot.h"
 
 class CloseGripper: public frc::TimedCommand {

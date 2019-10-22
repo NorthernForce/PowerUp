@@ -1,8 +1,8 @@
 #ifndef ARM_H
 #define ARM_H
-#include "Commands/Subsystem.h"
+#include "frc/commands/Subsystem.h"
 #include "Utilities/TalonTelemetry.h"
-#include "WPILib.h"
+#include "frc/WPILib.h"
 
 class Arm: public frc::Subsystem {
 public:

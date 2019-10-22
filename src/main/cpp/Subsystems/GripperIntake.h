@@ -2,8 +2,8 @@
 
 #ifndef GRIPPERINTAKE_H
 #define GRIPPERINTAKE_H
-#include "Commands/Subsystem.h"
-#include "WPILib.h"
+#include "frc/commands/Subsystem.h"
+#include "frc/WPILib.h"
 #include "ctre/Phoenix.h"
 
 class GripperIntake: public frc::Subsystem {

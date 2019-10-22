@@ -1,7 +1,7 @@
 #ifndef SHIFTGEARBOX_H
 #define SHIFTGEARBOX_H
 
-#include "Commands/Subsystem.h"
+#include "frc/commands/Subsystem.h"
 #include "../Robot.h"
 
 class ShiftGearbox : public frc::Command

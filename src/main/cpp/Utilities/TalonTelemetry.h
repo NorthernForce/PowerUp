@@ -2,7 +2,7 @@
 #define TALONTELEMETRY_H
 
 #include "ctre/Phoenix.h"
-#include "circular_buffer.h"
+#include "frc/circular_buffer.h"
 #include <fstream>
 #include <atomic>
 #include <mutex>

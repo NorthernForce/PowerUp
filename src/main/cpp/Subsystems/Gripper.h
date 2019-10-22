@@ -1,7 +1,7 @@
 #ifndef GRIPPER_H
 #define GRIPPER_H
-#include "Commands/Subsystem.h"
-#include "WPILib.h"
+#include "frc/commands/Subsystem.h"
+#include "frc/WPILib.h"
 
 class Gripper: public frc::Subsystem {
 

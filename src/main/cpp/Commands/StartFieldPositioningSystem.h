@@ -1,7 +1,7 @@
 #ifndef STARTFIELDPOSITIONINGSYSTEM_H
 #define STARTFIELDPOSITIONINGSYSTEM_H
 
-#include "Commands/Subsystem.h"
+#include "frc/commands/Subsystem.h"
 #include "../Robot.h"
 
 class StartFieldPositioningSystem: public frc::Command {

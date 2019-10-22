@@ -16,8 +16,8 @@
 //#define PRACTICE_BOT // Comment me out for the competition bot!
 #endif //PRACTICE_BOT
 
-#include "WPILib.h"
-#include "Commands/Command.h"
+#include "frc/WPILib.h"
+#include "frc/commands/Commands.h"
 #include "RobotMap.h"
 #include "LiveWindow/LiveWindow.h"
 

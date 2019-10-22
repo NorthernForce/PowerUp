@@ -6,10 +6,10 @@
 // /*----------------------------------------------------------------------------*/
 
 // #include "CreateRightOnlyScale.h"
-// #include "DriverStation.h"
+// #include "frc/DriverStation.h"
 // #include "Utilities/FieldOrientation.h"
 
-// #include "WPILib.h"
+// #include "frc/WPILib.h"
 
 // #include "../AutonomousCommands/ScaleFromRight.h"
 // #include "../AutonomousCommands/FarScaleFromRight.h"
