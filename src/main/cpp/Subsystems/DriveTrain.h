@@ -10,7 +10,7 @@
 
 #ifndef DRIVETRAIN_H
 #define DRIVETRAIN_H
-#define M_PI 3.14159265358979323846 // pi
+// #define M_PI 3.14159265358979323846 // pi
 #include "frc/commands/Subsystem.h"
 #include "Utilities/MotionProfile.h"
 #include "Utilities/TalonTelemetry.h"
