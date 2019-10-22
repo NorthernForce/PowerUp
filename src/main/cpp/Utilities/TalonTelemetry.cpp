@@ -1,7 +1,7 @@
 #include "TalonTelemetry.h"
 #include "Robot.h"
 #include "LogFileName.h"
-#include <Timer.h>
+#include <frc/Timer.h>
 #include <thread>
 
 TalonTelemetry::TalonTelemetry(std::initializer_list<std::shared_ptr<WPI_TalonSRX>> talons, const int pidIdx, const std::chrono::milliseconds period) :

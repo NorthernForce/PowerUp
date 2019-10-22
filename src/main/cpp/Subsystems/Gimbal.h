@@ -3,7 +3,7 @@
 #pragma once
 
 #include "frc/commands/Subsystem.h"
-#include <WPILib.h>
+#include <frc/WPILib.h>
 
 class Gimbal : public frc::Subsystem {
 private:

@@ -2,7 +2,7 @@
 #define ROBOTNAVIGATION_H
 
 #include <cstdint>
-#include "ctre/phoenix/Motion/TrajectoryPoint.h"
+#include "ctre/phoenix/motion/TrajectoryPoint.h"
 #include "FieldOrientation.h"
 #include "ProfileGenerator.h"
 #include "Subsystems/DriveTrain.h"
