@@ -17,7 +17,7 @@
 #endif //PRACTICE_BOT
 
 #include "frc/WPILib.h"
-#include "frc/commands/Commands.h"
+#include "frc/commands/Command.h"
 #include "RobotMap.h"
 #include "LiveWindow/LiveWindow.h"
 
