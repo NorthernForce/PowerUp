@@ -1,7 +1,7 @@
 #include "OI.h"
 #include <Commands/RunIntakeWheels.h>
 #include <Commands/SetGripperIntake.h>
-#include "SmartDashboard/SmartDashboard.h"
+#include "frc/smartDashboard/SmartDashboard.h"
 #include "Commands/AutonomousCenter.h"
 #include "Commands/AutonomousLeft.h"
 #include "Commands/AutonomousRight.h"
