@@ -1,6 +1,6 @@
 #include "Gimbal.h"
 #include "../RobotMap.h"
-#include <WPILib.h>
+#include <frc/WPILib.h>
 
 Gimbal::Gimbal(int panChannel, int tiltChannel) : frc::Subsystem("GimbalSubsystem") {
 	pan = new frc::Servo(panChannel);
