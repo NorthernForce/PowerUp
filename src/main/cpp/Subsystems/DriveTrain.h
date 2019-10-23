@@ -10,11 +10,15 @@
 
 #ifndef DRIVETRAIN_H
 #define DRIVETRAIN_H
-// #define M_PI 3.14159265358979323846 // pi
 #include "frc/commands/Subsystem.h"
 #include "Utilities/MotionProfile.h"
 #include "Utilities/TalonTelemetry.h"
 #include "frc/WPILib.h"
+#include <cmath>
+
+#ifndef M_PI
+#define M_PI (3.14159265358979323846)
+#endif
 
 class DriveTrain: public frc::Subsystem {
 public:
