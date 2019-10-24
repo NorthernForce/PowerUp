@@ -17,10 +17,10 @@ std::shared_ptr<frc::Compressor> RobotMap::compressor;
 std::shared_ptr<frc::DoubleSolenoid> RobotMap::driveTrainShifterDS;
 std::shared_ptr<frc::Solenoid> RobotMap::gripperSolenoid;
 std::shared_ptr<frc::Solenoid> RobotMap::elevatorBrake;
-std::shared_ptr<AHRS> RobotMap::ahrs;
+// std::shared_ptr<AHRS> RobotMap::ahrs;
 
 void RobotMap::init() {
-	//TODO: move away from ".reset", use make_shared\
+	//TODO: move away from ".reset", use make_shared
 	//Low priority
     driveTrainTalonSRX1.reset(new WPI_TalonSRX(1));
     driveTrainTalonSRX3.reset(new WPI_TalonSRX(3));
@@ -62,5 +62,5 @@ void RobotMap::init() {
     driveTrainTalonSRX6->SetInverted(false);
     driveTrainTalonSRX6->SetNeutralMode(NeutralMode::Coast);
     compressor->SetClosedLoopControl(true);
-    ahrs = std::make_unique<AHRS>(frc::SPI::Port::kMXP);
+    // ahrs = std::make_unique<AHRS>(frc::SPI::Port::kMXP); // not used anywhere other than autonomous and field positioning
 }
