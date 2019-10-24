@@ -50,7 +50,7 @@ public:
 	static std::unique_ptr<OI> oi;
 	static std::shared_ptr<DriveTrain> driveTrain;
 	static std::shared_ptr<DriveTrainShifter> driveTrainShifter;
-	static std::shared_ptr<FieldPositioningSystem> fieldPositioningSystem;
+	// static std::shared_ptr<FieldPositioningSystem> fieldPositioningSystem;
 	static std::shared_ptr<Gripper> gripper;
 	static std::shared_ptr<GripperIntake> gripperIntake;
 	static std::shared_ptr<Elevator> elevator;
