@@ -5,3 +5,5 @@ Debug/
 Release/
 PowerUp/.settings/language.settings.xml
 .settings
+build/
+.gradle/
