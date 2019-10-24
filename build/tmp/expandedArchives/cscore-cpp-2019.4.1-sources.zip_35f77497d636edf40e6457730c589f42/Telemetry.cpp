@@ -15,7 +15,7 @@
 
 #include "Handle.h"
 #include "Instance.h"
-#include "frc/Notifier.h"
+#include "Notifier.h"
 #include "SourceImpl.h"
 #include "cscore_cpp.h"
 
