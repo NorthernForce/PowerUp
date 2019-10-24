@@ -8,6 +8,7 @@
 #include <mutex>
 #include <thread>
 #include <array>
+#include <frc/Threads.h>
 
 class TalonTelemetry {
 public:

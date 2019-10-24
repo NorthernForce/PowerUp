@@ -3,6 +3,7 @@
 #include "LogFileName.h"
 #include <frc/Timer.h>
 #include <thread>
+#include <hal/Threads.h>
 
 TalonTelemetry::TalonTelemetry(std::initializer_list<std::shared_ptr<WPI_TalonSRX>> talons, const int pidIdx, const std::chrono::milliseconds period) :
 	m_talons(talons),
@@ -71,9 +72,10 @@ void TalonTelemetry::RecordTelemetry() {
 }
 
 void TalonTelemetry::WriteTelemetry() {
-	bool isRealTime;
-	const int priority = std::min(GetCurrentThreadPriority(&isRealTime) + 10, 99);
-	SetCurrentThreadPriority(false, priority);
+	HAL_Bool* isRealTime;
+	int32_t* status = 0; 
+	const int priority = std::min(HAL_GetCurrentThreadPriority(isRealTime, status) + 10, 99);
+	HAL_SetCurrentThreadPriority(false, priority, status);
 	m_bufferMutex.lock();
 	while(m_running || m_itemsToProcess.size()) {
 		if(!m_logfile && m_itemsToProcess.size()) {
