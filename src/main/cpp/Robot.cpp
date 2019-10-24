@@ -17,7 +17,7 @@
 
 std::shared_ptr<DriveTrain> Robot::driveTrain;
 std::shared_ptr<DriveTrainShifter> Robot::driveTrainShifter;
-std::shared_ptr<FieldPositioningSystem> Robot::fieldPositioningSystem;
+// std::shared_ptr<FieldPositioningSystem> Robot::fieldPositioningSystem;
 std::shared_ptr<Gripper> Robot::gripper;
 std::shared_ptr<GripperIntake> Robot::gripperIntake;
 std::unique_ptr<OI> Robot::oi;
@@ -77,7 +77,7 @@ void Robot::RobotInit() {
 	RobotMap::init();
     driveTrain.reset(new DriveTrain());
     driveTrainShifter.reset(new DriveTrainShifter());
-    fieldPositioningSystem.reset(new FieldPositioningSystem());
+    // fieldPositioningSystem.reset(new FieldPositioningSystem());
     gripper.reset(new Gripper());
     gripperIntake.reset(new GripperIntake());
     elevator.reset(new Elevator());
@@ -177,4 +177,6 @@ void Robot::TeleopPeriodic() {
 //	printf("elevator pos: %i\n", RobotMap::elevatorTalonSRX9->GetSensorCollection().GetQuadraturePosition());
 }
 
+#ifndef RUNNING_FRC_TESTS
 int main() { return frc::StartRobot<Robot>(); }
+#endif
