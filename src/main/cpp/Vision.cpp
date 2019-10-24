@@ -55,7 +55,7 @@ void VisionThread() {
 					std::vector<double> sizes;
 					sizes.push_back(contours.size());
 					std::vector<cv::Point> centers;
-					centers.push_back(contours.size());
+					// centers.push_back(contours.size());
 					// double sizes[contours.size()];
 					// cv::Point centers[contours.size()];
 					int mostLeft = -1;
