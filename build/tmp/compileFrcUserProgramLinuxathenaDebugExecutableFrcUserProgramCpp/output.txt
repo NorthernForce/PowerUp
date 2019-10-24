@@ -1,6 +1,0 @@
-See file:///C:/Users/huntr/git/PowerUp/build/tmp/compileFrcUserProgramLinuxathenaDebugExecutableFrcUserProgramCpp/output.txt for all output for compileFrcUserProgramLinuxathenaDebugExecutableFrcUserProgramCpp.
-compiling Vision.cpp successful.
-
-compiling Robot.cpp successful.
-
-Finished compileFrcUserProgramLinuxathenaDebugExecutableFrcUserProgramCpp, see full log file:///C:/Users/huntr/git/PowerUp/build/tmp/compileFrcUserProgramLinuxathenaDebugExecutableFrcUserProgramCpp/output.txt.

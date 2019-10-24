@@ -1,4 +1,0 @@
-See file:///C:/Users/huntr/git/PowerUp/build/tmp/linkFrcUserProgramLinuxathenaDebugExecutable/output.txt for all output for linkFrcUserProgramLinuxathenaDebugExecutable.
-linking frcUserProgram successful.
-
-Finished linkFrcUserProgramLinuxathenaDebugExecutable, see full log file:///C:/Users/huntr/git/PowerUp/build/tmp/linkFrcUserProgramLinuxathenaDebugExecutable/output.txt.
