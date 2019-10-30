@@ -72,9 +72,10 @@ void TalonTelemetry::RecordTelemetry() {
 }
 
 void TalonTelemetry::WriteTelemetry() {
-	HAL_Bool* isRealTime;
+	HAL_Bool isRealTime = false;
+	HAL_Bool* isRealTime_ptr = &isRealTime;
 	int32_t* status = 0; 
-	const int priority = std::min(HAL_GetCurrentThreadPriority(isRealTime, status) + 10, 99);
+	const int priority = std::min(HAL_GetCurrentThreadPriority(isRealTime_ptr, status) + 10, 99);
 	HAL_SetCurrentThreadPriority(false, priority, status);
 	m_bufferMutex.lock();
 	while(m_running || m_itemsToProcess.size()) {
