@@ -10,6 +10,7 @@
 
 #pragma once
 
+    /* Drive Talons */
     std::shared_ptr<WPI_TalonSRX> k_primaryTalonLeft;
     std::shared_ptr<WPI_TalonSRX> k_primaryTalonRight;
     std::shared_ptr<WPI_TalonSRX> k_followerTalon1Left;
@@ -17,13 +18,21 @@
     std::shared_ptr<WPI_TalonSRX> k_followerTalon2Left;
     std::shared_ptr<WPI_TalonSRX> k_followerTalon2Right;
 
-    const static int k_rightPrimaryTalon_id = 2;
-    const static int k_leftPrimaryTalon_id = 1;
-    const static int k_rightFollowerTalon1_id = 4;
-    const static int k_leftFollowerTalon1_id = 3;
-    const static int k_rightFollowerTalon2_id = 6;
-    const static int k_leftFollowerTalon2_id = 5;
+    /* Arm assembly Talons */
+    std::shared_ptr<WPI_TalonSRX> k_elevatorTalon;
+    std::shared_ptr<WPI_TalonSRX> k_armTalon; // unused for now
 
+    /* Drive Talon IDs */
+    const static int k_leftPrimaryTalon_id = 1;
+    const static int k_rightPrimaryTalon_id = 2;
+    const static int k_leftFollowerTalon1_id = 3;
+    const static int k_rightFollowerTalon1_id = 4;
+    const static int k_leftFollowerTalon2_id = 5;
+    const static int k_rightFollowerTalon2_id = 6;
+
+    /* Arm Talon IDs */
+    const static int k_armTalon_id = 8;
+    const static int k_elevatorTalon_id = 9;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
