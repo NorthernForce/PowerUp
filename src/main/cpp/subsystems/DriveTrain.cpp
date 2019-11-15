@@ -19,15 +19,15 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrain") {
   k_followerTalon2Left.reset(new WPI_TalonSRX (k_leftFollowerTalon2_id));
   k_followerTalon2Right.reset(new WPI_TalonSRX (k_rightFollowerTalon2_id));
 
-  k_primaryTalonLeft->ConfigOpenloopRamp(0.5);
-  k_primaryTalonRight->ConfigOpenloopRamp(0.5);
-
   k_primaryTalonLeft->ConfigFactoryDefault();
   k_primaryTalonRight->ConfigFactoryDefault();
   k_followerTalon1Left->ConfigFactoryDefault();
   k_followerTalon1Right->ConfigFactoryDefault();
   k_followerTalon2Left->ConfigFactoryDefault();
   k_followerTalon2Right->ConfigFactoryDefault();
+
+  k_primaryTalonLeft->ConfigOpenloopRamp(0.5);
+  k_primaryTalonRight->ConfigOpenloopRamp(0.5);
 
   k_followerTalon1Left->Follow(*k_primaryTalonLeft);
   k_followerTalon1Right->Follow(*k_primaryTalonRight);
