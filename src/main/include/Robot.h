@@ -12,6 +12,7 @@
 #include <frc/smartdashboard/SendableChooser.h>
 #include "subsystems/DriveTrain.h"
 #include "subsystems/Elevator.h"
+#include "subsystems/PCM.h"
 
 #include "OI.h"
 
@@ -32,6 +33,7 @@ class Robot : public frc::TimedRobot {
   static std::shared_ptr<DriveTrain> m_driveTrain;
   static std::shared_ptr<OI> m_oi;
   static std::shared_ptr<Elevator> m_elevator;
+  static std::shared_ptr<PCM> m_pcm;
 
  private:
   // Have it null by default so that if testing teleop it

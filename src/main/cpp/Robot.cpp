@@ -13,12 +13,14 @@
 std::shared_ptr<OI> Robot::m_oi;
 std::shared_ptr<DriveTrain> Robot::m_driveTrain;
 std::shared_ptr<Elevator> Robot::m_elevator;
+std::shared_ptr<PCM> Robot::m_pcm;
 
 void Robot::RobotInit()
 {
   m_driveTrain.reset(new DriveTrain());
   m_oi.reset(new OI());
   m_elevator.reset(new Elevator());
+  m_pcm.reset(new PCM());
 }
 
 /**
