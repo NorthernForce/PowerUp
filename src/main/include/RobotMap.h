@@ -10,15 +10,12 @@
 
 #pragma once
 
-    namespace Drive
-    {
-        std::shared_ptr<WPI_TalonSRX> m_primaryTalonLeft;
-        std::shared_ptr<WPI_TalonSRX> m_primaryTalonRight;
-        std::shared_ptr<WPI_TalonSRX> m_followerTalon1Left;
-        std::shared_ptr<WPI_TalonSRX> m_followerTalon1Right;
-        std::shared_ptr<WPI_TalonSRX> m_followerTalon2Left;
-        std::shared_ptr<WPI_TalonSRX> m_followerTalon2Right;
-    }
+    std::shared_ptr<WPI_TalonSRX> k_primaryTalonLeft;
+    std::shared_ptr<WPI_TalonSRX> k_primaryTalonRight;
+    std::shared_ptr<WPI_TalonSRX> k_followerTalon1Left;
+    std::shared_ptr<WPI_TalonSRX> k_followerTalon1Right;
+    std::shared_ptr<WPI_TalonSRX> k_followerTalon2Left;
+    std::shared_ptr<WPI_TalonSRX> k_followerTalon2Right;
 
     const static int k_rightPrimaryTalon_id = 2;
     const static int k_leftPrimaryTalon_id = 1;

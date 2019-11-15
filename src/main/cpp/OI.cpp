@@ -18,7 +18,6 @@ void OI::arcDrive()
   double speed = m_driverController->GetY(frc::XboxController::JoystickHand::kLeftHand) * -1;
   double rotation = m_driverController->GetX(frc::XboxController::JoystickHand::kRightHand);
   Robot::m_driveTrain->Drive(speed, rotation);
-  frc::DriverStation::ReportWarning("Speed: " + std::to_string(speed));
-  frc::DriverStation::ReportWarning("Rotation: " + std::to_string(rotation));
-
+  // frc::DriverStation::ReportWarning("Speed: " + std::to_string(speed));
+  // frc::DriverStation::ReportWarning("Rotation: " + std::to_string(rotation));
 }

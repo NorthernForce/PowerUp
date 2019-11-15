@@ -20,5 +20,4 @@ class DriveTrain : public frc::Subsystem {
   DriveTrain();
   void Drive(double speed, double rotation);
   void InitDefaultCommand() override;
-  void ConfigureController(WPI_TalonSRX& controller);
 };

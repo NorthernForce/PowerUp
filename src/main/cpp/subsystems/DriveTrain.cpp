@@ -12,31 +12,31 @@
 
 DriveTrain::DriveTrain() : Subsystem("DriveTrain") {
 
-  Drive::m_primaryTalonLeft.reset(new WPI_TalonSRX (k_leftPrimaryTalon_id));
-  Drive::m_primaryTalonRight.reset(new WPI_TalonSRX (k_rightPrimaryTalon_id));
-  Drive::m_followerTalon1Left.reset(new WPI_TalonSRX (k_leftFollowerTalon1_id));
-  Drive::m_followerTalon1Right.reset(new WPI_TalonSRX (k_rightFollowerTalon1_id));
-  Drive::m_followerTalon2Left.reset(new WPI_TalonSRX (k_leftFollowerTalon2_id));
-  Drive::m_followerTalon2Right.reset(new WPI_TalonSRX (k_rightFollowerTalon2_id));
+  k_primaryTalonLeft.reset(new WPI_TalonSRX (k_leftPrimaryTalon_id));
+  k_primaryTalonRight.reset(new WPI_TalonSRX (k_rightPrimaryTalon_id));
+  k_followerTalon1Left.reset(new WPI_TalonSRX (k_leftFollowerTalon1_id));
+  k_followerTalon1Right.reset(new WPI_TalonSRX (k_rightFollowerTalon1_id));
+  k_followerTalon2Left.reset(new WPI_TalonSRX (k_leftFollowerTalon2_id));
+  k_followerTalon2Right.reset(new WPI_TalonSRX (k_rightFollowerTalon2_id));
 
-  Drive::m_primaryTalonLeft->ConfigOpenloopRamp(0.5);
-  Drive::m_primaryTalonRight->ConfigOpenloopRamp(0.5);
+  k_primaryTalonLeft->ConfigOpenloopRamp(0.5);
+  k_primaryTalonRight->ConfigOpenloopRamp(0.5);
 
-  Drive::m_primaryTalonLeft->ConfigFactoryDefault();
-  Drive::m_primaryTalonRight->ConfigFactoryDefault();
-  Drive::m_followerTalon1Left->ConfigFactoryDefault();
-  Drive::m_followerTalon1Right->ConfigFactoryDefault();
-  Drive::m_followerTalon2Left->ConfigFactoryDefault();
-  Drive::m_followerTalon2Right->ConfigFactoryDefault();
+  k_primaryTalonLeft->ConfigFactoryDefault();
+  k_primaryTalonRight->ConfigFactoryDefault();
+  k_followerTalon1Left->ConfigFactoryDefault();
+  k_followerTalon1Right->ConfigFactoryDefault();
+  k_followerTalon2Left->ConfigFactoryDefault();
+  k_followerTalon2Right->ConfigFactoryDefault();
 
-  Drive::m_followerTalon1Left->Follow(*Drive::m_primaryTalonLeft);
-  Drive::m_followerTalon1Right->Follow(*Drive::m_primaryTalonRight);
-  Drive::m_followerTalon2Left->Follow(*Drive::m_primaryTalonLeft);
-   Drive::m_followerTalon2Left->SetInverted(true);
-  Drive::m_followerTalon2Right->Follow(*Drive::m_primaryTalonRight);
-   Drive::m_followerTalon2Right->SetInverted(true);
+  k_followerTalon1Left->Follow(*k_primaryTalonLeft);
+  k_followerTalon1Right->Follow(*k_primaryTalonRight);
+  k_followerTalon2Left->Follow(*k_primaryTalonLeft);
+   k_followerTalon2Left->SetInverted(true);
+  k_followerTalon2Right->Follow(*k_primaryTalonRight);
+   k_followerTalon2Right->SetInverted(true);
 
-  m_arcadeDrive = new frc::DifferentialDrive(*Drive::m_primaryTalonLeft, *Drive::m_primaryTalonRight);
+  m_arcadeDrive = new frc::DifferentialDrive(*k_primaryTalonLeft, *k_primaryTalonRight);
 
 }
 
