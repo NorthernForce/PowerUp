@@ -15,4 +15,5 @@ class OI {
   void arcDrive();
  private:
   std::shared_ptr<frc::XboxController> m_driverController;
+  std::shared_ptr<frc::XboxController> m_manipulatorController;
 };
