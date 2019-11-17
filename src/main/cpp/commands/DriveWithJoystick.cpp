@@ -8,7 +8,8 @@
 #include "commands/DriveWithJoystick.h"
 #include "Robot.h"
 
-DriveWithJoystick::DriveWithJoystick() {
+DriveWithJoystick::DriveWithJoystick() : Command("DriveWithJoystick")
+{
   Requires(Robot::m_driveTrain.get());
 }
 
