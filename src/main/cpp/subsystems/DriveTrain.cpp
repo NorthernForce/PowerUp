@@ -10,33 +10,35 @@
 
 #include "RobotMap.h"
 
-DriveTrain::DriveTrain() : Subsystem("DriveTrain") {
+DriveTrain::DriveTrain() : Subsystem("DriveTrain")
+{
+  m_primaryTalonLeft.reset(new WPI_TalonSRX (k_primaryTalonLeft_id));
+  m_primaryTalonRight.reset(new WPI_TalonSRX (k_primaryTalonRight_id));
+  m_followerTalon1Left.reset(new WPI_TalonSRX (k_followerTalon1Left_id));
+  m_followerTalon1Right.reset(new WPI_TalonSRX (k_followerTalon1Right_id));
+  m_followerTalon2Left.reset(new WPI_TalonSRX (k_followerTalon2Left_id));
+  m_followerTalon2Right.reset(new WPI_TalonSRX (k_followerTalon2Right_id));
 
-  k_primaryTalonLeft.reset(new WPI_TalonSRX (k_leftPrimaryTalon_id));
-  k_primaryTalonRight.reset(new WPI_TalonSRX (k_rightPrimaryTalon_id));
-  k_followerTalon1Left.reset(new WPI_TalonSRX (k_leftFollowerTalon1_id));
-  k_followerTalon1Right.reset(new WPI_TalonSRX (k_rightFollowerTalon1_id));
-  k_followerTalon2Left.reset(new WPI_TalonSRX (k_leftFollowerTalon2_id));
-  k_followerTalon2Right.reset(new WPI_TalonSRX (k_rightFollowerTalon2_id));
+  m_primaryTalonLeft->ConfigFactoryDefault();
+  m_primaryTalonRight->ConfigFactoryDefault();
+  m_followerTalon1Left->ConfigFactoryDefault();
+  m_followerTalon1Right->ConfigFactoryDefault();
+  m_followerTalon2Left->ConfigFactoryDefault();
+  m_followerTalon2Right->ConfigFactoryDefault();
 
-  k_primaryTalonLeft->ConfigFactoryDefault();
-  k_primaryTalonRight->ConfigFactoryDefault();
-  k_followerTalon1Left->ConfigFactoryDefault();
-  k_followerTalon1Right->ConfigFactoryDefault();
-  k_followerTalon2Left->ConfigFactoryDefault();
-  k_followerTalon2Right->ConfigFactoryDefault();
+  m_primaryTalonLeft->ConfigOpenloopRamp(0.5);
+  m_primaryTalonRight->ConfigOpenloopRamp(0.5);
 
-  k_primaryTalonLeft->ConfigOpenloopRamp(0.5);
-  k_primaryTalonRight->ConfigOpenloopRamp(0.5);
+  m_followerTalon1Left->Follow(*m_primaryTalonLeft);
+  m_followerTalon1Right->Follow(*m_primaryTalonRight);
+  m_followerTalon2Left->Follow(*m_primaryTalonLeft);
+   m_followerTalon2Left->SetInverted(true);
+  m_followerTalon2Right->Follow(*m_primaryTalonRight);
+   m_followerTalon2Right->SetInverted(true);
 
-  k_followerTalon1Left->Follow(*k_primaryTalonLeft);
-  k_followerTalon1Right->Follow(*k_primaryTalonRight);
-  k_followerTalon2Left->Follow(*k_primaryTalonLeft);
-   k_followerTalon2Left->SetInverted(true);
-  k_followerTalon2Right->Follow(*k_primaryTalonRight);
-   k_followerTalon2Right->SetInverted(true);
+  SetupShift();
 
-  m_arcadeDrive = new frc::DifferentialDrive(*k_primaryTalonLeft, *k_primaryTalonRight);
+  m_arcadeDrive = new frc::DifferentialDrive(*m_primaryTalonLeft, *m_primaryTalonRight);
 
 }
 
@@ -49,6 +51,19 @@ void DriveTrain::InitDefaultCommand() {
 void DriveTrain::Drive(double speed, double rotation)
 {
   m_arcadeDrive->ArcadeDrive(speed, rotation);
+}
+
+void DriveTrain::SetSafetyEnabled(bool enabled)
+{
+	m_arcadeDrive->SetSafetyEnabled(enabled);
+}
+
+void DriveTrain::SetupShift()
+{
+  // Copies settings from private to public talons 
+  // for use in DriveTrainShifter subsystem
+  m_primaryTalonLeftShift = m_primaryTalonLeft;
+  m_primaryTalonRightShift = m_primaryTalonRight;
 }
 
 
