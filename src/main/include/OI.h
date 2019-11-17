@@ -8,6 +8,7 @@
 #pragma once
 
 #include <frc/XboxController.h>
+#include <frc/Joystick.h>
 
 class OI {
  public:
@@ -15,5 +16,18 @@ class OI {
   void arcDrive();
  private:
   std::shared_ptr<frc::XboxController> m_driverController;
-  std::shared_ptr<frc::XboxController> m_manipulatorController;
+  std::shared_ptr<frc::Joystick> m_manipulatorJoystick;
+  enum xBoxController { 
+    a_Button=1,
+    b_Button, 
+    x_Button, 
+    y_Button, 
+    rt_Bumper, 
+    lt_Bumper, 
+    rt_Trigger, 
+    lt_Trigger 
+  };
+  enum ManipulatorJoystick { 
+    Trigger 
+  };
 };
