@@ -10,7 +10,7 @@
 PCM::PCM() : Subsystem("PCM")
 {
   m_compressor.reset(new frc::Compressor);
-  UseCompressor(false);
+  UseCompressor(true);
 }
 
 void PCM::InitDefaultCommand() {}
