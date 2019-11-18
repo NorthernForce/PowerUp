@@ -26,18 +26,25 @@
 #include "commands/StopIntakeWheels.h"
 
 namespace {
-	void WhenPressed(const std::shared_ptr<frc::GenericHID>& joystick, int button, frc::Command* command) {
-		auto joystickButton = new frc::JoystickButton(joystick.get(), button);
+
+	template<class T> T WhenPressed(const std::shared_ptr<frc::GenericHID>& joystick, T button, frc::Command* command)
+	{
+		int buttonInt = static_cast<int>(button);
+		auto joystickButton = new frc::JoystickButton(joystick.get(), buttonInt);
 		joystickButton->WhenPressed(command);
 	}
 
-	void WhenReleased(const std::shared_ptr<frc::GenericHID>& joystick, int button, frc::Command* command) {
-		auto joystickButton = new frc::JoystickButton(joystick.get(), button);
+	template<class T> T WhenReleased(const std::shared_ptr<frc::GenericHID>& joystick, T button, frc::Command* command)
+	{
+		int buttonInt = static_cast<int>(button);
+		auto joystickButton = new frc::JoystickButton(joystick.get(), buttonInt);
 		joystickButton->WhenReleased(command);
 	}
 
-	void WhileHeld(const std::shared_ptr<frc::GenericHID>& joystick, int button, frc::Command* command) {
-		auto joystickButton = new frc::JoystickButton(joystick.get(), button);
+	template<class T> T WhileHeld(const std::shared_ptr<frc::GenericHID>& joystick, T button, frc::Command* command)
+	{
+		int buttonInt = static_cast<int>(button);
+		auto joystickButton = new frc::JoystickButton(joystick.get(), buttonInt);
 		joystickButton->WhileHeld(command);
 	}
 }
@@ -83,12 +90,12 @@ OI::OI()
 	
 
   /* Driver Controller */
-  WhenPressed(m_driverController, xBoxController::lt_Bumper, new ShiftGear(ShiftGear::Gear::High));
-  WhenPressed(m_driverController, xBoxController::lt_Bumper, new ShiftGear(ShiftGear::Gear::Low));
+  WhenPressed(m_driverController, XboxButtons::lt_Bumper, new ShiftGear(ShiftGear::Gear::High));
+  WhenPressed(m_driverController, XboxButtons::lt_Bumper, new ShiftGear(ShiftGear::Gear::Low));
 
   /* Manipulator Joystick */
-  WhileHeld(m_manipulatorJoystick, ManipulatorJoystick::Trigger, new OpenGripper());
-  WhenReleased(m_manipulatorJoystick, ManipulatorJoystick::Trigger, new CloseGripper());
+  WhileHeld(m_manipulatorJoystick, JoystickButtons::Trigger, new OpenGripper());
+  WhenReleased(m_manipulatorJoystick, JoystickButtons::Trigger, new CloseGripper());
   WhileHeld(m_manipulatorJoystick, 2, new NudgeElevator(-3));
   WhileHeld(m_manipulatorJoystick, 3, new NudgeElevator(+3));
   WhileHeld(m_manipulatorJoystick, 4, new PositionArm(PositionArm::Position::ClimbSet));
