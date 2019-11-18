@@ -29,22 +29,19 @@ namespace {
 
 	template<class T> T WhenPressed(const std::shared_ptr<frc::GenericHID>& joystick, T button, frc::Command* command)
 	{
-		int buttonInt = static_cast<int>(button);
-		auto joystickButton = new frc::JoystickButton(joystick.get(), buttonInt);
+		auto joystickButton = new frc::JoystickButton(joystick.get(), static_cast<int>(button));
 		joystickButton->WhenPressed(command);
 	}
 
 	template<class T> T WhenReleased(const std::shared_ptr<frc::GenericHID>& joystick, T button, frc::Command* command)
 	{
-		int buttonInt = static_cast<int>(button);
-		auto joystickButton = new frc::JoystickButton(joystick.get(), buttonInt);
+		auto joystickButton = new frc::JoystickButton(joystick.get(), static_cast<int>(button));
 		joystickButton->WhenReleased(command);
 	}
 
 	template<class T> T WhileHeld(const std::shared_ptr<frc::GenericHID>& joystick, T button, frc::Command* command)
-	{
-		int buttonInt = static_cast<int>(button);
-		auto joystickButton = new frc::JoystickButton(joystick.get(), buttonInt);
+	{;
+		auto joystickButton = new frc::JoystickButton(joystick.get(), static_cast<int>(button));
 		joystickButton->WhileHeld(command);
 	}
 }
