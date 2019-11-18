@@ -50,9 +50,9 @@ OI::OI()
 
   /* SmartDashboard Controls */
 	/* Driver Controls */
-	 frc::SmartDashboard::PutNumber("Drive Speed", 1);
-	 frc::SmartDashboard::PutData("Shift High", new ShiftGear(ShiftGear::Gear::High));
-	 frc::SmartDashboard::PutData("Shift Low", new ShiftGear(ShiftGear::Gear::Low));
+	 frc::SmartDashboard::PutNumber("Driver: Speed", 1);
+	 frc::SmartDashboard::PutData("Gearbox: Shift High", new ShiftGear(ShiftGear::Gear::High));
+	 frc::SmartDashboard::PutData("Gearbox: Shift Low", new ShiftGear(ShiftGear::Gear::Low));
 
 	/* Arm Controls */
 	 frc::SmartDashboard::PutData("Arm: Start position", new PositionArm(PositionArm::Position::Retracted));
@@ -61,25 +61,25 @@ OI::OI()
 	 frc::SmartDashboard::PutData("Arm: Scale front", new PositionArm(PositionArm::Position::ScaleFront));
 	 frc::SmartDashboard::PutData("Arm: Scale rear", new PositionArm(PositionArm::Position::ScaleRear));
 	 frc::SmartDashboard::PutData("Arm: Climb setup", new PositionArm(PositionArm::Position::ClimbSet));
-	 frc::SmartDashboard::PutData("Nudge arm up", new NudgeArm(+1));
-	 frc::SmartDashboard::PutData("Nudge arm down", new NudgeArm(-1));
+	 frc::SmartDashboard::PutData("Arm: Nudge up", new NudgeArm(+1));
+	 frc::SmartDashboard::PutData("Arm: Nudge down", new NudgeArm(-1));
+	 frc::SmartDashboard::PutData("**Reset arm home position**", new SetArmHomePosition());
 
 	/* Elevator Controls */
-	 frc::SmartDashboard::PutData("Nudge elevator up", new NudgeElevator(+3));
-	 frc::SmartDashboard::PutData("Nudge elevator down", new NudgeElevator(-3));
-	 frc::SmartDashboard::PutData("Brake elevator", new ElevatorBrake(ElevatorBrake::State::BrakeOn));
-	 frc::SmartDashboard::PutData("Release elevator", new ElevatorBrake(ElevatorBrake::State::BrakeOff));
-	 frc::SmartDashboard::PutData("**Reset arm home position**", new SetArmHomePosition());
+	 frc::SmartDashboard::PutData("Elevator: Nudge up", new NudgeElevator(+3));
+	 frc::SmartDashboard::PutData("Elevator: Nudge down", new NudgeElevator(-3));
+	 frc::SmartDashboard::PutData("Elevator: Brake", new ElevatorBrake(ElevatorBrake::State::BrakeOn));
+	 frc::SmartDashboard::PutData("Elevator: Brake Release", new ElevatorBrake(ElevatorBrake::State::BrakeOff));
 	 frc::SmartDashboard::PutData("**Reset elevator home position**", new SetElevatorHomePosition());
-	 frc::SmartDashboard::PutData("Climb using elevator", new RobotClimb());
+	 frc::SmartDashboard::PutData("Elevator: Climb", new RobotClimb());
 	
 	/* Gripper Controls */
-	 frc::SmartDashboard::PutData("Open gripper", new OpenGripper());
-	 frc::SmartDashboard::PutData("Close gripper", new CloseGripper());
-	 frc::SmartDashboard::PutData("Run Intake Wheels", new StartIntakeWheels());
-	 frc::SmartDashboard::PutData("Stop Intake Wheels", new StopIntakeWheels());
-	 frc::SmartDashboard::PutData("Raise Intake", new SetGripperIntake(GripperIntake::State::Raised));
-	 frc::SmartDashboard::PutData("Lower Intake", new SetGripperIntake(GripperIntake::State::Lowered));
+	 frc::SmartDashboard::PutData("Gripper: Open", new OpenGripper());
+	 frc::SmartDashboard::PutData("Gripper: Close", new CloseGripper());
+	 frc::SmartDashboard::PutData("Intake: Run Wheels", new StartIntakeWheels());
+	 frc::SmartDashboard::PutData("Intake: Stop Wheels", new StopIntakeWheels());
+	 frc::SmartDashboard::PutData("IntakeL Raise", new SetGripperIntake(GripperIntake::State::Raised));
+	 frc::SmartDashboard::PutData("Intake: Lower", new SetGripperIntake(GripperIntake::State::Lowered));
 	
 
   /* Driver Controller */
