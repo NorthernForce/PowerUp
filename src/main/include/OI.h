@@ -18,16 +18,16 @@ class OI {
   std::shared_ptr<frc::XboxController> m_driverController;
   std::shared_ptr<frc::Joystick> m_manipulatorJoystick;
   enum xBoxController { 
-    a_Button=1,
-    b_Button, 
-    x_Button, 
-    y_Button, 
-    rt_Bumper, 
-    lt_Bumper, 
-    rt_Trigger, 
-    lt_Trigger 
+    a_Button      = 1,
+    b_Button      = 2, 
+    x_Button      = 3, 
+    y_Button      = 4, 
+    rt_Bumper     = 5, 
+    lt_Bumper     = 6, 
+    rt_Trigger    = 7, 
+    lt_Trigger    = 8 
   };
   enum ManipulatorJoystick { 
-    Trigger 
+    Trigger       = 9 
   };
 };
