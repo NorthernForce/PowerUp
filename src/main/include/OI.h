@@ -14,10 +14,7 @@ class OI {
  public:
   OI();
   void arcDrive();
- private:
-  std::shared_ptr<frc::XboxController> m_driverController;
-  std::shared_ptr<frc::Joystick> m_manipulatorJoystick;
-  enum xBoxController { 
+  enum class XboxButtons { 
     a_Button      = 1,
     b_Button      = 2, 
     x_Button      = 3, 
@@ -27,7 +24,12 @@ class OI {
     rt_Trigger    = 7, 
     lt_Trigger    = 8 
   };
-  enum ManipulatorJoystick { 
+  
+  enum class JoystickButtons { 
     Trigger       = 9 
   };
+
+ private:
+  std::shared_ptr<frc::XboxController> m_driverController;
+  std::shared_ptr<frc::Joystick> m_manipulatorJoystick;
 };
