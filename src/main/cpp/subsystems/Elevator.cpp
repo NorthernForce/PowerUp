@@ -6,7 +6,6 @@
 /*----------------------------------------------------------------------------*/
 
 #include "subsystems/Elevator.h"
-#include "commands/RaiseElevator.h"
 #include <frc/DriverStation.h>
 
 #include "RobotMap.h"
