@@ -26,19 +26,19 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrain")
   m_followerTalon2Left->ConfigFactoryDefault();
   m_followerTalon2Right->ConfigFactoryDefault();
 
-  m_primaryTalonLeft->ConfigOpenloopRamp(0.5);
-  m_primaryTalonRight->ConfigOpenloopRamp(0.5);
+  m_primaryTalonLeft->ConfigOpenloopRamp(0.5);   // Sets a basic ramp for motors of 0.5
+  m_primaryTalonRight->ConfigOpenloopRamp(0.5);  // seconds so acceleration is not jerky
 
   m_followerTalon1Left->Follow(*m_primaryTalonLeft);
   m_followerTalon1Right->Follow(*m_primaryTalonRight);
   m_followerTalon2Left->Follow(*m_primaryTalonLeft);
-   m_followerTalon2Left->SetInverted(true);
+   m_followerTalon2Left->SetInverted(true);               // motors 5 and 6 are "backwards" in the gearbox
   m_followerTalon2Right->Follow(*m_primaryTalonRight);
    m_followerTalon2Right->SetInverted(true);
 
   SetupShift();
 
-  m_arcadeDrive = new frc::DifferentialDrive(*m_primaryTalonLeft, *m_primaryTalonRight);
+  m_arcadeDrive.reset(new frc::DifferentialDrive(*m_primaryTalonLeft, *m_primaryTalonRight));
 
 }
 

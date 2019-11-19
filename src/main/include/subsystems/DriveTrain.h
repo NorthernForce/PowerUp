@@ -14,7 +14,7 @@
 
 class DriveTrain : public frc::Subsystem {
  private:
-  frc::DifferentialDrive *m_arcadeDrive;
+  std::shared_ptr<frc::DifferentialDrive> m_arcadeDrive;
   std::shared_ptr<WPI_TalonSRX> m_primaryTalonLeft;
   std::shared_ptr<WPI_TalonSRX> m_primaryTalonRight;
   std::shared_ptr<WPI_TalonSRX> m_followerTalon1Left;
