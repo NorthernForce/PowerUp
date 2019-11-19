@@ -11,6 +11,8 @@
 
 using Gear = DriveTrainShifter::Gear;
 
+// Shared pointers that inherit all properties of primary talons 
+// (in the DriveTrain subsystem) but these are obviously used for shifting
 std::shared_ptr<WPI_TalonSRX> DriveTrain::m_primaryTalonLeftShift;
 std::shared_ptr<WPI_TalonSRX> DriveTrain::m_primaryTalonRightShift;
 

@@ -62,16 +62,16 @@ OI::OI()
 	 frc::SmartDashboard::PutData("Arm: Start position", new PositionArm(PositionArm::Position::Retracted));
 	 frc::SmartDashboard::PutData("Arm: Pickup", new PositionArm(PositionArm::Position::Pickup));
 	 frc::SmartDashboard::PutData("Arm: Switch", new PositionArm(PositionArm::Position::Switch));
-	 frc::SmartDashboard::PutData("Arm: Scale front", new PositionArm(PositionArm::Position::ScaleFront));
-	 frc::SmartDashboard::PutData("Arm: Scale rear", new PositionArm(PositionArm::Position::ScaleRear));
-	 frc::SmartDashboard::PutData("Arm: Climb setup", new PositionArm(PositionArm::Position::ClimbSet));
-	 frc::SmartDashboard::PutData("Arm: Nudge up", new NudgeArm(+1));
-	 frc::SmartDashboard::PutData("Arm: Nudge down", new NudgeArm(-1));
+	 frc::SmartDashboard::PutData("Arm: Scale Front", new PositionArm(PositionArm::Position::ScaleFront));
+	 frc::SmartDashboard::PutData("Arm: Scale Rear", new PositionArm(PositionArm::Position::ScaleRear));
+	 frc::SmartDashboard::PutData("Arm: Climb Setup", new PositionArm(PositionArm::Position::ClimbSet));
+	 frc::SmartDashboard::PutData("Arm: Nudge Up", new NudgeArm(+1));
+	 frc::SmartDashboard::PutData("Arm: Nudge Down", new NudgeArm(-1));
 	 frc::SmartDashboard::PutData("**Reset arm home position**", new SetArmHomePosition());
 
 	/* Elevator Controls */
-	 frc::SmartDashboard::PutData("Elevator: Nudge up", new NudgeElevator(+3));
-	 frc::SmartDashboard::PutData("Elevator: Nudge down", new NudgeElevator(-3));
+	 frc::SmartDashboard::PutData("Elevator: Nudge Up", new NudgeElevator(+3));
+	 frc::SmartDashboard::PutData("Elevator: Nudge Down", new NudgeElevator(-3));
 	 frc::SmartDashboard::PutData("Elevator: Brake", new ElevatorBrake(ElevatorBrake::State::BrakeOn));
 	 frc::SmartDashboard::PutData("Elevator: Brake Release", new ElevatorBrake(ElevatorBrake::State::BrakeOff));
 	 frc::SmartDashboard::PutData("**Reset elevator home position**", new SetElevatorHomePosition());
@@ -82,7 +82,7 @@ OI::OI()
 	 frc::SmartDashboard::PutData("Gripper: Close", new CloseGripper());
 	 frc::SmartDashboard::PutData("Intake: Run Wheels", new StartIntakeWheels());
 	 frc::SmartDashboard::PutData("Intake: Stop Wheels", new StopIntakeWheels());
-	 frc::SmartDashboard::PutData("IntakeL Raise", new SetGripperIntake(GripperIntake::State::Raised));
+	 frc::SmartDashboard::PutData("Intake: Raise", new SetGripperIntake(GripperIntake::State::Raised));
 	 frc::SmartDashboard::PutData("Intake: Lower", new SetGripperIntake(GripperIntake::State::Lowered));
 	
 
@@ -109,7 +109,7 @@ std::pair<double, double> OI::driveControls()
 {
   double speed = m_driverController->GetY(frc::XboxController::JoystickHand::kLeftHand) * -1;
   double rotation = m_driverController->GetX(frc::XboxController::JoystickHand::kRightHand);
-  double driveMultiplier = frc::SmartDashboard::GetNumber("Drive Speed", 1);
+  double driveMultiplier = frc::SmartDashboard::GetNumber("Driver: Speed", 1);
 
   if (driveMultiplier < 0) driveMultiplier = 0;
    else if (driveMultiplier > 1) driveMultiplier = 1;

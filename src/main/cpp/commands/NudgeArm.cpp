@@ -22,12 +22,15 @@ void NudgeArm::Initialize() {}
 // Called repeatedly when this Command is scheduled to run
 void NudgeArm::Execute()
 {
-  if (m_controller) {
-			auto distance = m_controller->GetY() * 4;
-			Robot::m_arm->NudgeArm(distance);
-		} else {
-			Robot::m_arm->NudgeArm(m_distance);
-		}
+  if (m_controller)
+  {
+	auto distance = m_controller->GetY() * 4;
+	Robot::m_arm->NudgeArm(distance);
+  } 
+  else
+  {
+	Robot::m_arm->NudgeArm(m_distance);
+  }
 }
 
 // Make this return true when this Command no longer needs to run execute()

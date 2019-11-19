@@ -26,7 +26,7 @@ class OI {
   };
   
   enum class JoystickButtons { 
-    Trigger       = 9 
+    Trigger       = 1 
   };
 
  private:
