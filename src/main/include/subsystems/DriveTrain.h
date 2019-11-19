@@ -27,6 +27,7 @@ class DriveTrain : public frc::Subsystem {
   static std::shared_ptr<WPI_TalonSRX> m_primaryTalonRightShift;
   DriveTrain();
   void Drive(double speed, double rotation);
+  void FactoryDefaultTalons();
   void InitDefaultCommand() override;
   void SetSafetyEnabled(bool enabled);
   void SetupShift();

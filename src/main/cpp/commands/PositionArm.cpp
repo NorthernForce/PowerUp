@@ -47,7 +47,7 @@ void PositionArm::Execute() {}
 // Make this return true when this Command no longer needs to run execute()
 bool PositionArm::IsFinished()
 {
-  const bool armDone = m_arm->AtSetpoint();
+    const bool armDone = m_arm->AtSetpoint();
 	const bool elevatorDone = m_elevator->AtSetPosition();
 	return (armDone && elevatorDone);
 }

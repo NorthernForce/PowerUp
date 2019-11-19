@@ -12,14 +12,14 @@
 ShiftGear::ShiftGear(Gear gear) : Command("ShiftGear"), m_gear(gear)
 {
   Requires(Robot::m_driveTrainShifter.get());
-		Requires(Robot::m_driveTrain.get());
-		strcpy(m_logMessage, m_gear == Gear::Low ? "Shift to low" : "Shift to high");
+  Requires(Robot::m_driveTrain.get());
+  strcpy(m_logMessage, m_gear == Gear::Low ? "Shift to low" : "Shift to high");
 }
 
 // Called just before this Command runs the first time
 void ShiftGear::Initialize()
 {
-  frc::DriverStation::ReportWarning(m_logMessage);
+  	frc::DriverStation::ReportWarning(m_logMessage);
 	Robot::m_driveTrainShifter->Shift(m_gear);
 }
 

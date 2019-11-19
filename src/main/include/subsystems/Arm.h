@@ -35,10 +35,14 @@ class Arm : public frc::Subsystem {
  public:
   Arm();
 	void InitDefaultCommand() override;
+	void ConfigureOutputPower();
 	void Periodic() override;
+	void SetupEncoder();
 	void SetPosition(int setpoint, unsigned delay);
 	bool AtSetpoint();
 	void SetHomePosition();
 	void NudgeArm(int distance);
+	void SetPID();
+	void ConfigureCurrentLimits();
 	void ReducePowerForClimb();
 };

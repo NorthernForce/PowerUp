@@ -11,31 +11,26 @@
 
 Arm::Arm() : Subsystem("Arm")
 {
-  m_armTalon.reset(new WPI_TalonSRX (k_armTalon_id));
-
-  m_armTalon->ConfigPeakOutputForward(+0.50, m_timeoutMs);
-	m_armTalon->ConfigPeakOutputReverse(-0.50, m_timeoutMs);
-	m_armTalon->ConfigNominalOutputForward(+0.00, m_timeoutMs);
-	m_armTalon->ConfigNominalOutputReverse(-0.00, m_timeoutMs);
-	m_armTalon->SelectProfileSlot(m_slotIdx, m_PidID);
-	m_armTalon->Config_kF(m_slotIdx, feedForwardGain, m_timeoutMs);
-	m_armTalon->Config_kP(m_slotIdx, pGain, m_timeoutMs);
-	m_armTalon->Config_kI(m_slotIdx, iGain, m_timeoutMs);
-	m_armTalon->ConfigMaxIntegralAccumulator(m_slotIdx, iLimit, m_timeoutMs);
-	m_armTalon->Config_kD(m_slotIdx, dGain, m_timeoutMs);
-	m_armTalon->ConfigMotionCruiseVelocity(maxSensorUnitsPer100ms, m_timeoutMs);
-	m_armTalon->ConfigMotionAcceleration(maxSensorUnitsPer100ms / timeToMaxSpeed, m_timeoutMs);
-	m_armTalon->ConfigSelectedFeedbackSensor(QuadEncoder, m_PidID, m_timeoutMs);
-	m_armTalon->SetNeutralMode(NeutralMode::Brake);
+  	m_armTalon.reset(new WPI_TalonSRX (k_armTalon_id));
 	m_armTalon->SetName("Arm");
-    m_armTalon->ConfigPeakCurrentLimit(10, m_timeoutMs);
-    m_armTalon->ConfigPeakCurrentDuration(100, m_timeoutMs);
-    m_armTalon->ConfigContinuousCurrentLimit(4, m_timeoutMs);
-    m_armTalon->EnableCurrentLimit(true);
+	m_armTalon->SelectProfileSlot(m_slotIdx, m_PidID);
+	m_armTalon->ConfigMaxIntegralAccumulator(m_slotIdx, iLimit, m_timeoutMs);
+	m_armTalon->SetNeutralMode(NeutralMode::Brake);
+	SetPID();
+	ConfigureOutputPower();
+    ConfigureCurrentLimits();
+	SetupEncoder();
 	SetHomePosition();
 }
 
 void Arm::InitDefaultCommand() {}
+
+void Arm::ConfigureOutputPower() {
+	m_armTalon->ConfigPeakOutputForward(+0.50, m_timeoutMs);
+	m_armTalon->ConfigPeakOutputReverse(-0.50, m_timeoutMs);
+	m_armTalon->ConfigNominalOutputForward(+0.00, m_timeoutMs);
+	m_armTalon->ConfigNominalOutputReverse(-0.00, m_timeoutMs);
+}
 
 void Arm::Periodic() {
 	if (m_delay > 0) {
@@ -44,6 +39,12 @@ void Arm::Periodic() {
 		m_armTalon->Set(ControlMode::MotionMagic, m_setPosition);
 		m_delay = 10;
 	}
+}
+
+void Arm::SetupEncoder() {
+	m_armTalon->ConfigMotionCruiseVelocity(maxSensorUnitsPer100ms, m_timeoutMs);
+	m_armTalon->ConfigMotionAcceleration(maxSensorUnitsPer100ms / timeToMaxSpeed, m_timeoutMs);
+	m_armTalon->ConfigSelectedFeedbackSensor(QuadEncoder, m_PidID, m_timeoutMs);
 }
 
 void Arm::SetPosition(int setPosition, unsigned delay) {
@@ -67,6 +68,20 @@ void Arm::SetHomePosition() {
 void Arm::NudgeArm(int distance) {
 	m_setPosition = m_setPosition + distance;
 	m_armTalon->Set(ControlMode::MotionMagic, m_setPosition);
+}
+
+void Arm::ConfigureCurrentLimits() {
+	m_armTalon->ConfigPeakCurrentLimit(10, m_timeoutMs);
+    m_armTalon->ConfigPeakCurrentDuration(100, m_timeoutMs);
+    m_armTalon->ConfigContinuousCurrentLimit(4, m_timeoutMs);
+    m_armTalon->EnableCurrentLimit(true);
+}
+
+void Arm::SetPID() {
+	m_armTalon->Config_kP(m_slotIdx, pGain, m_timeoutMs);
+	m_armTalon->Config_kI(m_slotIdx, iGain, m_timeoutMs);
+	m_armTalon->Config_kD(m_slotIdx, dGain, m_timeoutMs);
+	m_armTalon->Config_kF(m_slotIdx, feedForwardGain, m_timeoutMs);
 }
 
 void Arm::ReducePowerForClimb() {

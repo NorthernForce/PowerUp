@@ -45,12 +45,12 @@ void DriveTrainShifter::Shift(Gear gear)
 		else
 		{
 			BeginShift(frc::DoubleSolenoid::Value::kForward);
-			const auto speed1 = m_primaryTalonLeft->GetSensorCollection().GetQuadratureVelocity();
-			const auto speed2 = m_primaryTalonRight->GetSensorCollection().GetQuadratureVelocity();
-			if(abs(speed1) + abs(speed2) > 100)
+			const auto speedLeft = m_primaryTalonLeft->GetSensorCollection().GetQuadratureVelocity();
+			const auto speedRight = m_primaryTalonRight->GetSensorCollection().GetQuadratureVelocity();
+			if(abs(speedLeft) + abs(speedRight) > 100)
 			{
-				m_primaryTalonLeft->Set((speed1 > 0) ? 1 : -1);
-				m_primaryTalonRight->Set((speed2 > 0) ? 1 : -1);
+				m_primaryTalonLeft->Set((speedLeft > 0) ? 1 : -1);
+				m_primaryTalonRight->Set((speedRight > 0) ? 1 : -1);
 			}
 		}
 		Robot::m_driveTrain->SetSafetyEnabled(false);

@@ -19,12 +19,7 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrain")
   m_followerTalon2Left.reset(new WPI_TalonSRX (k_followerTalon2Left_id));
   m_followerTalon2Right.reset(new WPI_TalonSRX (k_followerTalon2Right_id));
 
-  m_primaryTalonLeft->ConfigFactoryDefault();
-  m_primaryTalonRight->ConfigFactoryDefault();
-  m_followerTalon1Left->ConfigFactoryDefault();
-  m_followerTalon1Right->ConfigFactoryDefault();
-  m_followerTalon2Left->ConfigFactoryDefault();
-  m_followerTalon2Right->ConfigFactoryDefault();
+  FactoryDefaultTalons();
 
   m_primaryTalonLeft->ConfigOpenloopRamp(0.5);   // Sets a basic ramp for motors of 0.5
   m_primaryTalonRight->ConfigOpenloopRamp(0.5);  // seconds so acceleration is not jerky
@@ -64,6 +59,16 @@ void DriveTrain::SetupShift()
   // for use in DriveTrainShifter subsystem
   m_primaryTalonLeftShift = m_primaryTalonLeft;
   m_primaryTalonRightShift = m_primaryTalonRight;
+}
+
+void DriveTrain::FactoryDefaultTalons()
+{
+  m_primaryTalonLeft->ConfigFactoryDefault();
+  m_primaryTalonRight->ConfigFactoryDefault();
+  m_followerTalon1Left->ConfigFactoryDefault();
+  m_followerTalon1Right->ConfigFactoryDefault();
+  m_followerTalon2Left->ConfigFactoryDefault();
+  m_followerTalon2Right->ConfigFactoryDefault();
 }
 
 
