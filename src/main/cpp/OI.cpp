@@ -40,7 +40,7 @@ namespace {
 	}
 
 	template<class T> T WhileHeld(const std::shared_ptr<frc::GenericHID>& joystick, T button, frc::Command* command)
-	{;
+	{
 		auto joystickButton = new frc::JoystickButton(joystick.get(), static_cast<int>(button));
 		joystickButton->WhileHeld(command);
 	}
@@ -49,8 +49,8 @@ namespace {
 OI::OI()
 {
   /* Initialize Controllers */
-  m_driverController.reset(new frc::XboxController(0));
-  m_manipulatorJoystick.reset(new frc::Joystick(1));
+   m_driverController.reset(new frc::XboxController(0));
+   m_manipulatorJoystick.reset(new frc::Joystick(1));
 
   /* SmartDashboard Controls */
 	/* Driver Controls */
@@ -87,25 +87,25 @@ OI::OI()
 	
 
   /* Driver Controller */
-  WhenPressed(m_driverController, XboxButtons::lt_Bumper, new ShiftGear(ShiftGear::Gear::High));
-  WhenPressed(m_driverController, XboxButtons::lt_Bumper, new ShiftGear(ShiftGear::Gear::Low));
+   WhenPressed(m_driverController, XboxButtons::lt_Bumper, new ShiftGear(ShiftGear::Gear::High));
+   WhenPressed(m_driverController, XboxButtons::lt_Bumper, new ShiftGear(ShiftGear::Gear::Low));
 
   /* Manipulator Joystick */
-  WhileHeld(m_manipulatorJoystick, JoystickButtons::Trigger, new OpenGripper());
-  WhenReleased(m_manipulatorJoystick, JoystickButtons::Trigger, new CloseGripper());
-  WhileHeld(m_manipulatorJoystick, 2, new NudgeElevator(-3));
-  WhileHeld(m_manipulatorJoystick, 3, new NudgeElevator(+3));
-  WhileHeld(m_manipulatorJoystick, 4, new PositionArm(PositionArm::Position::ClimbSet));
-  WhileHeld(m_manipulatorJoystick, 5, new RobotClimb());
-  WhenPressed(m_manipulatorJoystick, 6, new PositionArm(PositionArm::Position::Pickup));
-  WhenPressed(m_manipulatorJoystick, 7, new PositionArm(PositionArm::Position::Switch));
-  WhenPressed(m_manipulatorJoystick, 9, new PositionArm(PositionArm::Position::Retracted));
-  WhileHeld(m_manipulatorJoystick, 8, new NudgeArm(m_manipulatorJoystick.get()));
-  WhenPressed(m_manipulatorJoystick, 10, new PositionArm(PositionArm::Position::ScaleRear));
-  WhenPressed(m_manipulatorJoystick, 11, new PositionArm(PositionArm::Position::ScaleFront));
+   WhileHeld(m_manipulatorJoystick, JoystickButtons::Trigger, new OpenGripper());
+   WhenReleased(m_manipulatorJoystick, JoystickButtons::Trigger, new CloseGripper());
+   WhileHeld(m_manipulatorJoystick, 2, new NudgeElevator(-3));
+   WhileHeld(m_manipulatorJoystick, 3, new NudgeElevator(+3));
+   WhileHeld(m_manipulatorJoystick, 4, new PositionArm(PositionArm::Position::ClimbSet));
+   WhileHeld(m_manipulatorJoystick, 5, new RobotClimb());
+   WhenPressed(m_manipulatorJoystick, 6, new PositionArm(PositionArm::Position::Pickup));
+   WhenPressed(m_manipulatorJoystick, 7, new PositionArm(PositionArm::Position::Switch));
+   WhenPressed(m_manipulatorJoystick, 9, new PositionArm(PositionArm::Position::Retracted));
+   WhileHeld(m_manipulatorJoystick, 8, new NudgeArm(m_manipulatorJoystick.get()));
+   WhenPressed(m_manipulatorJoystick, 10, new PositionArm(PositionArm::Position::ScaleRear));
+   WhenPressed(m_manipulatorJoystick, 11, new PositionArm(PositionArm::Position::ScaleFront));
 }
 
-void OI::arcDrive()
+std::pair<double, double> OI::driveControls()
 {
   double speed = m_driverController->GetY(frc::XboxController::JoystickHand::kLeftHand) * -1;
   double rotation = m_driverController->GetX(frc::XboxController::JoystickHand::kRightHand);
@@ -114,5 +114,5 @@ void OI::arcDrive()
   if (driveMultiplier < 0) driveMultiplier = 0;
    else if (driveMultiplier > 1) driveMultiplier = 1;
 
-  Robot::m_driveTrain->Drive(speed * driveMultiplier, rotation * driveMultiplier);
+  return std::make_pair(speed * driveMultiplier, rotation * driveMultiplier);
 }

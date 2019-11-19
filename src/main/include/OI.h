@@ -13,7 +13,7 @@
 class OI {
  public:
   OI();
-  void arcDrive();
+  std::pair<double, double> driveControls();
   enum class XboxButtons { 
     a_Button      = 1,
     b_Button      = 2, 

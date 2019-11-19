@@ -19,7 +19,8 @@ void DriveWithJoystick::Initialize() {}
 // Called repeatedly when this Command is scheduled to run
 void DriveWithJoystick::Execute()
 {
-  Robot::m_oi->arcDrive();
+  std::pair<double, double> steeringControls = Robot::m_oi->driveControls();
+  Robot::m_driveTrain->Drive(steeringControls.first, steeringControls.second);
 }
 
 // Make this return true when this Command no longer needs to run execute()
