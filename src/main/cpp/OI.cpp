@@ -24,26 +24,27 @@
 #include "commands/SetGripperIntake.h"
 #include "commands/StartIntakeWheels.h"
 #include "commands/StopIntakeWheels.h"
-#include "triggers/ComboControl.h"
-#include "triggers/RawAxis.h"
-#include "triggers/RawButton.h"
 
+namespace {
 
-	static void WhenPressed(frc::Trigger* trigger, frc::Command* command)
+	template<class T> T WhenPressed(const std::shared_ptr<frc::GenericHID>& joystick, T button, frc::Command* command)
 	{
-		trigger->WhenActive(command);
+		auto joystickButton = new frc::JoystickButton(joystick.get(), static_cast<int>(button));
+		joystickButton->WhenPressed(command);
 	}
 
-	static void WhenReleased(frc::Trigger* trigger, frc::Command* command)
+	template<class T> T WhenReleased(const std::shared_ptr<frc::GenericHID>& joystick, T button, frc::Command* command)
 	{
-		trigger->WhenInactive(command);
+		auto joystickButton = new frc::JoystickButton(joystick.get(), static_cast<int>(button));
+		joystickButton->WhenReleased(command);
 	}
 
-	static void WhileHeld(frc::Trigger* trigger, frc::Command* command)
+	template<class T> T WhileHeld(const std::shared_ptr<frc::GenericHID>& joystick, T button, frc::Command* command)
 	{
-		trigger->WhileActive(command);
+		auto joystickButton = new frc::JoystickButton(joystick.get(), static_cast<int>(button));
+		joystickButton->WhileHeld(command);
 	}
-
+}
 
 OI::OI()
 {
@@ -86,22 +87,22 @@ OI::OI()
 	
 
   /* Driver Controller */
-   WhenPressed(new RawButton(m_driverController, XboxButtons::lt_Bumper), new ShiftGear(ShiftGear::Gear::High));
-   WhenPressed(new RawButton(m_driverController, XboxButtons::lt_Bumper), new ShiftGear(ShiftGear::Gear::Low));
+   WhenPressed(m_driverController, XboxButtons::lt_Bumper, new ShiftGear(ShiftGear::Gear::High));
+   WhenPressed(m_driverController, XboxButtons::lt_Bumper, new ShiftGear(ShiftGear::Gear::Low));
 
   /* Manipulator Joystick */
-   WhileHeld(new RawButton(m_manipulatorJoystick, JoystickButtons::trigger), new OpenGripper());
-   WhenReleased(new RawButton(m_manipulatorJoystick, JoystickButtons::trigger), new CloseGripper());
-   WhileHeld(new RawButton(m_manipulatorJoystick, 2), new NudgeElevator(-3));
-   WhileHeld(new RawButton(m_manipulatorJoystick, 3), new NudgeElevator(+3));
-   WhileHeld(new RawButton(m_manipulatorJoystick, 4), new PositionArm(PositionArm::Position::ClimbSet));
-   WhileHeld(new RawButton(m_manipulatorJoystick, 5), new RobotClimb());
-   WhenPressed(new RawButton(m_manipulatorJoystick, 6), new PositionArm(PositionArm::Position::Pickup));
-   WhenPressed(new RawButton(m_manipulatorJoystick, 7), new PositionArm(PositionArm::Position::Switch));
-   WhenPressed(new RawButton(m_manipulatorJoystick, 9), new PositionArm(PositionArm::Position::Retracted));
-   WhileHeld(new RawButton(m_manipulatorJoystick, 8), new NudgeArm(m_manipulatorJoystick.get()));
-   WhenPressed(new RawButton(m_manipulatorJoystick, 10), new PositionArm(PositionArm::Position::ScaleRear));
-   WhenPressed(new RawButton(m_manipulatorJoystick, 11), new PositionArm(PositionArm::Position::ScaleFront));
+   WhileHeld(m_manipulatorJoystick, JoystickButtons::trigger, new OpenGripper());
+   WhenReleased(m_manipulatorJoystick, JoystickButtons::trigger, new CloseGripper());
+   WhileHeld(m_manipulatorJoystick, 2, new NudgeElevator(-3));
+   WhileHeld(m_manipulatorJoystick, 3, new NudgeElevator(+3));
+   WhileHeld(m_manipulatorJoystick, 4, new PositionArm(PositionArm::Position::ClimbSet));
+   WhileHeld(m_manipulatorJoystick, 5, new RobotClimb());
+   WhenPressed(m_manipulatorJoystick, 6, new PositionArm(PositionArm::Position::Pickup));
+   WhenPressed(m_manipulatorJoystick, 7, new PositionArm(PositionArm::Position::Switch));
+   WhenPressed(m_manipulatorJoystick, 9, new PositionArm(PositionArm::Position::Retracted));
+   WhileHeld(m_manipulatorJoystick, 8, new NudgeArm(m_manipulatorJoystick.get()));
+   WhenPressed(m_manipulatorJoystick, 10, new PositionArm(PositionArm::Position::ScaleRear));
+   WhenPressed(m_manipulatorJoystick, 11, new PositionArm(PositionArm::Position::ScaleFront));
 }
 
 std::pair<double, double> OI::GetDriveControls()
