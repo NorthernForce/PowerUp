@@ -16,5 +16,5 @@ template<class T> class RawButton : public frc::Trigger {
   bool Get() override;
  private:
   std::shared_ptr<frc::GenericHID> m_joystick;
-  T buttonNumber;
+  T m_buttonNumber;
 };
