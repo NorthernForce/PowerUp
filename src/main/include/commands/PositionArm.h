@@ -13,7 +13,7 @@
 
 class PositionArm : public frc::Command {
  public:
-  enum class Position {
+  	enum class Position {
 		Retracted,	// Starting position
 		Pickup,		// Pick up position
 		Switch,		// Score on switch
@@ -31,7 +31,7 @@ class PositionArm : public frc::Command {
   void Interrupted() override;
 
  private:
-  struct PositionSetpoints;
+  	struct PositionSetpoints;
 	static const std::map<Position, PositionSetpoints> m_setpoints;
 	const std::shared_ptr<Elevator> m_elevator;
 	const std::shared_ptr<Arm> m_arm;

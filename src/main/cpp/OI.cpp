@@ -91,8 +91,8 @@ OI::OI()
    WhenPressed(m_driverController, XboxButtons::lt_Bumper, new ShiftGear(ShiftGear::Gear::Low));
 
   /* Manipulator Joystick */
-   WhileHeld(m_manipulatorJoystick, JoystickButtons::Trigger, new OpenGripper());
-   WhenReleased(m_manipulatorJoystick, JoystickButtons::Trigger, new CloseGripper());
+   WhileHeld(m_manipulatorJoystick, JoystickButtons::trigger, new OpenGripper());
+   WhenReleased(m_manipulatorJoystick, JoystickButtons::trigger, new CloseGripper());
    WhileHeld(m_manipulatorJoystick, 2, new NudgeElevator(-3));
    WhileHeld(m_manipulatorJoystick, 3, new NudgeElevator(+3));
    WhileHeld(m_manipulatorJoystick, 4, new PositionArm(PositionArm::Position::ClimbSet));
@@ -105,7 +105,7 @@ OI::OI()
    WhenPressed(m_manipulatorJoystick, 11, new PositionArm(PositionArm::Position::ScaleFront));
 }
 
-std::pair<double, double> OI::driveControls()
+std::pair<double, double> OI::GetDriveControls()
 {
   double speed = m_driverController->GetY(frc::XboxController::JoystickHand::kLeftHand) * -1;
   double rotation = m_driverController->GetX(frc::XboxController::JoystickHand::kRightHand);

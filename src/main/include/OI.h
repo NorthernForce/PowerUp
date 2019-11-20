@@ -13,7 +13,7 @@
 class OI {
  public:
   OI();
-  std::pair<double, double> driveControls();
+  std::pair<double, double> GetDriveControls();
   enum class XboxButtons { 
     a_Button      = 1,
     b_Button      = 2, 
@@ -26,7 +26,7 @@ class OI {
   };
   
   enum class JoystickButtons { 
-    Trigger       = 1 
+    trigger       = 1 
   };
 
  private:

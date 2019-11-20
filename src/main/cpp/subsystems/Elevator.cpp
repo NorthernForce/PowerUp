@@ -61,7 +61,7 @@ bool Elevator::AtSetPosition()
 
 void Elevator::SetHomePosition()
 {
-	frc::DriverStation::ReportWarning("Elevator home position reset");
+	frc::DriverStation::ReportWarning("Elevator home position initial reset");
 	m_setPosition = 0;
 	m_elevatorTalon->SetSelectedSensorPosition(m_setPosition, m_PidID, m_timeoutMs);
 	m_elevatorTalon->Set(ControlMode::MotionMagic, m_setPosition);

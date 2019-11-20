@@ -24,12 +24,12 @@ void NudgeArm::Execute()
 {
   if (m_controller)
   {
-	auto distance = m_controller->GetY() * 4;
-	Robot::m_arm->NudgeArm(distance);
+	  auto distance = m_controller->GetY() * 4;
+	  Robot::m_arm->NudgeArm(distance);
   } 
   else
   {
-	Robot::m_arm->NudgeArm(m_distance);
+	  Robot::m_arm->NudgeArm(m_distance);
   }
 }
 
