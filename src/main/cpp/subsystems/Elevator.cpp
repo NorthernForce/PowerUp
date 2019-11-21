@@ -12,7 +12,7 @@
 
 Elevator::Elevator() : Subsystem("Elevator")
 {
-  m_elevatorTalon.reset(new WPI_TalonSRX (k_elevatorTalon_id));
+  m_elevatorTalon.reset(new WPI_TalonSRX (RobotMap::ArmAssemblyTalons::k_elevatorTalon_id));
   m_elevatorTalon->ConfigFactoryDefault();
   m_elevatorTalon->SetInverted(true);
   m_elevatorTalon->ConfigOpenloopRamp(0.2);
@@ -24,7 +24,7 @@ Elevator::Elevator() : Subsystem("Elevator")
 	m_elevatorTalon->SetNeutralMode(NeutralMode::Brake);
 
   SetHomePosition();
-  ApplyBrake();
+  // ApplyBrake();
 }
 
 void Elevator::InitDefaultCommand() {}

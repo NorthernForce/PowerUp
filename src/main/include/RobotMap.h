@@ -14,21 +14,42 @@
 #pragma once
 
     /* Drive Talon IDs */
-        const static int k_primaryTalonLeft_id = 1;
-        const static int k_primaryTalonRight_id = 2;
-        const static int k_followerTalon1Left_id = 3;
-        const static int k_followerTalon1Right_id = 4;
-        const static int k_followerTalon2Left_id = 5;
-        const static int k_followerTalon2Right_id = 6;
+    namespace RobotMap
+    {
+        /* Drive Talon IDs */
+        namespace DriveTalons
+        {
+            const static int k_primaryTalonLeft_id = 1;
+            const static int k_primaryTalonRight_id = 2;
+            const static int k_followerTalon1Left_id = 3;
+            const static int k_followerTalon1Right_id = 4;
+            const static int k_followerTalon2Left_id = 5;
+            const static int k_followerTalon2Right_id = 6;
+        }
 
-    /* Remaining Talon IDs */
-        const static int k_armTalon_id = 8;
-        const static int k_elevatorTalon_id = 9;
-        const static int k_gripperIntakeTalon_id = 11;
+        /* Remaining Talon IDs */
+        namespace ArmAssemblyTalons
+        {
+            const static int k_armTalon_id = 8;
+            const static int k_elevatorTalon_id = 9;
+            const static int k_gripperIntakeTalon_id = 11;
+        }
 
-    /* Solenoid IDs */
-        const static int k_gripperSolenoid_id = 7;
-        const static int k_gripperIntakeSolenoid_id = 4;
+        /* PCM IDs */
+        namespace PCM
+        {
+            const static int k_gripperSolenoid_id = 7;
+            const static int k_gripperIntakeSolenoid_id = 4;
+            const static int k_pcm_id = 12;
+        }
+
+        /* Robot Tele-Op Control Devices IDs */
+        namespace Controls
+        {
+            const static int k_driverController_id = 0;
+            const static int k_manipulatorJoystick_id = 1;
+        }
+    }
 
 
 /**

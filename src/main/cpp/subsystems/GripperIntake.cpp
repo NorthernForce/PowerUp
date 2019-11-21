@@ -10,8 +10,8 @@
 
 GripperIntake::GripperIntake() : Subsystem("GripperIntake")
 {
-  m_gripperIntakeSolenoid.reset(new frc::Solenoid(k_gripperIntakeSolenoid_id));
-  m_gripperIntakeTalon.reset(new WPI_TalonSRX(k_gripperIntakeTalon_id));
+  m_gripperIntakeSolenoid.reset(new frc::Solenoid(RobotMap::PCM::k_gripperIntakeSolenoid_id));
+  m_gripperIntakeTalon.reset(new WPI_TalonSRX(RobotMap::ArmAssemblyTalons::k_gripperIntakeTalon_id));
   isRunning = false;
 }
 

@@ -12,12 +12,12 @@
 
 DriveTrain::DriveTrain() : Subsystem("DriveTrain")
 {
-  m_primaryTalonLeft.reset(new WPI_TalonSRX (k_primaryTalonLeft_id));
-  m_primaryTalonRight.reset(new WPI_TalonSRX (k_primaryTalonRight_id));
-  m_followerTalon1Left.reset(new WPI_TalonSRX (k_followerTalon1Left_id));
-  m_followerTalon1Right.reset(new WPI_TalonSRX (k_followerTalon1Right_id));
-  m_followerTalon2Left.reset(new WPI_TalonSRX (k_followerTalon2Left_id));
-  m_followerTalon2Right.reset(new WPI_TalonSRX (k_followerTalon2Right_id));
+  m_primaryTalonLeft.reset(new WPI_TalonSRX (RobotMap::DriveTalons::k_primaryTalonLeft_id));
+  m_primaryTalonRight.reset(new WPI_TalonSRX (RobotMap::DriveTalons::k_primaryTalonRight_id));
+  m_followerTalon1Left.reset(new WPI_TalonSRX (RobotMap::DriveTalons::k_followerTalon1Left_id));
+  m_followerTalon1Right.reset(new WPI_TalonSRX (RobotMap::DriveTalons::k_followerTalon1Right_id));
+  m_followerTalon2Left.reset(new WPI_TalonSRX (RobotMap::DriveTalons::k_followerTalon2Left_id));
+  m_followerTalon2Right.reset(new WPI_TalonSRX (RobotMap::DriveTalons::k_followerTalon2Right_id));
 
   FactoryDefaultTalons();
 

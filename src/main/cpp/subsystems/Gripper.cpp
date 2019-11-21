@@ -10,7 +10,7 @@
 
 Gripper::Gripper() : Subsystem("Gripper")
 {
-  m_gripperSolenoid.reset(new frc::Solenoid(k_gripperSolenoid_id));
+  m_gripperSolenoid.reset(new frc::Solenoid(RobotMap::PCM::k_gripperSolenoid_id));
   m_gripperState = State::Closed;
 }
 

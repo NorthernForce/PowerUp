@@ -5,22 +5,18 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "subsystems/PCM.h"
-#include "Robot.h"
-#include "RobotMap.h"
+#pragma once
 
-PCM::PCM() : Subsystem("PCM")
-{
-  m_compressor.reset(new frc::Compressor(RobotMap::PCM::k_pcm_id));
-  UseCompressor(true);
-}
+#include <frc/commands/Command.h>
 
-void PCM::InitDefaultCommand() {}
-
-void PCM::UseCompressor(bool useCompressor)
-{
-  m_compressor->SetClosedLoopControl(useCompressor);
-}
-
-// Put methods for controlling this subsystem
-// here. Call these from Commands.
+class MoveElevator : public frc::Command {
+ public:
+  MoveElevator(int speed);
+  void Initialize() override;
+  void Execute() override;
+  bool IsFinished() override;
+  void End() override;
+  void Interrupted() override;
+ private:
+  int m_speed;
+};
