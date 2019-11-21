@@ -13,13 +13,13 @@
 class NudgeArm : public frc::Command {
  public:
   NudgeArm(int distance);
-  NudgeArm(frc::GenericHID* controller);
+  NudgeArm(bool controller);
   void Initialize() override;
   void Execute() override;
   bool IsFinished() override;
   void End() override;
   void Interrupted() override;
  private:
-  frc::GenericHID* const m_controller;
 	const int m_distance;
+  bool m_controller;
 };
