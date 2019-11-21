@@ -24,9 +24,9 @@ const std::map<PositionArm::Position, PositionArm::PositionSetpoints> PositionAr
         { PositionArm::Position::ClimbSet,  { 2525, +3000, 0 } },
 };
 
-PositionArm::PositionArm(Position pos) : Command("PositionArm")
+PositionArm::PositionArm(Position pos)
+  :  Command("PositionArm"), m_position(pos)
 {
-  m_position = pos;
 	Requires(m_arm.get());
 	Requires(m_elevator.get());
 }

@@ -41,6 +41,7 @@ class Arm : public frc::Subsystem {
 	void SetPosition(int setpoint, unsigned delay);
 	bool AtSetpoint();
 	void SetHomePosition();
+	void Move(int speed);
 	void NudgeArm(int distance);
 	void SetPID();
 	void ConfigureCurrentLimits();

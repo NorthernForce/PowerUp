@@ -11,7 +11,7 @@
 
 Arm::Arm() : Subsystem("Arm")
 {
-  	m_armTalon.reset(new WPI_TalonSRX (k_armTalon_id));
+  	m_armTalon.reset(new WPI_TalonSRX (RobotMap::ArmAssemblyTalons::k_armTalon_id));
 	m_armTalon->SetName("Arm");
 	m_armTalon->SelectProfileSlot(m_slotIdx, m_PidID);
 	m_armTalon->ConfigMaxIntegralAccumulator(m_slotIdx, iLimit, m_timeoutMs);
@@ -63,6 +63,12 @@ void Arm::SetHomePosition() {
 	m_setPosition = 0;
 	m_armTalon->SetSelectedSensorPosition(m_setPosition, m_PidID, m_timeoutMs);
 	m_armTalon->Set(ControlMode::MotionMagic, m_setPosition);
+}
+
+void Arm::Move(int speed) {
+	if (speed < -1) speed = -1;
+	 else if (speed > 1) speed = 1;
+	m_armTalon->Set(speed);
 }
 
 void Arm::NudgeArm(int distance) {

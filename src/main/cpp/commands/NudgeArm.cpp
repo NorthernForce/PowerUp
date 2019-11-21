@@ -9,12 +9,12 @@
 #include "frc/commands/Subsystem.h"
 #include "Robot.h"
 
-NudgeArm::NudgeArm(int distance) : Command("NudgeArm"), m_controller(nullptr), m_distance(distance)
+NudgeArm::NudgeArm(int distance) : Command("NudgeArm"), m_controller(false), m_distance(distance)
 {
   Requires(Robot::m_arm.get());
 }
 
-NudgeArm::NudgeArm(frc::GenericHID* controller) : m_controller(controller), m_distance(0) {}
+NudgeArm::NudgeArm(bool controller) : m_distance(0) {}
 
 // Called just before this Command runs the first time
 void NudgeArm::Initialize() {}
@@ -24,8 +24,7 @@ void NudgeArm::Execute()
 {
   if (m_controller)
   {
-	  auto distance = m_controller->GetY() * 4;
-	  Robot::m_arm->NudgeArm(distance);
+	  Robot::m_arm->Move(1);
   } 
   else
   {
