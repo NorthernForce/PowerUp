@@ -37,8 +37,8 @@ class OI {
     button7      = 7,
     button8      = 8,
     button9      = 9,
-    button10     =10,
-    button11     =11
+    button10     = 10,
+    button11     = 11
   };
 
  private:

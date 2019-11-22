@@ -11,7 +11,7 @@
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <frc/livewindow/LiveWindow.h>
 
-std::shared_ptr<OI> Robot::m_oi;
+std::unique_ptr<OI> Robot::m_oi;
 std::shared_ptr<DriveTrain> Robot::m_driveTrain;
 // std::shared_ptr<DriveTrainShifter> Robot::m_driveTrainShifter;
 std::shared_ptr<PCM> Robot::m_pcm;
