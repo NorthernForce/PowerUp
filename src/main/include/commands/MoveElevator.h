@@ -11,7 +11,7 @@
 
 class MoveElevator : public frc::Command {
  public:
-  MoveElevator(int speed);
+  MoveElevator(int maxSpeed=1);
   void Initialize() override;
   void Execute() override;
   bool IsFinished() override;

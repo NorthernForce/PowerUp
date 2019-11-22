@@ -36,7 +36,10 @@ void NudgeArm::Execute()
 bool NudgeArm::IsFinished() { return false; }
 
 // Called once after isFinished returns true
-void NudgeArm::End() {}
+void NudgeArm::End()
+{
+  Robot::m_arm->Move(0);
+}
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run

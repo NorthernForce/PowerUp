@@ -9,7 +9,7 @@
 #include "subsystems/Elevator.h"
 #include "Robot.h"
 
-MoveElevator::MoveElevator(int speed) : frc::Command("MoveElevator"), m_speed(speed)
+MoveElevator::MoveElevator(int maxSpeed) : frc::Command("MoveElevator"), m_speed(maxSpeed)
 {
   Requires(Robot::m_elevator.get());
 }
@@ -27,7 +27,10 @@ void MoveElevator::Execute() {}
 bool MoveElevator::IsFinished() { return true; }
 
 // Called once after isFinished returns true
-void MoveElevator::End() { Robot::m_elevator->Move(0); }
+void MoveElevator::End()
+{
+  Robot::m_elevator->Move(0);
+}
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
