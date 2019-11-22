@@ -31,8 +31,6 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrain")
   m_followerTalon2Right->Follow(*m_primaryTalonRight);
    m_followerTalon2Right->SetInverted(true);
 
-  SetupShift();
-
   m_arcadeDrive.reset(new frc::DifferentialDrive(*m_primaryTalonLeft, *m_primaryTalonRight));
 
 }
@@ -53,6 +51,7 @@ void DriveTrain::SetSafetyEnabled(bool enabled)
 	m_arcadeDrive->SetSafetyEnabled(enabled);
 }
 
+/* 
 void DriveTrain::SetupShift()
 {
   // Copies settings from private to public talons 
@@ -60,6 +59,7 @@ void DriveTrain::SetupShift()
   m_primaryTalonLeftShift = m_primaryTalonLeft;
   m_primaryTalonRightShift = m_primaryTalonRight;
 }
+ */
 
 void DriveTrain::FactoryDefaultTalons()
 {

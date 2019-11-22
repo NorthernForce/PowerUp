@@ -11,15 +11,11 @@
 
 using Gear = DriveTrainShifter::Gear;
 
-// Shared pointers that inherit all properties of primary talons 
-// (in the DriveTrain subsystem) but these are obviously used for shifting
-std::shared_ptr<WPI_TalonSRX> DriveTrain::m_primaryTalonLeftShift;
-std::shared_ptr<WPI_TalonSRX> DriveTrain::m_primaryTalonRightShift;
+std::shared_ptr<WPI_TalonSRX> DriveTrain::m_primaryTalonLeft;
+std::shared_ptr<WPI_TalonSRX> DriveTrain::m_primaryTalonRight;
 
 DriveTrainShifter::DriveTrainShifter() :
-    Subsystem("DriveTrainShifter"),
-    m_primaryTalonLeft(DriveTrain::m_primaryTalonLeftShift),
-    m_primaryTalonRight(DriveTrain::m_primaryTalonRightShift)
+    Subsystem("DriveTrainShifter")
 {
   BeginShift(frc::DoubleSolenoid::Value::kForward);
 }
@@ -39,8 +35,8 @@ void DriveTrainShifter::Shift(Gear gear)
 		if(m_currentGear == Gear::High)
 		{
 			BeginShift(frc::DoubleSolenoid::Value::kReverse);
-			m_primaryTalonLeft->Set(0);
-			m_primaryTalonRight->Set(0);
+			DriveTrain::m_primaryTalonLeft->Set(0);
+			DriveTrain::m_primaryTalonRight->Set(0);
 		}
 		else
 		{
@@ -49,8 +45,8 @@ void DriveTrainShifter::Shift(Gear gear)
 			const auto speedRight = m_primaryTalonRight->GetSensorCollection().GetQuadratureVelocity();
 			if(abs(speedLeft) + abs(speedRight) > 100)
 			{
-				m_primaryTalonLeft->Set((speedLeft > 0) ? 1 : -1);
-				m_primaryTalonRight->Set((speedRight > 0) ? 1 : -1);
+				DriveTrain::m_primaryTalonLeft->Set((speedLeft > 0) ? 1 : -1);
+				DriveTrain::m_primaryTalonRight->Set((speedRight > 0) ? 1 : -1);
 			}
 		}
 		Robot::m_driveTrain->SetSafetyEnabled(false);
