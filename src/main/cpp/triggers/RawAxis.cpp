@@ -6,14 +6,18 @@
 /*----------------------------------------------------------------------------*/
 
 #include "triggers/RawAxis.h"
+#include "OI.h"
 
-RawAxis::RawAxis(std::shared_ptr<frc::GenericHID> joystick, int axis, double lowerLimit, double upperLimit)
+template<class T> RawAxis<T>::RawAxis(std::shared_ptr<frc::GenericHID> joystick, T axis, double lowerLimit, double upperLimit)
   :  m_joystick(joystick), m_axis(axis), m_lowerLimit(lowerLimit), m_upperLimit(upperLimit) {}
 
-bool RawAxis::Get()
+template<class T> bool RawAxis<T>::Get()
 {
-    double joystickAxisInputValue = m_joystick->GetRawAxis(m_axis);
+    double joystickAxisInputValue = m_joystick->GetRawAxis(static_cast<int>(m_axis));
     if (joystickAxisInputValue > m_upperLimit || joystickAxisInputValue < m_lowerLimit)
          return true;
     else return false;
 }
+
+template class RawAxis<OI::XboxAxis>;
+template class RawAxis<OI::JoystickAxis>;

@@ -101,12 +101,12 @@ OI::OI()
 	WhileHeld(new RawButton<OI::Joystick>(m_manipulatorJoystick, Joystick::button5), new RobotClimb());
 	WhenPressed(new RawButton<OI::Joystick>(m_manipulatorJoystick, Joystick::button6), new PositionArm(PositionArm::Position::Pickup));
 	WhenPressed(new RawButton<OI::Joystick>(m_manipulatorJoystick, Joystick::button7), new PositionArm(PositionArm::Position::Switch));
-	WhenPressed(new RawButton<OI::Joystick>(m_manipulatorJoystick, Joystick::button9), new PositionArm(PositionArm::Position::Retracted));
-	WhileHeld(new ComboControl(new RawButton<OI::Joystick>(m_manipulatorJoystick, Joystick::button8), 
-	                           new RawAxis(m_manipulatorJoystick, 3)), new NudgeArm(true));
+	WhenPressed(new RawButton<OI::Joystick>(m_manipulatorJoystick, Joystick::button8), new PositionArm(PositionArm::Position::Retracted));
+	WhileHeld(new ComboControl(new RawButton<OI::Joystick>(m_manipulatorJoystick, Joystick::button9), 
+	                           new RawAxis<OI::JoystickAxis>(m_manipulatorJoystick, JoystickAxis::Wheel)), new NudgeArm(true));
 	WhenPressed(new RawButton<OI::Joystick>(m_manipulatorJoystick, Joystick::button10), new PositionArm(PositionArm::Position::ScaleRear));
 	WhenPressed(new RawButton<OI::Joystick>(m_manipulatorJoystick, Joystick::button11), new PositionArm(PositionArm::Position::ScaleFront));
-	// WhileHeld(new RawButton<OI::Joystick>(m_manipulatorJoystick, Joystick::button11), new MoveElevator(1));
+	// WhileHeld(new RawButton<OI::Joystick>(m_manipulatorJoystick, Joystick::button11), new MoveElevator());
 }
 
 std::pair<double, double> OI::GetDriveControls()

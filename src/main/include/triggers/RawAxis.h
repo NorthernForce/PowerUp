@@ -10,13 +10,13 @@
 #include <frc/buttons/Trigger.h>
 #include <frc/GenericHID.h>
 
-class RawAxis : public frc::Trigger {
+template<class T> class RawAxis : public frc::Trigger {
  public:
-  RawAxis(std::shared_ptr<frc::GenericHID> joystick, int axis, double lowerLimit=0.5, double upperLimit=1.0);
+  RawAxis(std::shared_ptr<frc::GenericHID> joystick, T axis, double lowerLimit=0.5, double upperLimit=1.0);
   bool Get() override;
  private:
   std::shared_ptr<frc::GenericHID> m_joystick;
-  int m_axis;
+  T m_axis;
   double m_lowerLimit;
   double m_upperLimit;
 };
