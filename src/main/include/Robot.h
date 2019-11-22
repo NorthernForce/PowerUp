@@ -34,7 +34,7 @@ class Robot : public frc::TimedRobot {
   void TeleopPeriodic() override;
   void TestPeriodic() override;
 
-  static std::shared_ptr<OI> m_oi;
+  static std::unique_ptr<OI> m_oi;
   static std::shared_ptr<DriveTrain> m_driveTrain;
   // static std::shared_ptr<DriveTrainShifter> m_driveTrainShifter;
   static std::shared_ptr<Elevator> m_elevator;

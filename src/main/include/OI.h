@@ -14,12 +14,10 @@ class OI {
  public:
   OI();
   std::pair<double, double> GetDriveControls();
-  
   enum class Xbox;
   enum class Joystick;
   enum class XboxAxis;
   enum class JoystickAxis;
-
  private:
   std::shared_ptr<frc::XboxController> m_driverController;
   std::shared_ptr<frc::Joystick> m_manipulatorJoystick;
