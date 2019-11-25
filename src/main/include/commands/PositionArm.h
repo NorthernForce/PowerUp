@@ -13,26 +13,26 @@
 
 class PositionArm : public frc::Command {
  public:
-	enum class Position {
-		Retracted,	// Starting position
-		Pickup,		// Pick up position
-		Switch,		// Score on switch
-		ScaleFront,	// Score on scale in front of robot
-		ScaleRear,	// Score on scale behind robot
-		ClimbSet, // Climb position
-		ClimbExecute // Climbs
-	};
-  	PositionArm(Position setpoint);
-	void Initialize() override;
-	void Execute() override;
-	bool IsFinished() override;
-	void End() override;
-	void Interrupted() override;
+    enum class Position {
+        Retracted,	// Starting position
+        Pickup,		// Pick up position
+        Switch,		// Score on switch
+        ScaleFront,	// Score on scale in front of robot
+        ScaleRear,	// Score on scale behind robot
+        ClimbSet, // Climb position
+        ClimbExecute // Climbs
+    };
+      PositionArm(Position setpoint);
+    void Initialize() override;
+    void Execute() override;
+    bool IsFinished() override;
+    void End() override;
+    void Interrupted() override;
  private:
-  	struct PositionSetpoints;
-	static const std::map<Position, PositionSetpoints> m_setpoints;
-	const std::shared_ptr<Elevator> m_elevator;
-	const std::shared_ptr<Arm> m_arm;
-	Position m_position;
+      struct PositionSetpoints;
+    static const std::map<Position, PositionSetpoints> m_setpoints;
+    const std::shared_ptr<Elevator> m_elevator;
+    const std::shared_ptr<Arm> m_arm;
+    Position m_position;
   
 };

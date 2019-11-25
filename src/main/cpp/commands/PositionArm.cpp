@@ -8,9 +8,9 @@
 #include "commands/PositionArm.h"
 
 struct PositionArm::PositionSetpoints {
-	int m_armSetpoint;
-	int m_elevatorSetpoint;
-	unsigned m_armDelay;
+    int m_armSetpoint;
+    int m_elevatorSetpoint;
+    unsigned m_armDelay;
 };
 
 bool hasClimbed = false;
@@ -27,17 +27,17 @@ const std::map<PositionArm::Position, PositionArm::PositionSetpoints> PositionAr
 PositionArm::PositionArm(Position pos) :
  Command("PositionArm"), 
  m_position(pos) {
-	Requires(m_arm.get());
-	Requires(m_elevator.get());
+    Requires(m_arm.get());
+    Requires(m_elevator.get());
 }
 
 // Called just before this Command runs the first time
 void PositionArm::Initialize() {
     const auto setpoints = m_setpoints.find(m_position);
-	if (setpoints != m_setpoints.end()) {
-		m_arm->SetPosition(setpoints->second.m_armSetpoint, setpoints->second.m_armDelay);
-		m_elevator->SetPosition(setpoints->second.m_elevatorSetpoint);
-	}
+    if (setpoints != m_setpoints.end()) {
+        m_arm->SetPosition(setpoints->second.m_armSetpoint, setpoints->second.m_armDelay);
+        m_elevator->SetPosition(setpoints->second.m_elevatorSetpoint);
+    }
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -46,8 +46,8 @@ void PositionArm::Execute() {}
 // Make this return true when this Command no longer needs to run execute()
 bool PositionArm::IsFinished() {
     const bool armDone = m_arm->AtSetPosition();
-	const bool elevatorDone = m_elevator->AtSetPosition();
-	return (armDone && elevatorDone);
+    const bool elevatorDone = m_elevator->AtSetPosition();
+    return (armDone && elevatorDone);
 }
 
 // Called once after isFinished returns true

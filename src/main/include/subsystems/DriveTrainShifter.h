@@ -13,9 +13,8 @@
 
 class DriveTrainShifter : public frc::Subsystem {
  public:
-    enum class Gear
-    {
-    Low, High
+    enum class Gear {
+      Low, High
     };
     DriveTrainShifter();
     void Periodic() override;

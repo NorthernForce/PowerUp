@@ -13,7 +13,7 @@
 class Gripper : public frc::Subsystem {
  private:
     enum class State {
-    Open, Closed
+      Open, Closed
     };
     State m_gripperState;
     std::shared_ptr<frc::Solenoid> m_gripperSolenoid;

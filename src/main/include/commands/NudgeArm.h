@@ -20,6 +20,6 @@ class NudgeArm : public frc::Command {
     void End() override;
     void Interrupted() override;
  private:
-	const int m_distance;
+    const int m_distance;
     bool m_controller;
 };

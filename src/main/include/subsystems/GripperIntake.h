@@ -14,11 +14,11 @@
 class GripperIntake : public frc::Subsystem {
  private:
     bool isRunning;
-	std::shared_ptr<frc::Solenoid> m_gripperIntakeSolenoid;
-	std::shared_ptr<WPI_TalonSRX> m_gripperIntakeTalon;
+    std::shared_ptr<frc::Solenoid> m_gripperIntakeSolenoid;
+    std::shared_ptr<WPI_TalonSRX> m_gripperIntakeTalon;
  public:
     enum class State { 
-    Raised, Lowered
+        Raised, Lowered
     };
     GripperIntake();
     void RunIntakeWheels();

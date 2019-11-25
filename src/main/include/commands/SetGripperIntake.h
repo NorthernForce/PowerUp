@@ -19,5 +19,5 @@ class SetGripperIntake : public frc::TimedCommand {
     void Interrupted() override;
  private:
     GripperIntake::State m_intakeState;
-	constexpr static double m_duration { 1.0 };
+   constexpr static double m_duration { 1.0 };
 };

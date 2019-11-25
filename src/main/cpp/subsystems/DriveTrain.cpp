@@ -50,7 +50,7 @@ void DriveTrain::Drive(double speed, double rotation) {
 }
 
 void DriveTrain::SetSafetyEnabled(bool enabled) {
-	m_arcadeDrive->SetSafetyEnabled(enabled);
+    m_arcadeDrive->SetSafetyEnabled(enabled);
 }
 
 // Put methods for controlling this subsystem

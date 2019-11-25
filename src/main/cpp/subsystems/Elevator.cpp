@@ -19,23 +19,23 @@ Elevator::Elevator() :
     ConfigureCurrentLimits(m_defaultPeakAmps, m_defaultContinuousCurrent, m_timeoutMs);
     m_elevatorTalon->SelectProfileSlot(m_slotID, m_PidID);
     m_elevatorTalon->SetName("Elevator", "Elevator");
-	m_elevatorTalon->SetNeutralMode(NeutralMode::Brake);
+    m_elevatorTalon->SetNeutralMode(NeutralMode::Brake);
     SetHomePosition();
     // ApplyBrake();
 }
 
 void Elevator::ConfigureCurrentLimits(int peakAmps, int continuousCurrent, int timeout) {
-	m_elevatorTalon->ConfigPeakCurrentLimit(peakAmps, timeout);
+    m_elevatorTalon->ConfigPeakCurrentLimit(peakAmps, timeout);
     m_elevatorTalon->ConfigContinuousCurrentLimit(continuousCurrent, timeout);
     m_elevatorTalon->ConfigPeakCurrentDuration(100, timeout);
     m_elevatorTalon->EnableCurrentLimit(true);
 }
 
 void Elevator::SetHomePosition() {
-	frc::DriverStation::ReportWarning("Elevator home position initial reset");
-	m_setPosition = 0;
-	m_elevatorTalon->SetSelectedSensorPosition(m_setPosition, m_PidID, m_timeoutMs);
-	m_elevatorTalon->Set(ControlMode::MotionMagic, m_setPosition);
+    frc::DriverStation::ReportWarning("Elevator home position initial reset");
+    m_setPosition = 0;
+    m_elevatorTalon->SetSelectedSensorPosition(m_setPosition, m_PidID, m_timeoutMs);
+    m_elevatorTalon->Set(ControlMode::MotionMagic, m_setPosition);
 }
 
 void Elevator::SetPosition(int setPosition) {
@@ -57,9 +57,9 @@ void Elevator::ReleaseBrake() {
 }
 
 void Elevator::Nudge(int distance) {
-	ReleaseBrake();
-	m_setPosition = m_setPosition + distance;
-	m_elevatorTalon->Set(ControlMode::MotionMagic, m_setPosition);
+    ReleaseBrake();
+    m_setPosition = m_setPosition + distance;
+    m_elevatorTalon->Set(ControlMode::MotionMagic, m_setPosition);
 }
 
 void Elevator::Move(double speed) {
@@ -70,15 +70,15 @@ void Elevator::Move(double speed) {
 }
 
 void Elevator::StartClimb() {
-	ReleaseBrake();
-	ConfigureCurrentLimits(30, 20, m_noTimeoutMs);
-	m_elevatorTalon->Set(-1);
+    ReleaseBrake();
+    ConfigureCurrentLimits(30, 20, m_noTimeoutMs);
+    m_elevatorTalon->Set(-1);
 }
 
 void Elevator::EndClimb() {
-	m_elevatorTalon->Set(0);
-	ApplyBrake();
-	ConfigureCurrentLimits(m_defaultPeakAmps, m_defaultContinuousCurrent, m_noTimeoutMs);
+    m_elevatorTalon->Set(0);
+    ApplyBrake();
+    ConfigureCurrentLimits(m_defaultPeakAmps, m_defaultContinuousCurrent, m_noTimeoutMs);
 }
 
 void Elevator::InitDefaultCommand() {}

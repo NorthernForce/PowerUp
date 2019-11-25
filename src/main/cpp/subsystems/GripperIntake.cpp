@@ -16,28 +16,28 @@ GripperIntake::GripperIntake() :
 }
 
 void GripperIntake::RunIntakeWheels() {
-	m_gripperIntakeTalon->Set(0.5);
-	isRunning = true;
+    m_gripperIntakeTalon->Set(0.5);
+    isRunning = true;
 }
 
 void GripperIntake::StopIntakeWheels() {
-	m_gripperIntakeTalon->StopMotor();
-	isRunning = false;
+    m_gripperIntakeTalon->StopMotor();
+    isRunning = false;
 }
 
 void GripperIntake::SetIntake(State state) {
-	if (state == State::Raised)
-		m_gripperIntakeSolenoid->Set(false);
-	else
-		m_gripperIntakeSolenoid->Set(true);
+    if (state == State::Raised)
+        m_gripperIntakeSolenoid->Set(false);
+    else
+        m_gripperIntakeSolenoid->Set(true);
 }
 
 bool GripperIntake::IsDown() {
-	return m_gripperIntakeSolenoid->Get();
+    return m_gripperIntakeSolenoid->Get();
 }
 
 bool GripperIntake::IsRunning() {
-	return isRunning;
+    return isRunning;
 }
 
 void GripperIntake::InitDefaultCommand() {}
