@@ -92,15 +92,18 @@ OI::OI() {
 	WhenReleased(new RawButton<OI::Joystick>(m_manipulatorJoystick, Joystick::trigger), new CloseGripper());
 	WhileHeld(new RawButton<OI::Joystick>(m_manipulatorJoystick, Joystick::button2), new NudgeElevator(-3));
 	WhileHeld(new RawButton<OI::Joystick>(m_manipulatorJoystick, Joystick::button3), new NudgeElevator(+3));
-	WhileHeld(new RawButton<OI::Joystick>(m_manipulatorJoystick, Joystick::button4), new PositionArm(PositionArm::Position::ClimbSet));
+
 	WhileHeld(new RawButton<OI::Joystick>(m_manipulatorJoystick, Joystick::button5), new RobotClimb());
+
+    WhileHeld(new RawButton<OI::Joystick>(m_manipulatorJoystick, Joystick::button4), new PositionArm(PositionArm::Position::ClimbSet));
 	WhenPressed(new RawButton<OI::Joystick>(m_manipulatorJoystick, Joystick::button6), new PositionArm(PositionArm::Position::Pickup));
 	WhenPressed(new RawButton<OI::Joystick>(m_manipulatorJoystick, Joystick::button7), new PositionArm(PositionArm::Position::Switch));
 	WhenPressed(new RawButton<OI::Joystick>(m_manipulatorJoystick, Joystick::button8), new PositionArm(PositionArm::Position::Retracted));
+    WhenPressed(new RawButton<OI::Joystick>(m_manipulatorJoystick, Joystick::button10), new PositionArm(PositionArm::Position::ScaleRear));
+	WhenPressed(new RawButton<OI::Joystick>(m_manipulatorJoystick, Joystick::button11), new PositionArm(PositionArm::Position::ScaleFront));
 	WhileHeld(new ComboControl(new RawButton<OI::Joystick>(m_manipulatorJoystick, Joystick::button9), 
 	                           new RawAxis<OI::JoystickAxis>(m_manipulatorJoystick, JoystickAxis::Wheel)), new NudgeArm(true));
-	WhenPressed(new RawButton<OI::Joystick>(m_manipulatorJoystick, Joystick::button10), new PositionArm(PositionArm::Position::ScaleRear));
-	WhenPressed(new RawButton<OI::Joystick>(m_manipulatorJoystick, Joystick::button11), new PositionArm(PositionArm::Position::ScaleFront));
+	
 	// WhileHeld(new RawButton<OI::Joystick>(m_manipulatorJoystick, Joystick::button11), new MoveElevator());
 }
 
