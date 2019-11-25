@@ -20,32 +20,28 @@
 
 #include "OI.h"
 
-
 class Robot : public frc::TimedRobot {
  public:
-
-  void RobotInit() override;
-  void RobotPeriodic() override;
-  void DisabledInit() override;
-  void DisabledPeriodic() override;
-  void AutonomousInit() override;
-  void AutonomousPeriodic() override;
-  void TeleopInit() override;
-  void TeleopPeriodic() override;
-  void TestPeriodic() override;
-
-  static std::unique_ptr<OI> m_oi;
-  static std::shared_ptr<DriveTrain> m_driveTrain;
-  // static std::shared_ptr<DriveTrainShifter> m_driveTrainShifter;
-  static std::shared_ptr<Elevator> m_elevator;
-  static std::shared_ptr<Arm> m_arm;
-  static std::shared_ptr<PCM> m_pcm;
-  static std::shared_ptr<Gripper> m_gripper;
-  static std::shared_ptr<GripperIntake> m_gripperIntake;
-
+    void RobotInit() override;
+    void RobotPeriodic() override;
+    void DisabledInit() override;
+    void DisabledPeriodic() override;
+    void AutonomousInit() override;
+    void AutonomousPeriodic() override;
+    void TeleopInit() override;
+    void TeleopPeriodic() override;
+    void TestPeriodic() override;
+    static std::unique_ptr<OI> m_oi;
+    static std::shared_ptr<DriveTrain> m_driveTrain;
+    static std::shared_ptr<DriveTrainShifter> m_driveTrainShifter;
+    static std::shared_ptr<Elevator> m_elevator;
+    static std::shared_ptr<Arm> m_arm;
+    static std::shared_ptr<PCM> m_pcm;
+    static std::shared_ptr<Gripper> m_gripper;
+    static std::shared_ptr<GripperIntake> m_gripperIntake;
  private:
-  // Have it null by default so that if testing teleop it
-  // doesn't have undefined behavior and potentially crash.
-  frc::Command* m_autonomousCommand = nullptr;
-  frc::SendableChooser<frc::Command*> m_chooser;
+    // Have it null by default so that if testing teleop it
+    // doesn't have undefined behavior and potentially crash.
+    frc::Command* m_autonomousCommand = nullptr;
+    frc::SendableChooser<frc::Command*> m_chooser;
 };

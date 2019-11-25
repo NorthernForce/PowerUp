@@ -13,22 +13,19 @@
 #include <frc/drive/DifferentialDrive.h>
 
 class DriveTrain : public frc::Subsystem {
- private:
-  std::shared_ptr<frc::DifferentialDrive> m_arcadeDrive;
-  // std::shared_ptr<WPI_TalonSRX> m_primaryTalonLeft;
-  // std::shared_ptr<WPI_TalonSRX> m_primaryTalonRight;
-  std::shared_ptr<WPI_TalonSRX> m_followerTalon1Left;
-  std::shared_ptr<WPI_TalonSRX> m_followerTalon1Right;
-  std::shared_ptr<WPI_TalonSRX> m_followerTalon2Left;
-  std::shared_ptr<WPI_TalonSRX> m_followerTalon2Right;
-
  public:
-  static std::shared_ptr<WPI_TalonSRX> m_primaryTalonLeft;
-  static std::shared_ptr<WPI_TalonSRX> m_primaryTalonRight;
-  DriveTrain();
-  void Drive(double speed, double rotation);
-  void FactoryDefaultTalons();
-  void InitDefaultCommand() override;
-  void SetSafetyEnabled(bool enabled);
-  void SetupShift();
+    DriveTrain();
+    void InitDefaultCommand() override;
+    void FactoryDefaultTalons();
+    void Drive(double speed, double rotation);
+    void SetSafetyEnabled(bool enabled);
+    static std::shared_ptr<WPI_TalonSRX> m_primaryTalonLeft;
+    static std::shared_ptr<WPI_TalonSRX> m_primaryTalonRight;
+ private:
+    std::shared_ptr<frc::DifferentialDrive> m_arcadeDrive;
+    std::shared_ptr<WPI_TalonSRX> m_followerTalon1Left;
+    std::shared_ptr<WPI_TalonSRX> m_followerTalon1Right;
+    std::shared_ptr<WPI_TalonSRX> m_followerTalon2Left;
+    std::shared_ptr<WPI_TalonSRX> m_followerTalon2Right;
+ 
 };

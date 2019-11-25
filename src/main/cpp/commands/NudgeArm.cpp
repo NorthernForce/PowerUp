@@ -9,36 +9,35 @@
 #include "frc/commands/Subsystem.h"
 #include "Robot.h"
 
-NudgeArm::NudgeArm(int distance) : Command("NudgeArm"), m_controller(false), m_distance(distance)
-{
-  Requires(Robot::m_arm.get());
+NudgeArm::NudgeArm(int distance) :
+ Command("NudgeArm"),
+ m_controller(false),
+ m_distance(distance) {
+    Requires(Robot::m_arm.get());
 }
 
-NudgeArm::NudgeArm(bool controller) : m_distance(0) {}
+NudgeArm::NudgeArm(bool controller) :
+ m_distance(0) {}
 
 // Called just before this Command runs the first time
 void NudgeArm::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
-void NudgeArm::Execute()
-{
-  if (m_controller)
-  {
-	  Robot::m_arm->Move(1);
-  } 
-  else
-  {
-	  Robot::m_arm->NudgeArm(m_distance);
-  }
+void NudgeArm::Execute() {
+    if (m_controller)
+        Robot::m_arm->Move(1);
+    else
+        Robot::m_arm->Nudge(m_distance);
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool NudgeArm::IsFinished() { return false; }
+bool NudgeArm::IsFinished() {
+    return false;
+}
 
 // Called once after isFinished returns true
-void NudgeArm::End()
-{
-  Robot::m_arm->Move(0);
+void NudgeArm::End() {
+    Robot::m_arm->Move(0);
 }
 
 // Called when another command which requires one or more of the same

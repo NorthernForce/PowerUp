@@ -11,8 +11,22 @@
 #include <frc/commands/Subsystem.h>
 
 class Arm : public frc::Subsystem {
+ public:
+	Arm();
+    void Periodic() override;
+	void SetPID();
+	void ConfigureOutputPower();
+	void ConfigureCurrentLimits();
+	void SetupEncoder();
+	void SetHomePosition();
+	void SetPosition(int setpoint, unsigned delay);
+	bool AtSetPosition();
+	void Nudge(int distance);
+	void Move(int speed);
+	void ReducePowerForClimb();
+	void InitDefaultCommand() override;
  private:
-  std::shared_ptr<WPI_TalonSRX> m_armTalon;
+  	std::shared_ptr<WPI_TalonSRX> m_armTalon;
 	int m_setPosition;
 	unsigned m_delay;
 	constexpr static int m_timeoutMs = 10;
@@ -32,18 +46,5 @@ class Arm : public frc::Subsystem {
 	constexpr static int m_slotIdx = 0;
 	constexpr static int m_PidID = 0;
 
- public:
-  Arm();
-	void InitDefaultCommand() override;
-	void ConfigureOutputPower();
-	void Periodic() override;
-	void SetupEncoder();
-	void SetPosition(int setpoint, unsigned delay);
-	bool AtSetpoint();
-	void SetHomePosition();
-	void Move(int speed);
-	void NudgeArm(int distance);
-	void SetPID();
-	void ConfigureCurrentLimits();
-	void ReducePowerForClimb();
+ 
 };

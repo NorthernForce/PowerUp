@@ -8,13 +8,15 @@
 #include "commands/OpenGripper.h"
 #include "Robot.h"
 
-OpenGripper::OpenGripper() : TimedCommand("OpenGripper", m_timeToOpen)
-{
-  Requires(Robot::m_gripper.get());
+OpenGripper::OpenGripper() :
+ TimedCommand("OpenGripper", m_timeToOpen) {
+    Requires(Robot::m_gripper.get());
 }
 
 // Called just before this Command runs the first time
-void OpenGripper::Initialize() { Robot::m_gripper->SetOpen(); }
+void OpenGripper::Initialize() {
+    Robot::m_gripper->SetOpen();
+}
 
 // Called repeatedly when this Command is scheduled to run
 void OpenGripper::Execute() {}

@@ -15,36 +15,28 @@ std::shared_ptr<WPI_TalonSRX> DriveTrain::m_primaryTalonLeft;
 std::shared_ptr<WPI_TalonSRX> DriveTrain::m_primaryTalonRight;
 
 DriveTrainShifter::DriveTrainShifter() :
-    Subsystem("DriveTrainShifter")
-{
-  BeginShift(frc::DoubleSolenoid::Value::kForward);
+    Subsystem("DriveTrainShifter") {
+    BeginShift(frc::DoubleSolenoid::Value::kForward);
 }
 
-void DriveTrainShifter::Periodic()
-{
-	if (m_shiftCountdown > 0) {
-		m_shiftCountdown -= 1;
-	}
+void DriveTrainShifter::Periodic() {
+	if (m_shiftCountdown > 0)
+	    m_shiftCountdown -= 1;
 }
 
-void DriveTrainShifter::Shift(Gear gear)
-{
-	if(gear != m_currentGear)
-	{
+void DriveTrainShifter::Shift(Gear gear) {
+	if (gear != m_currentGear) {
 		m_currentGear = gear;
-		if(m_currentGear == Gear::High)
-		{
+		if (m_currentGear == Gear::High) {
 			BeginShift(frc::DoubleSolenoid::Value::kReverse);
 			DriveTrain::m_primaryTalonLeft->Set(0);
 			DriveTrain::m_primaryTalonRight->Set(0);
 		}
-		else
-		{
+		else {
 			BeginShift(frc::DoubleSolenoid::Value::kForward);
 			const auto speedLeft = m_primaryTalonLeft->GetSensorCollection().GetQuadratureVelocity();
 			const auto speedRight = m_primaryTalonRight->GetSensorCollection().GetQuadratureVelocity();
-			if(abs(speedLeft) + abs(speedRight) > 100)
-			{
+			if (abs(speedLeft) + abs(speedRight) > 100) {
 				DriveTrain::m_primaryTalonLeft->Set((speedLeft > 0) ? 1 : -1);
 				DriveTrain::m_primaryTalonRight->Set((speedRight > 0) ? 1 : -1);
 			}
@@ -53,22 +45,18 @@ void DriveTrainShifter::Shift(Gear gear)
 	}
 }
 
-Gear DriveTrainShifter::GetGear()
-{
+Gear DriveTrainShifter::GetGear() {
 	return m_currentGear;
 }
 
-void DriveTrainShifter::BeginShift(const frc::DoubleSolenoid::Value value)
-{
+void DriveTrainShifter::BeginShift(const frc::DoubleSolenoid::Value value) {
 	m_shifter->Set(value);
 	m_shiftCountdown = 5;
 }
 
-bool DriveTrainShifter::IsShiftDone() const
-{
+bool DriveTrainShifter::IsShiftDone() const {
 	return m_shiftCountdown <= 0;
 }
-
 
 void DriveTrainShifter::InitDefaultCommand() {
   // Set the default command for a subsystem here.

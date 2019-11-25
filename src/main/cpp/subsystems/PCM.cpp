@@ -9,18 +9,17 @@
 #include "Robot.h"
 #include "RobotMap.h"
 
-PCM::PCM() : Subsystem("PCM")
-{
-  m_compressor.reset(new frc::Compressor(RobotMap::PCM::k_pcm_id));
-  UseCompressor(true);
+PCM::PCM() :
+ Subsystem("PCM") {
+    m_compressor.reset(new frc::Compressor(RobotMap::PCM::k_pcm_id));
+    UseCompressor(true);
+}
+
+void PCM::UseCompressor(bool useCompressor) {
+    m_compressor->SetClosedLoopControl(useCompressor);
 }
 
 void PCM::InitDefaultCommand() {}
-
-void PCM::UseCompressor(bool useCompressor)
-{
-  m_compressor->SetClosedLoopControl(useCompressor);
-}
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.

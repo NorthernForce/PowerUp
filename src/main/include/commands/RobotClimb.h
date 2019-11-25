@@ -11,10 +11,10 @@
 
 class RobotClimb : public frc::Command {
  public:
-  RobotClimb();
-  void Initialize() override;
-  void Execute() override;
-  bool IsFinished() override;
-  void End() override;
-  void Interrupted() override;
+    RobotClimb();
+    void Initialize() override;
+    void Execute() override;
+    bool IsFinished() override;
+    void End() override;
+    void Interrupted() override;
 };

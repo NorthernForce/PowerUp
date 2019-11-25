@@ -31,25 +31,20 @@
 #include "RobotMap.h"
 
 namespace {
-
-	void WhenPressed(frc::Trigger* trigger, frc::Command* command)
-	{
+	void WhenPressed(frc::Trigger* trigger, frc::Command* command) {
 		trigger->WhenActive(command);
 	}
 
-	void WhenReleased(frc::Trigger* trigger, frc::Command* command)
-	{
+	void WhenReleased(frc::Trigger* trigger, frc::Command* command) {
 		trigger->WhenInactive(command);
 	}
 
-	void WhileHeld(frc::Trigger* trigger, frc::Command* command)
-	{
+	void WhileHeld(frc::Trigger* trigger, frc::Command* command) {
 		trigger->WhileActive(command);
 	}
 }
 
-OI::OI()
-{
+OI::OI() {
   /* Initialize Controllers */
    m_driverController.reset(new frc::XboxController(RobotMap::Controls::k_driverController_id));
    m_manipulatorJoystick.reset(new frc::Joystick(RobotMap::Controls::k_manipulatorJoystick_id));
@@ -109,14 +104,15 @@ OI::OI()
 	// WhileHeld(new RawButton<OI::Joystick>(m_manipulatorJoystick, Joystick::button11), new MoveElevator());
 }
 
-std::pair<double, double> OI::GetDriveControls()
-{
-  double speed = m_driverController->GetY(frc::XboxController::JoystickHand::kLeftHand) * -1;
-  double rotation = m_driverController->GetX(frc::XboxController::JoystickHand::kRightHand);
-  double driveMultiplier = frc::SmartDashboard::GetNumber("Driver: Speed", 1);
+std::pair<double, double> OI::GetDriveControls() {
+    double speed = m_driverController->GetY(frc::XboxController::JoystickHand::kLeftHand) * -1;
+    double rotation = m_driverController->GetX(frc::XboxController::JoystickHand::kRightHand);
+    double driveMultiplier = frc::SmartDashboard::GetNumber("Driver: Speed", 1);
 
-  if (driveMultiplier < 0) driveMultiplier = 0;
-   else if (driveMultiplier > 1) driveMultiplier = 1;
+    if (driveMultiplier < 0) 
+        driveMultiplier = 0;
+    else if (driveMultiplier > 1)
+        driveMultiplier = 1;
 
-  return std::make_pair(speed * driveMultiplier, rotation * driveMultiplier);
+    return std::make_pair(speed * driveMultiplier, rotation * driveMultiplier);
 }

@@ -8,16 +8,15 @@
 #include "commands/SetGripperIntake.h"
 #include "Robot.h"
 
-SetGripperIntake::SetGripperIntake(GripperIntake::State intakeState) : TimedCommand("SetGripperIntake", m_duration)
-{
-  Requires(Robot::m_gripperIntake.get());
-  m_intakeState = intakeState;
+SetGripperIntake::SetGripperIntake(GripperIntake::State intakeState) :
+ TimedCommand("SetGripperIntake", m_duration) {
+    Requires(Robot::m_gripperIntake.get());
+    m_intakeState = intakeState;
 }
 
 // Called just before this Command runs the first time
-void SetGripperIntake::Initialize()
-{
-  Robot::m_gripperIntake->SetIntake(m_intakeState);
+void SetGripperIntake::Initialize() {
+    Robot::m_gripperIntake->SetIntake(m_intakeState);
 }
 
 // Called repeatedly when this Command is scheduled to run

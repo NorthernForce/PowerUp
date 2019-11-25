@@ -11,10 +11,10 @@
 
 class SetElevatorHomePosition : public frc::Command {
  public:
-  SetElevatorHomePosition();
-  void Initialize() override;
-  void Execute() override;
-  bool IsFinished() override;
-  void End() override;
-  void Interrupted() override;
+    SetElevatorHomePosition();
+    void Initialize() override;
+    void Execute() override;
+    bool IsFinished() override;
+    void End() override;
+    void Interrupted() override;
 };

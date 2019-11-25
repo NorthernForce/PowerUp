@@ -11,11 +11,10 @@
 #include <frc/Compressor.h>
 
 class PCM : public frc::Subsystem {
+public:
+    PCM();
+    void UseCompressor(bool useCompressor);
+    void InitDefaultCommand() override;
  private:
-  std::shared_ptr<frc::Compressor> m_compressor;
-
- public:
-  PCM();
-  void UseCompressor(bool useCompressor);
-  void InitDefaultCommand() override;
+    std::shared_ptr<frc::Compressor> m_compressor;
 };

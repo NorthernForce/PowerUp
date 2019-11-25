@@ -8,22 +8,23 @@
 #include "commands/SetArmHomePosition.h"
 #include "Robot.h"
 
-SetArmHomePosition::SetArmHomePosition() : Command("SetArmHomePosition")
-{
-  SetRunWhenDisabled(true);
+SetArmHomePosition::SetArmHomePosition() :
+ Command("SetArmHomePosition") {
+    SetRunWhenDisabled(true);
 }
 
 // Called just before this Command runs the first time
-void SetArmHomePosition::Initialize()
-{
-  Robot::m_arm->SetHomePosition();
+void SetArmHomePosition::Initialize() {
+    Robot::m_arm->SetHomePosition();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void SetArmHomePosition::Execute() {}
 
 // Make this return true when this Command no longer needs to run execute()
-bool SetArmHomePosition::IsFinished() { return true; }
+bool SetArmHomePosition::IsFinished() {
+    return true;
+}
 
 // Called once after isFinished returns true
 void SetArmHomePosition::End() {}

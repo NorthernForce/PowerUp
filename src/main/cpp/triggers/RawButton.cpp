@@ -8,11 +8,10 @@
 #include "triggers/RawButton.h"
 #include "OI.h"
 
-template<class T> RawButton<T>::RawButton(std::shared_ptr<frc::GenericHID> joystick, T buttonNumber) 
-  :  m_joystick(joystick), m_buttonNumber(buttonNumber) {}
+template<class T> RawButton<T>::RawButton(std::shared_ptr<frc::GenericHID> joystick, T buttonNumber) :
+ m_joystick(joystick), m_buttonNumber(buttonNumber) {}
 
-template<class T> bool RawButton<T>::Get()
-{
+template<class T> bool RawButton<T>::Get() {
     return m_joystick->GetRawButton(static_cast<int>(m_buttonNumber));
 }
 

@@ -8,22 +8,20 @@
 #include "subsystems/Gripper.h"
 #include "RobotMap.h"
 
-Gripper::Gripper() : Subsystem("Gripper")
-{
-  m_gripperSolenoid.reset(new frc::Solenoid(RobotMap::PCM::k_gripperSolenoid_id));
-  m_gripperState = State::Closed;
+Gripper::Gripper() :
+ Subsystem("Gripper") {
+    m_gripperSolenoid.reset(new frc::Solenoid(RobotMap::PCM::k_gripperSolenoid_id));
+    m_gripperState = State::Closed;
 }
 
-void Gripper::SetOpen()
-{
-  m_gripperSolenoid->Set(true);
-  m_gripperState = State::Open;
+void Gripper::SetOpen() {
+    m_gripperSolenoid->Set(true);
+    m_gripperState = State::Open;
 }
 
-void Gripper::SetClosed()
-{
-  m_gripperSolenoid->Set(false);
-  m_gripperState = State::Closed;
+void Gripper::SetClosed() {
+    m_gripperSolenoid->Set(false);
+    m_gripperState = State::Closed;
 }
 
 void Gripper::InitDefaultCommand() {}

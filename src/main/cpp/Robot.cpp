@@ -13,23 +13,22 @@
 
 std::unique_ptr<OI> Robot::m_oi;
 std::shared_ptr<DriveTrain> Robot::m_driveTrain;
-// std::shared_ptr<DriveTrainShifter> Robot::m_driveTrainShifter;
+std::shared_ptr<DriveTrainShifter> Robot::m_driveTrainShifter;
 std::shared_ptr<PCM> Robot::m_pcm;
 std::shared_ptr<Elevator> Robot::m_elevator;
 std::shared_ptr<Arm> Robot::m_arm;
 std::shared_ptr<Gripper> Robot::m_gripper;
 std::shared_ptr<GripperIntake> Robot::m_gripperIntake;
 
-void Robot::RobotInit()
-{
-  m_driveTrain.reset(new DriveTrain());
-  // m_driveTrainShifter.reset(new DriveTrainShifter());
-  m_pcm.reset(new PCM());
-  m_elevator.reset(new Elevator());
-  m_arm.reset(new Arm());
-  m_gripper.reset(new Gripper());
-  m_gripperIntake.reset(new GripperIntake());
-  m_oi.reset(new OI());
+void Robot::RobotInit() {
+    m_driveTrain.reset(new DriveTrain());
+    // m_driveTrainShifter.reset(new DriveTrainShifter());
+    m_pcm.reset(new PCM());
+    m_elevator.reset(new Elevator());
+    m_arm.reset(new Arm());
+    m_gripper.reset(new Gripper());
+    m_gripperIntake.reset(new GripperIntake());
+    m_oi.reset(new OI());
 }
 
 /**
@@ -49,7 +48,9 @@ void Robot::RobotPeriodic() {}
  */
 void Robot::DisabledInit() {}
 
-void Robot::DisabledPeriodic() { frc::Scheduler::GetInstance()->Run(); }
+void Robot::DisabledPeriodic() {
+    frc::Scheduler::GetInstance()->Run();
+}
 
 /**
  * This autonomous (along with the chooser code above) shows how to select
@@ -71,11 +72,11 @@ void Robot::AutonomousInit() {
   //   m_autonomousCommand = &m_defaultAuto;
   // }
 
-  m_autonomousCommand = m_chooser.GetSelected();
+    m_autonomousCommand = m_chooser.GetSelected();
 
-  if (m_autonomousCommand != nullptr) {
+    if (m_autonomousCommand != nullptr) {
     m_autonomousCommand->Start();
-  }
+    }
 }
 
 void Robot::AutonomousPeriodic() { frc::Scheduler::GetInstance()->Run(); }
@@ -85,16 +86,20 @@ void Robot::TeleopInit() {
   // teleop starts running. If you want the autonomous to
   // continue until interrupted by another command, remove
   // this line or comment it out.
-  if (m_autonomousCommand != nullptr) {
+    if (m_autonomousCommand != nullptr) {
     m_autonomousCommand->Cancel();
     m_autonomousCommand = nullptr;
-  }
+    }
 }
 
-void Robot::TeleopPeriodic() { frc::Scheduler::GetInstance()->Run(); }
+void Robot::TeleopPeriodic() { 
+    frc::Scheduler::GetInstance()->Run();
+}
 
 void Robot::TestPeriodic() {}
 
 #ifndef RUNNING_FRC_TESTS
-int main() { return frc::StartRobot<Robot>(); }
+int main() {
+    return frc::StartRobot<Robot>();
+}
 #endif

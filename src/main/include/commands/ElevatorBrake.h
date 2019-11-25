@@ -11,17 +11,16 @@
 
 class ElevatorBrake : public frc::Command {
  public:
-  enum class State
-  {
+    enum class State {
     BrakeOn,
     BrakeOff
-  };
-  ElevatorBrake(State state);
-  void Initialize() override;
-  void Execute() override;
-  bool IsFinished() override;
-  void End() override;
-  void Interrupted() override;
+    };
+    ElevatorBrake(State state);
+    void Initialize() override;
+    void Execute() override;
+    bool IsFinished() override;
+    void End() override;
+    void Interrupted() override;
  private:
-  const State m_state;
+    const State m_state;
 };

@@ -11,9 +11,9 @@
 
 class ComboControl : public frc::Trigger {
  public:
-  ComboControl(frc::Trigger* control1, frc::Trigger* control2);
-  bool Get() override;
+    ComboControl(frc::Trigger* control1, frc::Trigger* control2);
+    bool Get() override;
  private:
-  frc::Trigger *m_control1;
-  frc::Trigger *m_control2;
+    frc::Trigger *m_control1;
+    frc::Trigger *m_control2;
 };

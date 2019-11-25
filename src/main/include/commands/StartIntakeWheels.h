@@ -11,11 +11,11 @@
 
 class StartIntakeWheels : public frc::TimedCommand {
  public:
-  StartIntakeWheels();
-  void Initialize() override;
-  void Execute() override;
-  void End() override;
-  void Interrupted() override;
+    StartIntakeWheels();
+    void Initialize() override;
+    void Execute() override;
+    void End() override;
+    void Interrupted() override;
  private:
-  constexpr static double m_duration { 0.2 };
+    constexpr static double m_duration { 0.2 };
 };

@@ -11,12 +11,12 @@
 
 class MoveElevator : public frc::Command {
  public:
-  MoveElevator(int maxSpeed=1);
-  void Initialize() override;
-  void Execute() override;
-  bool IsFinished() override;
-  void End() override;
-  void Interrupted() override;
+    MoveElevator(int maxSpeed = 1);
+    void Initialize() override;
+    void Execute() override;
+    bool IsFinished() override;
+    void End() override;
+    void Interrupted() override;
  private:
-  int m_speed;
+    int m_speed;
 };

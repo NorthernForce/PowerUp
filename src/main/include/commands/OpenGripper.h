@@ -11,11 +11,11 @@
 
 class OpenGripper : public frc::TimedCommand {
  public:
-  OpenGripper();
-  void Initialize() override;
-  void Execute() override;
-  void End() override;
-  void Interrupted() override;
+    OpenGripper();
+    void Initialize() override;
+    void Execute() override;
+    void End() override;
+    void Interrupted() override;
  private:
-  constexpr static double m_timeToOpen { 0.5 };
+    constexpr static double m_timeToOpen { 0.5 };
 };

@@ -12,29 +12,22 @@
 #include <ctre/Phoenix.h>
 
 class DriveTrainShifter : public frc::Subsystem {
- private:
-  // It's desirable that everything possible under private except
-  // for methods that implement subsystem capabilities
-
  public:
-  enum class Gear
-  {
+    enum class Gear
+    {
     Low, High
-  };
-
-  DriveTrainShifter();
-  void InitDefaultCommand() override;
-  void Periodic() override;
-	void Shift(Gear gear);
-	Gear GetGear();
-	bool IsShiftDone() const;
-
+    };
+    DriveTrainShifter();
+    void Periodic() override;
+    void Shift(Gear gear);
+    Gear GetGear();
+    bool IsShiftDone() const;
+    void InitDefaultCommand() override;
  private:
   void BeginShift(const frc::DoubleSolenoid::Value value);
-
-	std::shared_ptr<frc::DoubleSolenoid> m_shifter;
-  std::shared_ptr<WPI_TalonSRX> m_primaryTalonRight;
-  std::shared_ptr<WPI_TalonSRX> m_primaryTalonLeft;
-	Gear m_currentGear;
-	mutable int m_shiftCountdown;
+    std::shared_ptr<frc::DoubleSolenoid> m_shifter;
+    std::shared_ptr<WPI_TalonSRX> m_primaryTalonRight;
+    std::shared_ptr<WPI_TalonSRX> m_primaryTalonLeft;
+    Gear m_currentGear;
+    mutable int m_shiftCountdown;
 };

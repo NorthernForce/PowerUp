@@ -9,22 +9,23 @@
 #include "frc/commands/Subsystem.h"
 #include "Robot.h"
 
-NudgeElevator::NudgeElevator(int distance) : Command("NudgeElevator")
-{
-  Requires(Robot::m_elevator.get());
+NudgeElevator::NudgeElevator(int distance) :
+ Command("NudgeElevator") {
+    Requires(Robot::m_elevator.get());
 }
 
 // Called just before this Command runs the first time
 void NudgeElevator::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
-void NudgeElevator::Execute()
-{
-  Robot::m_elevator->Nudge(m_distance);
+void NudgeElevator::Execute() {
+    Robot::m_elevator->Nudge(m_distance);
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool NudgeElevator::IsFinished() { return false; }
+bool NudgeElevator::IsFinished() {
+    return false;
+}
 
 // Called once after isFinished returns true
 void NudgeElevator::End() {}

@@ -12,14 +12,14 @@
 
 class NudgeArm : public frc::Command {
  public:
-  NudgeArm(int distance);
-  NudgeArm(bool controller);
-  void Initialize() override;
-  void Execute() override;
-  bool IsFinished() override;
-  void End() override;
-  void Interrupted() override;
+    NudgeArm(int distance);
+    NudgeArm(bool controller);
+    void Initialize() override;
+    void Execute() override;
+    bool IsFinished() override;
+    void End() override;
+    void Interrupted() override;
  private:
 	const int m_distance;
-  bool m_controller;
+    bool m_controller;
 };

@@ -13,17 +13,18 @@
 
 class GripperIntake : public frc::Subsystem {
  private:
-  bool isRunning;
+    bool isRunning;
 	std::shared_ptr<frc::Solenoid> m_gripperIntakeSolenoid;
 	std::shared_ptr<WPI_TalonSRX> m_gripperIntakeTalon;
-
  public:
-  enum class State { Raised, Lowered };
-  GripperIntake();
-  void RunIntakeWheels();
-  void StopIntakeWheels();
-  void SetIntake(State state);
-  bool IsDown();
-  bool IsRunning();
-  void InitDefaultCommand() override;
+    enum class State { 
+    Raised, Lowered
+    };
+    GripperIntake();
+    void RunIntakeWheels();
+    void StopIntakeWheels();
+    void SetIntake(State state);
+    bool IsDown();
+    bool IsRunning();
+    void InitDefaultCommand() override;
 };

@@ -13,7 +13,7 @@
 
 class PositionArm : public frc::Command {
  public:
-  	enum class Position {
+	enum class Position {
 		Retracted,	// Starting position
 		Pickup,		// Pick up position
 		Switch,		// Score on switch
@@ -22,14 +22,12 @@ class PositionArm : public frc::Command {
 		ClimbSet, // Climb position
 		ClimbExecute // Climbs
 	};
-
-  PositionArm(Position setpoint);
-  void Initialize() override;
-  void Execute() override;
-  bool IsFinished() override;
-  void End() override;
-  void Interrupted() override;
-
+  	PositionArm(Position setpoint);
+	void Initialize() override;
+	void Execute() override;
+	bool IsFinished() override;
+	void End() override;
+	void Interrupted() override;
  private:
   	struct PositionSetpoints;
 	static const std::map<Position, PositionSetpoints> m_setpoints;

@@ -8,22 +8,23 @@
 #include "commands/SetElevatorHomePosition.h"
 #include "Robot.h"
 
-SetElevatorHomePosition::SetElevatorHomePosition() : Command("SetElevatorHomePosition")
-{
-  SetRunWhenDisabled(true);
+SetElevatorHomePosition::SetElevatorHomePosition() :
+ Command("SetElevatorHomePosition") {
+    SetRunWhenDisabled(true);
 }
 
 // Called just before this Command runs the first time
-void SetElevatorHomePosition::Initialize()
-{
-  Robot::m_elevator->SetHomePosition();
+void SetElevatorHomePosition::Initialize() {
+    Robot::m_elevator->SetHomePosition();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void SetElevatorHomePosition::Execute() {}
 
 // Make this return true when this Command no longer needs to run execute()
-bool SetElevatorHomePosition::IsFinished() { return true; }
+bool SetElevatorHomePosition::IsFinished() {
+    return true;
+}
 
 // Called once after isFinished returns true
 void SetElevatorHomePosition::End() {}

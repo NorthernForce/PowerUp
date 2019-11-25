@@ -11,10 +11,10 @@
 
 class SetArmHomePosition : public frc::Command {
  public:
-  SetArmHomePosition();
-  void Initialize() override;
-  void Execute() override;
-  bool IsFinished() override;
-  void End() override;
-  void Interrupted() override;
+    SetArmHomePosition();
+    void Initialize() override;
+    void Execute() override;
+    bool IsFinished() override;
+    void End() override;
+    void Interrupted() override;
 };

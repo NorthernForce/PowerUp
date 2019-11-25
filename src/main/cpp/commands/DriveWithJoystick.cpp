@@ -8,28 +8,28 @@
 #include "commands/DriveWithJoystick.h"
 #include "Robot.h"
 
-DriveWithJoystick::DriveWithJoystick() : Command("DriveWithJoystick")
-{
-  Requires(Robot::m_driveTrain.get());
+DriveWithJoystick::DriveWithJoystick() :
+ Command("DriveWithJoystick") {
+    Requires(Robot::m_driveTrain.get());
 }
 
 // Called just before this Command runs the first time
 void DriveWithJoystick::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
-void DriveWithJoystick::Execute()
-{
-  std::pair<double, double> steeringControls = Robot::m_oi->GetDriveControls();
-  Robot::m_driveTrain->Drive(steeringControls.first, steeringControls.second);
+void DriveWithJoystick::Execute() {
+    std::pair<double, double> steeringControls = Robot::m_oi->GetDriveControls();
+    Robot::m_driveTrain->Drive(steeringControls.first, steeringControls.second);
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool DriveWithJoystick::IsFinished() { return false; }
+bool DriveWithJoystick::IsFinished() {
+    return false;
+}
 
 // Called once after isFinished returns true
-void DriveWithJoystick::End()
-{
-  Robot::m_driveTrain->Drive(0,0);
+void DriveWithJoystick::End() {
+    Robot::m_driveTrain->Drive(0,0);
 }
 
 // Called when another command which requires one or more of the same

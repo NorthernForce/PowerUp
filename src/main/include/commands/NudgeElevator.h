@@ -11,12 +11,12 @@
 
 class NudgeElevator : public frc::Command {
  public:
-  NudgeElevator(int distance);
-  void Initialize() override;
-  void Execute() override;
-  bool IsFinished() override;
-  void End() override;
-  void Interrupted() override;
+    NudgeElevator(int distance);
+    void Initialize() override;
+    void Execute() override;
+    bool IsFinished() override;
+    void End() override;
+    void Interrupted() override;
  private:
-  int m_distance;
+    int m_distance;
 };

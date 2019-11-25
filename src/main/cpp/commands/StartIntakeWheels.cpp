@@ -8,15 +8,14 @@
 #include "commands/StartIntakeWheels.h"
 #include "Robot.h"
 
-StartIntakeWheels::StartIntakeWheels() : TimedCommand("StartIntakeWheels", m_duration)
-{
-  Requires(Robot::m_gripperIntake.get());
+StartIntakeWheels::StartIntakeWheels() :
+ TimedCommand("StartIntakeWheels", m_duration) {
+    Requires(Robot::m_gripperIntake.get());
 }
 
 // Called just before this Command runs the first time
-void StartIntakeWheels::Initialize()
-{
-  Robot::m_gripperIntake->RunIntakeWheels();
+void StartIntakeWheels::Initialize() {
+    Robot::m_gripperIntake->RunIntakeWheels();
 }
 
 // Called repeatedly when this Command is scheduled to run

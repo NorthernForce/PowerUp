@@ -12,14 +12,15 @@
 
 class Gripper : public frc::Subsystem {
  private:
-  enum class State { Open, Closed };
-  State m_gripperState;
-  std::shared_ptr<frc::Solenoid> m_gripperSolenoid;
-
+    enum class State {
+    Open, Closed
+    };
+    State m_gripperState;
+    std::shared_ptr<frc::Solenoid> m_gripperSolenoid;
  public:
-  Gripper();
-  void SetOpen();
-  void SetClosed();
-  bool isClosed() const { return m_gripperState == State::Closed; }
-  void InitDefaultCommand() override;
+    Gripper();
+    void SetOpen();
+    void SetClosed();
+    bool isClosed() const { return m_gripperState == State::Closed; }
+    void InitDefaultCommand() override;
 };

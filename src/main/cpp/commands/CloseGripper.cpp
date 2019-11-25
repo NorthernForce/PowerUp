@@ -8,13 +8,15 @@
 #include "commands/CloseGripper.h"
 #include "Robot.h"
 
-CloseGripper::CloseGripper() : TimedCommand("CloseGripper", timeToClose)
-{
-  Requires(Robot::m_gripper.get());
+CloseGripper::CloseGripper() :
+ TimedCommand("CloseGripper", timeToClose) {
+    Requires(Robot::m_gripper.get());
 }
 
 // Called just before this Command runs the first time
-void CloseGripper::Initialize() { Robot::m_gripper->SetClosed(); }
+void CloseGripper::Initialize() {
+    Robot::m_gripper->SetClosed();
+}
 
 // Called repeatedly when this Command is scheduled to run
 void CloseGripper::Execute() {}
